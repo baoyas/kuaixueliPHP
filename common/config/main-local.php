@@ -1,6 +1,6 @@
 <?php
 
-if (true) {
+if (YII_DEBUG) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = array(

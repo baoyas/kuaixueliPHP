@@ -1,0 +1,37 @@
+{
+	"id": "94e2c93b-b728-8b02-ae27-1ccef195c303",
+	"name": "ldl",
+	"description": "",
+	"order": [
+		"d4bbd940-7e32-6ad7-2002-0e190d2e7357"
+	],
+	"folders": [],
+	"timestamp": 0,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "d4bbd940-7e32-6ad7-2002-0e190d2e7357",
+			"headers": "",
+			"headerData": [],
+			"url": "",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "94e2c93b-b728-8b02-ae27-1ccef195c303",
+			"data": null,
+			"dataMode": "params",
+			"name": "用户登录",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1497007033367,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

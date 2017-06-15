@@ -29,8 +29,18 @@ class LogAfterRequest {
             $jsonResponse = 'content-type: '.$response->headers->get('Content-Type');
         } else if($response instanceof JsonResponse) {
             $jsonResponse = json_encode($response->getData(), JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
-            if($response->getData()->code!==0) {
+            if($response->getData()->status!=='success') {
                 $logFun = 'error';
+            }
+        } else if($response instanceof \Dingo\Api\Http\Response) {
+            if($response->headers->get('Content-Type')=='application/json') {
+                $jsonResponse = json_decode($response->getContent(), true);
+                if($jsonResponse['status']!=='success') {
+                    $logFun = 'error';
+                }
+                $jsonResponse = json_encode($jsonResponse, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+            } else {
+                $jsonResponse = $response->getContent();
             }
         } else if($response instanceof Response) {
             $jsonResponse = $response->getContent();

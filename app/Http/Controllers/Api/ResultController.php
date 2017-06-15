@@ -101,7 +101,7 @@ class ResultController extends JaseController
                 'status_code' => "" . $this->getStatusCode() . "",
                 'message' => $this->getMessage()
             ]
-        ]);
+        ], 200, [], JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
     }
 
     /**
@@ -114,7 +114,7 @@ class ResultController extends JaseController
             'status' => 'success',
             'status_code' => "" . $this->getStatusCode() . "",
             'message' => $this->getMessage()
-        ]);
+        ], 200, [], JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
     }
 
     /**

@@ -133,7 +133,8 @@ class ResultController extends JaseController
         }
         $data['status_code'] = "" . $this->getStatusCode() . "";
         // $_data = str_replace("\\n", "\\n",  json_encode($data, true));
-        return stripcslashes(json_encode($data,JSON_UNESCAPED_UNICODE));
+        //return stripcslashes(json_encode($data,JSON_UNESCAPED_UNICODE));
+        return response()->json($data, 200, [], JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
         // echo '<pre>';
         // print_r($_data);die;
         // return \Response::json($data);

@@ -96,7 +96,13 @@ class FriendsVerification
         $my_friends = $this->jasecontroller->My_friends($phone, $uid);
         $friends_ids = $my_friends['user_id'];
         $userInfo = User::where('id', $uid)->first()->toArray();
-        $sell = Sell::where('sell.is_circle', 1)->where('sell.is_del', 0)->whereIn('sell.sell_uid', $friends_ids)->orderBy('sell.sell_time', 'desc')->join('user as u', 'sell.sell_uid', '=', 'u.id')->select('sell.*', 'u.user_face', 'u.nickname')->paginate(Config::get('web.api_page'))->toArray();
+        $sell = Sell::where('sell.is_del', 0)
+                    //->where('sell.is_circle', 1)
+                    ->whereIn('sell.sell_uid', $friends_ids)
+                    ->orderBy('sell.sell_time', 'desc')
+                    ->join('user as u', 'sell.sell_uid', '=', 'u.id')
+                    ->select('sell.*', 'u.user_face', 'u.nickname')
+                    ->paginate(Config::get('web.api_page'))->toArray();
         if (empty($sell['data']) && $request->get('page') == 2)
         {
             return $this->result->setStatusMsg('error')->setStatusCode(0)->setMessage('没有更多的数据了！')->responsePage();

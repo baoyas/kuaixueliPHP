@@ -23,6 +23,7 @@ class UserAuth
     public function handle($request, Closure $next)
     {
         $token = $request->get('token');
+        $token = empty($token) ? $request->header('token') : $token;
         $is = Helpers::is_login($token);
         if (!$is)
         {

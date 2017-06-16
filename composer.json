@@ -12,7 +12,8 @@
         "sentry/sentry-laravel": "^0.5.0",
         "jpush/jpush": "v3.5.*",
         "qiniu/php-sdk": "^7.1",
-        "naux/sendcloud": "^1.1"
+        "naux/sendcloud": "^1.1",
+        "stevenyangecho/laravel-u-editor": "~1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

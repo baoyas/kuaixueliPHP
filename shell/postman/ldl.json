@@ -1,37 +1,98 @@
 {
-	"id": "94e2c93b-b728-8b02-ae27-1ccef195c303",
-	"name": "ldl",
-	"description": "",
-	"order": [
-		"d4bbd940-7e32-6ad7-2002-0e190d2e7357"
-	],
-	"folders": [],
-	"timestamp": 0,
-	"owner": 0,
-	"public": false,
-	"requests": [
+	"variables": [],
+	"info": {
+		"name": "ldl",
+		"_postman_id": "94e2c93b-b728-8b02-ae27-1ccef195c303",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "d4bbd940-7e32-6ad7-2002-0e190d2e7357",
-			"headers": "",
-			"headerData": [],
-			"url": "",
-			"queryParams": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "GET",
-			"collectionId": "94e2c93b-b728-8b02-ae27-1ccef195c303",
-			"data": null,
-			"dataMode": "params",
 			"name": "用户登录",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1497007033367,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {}
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"var data = JSON.parse(responseBody);",
+							"if (data.object[0].uid && data.object[0].token) {",
+							"  tests[\"Body has token\"] = true;",
+							"  postman.setEnvironmentVariable(\"uid\", data.object[0].uid);",
+							"  postman.setEnvironmentVariable(\"token\", data.object[0].token);",
+							"}",
+							"else {",
+							"  tests[\"Body has token\"] = false;",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{url}}/api/Login",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "phone",
+							"value": "15110264516",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "model",
+							"value": "2",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "发现",
+			"request": {
+				"url": "{{url}}/api/findSell",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "发现列表"
+			},
+			"response": []
+		},
+		{
+			"name": "我的朋友圈",
+			"request": {
+				"url": "{{url}}/api/friendsList",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "我的朋友圈"
+			},
+			"response": []
 		}
 	]
 }

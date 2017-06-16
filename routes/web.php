@@ -91,4 +91,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['web
     Route::post('city/updown', 'CityController@updown');
     Route::post('city/ishot', 'CityController@ishot');
     Route::resource('cityList', 'CityController');
+
+    Route::resource('ceditor', 'CeditorController');
 });

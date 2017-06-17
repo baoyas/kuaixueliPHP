@@ -16,11 +16,14 @@
 		@include('UEditor::head')
 		<!-- 加载编辑器的容器 -->
 		<script id="container" name="content" type="text/plain">
-			{{$file->richtext}}
 		</script>
 		<!-- 实例化编辑器 -->
 		<script type="text/javascript">
+	        var edata = {!! json_encode($file)!!}
 			var ue = UE.getEditor('container');
+			ue.ready(function() {
+			    UE.getEditor('container').execCommand('insertHtml', edata.richtext);
+			});
 		</script>
 		<input type="button" value="保存" class="ml120 add_btn" onclick="saveRichtext()">
 		<form id="editorForm" action="{{url('admin/ceditor/' . $file->id )}}" method="post" enctype="multipart/form-data" style="display: none;">

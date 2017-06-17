@@ -23,7 +23,7 @@ $app = new Illuminate\Foundation\Application(
 
 //域名配置
 $env_hosts = [
-    'test' => ['127.0.0.1'],
+    'test' => ['127.0.0.1', '192.168.56.103'],
     'prod' => ['api.ldlchat.com', 'www.ldlchat.com', 'ldlchat.com', '47.93.86.189']
 ];
 //环境处理

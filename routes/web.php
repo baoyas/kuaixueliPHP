@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('content/{id?}', 'Home\ContentController@index');
 Route::get('auth/github', 'Home\AuthController@github');
 
 Route::any('auth/githubCallback', 'Home\AuthController@githubCallback');

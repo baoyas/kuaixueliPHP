@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 	<div class="main">
-		<div class="title_big bline pb10"><span></span>位置添加</div>
+		<div class="title_big bline pb10"><span></span>添加内容</div>
 		@if (count($errors) > 0)
 			<div class="cl pd-5 bg-1 bk-gray mt-20" style="text-align: center;color: red">
 				@if (is_object($errors))
@@ -13,25 +13,26 @@
 				@endif
 			</div>
 		@endif
-		<form action="{{url('admin/adskip')}}" method="post" enctype="multipart/form-data">
+		@include('UEditor::head')
+		<!-- 加载编辑器的容器 -->
+		<script id="container" name="content" type="text/plain">
+		</script>
+		<!-- 实例化编辑器 -->
+		<script type="text/javascript">
+	        var ue = UE.getEditor('container');
+		</script>
+		<form id="editorForm" action="{{url('admin/ceditor')}}" method="post" enctype="multipart/form-data">
 			{{csrf_field()}}
-			<div class="inner mt15">
-				<div class="form_row">
-					<label class="first">名称</label>
-					<input type="text" class="w-300" name="ad_skip_name" />
-					<label class="info">*</label>
-				</div>
-
-				<div class="form_row mt15">
-					<label class="first">跳转方式</label>
-					<input type="text" class="w-300" name="ad_skip_describe" />
-					<label class="info">*</label>
-				</div>
-				<div class="form_row mt15">
-					<input type="submit" value="添加" class="ml120 add_btn" />
-				</div>
-			</div>
+			<input type="hidden" name="richtext" value="">
 		</form>
+		<input type="submit" value="添加" class="ml120 add_btn" onclick="saveRichtext()"/>
 	</div>
 </div>
+
+<script>
+function saveRichtext() {
+	$('#editorForm').find('[name=richtext]').val(UE.getEditor('container').getAllHtml());
+	$('#editorForm').submit();
+}
+</script>
 @endsection

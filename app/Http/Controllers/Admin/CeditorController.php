@@ -32,7 +32,7 @@ class CeditorController extends Controller
      */
     public function create()
     {
-        return view('admin.adskip.add');
+        return view('admin.ceditor.add');
     }
 
     /**
@@ -45,12 +45,10 @@ class CeditorController extends Controller
     {
         $input = Input::except('_token');
         $rules = [
-            'ad_skip_name' => 'required',
-            'ad_skip_describe' => 'required'
+            'richtext' => 'required'
         ];
         $message = [
-            'ad_skip_name.required' => '名称不能为空！',
-            'ad_skip_describe.required' => '跳转方式不能为空！'
+            'richtext.required' => '内容不能为空！'
         ];
         $validator = Validator::make($input, $rules, $message);
         if ($validator->passes())
@@ -58,7 +56,7 @@ class CeditorController extends Controller
             $re = Content::create($input);
             if ($re)
             {
-                return redirect('admin/adskip');
+                return redirect('admin/ceditor');
             }
             else
             {

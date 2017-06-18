@@ -33,6 +33,7 @@
         <a href="{{url('admin/version')}}">版本管理</a>
         <a href="https://console.easemob.com/index.html#/login" target="_black">环信统计</a>
         <a href="https://i.umeng.com/?" target="_black">友盟统计</a>
+        <a href="{{url('admin/ceditor')}}">内容管理</a>
     </div>
 @yield('content')
 

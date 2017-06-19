@@ -3,9 +3,12 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Encore\Admin\Traits\AdminBuilder;
 
 class Content extends Model
 {
+    use AdminBuilder;
+    
     protected $table='content';
     protected $primaryKey='id';
     /**

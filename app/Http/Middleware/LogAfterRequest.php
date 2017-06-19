@@ -28,8 +28,9 @@ class LogAfterRequest {
         if(stripos($response->headers->get('Content-Type'), 'image')!==false) {
             $jsonResponse = 'content-type: '.$response->headers->get('Content-Type');
         } else if($response instanceof JsonResponse) {
-            $jsonResponse = json_encode($response->getData(), JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
-            if($response->getData()->status!=='success') {
+            $getData = $response->getData();
+            $jsonResponse = json_encode($getData, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);
+            if(property_exists($getData, 'status') && $getData->status!=='success') {
                 $logFun = 'error';
             }
         } else if($response instanceof \Dingo\Api\Http\Response) {

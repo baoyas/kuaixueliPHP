@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh-cn',
 
     /*
     |--------------------------------------------------------------------------
@@ -181,6 +181,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Stevenyangecho\UEditor\UEditorServiceProvider::class,
+        Encore\Admin\Providers\AdminServiceProvider::class,
     ],
 
     /*

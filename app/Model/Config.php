@@ -3,9 +3,11 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Encore\Admin\Traits\AdminBuilder;
 
 class Config extends Model
 {
+    use AdminBuilder;
     protected $table='config';
     protected $primaryKey='conf_id';
     /**

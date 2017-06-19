@@ -17,5 +17,11 @@
  * Admin::js('/packages/prettydocs/js/main.js');
  *
  */
+use App\Adminlte\Extensions\Form\UEditor;
+use Encore\Admin\Form;
 
 Encore\Admin\Form::forget(['map', 'editor']);
+app('translator')->addNamespace('admin', resource_path('lang/admin'));
+
+
+Form::extend('ueditor', UEditor::class);

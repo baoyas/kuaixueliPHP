@@ -19,9 +19,35 @@ use Encore\Admin\Widgets\InfoBox;
 use Encore\Admin\Widgets\Tab;
 use Encore\Admin\Widgets\Table;
 
+
+use App\Model\Cate;
+use App\Model\Group;
+use App\Model\Sell;
+use App\Model\User;
+
 class HomeController extends Controller
 {
     public function index()
+    {
+        return Admin::content(function (Content $content) {
+            $content->header('统计');
+            $content->description('...');
+            
+            $content->row(function ($row) {
+                $user_count = User::where('is_del', 0)->count();
+                $sell_count = Sell::where('is_circle', 0)->count();
+                $cate_sell = Cate::count();
+                $group_count = Group::count();
+                
+                $row->column(3, new InfoBox('用户', 'users', 'aqua', '/adminlte/user', $user_count));
+                $row->column(3, new InfoBox('出售/购买', 'shopping-cart', 'green', '/admin/orders', $sell_count));
+                $row->column(3, new InfoBox('分类数量', 'book', 'yellow', '/admin/articles', $cate_sell));
+                $row->column(3, new InfoBox('群组数量', 'file', 'red', '/admin/files', $group_count));
+            });
+        });
+    }
+    
+    public function index_bak()
     {
         return Admin::content(function (Content $content) {
 

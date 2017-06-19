@@ -35,8 +35,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        Admin::js('style/admin/layer/layer.js');
-        Admin::js('js/adminlte/user.js');
         return Admin::content(function (Content $content) {
         
             $content->header('用户管理');
@@ -333,7 +331,6 @@ class UserController extends Controller
      */
     public function upDown ()
     {
-        echo "1111";exit();
         $input = Input::except('_token');
         $msg = ($input['power'] == 1)?'禁用':'开启';
         $cate = User::find($input['id']);
@@ -554,6 +551,8 @@ class UserController extends Controller
      */
     protected function grid()
     {
+        Admin::js('style/admin/layer/layer.js');
+        Admin::js('js/adminlte/user.js');
         return Admin::grid(User::class, function (Grid $grid) {
             //Admin::script($script);
             $grid->column('id', 'ID')->sortable();

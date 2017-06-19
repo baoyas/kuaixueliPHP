@@ -3,8 +3,17 @@ function upDown (id, statues)
 {
 	var msg = (statues == 1)? '开启' : '禁用';
 	layer.confirm('确认要'+msg+'吗？',function(index){
-		var url = "/adminlte/user/upDown";
-		$.post(url, {'_token':$(this).attr('data-token'), id:id, power:(statues==1 ? 0 : 1)}, function(data){
+		var url = "/adminlte/user/"+id;
+		$.ajax({
+			  type: 'POST',
+			  url: url,
+			  data: {'_token':$(this).attr('data-token'), id:id, power:(statues==1 ? 0 : 1)},
+			  success: function(response){
+			    $('#result').html(response);
+			  }
+			});
+
+		/*$.post(url, {'_token':$(this).attr('data-token'), id:id, power:(statues==1 ? 0 : 1)}, function(data){
 			if (data.status == 0)
 			{
 				layer.msg(data.msg,{icon:1,time:1000});
@@ -19,7 +28,7 @@ function upDown (id, statues)
 					location.href = location.href;
 				},2000);
 			}
-		});
+		});*/
 	});
 }
 $(document).ready(function(){

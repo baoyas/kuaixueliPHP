@@ -629,6 +629,9 @@ class Grid
         return $this->tools->render();
     }
 
+    public function renderTitle() {
+        return empty($this->title) ? '' : $this->title;
+    }
     /**
      * Set exporter driver for Grid to export.
      *

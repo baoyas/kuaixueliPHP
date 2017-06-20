@@ -1,7 +1,7 @@
 <div class="box">
     <div class="box-header">
 
-        <h3 class="box-title"></h3>
+        <h3 class="box-title">{!! $grid->renderTitle() !!}</h3>
 
         <div class="pull-right">
             {!! $grid->renderFilter() !!}

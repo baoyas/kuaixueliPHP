@@ -23,6 +23,22 @@ use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Support\MessageBag;
 
+
+use Encore\Admin\Layout\Column;
+use Encore\Admin\Layout\Row;
+use Encore\Admin\Widgets\Box;
+use Encore\Admin\Widgets\Chart\Bar;
+use Encore\Admin\Widgets\Chart\Doughnut;
+use Encore\Admin\Widgets\Chart\Line;
+use Encore\Admin\Widgets\Chart\Pie;
+use Encore\Admin\Widgets\Chart\PolarArea;
+use Encore\Admin\Widgets\Chart\Radar;
+use Encore\Admin\Widgets\Collapse;
+use Encore\Admin\Widgets\InfoBox;
+use Encore\Admin\Widgets\Tab;
+use Encore\Admin\Widgets\Table;
+use App\Adminlte\Extensions\Tools\ReleasePost;
+
 class UserController extends Controller
 {
     use ModelForm;
@@ -152,14 +168,76 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::where('id', $id)->first();
-        $sell = Sell::where('sell_uid', $id)->where('is_del', 0)->paginate(Config::get('web.admin_page'));
-        if ($user->is_del)
-        {
-            return redirect('admin/user');
+        if ($user->is_del) {
+            return redirect('adminlte/user');
         }
-        return view('admin.user.show', compact('user', 'sell'));
-    }
+        //Admin::css(['/style/admin/css/style.css','/style/admin/css/framework.css']);
+        Admin::js('style/admin/layer/layer.js');
+        Admin::js('js/adminlte/user.js');
+        return Admin::content(function (Content $content) use($id) {
+            $content->header('用户详情');
+            $content->description('...');
+            $user = User::where('id', $id)->first();
+            $sellGrid = Admin::grid(Sell::class, function (Grid $grid) {
+                $grid->column('id', 'ID')->sortable();
+                $grid->column('is_sell', '类别')->display(function(){
+                    if($this->is_sell == 1 && $this->is_circle == 0) {
+                        return '出售';
+                    } elseif($this->is_circle == 1) {
+                        return '朋友圈';
+                    } else {
+                        return '购买';
+                    }
+                });
+                $grid->column('sell_title', '标题');
+                $grid->column('sell_time', '发布时间')->display(function () {
+                    return date('Y-m-d H:i:s', $this->sell_time);
+                })->sortable();
+                $grid->actions(function (Grid\Displayers\Actions $actions) {
+                    $actions->disableDelete();
+                    $actions->disableEdit();
+                    if($this->row->is_sell == 1 && $this->row->is_circle == 0) {
+                        $actions->append('<a>查看</a> ');
+                    } elseif($this->row->is_circle == 1) {
+                        $actions->append('<a class="grid-row-delete" data-id="'.$this->getKey().'">删除</a> ');
+                    } else {
+                        $actions->append('<a>查看</a> ');
+                    }
+                });
+                $grid->tools(function (Grid\Tools $tools) {
+                    $tools->disableRefreshButton();
+                    $tools->batch(function (Grid\Tools\BatchActions $actions) {
+                        $actions->disableDelete();
+                        $actions->add('发布文章', new ReleasePost(1));
+                        $actions->add('文章下线', new ReleasePost(0));
+                    });
+                });
+                $grid->disableRowSelector();
+                $grid->disableExport();
+                $grid->disableCreation();
+                $grid->disableFilter();
+            });
+            $sellGrid->title = 'TA的发布';
+            $content->row(function ($row) use($user, $sellGrid){
+                $row->column(3, new Box('基本信息','<img style="width:120px;height:120px;display:block;border-radius:50%;margin:auto;" src="'.config('web.QINIU_URL').'/'.$user->user_face.'" />
+				<p>ID:'.$user->id.'</p>
+				<p class="mt10"><b>'.$user->nickname.'</b></p>
+				<p>'.$user->phone.'</p>
+				<p class="identity" style="width:80px;border:1px solid #e5e5eb;background-color:#fff;border-radius:32px;margin:6px auto;">
+					普通用户
+				</p>
+				<p class="pb10 bline mb10">'.$user->autograph.'</p>
+				<p>注册时间：'.date('Y-m-d H:i:s', $user->user_reg_time).'</p>
+				<p>地区：'.$user->area.'</p>
+				<p>地址：'.$user->address.'</p>
+				<button class="btn btn-info pull-left">修改密码</button>
+				<button class="btn btn-info pull-left grid-row-statues" data-id="'.$user->id.'"  data-statues="'.$user->statues.'" style="margin-left:4px;">'.($user->statues==0?'禁用':'开启').'</button>
+				<button class="btn btn-info pull-left grid-row-delete" data-id="'.$user->id.'" style="margin-left:4px;">删除</button>'));
+                $row->column(9, $sellGrid);
 
+            });
+        });
+    }
     /**
      * Show the form for editing the specified resource.
      *

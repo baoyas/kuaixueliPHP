@@ -40,7 +40,30 @@ $(document.body).on('click', '.grid-row-statues', function(){
 		layer.close(indexLayer);
 	});
 });
-
+$(document.body).on('click', '.grid-row-delete', function(){
+	var id = $(this).attr('data-id');
+	var indexLayer = layer.confirm('确认要[删除]吗？',function(index){
+		$.ajax({
+			method: 'post',
+			url: '/adminlte/user/' + id,
+			data: {
+				_method:'delete',
+				_token:LA.token
+			},
+			success: function (data) {
+				$.pjax.reload('#pjax-container');
+				if (typeof data === 'object') {
+					if (data.status) {
+						toastr.success(data.message);
+					} else {
+						toastr.error(data.message);
+					}
+				}
+			}
+		});
+		layer.close(indexLayer);
+	});
+});
 $(document).ready(function(){
 
 });

@@ -411,9 +411,10 @@ class UserController extends Controller
      * 给用户发送私聊
      * @param Request $request
      */
-    public function Privates (Request $request)
+    public function privateChat (Request $request, $id)
     {
         $uid = $request->get('uid');
+        $uid = $id;
         $user = User::where('id', $uid)->first();
         $userInfo = User::where('phone', config('web.DEFAULT_UID'))->first();
         if($request->isMethod('post'))
@@ -559,7 +560,6 @@ class UserController extends Controller
         Admin::js('style/admin/layer/layer.js');
         Admin::js('js/adminlte/user.js');
         return Admin::grid(User::class, function (Grid $grid) {
-            //Admin::script($script);
             $grid->column('id', 'ID')->sortable();
             $grid->column('phone', '手机号');
             $grid->column('user_face', '头像')->display(function () {
@@ -580,10 +580,10 @@ class UserController extends Controller
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 $actions->disableDelete();
                 $actions->disableEdit();
-                $actions->append('<a href="/admin/user/Private?uid='.$this->getKey().'">查看</a> ');
+                $actions->append('<a href="/adminlte/user/'.$this->getKey().'">查看</a> ');
                 $actions->append('<a class="grid-row-statues" data-id="'.$this->getKey().'"  data-statues="'.$this->row->statues.'">'.($this->row->statues==0?'禁用':'开启').'</a> ');
-                $actions->append('<a href="/admin/user/Private?uid='.$this->getKey().'">删除</a> ');
-                $actions->append('<a href="/admin/user/Private?uid='.$this->getKey().'">私聊</a>');
+                $actions->append('<a class="grid-row-delete" data-id="'.$this->getKey().'">删除</a> ');
+                $actions->append('<a href="/adminlte/user/'.$this->getKey().'/privatechat">私聊</a>');
             });
                 
             $grid->tools(function (Grid\Tools $tools) {

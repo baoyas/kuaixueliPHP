@@ -26,7 +26,7 @@ Route::group([
         $router->resource('ceditor', 'CeditorController');
         $router->resource('config', 'ConfigController');
         $router->resource('user', 'UserController');
-        $router->resource('user/upDown', 'UserController@upDown');
+        $router->resource('user/{id}/privatechat', 'UserController@privateChat');
     });
 
 });

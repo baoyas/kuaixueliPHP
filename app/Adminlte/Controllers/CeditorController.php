@@ -216,7 +216,7 @@ class CeditorController extends Controller
      */
     protected function grid()
     {
-        Admin::script('$(document).ready(function(){$("#pjax-container").attr("id", "")});');
+        //Admin::script('$(document).ready(function(){$("#pjax-container").attr("id", "")});');
         return Admin::grid(ContentText::class, function (Grid $grid) {
             $grid->id('ID')->sortable();
             $grid->column('jumpUrl', '跳转地址')->display(function () {
@@ -224,9 +224,10 @@ class CeditorController extends Controller
             });
 
             $grid->actions(function (Grid\Displayers\Actions $actions) {
-                if ($actions->getKey() == 1) {
-                    $actions->disableDelete();
-                }
+                $actions->disableEdit();
+                $actions->prepend('<a onclick=javascript:{location.href="/adminlte/ceditor/'.$this->getKey().'/edit"}>编辑</a>');
+                //$actions->append('<a data-token="'.csrf_token().'" onclick="upDown('.$this->getKey().','.$this->row->statues.')">'.($this->row->statues==0?'禁用':'开启').'</a>');
+
             });
 
             $grid->tools(function (Grid\Tools $tools) {

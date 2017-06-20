@@ -551,7 +551,9 @@ class UserController extends Controller
      */
     protected function grid()
     {
+        Admin::script('$("header").append("<meta name=csrf-token content='.csrf_token().' />")');
         Admin::js('style/admin/layer/layer.js');
+        Admin::js('js/adminlte/lib.js');
         Admin::js('js/adminlte/user.js');
         return Admin::grid(User::class, function (Grid $grid) {
             //Admin::script($script);

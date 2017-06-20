@@ -24,7 +24,6 @@ $(document.body).on('click', '.grid-row-statues', function(){
 			data: {
 				_method:'put',
 				_token:LA.token,
-				id:id,
 				statues:statues==1?0:1
 			},
 			success: function (data) {

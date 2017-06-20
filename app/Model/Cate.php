@@ -3,9 +3,13 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Encore\Admin\Traits\AdminBuilder;
+use Encore\Admin\Traits\ModelTree;
 
 class Cate extends Model
 {
+    use ModelTree, AdminBuilder;
+
     protected $table='cate';
     protected $primaryKey='id';
     /**
@@ -28,7 +32,7 @@ class Cate extends Model
 
     ];
 
-    public function tree ()
+    public function trees ()
     {
         $categorys = $this->orderBy('cate_sort', 'asc')->get();
         return $this->gettree($categorys, '_cate_name', 'cate_name', 'id', 'pid', 0);
@@ -66,5 +70,18 @@ class Cate extends Model
             }
         }
         return $arr;
+    }
+
+    public function __construct(array $attributes = [])
+    {
+        $connection = config('admin.database.connection') ?: config('database.default');
+
+        $this->setConnection($connection);
+
+        $this->setTable('cate');
+        $this->titleColumn = 'cate_name';
+        $this->orderColumn = 'cate_sort';
+        $this->parentColumn = 'pid';
+        parent::__construct($attributes);
     }
 }

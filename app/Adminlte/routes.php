@@ -27,6 +27,7 @@ Route::group([
         $router->resource('config', 'ConfigController');
         $router->resource('user', 'UserController');
         $router->resource('user/{id}/privatechat', 'UserController@privateChat');
+        $router->resource('cate', 'CateController');
     });
 
 });

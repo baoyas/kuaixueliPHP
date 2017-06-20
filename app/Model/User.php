@@ -3,9 +3,11 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+use Encore\Admin\Traits\AdminBuilder;
 
 class User extends Model
 {
+    use AdminBuilder;
     protected $table='user';
     protected $primaryKey='id';
     /**
@@ -27,4 +29,15 @@ class User extends Model
     protected $hidden = [
 
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        $connection = config('admin.database.connection') ?: config('database.default');
+
+        $this->setConnection($connection);
+
+        $this->setTable('user');
+
+        parent::__construct($attributes);
+    }
 }

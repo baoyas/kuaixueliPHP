@@ -20,9 +20,13 @@ use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
+use Encore\Admin\Controllers\ModelForm;
+use Illuminate\Support\MessageBag;
 
 class UserController extends Controller
 {
+    use ModelForm;
+
     private $jaseeasemob;
     public function __construct ()
     {
@@ -175,7 +179,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_bak(Request $request, $id)
     {
         $input = Input::except('_token', '_method');
         $cate = User::find($id);
@@ -244,7 +248,7 @@ class UserController extends Controller
             {
                 $rongCloud = new RongCloud();
                 $rongCloud->getToken($cate->id, $input['user_nickname'], Config::get('web.QINIU_URL').'/'.$input['user_face']);
-                return redirect('admin/user');
+                return redirect('adminlte/user');
             }
             else
             {
@@ -553,7 +557,6 @@ class UserController extends Controller
     {
         Admin::script('$("header").append("<meta name=csrf-token content='.csrf_token().' />")');
         Admin::js('style/admin/layer/layer.js');
-        Admin::js('js/adminlte/lib.js');
         Admin::js('js/adminlte/user.js');
         return Admin::grid(User::class, function (Grid $grid) {
             //Admin::script($script);
@@ -575,8 +578,12 @@ class UserController extends Controller
             });
             
             $grid->actions(function (Grid\Displayers\Actions $actions) {
-                $actions->prepend('<a href="/admin/user/Private?uid='.$this->getKey().'">私聊</a>');
-                $actions->append('<a data-token="'.csrf_token().'" onclick="upDown('.$this->getKey().','.$this->row->statues.')">'.($this->row->statues==0?'禁用':'开启').'</a>');
+                $actions->disableDelete();
+                $actions->disableEdit();
+                $actions->append('<a href="/admin/user/Private?uid='.$this->getKey().'">查看</a> ');
+                $actions->append('<a class="grid-row-statues" data-id="'.$this->getKey().'"  data-statues="'.$this->row->statues.'">'.($this->row->statues==0?'禁用':'开启').'</a> ');
+                $actions->append('<a href="/admin/user/Private?uid='.$this->getKey().'">删除</a> ');
+                $actions->append('<a href="/admin/user/Private?uid='.$this->getKey().'">私聊</a>');
             });
                 
             $grid->tools(function (Grid\Tools $tools) {
@@ -596,16 +603,13 @@ class UserController extends Controller
      */
     public function form()
     {
-        return Config::form(function (Form $form) {
-            $form->display('conf_id', 'ID');
-            $form->text('conf_title', '标题');
-            $form->text('conf_name', '名称');
-            $form->select('field_type', '类型')->options(
-                //['input'=>'input', 'textarea'=>'textarea', 'checkbox'=>'checkbox']
-                ['input'=>'input', 'textarea'=>'textarea']
-            );
-            $form->text('conf_order', '排序');
-            $form->text('conf_tips', '说明');
+        return User::form(function (Form $form) {
+            $form->text('statues', '状态');//->rules('required');
+            $form->saving(function (Form $form) {
+                if (property_exists($form, 'statues')) {
+                    $form->statues = $form->statues;
+                }
+            });
         });
     }
 }

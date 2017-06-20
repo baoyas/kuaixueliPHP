@@ -225,7 +225,7 @@ class CeditorController extends Controller
 
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 $actions->disableEdit();
-                $actions->prepend('<a onclick=javascript:{location.href="/adminlte/ceditor/'.$this->getKey().'/edit"}>编辑</a>');
+                $actions->prepend('<a onclick=javascript:{location.href="/adminlte/ceditor/'.$this->getKey().'/edit"}><i class="fa fa-edit"></i></a>');
                 //$actions->append('<a data-token="'.csrf_token().'" onclick="upDown('.$this->getKey().','.$this->row->statues.')">'.($this->row->statues==0?'禁用':'开启').'</a>');
 
             });

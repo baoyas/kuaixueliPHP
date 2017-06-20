@@ -198,11 +198,11 @@ class UserController extends Controller
                     $actions->disableDelete();
                     $actions->disableEdit();
                     if($this->row->is_sell == 1 && $this->row->is_circle == 0) {
-                        $actions->append('<a>查看</a> ');
+                        $actions->append('<a><i class="fa fa-eye"></i></a> ');
                     } elseif($this->row->is_circle == 1) {
-                        $actions->append('<a class="grid-row-delete" data-id="'.$this->getKey().'">删除</a> ');
+                        $actions->append('<a class="grid-row-delete" data-id="'.$this->getKey().'"><i class="fa fa-trash"></i></a> ');
                     } else {
-                        $actions->append('<a>查看</a> ');
+                        $actions->append('<a><i class="fa fa-eye"></i></a> ');
                     }
                 });
                 $grid->tools(function (Grid\Tools $tools) {
@@ -659,10 +659,10 @@ class UserController extends Controller
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 $actions->disableDelete();
                 $actions->disableEdit();
-                $actions->append('<a href="/adminlte/user/'.$this->getKey().'">查看</a> ');
-                $actions->append('<a class="grid-row-statues" data-id="'.$this->getKey().'"  data-statues="'.$this->row->statues.'">'.($this->row->statues==0?'禁用':'开启').'</a> ');
-                $actions->append('<a class="grid-row-delete" data-id="'.$this->getKey().'">删除</a> ');
-                $actions->append('<a href="/adminlte/user/'.$this->getKey().'/privatechat">私聊</a>');
+                $actions->append('<a href="/adminlte/user/'.$this->getKey().'"><i class="fa fa-eye"></i></a> ');
+                $actions->append('<a class="grid-row-statues" data-id="'.$this->getKey().'"  data-statues="'.$this->row->statues.'">'.($this->row->statues==0?'<i class="fa fa-lock"></i>':'<i class="fa fa-unlock"></i>').'</a> ');
+                $actions->append('<a class="grid-row-delete" data-id="'.$this->getKey().'"><i class="fa fa-trash"></i></a> ');
+                $actions->append('<a href="/adminlte/user/'.$this->getKey().'/privatechat"><i class="fa fa-wechat"></i></a>');
             });
                 
             $grid->tools(function (Grid\Tools $tools) {

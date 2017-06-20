@@ -565,7 +565,7 @@ class UserController extends Controller
             $grid->column('nickname', '昵称');
             $grid->column('user_reg_time', '注册时间')->display(function () {
                 return date('Y-m-d H:i:s', $this->user_reg_time);
-            });
+            })->sortable();
             $grid->column('statues', '状态')->display(function () {
                 if($this->statues == 0) {
                     return '<span class="stat_1" style="color:#09bb07">正常</span>';

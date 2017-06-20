@@ -23,12 +23,19 @@ class CateController extends Controller
      */
     public function index(Request $request)
     {
+        Admin::script('$(document).ready(function(){
+            $("a[data-action=collapse]").click();
+        });');
         return Admin::content(function (Content $content) {
             $content->header('分类管理');
-            $content->body(Ctree::tree());
+            $content->body(Ctree::tree(function (Tree $tree) {
+                $tree->branch(function ($branch) {
+                    return "{$branch['id']} - {$branch['cate_name']}";
+                });
+            }));
         });
         
-        return Cate::tree(function (Tree $tree) {
+        return Ctree::tree(function (Tree $tree) {
 
             $tree->branch(function ($branch) {
 

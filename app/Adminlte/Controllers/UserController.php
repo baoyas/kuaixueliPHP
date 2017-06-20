@@ -591,7 +591,12 @@ class UserController extends Controller
                     $actions->disableDelete();
                 });
             });
-    
+
+            $grid->filter(function ($filter) {
+                //$filter->is('id', 'ID');
+                $filter->like('nickname', '昵称');
+                //$filter->useModal();
+            });
             $grid->disableExport();
         });
     }

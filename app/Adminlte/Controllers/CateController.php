@@ -2,12 +2,18 @@
 
 namespace App\Adminlte\Controllers;
 
-use App\Model\Cate;
+use App\Model\Ctree;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 
+use App\Http\Controllers\Controller;
+use App\Models\Category;
+use Encore\Admin\Form;
+use Encore\Admin\Facades\Admin;
+use Encore\Admin\Layout\Content;
+use Encore\Admin\Controllers\ModelForm;
 use Encore\Admin\Tree;
+
 class CateController extends Controller
 {
     /**
@@ -17,6 +23,11 @@ class CateController extends Controller
      */
     public function index(Request $request)
     {
+        return Admin::content(function (Content $content) {
+            $content->header('分类管理');
+            $content->body(Ctree::tree());
+        });
+        
         return Cate::tree(function (Tree $tree) {
 
             $tree->branch(function ($branch) {

@@ -178,7 +178,8 @@ class UserController extends Controller
             $content->header('用户详情');
             $content->description('...');
             $user = User::where('id', $id)->first();
-            $sellGrid = Admin::grid(Sell::class, function (Grid $grid) {
+            $sellGrid = Admin::grid(Sell::class, function (Grid $grid) use($id) {
+                $grid->model()->where(['sell_uid'=>$id, 'is_del'=>0]);
                 $grid->column('id', 'ID')->sortable();
                 $grid->column('is_sell', '类别')->display(function(){
                     if($this->is_sell == 1 && $this->is_circle == 0) {
@@ -223,8 +224,8 @@ class UserController extends Controller
 				<p>ID:'.$user->id.'</p>
 				<p class="mt10"><b>'.$user->nickname.'</b></p>
 				<p>'.$user->phone.'</p>
-				<p class="identity" style="width:80px;border:1px solid #e5e5eb;background-color:#fff;border-radius:32px;margin:6px auto;">
-					普通用户
+				<p class="identity" style="width:100px;margin:6px auto;">
+					<span class="label label-success">普通用户</span>
 				</p>
 				<p class="pb10 bline mb10">'.$user->autograph.'</p>
 				<p>注册时间：'.date('Y-m-d H:i:s', $user->user_reg_time).'</p>

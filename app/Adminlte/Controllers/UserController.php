@@ -593,7 +593,7 @@ class UserController extends Controller
             });
 
             $grid->filter(function ($filter) {
-                //$filter->is('id', 'ID');
+                $filter->is('phone', '手机号');
                 $filter->like('nickname', '昵称');
                 //$filter->useModal();
             });

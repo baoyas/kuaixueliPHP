@@ -18,6 +18,7 @@ use Encore\Admin\Grid;
 
 class CateController extends Controller
 {
+    use ModelForm;
     /**
      * Display a listing of the resource.
      *
@@ -46,8 +47,8 @@ class CateController extends Controller
             $content->body(Ctree::tree(function (Tree $tree) use($gridHtml) {
                 $tree->branch(function ($branch) use ($gridHtml){
                     $html = empty($gridHtml[$branch['id']]) ? '' : $gridHtml[$branch['id']];
-                    return '<span style="float:left;">'."{$branch['id']} - {$branch['cate_name']}".
-                           '</span><span class="dd-nodrag" style="position:absolute;right:120px;">排序：'.$html.'</span>';
+                    return '<span style="float:left;">'."{$branch['id']} - {$branch['cate_name']}".'</span>'.
+                           '<span class="dd-nodrag" style="position:absolute;right:120px;">排序：'.$html.'</span>';
                 });
             }));
         });
@@ -75,46 +76,11 @@ class CateController extends Controller
      */
     public function create(Request $request)
     {
-        $pid = $request->get('pid');
-        return view('admin.cate.add', compact('pid'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $this->validate(request(), [
-            'cate_name' => 'required',
-            'cate_sort' => 'required'
-        ], [
-            'cate_name.required' => '分类名称必填！',
-            'cate_sort.required' => '分类排序必填！'
-        ]);
-        $input = Input::except('_token');
-        $statues = Cate::create($input);
-        if ($statues)
-        {
-            return redirect('admin/cate');
-        }
-        else
-        {
-            return back()->with('errors', '添加失败！');
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return Admin::content(function (Content $content) {
+            $content->header('分类创建');
+            $content->description(trans('admin::lang.create'));
+            $content->body($this->form());
+        });
     }
 
     /**
@@ -125,38 +91,13 @@ class CateController extends Controller
      */
     public function edit($id)
     {
-        $field = Cate::find($id);
-        return view('admin.cate.edit', compact('field'));
+        return Admin::content(function (Content $content) use ($id) {
+            $content->header(trans('admin::lang.administrator'));
+            $content->description(trans('admin::lang.edit'));
+            $content->body($this->form()->edit($id));
+        });
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $this->validate(request(), [
-            'cate_name' => 'required',
-            'cate_sort' => 'required'
-        ], [
-            'cate_name.required' => '分类名称必填！',
-            'cate_sort.required' => '分类排序必填！'
-        ]);
-        $input = Input::except('_token', '_method');
-        $statues = Cate::where('id', $id)->update($input);
-        if ($statues)
-        {
-            return redirect('admin/cate');
-        }
-        else
-        {
-            return back()->with('errors', '编辑失败！');
-        }
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -262,5 +203,22 @@ class CateController extends Controller
             ];
         }
         return $data;
+    }
+    
+    /**
+     * Make a form builder.
+     *
+     * @return Form
+     */
+    public function form()
+    {
+        return Admin::form(Ctree::class, function (Form $form) {
+            $form->text('cate_name', '名称');
+            $form->text('pid', '父id');
+            $form->text('cate_sort', '排序');//->rules('required');
+            $form->saving(function (Form $form) {
+                
+            });
+        });
     }
 }

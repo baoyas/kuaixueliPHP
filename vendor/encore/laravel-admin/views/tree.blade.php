@@ -86,7 +86,7 @@
 
     </div>
     <!-- /.box-header -->
-    <div class="box-body table-responsive no-padding">
+    <div class="box-body no-padding">
         <div class="dd" id="{{ $id }}">
             <ol class="dd-list">
                 @each($branchView, $items, 'branch')

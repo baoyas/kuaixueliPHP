@@ -13,6 +13,8 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Controllers\ModelForm;
 use Encore\Admin\Tree;
+use Encore\Admin\Grid\Displayers\Editable;
+use Encore\Admin\Grid;
 
 class CateController extends Controller
 {
@@ -23,14 +25,29 @@ class CateController extends Controller
      */
     public function index(Request $request)
     {
+        //$request['abc'] = 'acb';
+        //print_r(Input::all());exit();
         Admin::script('$(document).ready(function(){
             $("a[data-action=collapse]").click();
         });');
-        return Admin::content(function (Content $content) {
+        //$request['id'] = '1';
+        $grid = Admin::grid(Ctree::class ,function(Grid $grid){
+            $grid->disablePagination();
+            $grid->column('id');
+            $grid->cate_sort()->editable();
+        });
+        $grid->build();
+        $gridHtml = [];
+        foreach($grid->rows() as $row) {
+            $gridHtml[$row->id] = $row->column('cate_sort');
+        }
+        return Admin::content(function (Content $content) use($gridHtml) {
             $content->header('分类管理');
-            $content->body(Ctree::tree(function (Tree $tree) {
-                $tree->branch(function ($branch) {
-                    return '<span style="float:left;">'."{$branch['id']} - {$branch['cate_name']}".'</span><span style="position:absolute;right:120px;">排序'.$branch['cate_sort'].'</span>';
+            $content->body(Ctree::tree(function (Tree $tree) use($gridHtml) {
+                $tree->branch(function ($branch) use ($gridHtml){
+                    $html = empty($gridHtml[$branch['id']]) ? '' : $gridHtml[$branch['id']];
+                    return '<span style="float:left;">'."{$branch['id']} - {$branch['cate_name']}".
+                           '</span><span class="dd-nodrag" style="position:absolute;right:120px;">排序：'.$html.'</span>';
                 });
             }));
         });

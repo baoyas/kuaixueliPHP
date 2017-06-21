@@ -30,7 +30,7 @@ class CateController extends Controller
             $content->header('分类管理');
             $content->body(Ctree::tree(function (Tree $tree) {
                 $tree->branch(function ($branch) {
-                    return "{$branch['id']} - {$branch['cate_name']}";
+                    return '<span style="float:left;">'."{$branch['id']} - {$branch['cate_name']}".'</span><span style="position:absolute;right:120px;">排序'.$branch['cate_sort'].'</span>';
                 });
             }));
         });

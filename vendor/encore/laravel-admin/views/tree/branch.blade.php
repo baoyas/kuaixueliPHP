@@ -2,6 +2,9 @@
     <div class="dd-handle">
         {!! $branchCallback($branch) !!}
         <span class="pull-right dd-nodrag">
+            @if(isset($branch['level']) && $branch['level']<=1)
+            <a href="/{{ $path }}/create?pid={{ $branch[$keyName] }}"><i class="fa fa-plus-circle"></i></a>
+            @endif
             <a href="/{{ $path }}/{{ $branch[$keyName] }}/edit"><i class="fa fa-edit"></i></a>
             <a href="javascript:void(0);" data-id="{{ $branch[$keyName] }}" class="tree_branch_delete"><i class="fa fa-trash"></i></a>
         </span>

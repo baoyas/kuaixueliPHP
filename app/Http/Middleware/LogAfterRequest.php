@@ -36,7 +36,7 @@ class LogAfterRequest {
         } else if($response instanceof \Dingo\Api\Http\Response) {
             if($response->headers->get('Content-Type')=='application/json') {
                 $jsonResponse = json_decode($response->getContent(), true);
-                if($jsonResponse['status']!=='success') {
+                if(isset($jsonResponse['status']) && $jsonResponse['status']!=='success') {
                     $logFun = 'error';
                 }
                 $jsonResponse = json_encode($jsonResponse, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);

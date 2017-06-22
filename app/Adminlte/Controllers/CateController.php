@@ -35,6 +35,7 @@ class CateController extends Controller
         $grid = Admin::grid(Ctree::class ,function(Grid $grid){
             $grid->disablePagination();
             $grid->column('id');
+            $grid->cate_power()->editable();
             $grid->cate_sort()->editable();
         });
         $grid->build();

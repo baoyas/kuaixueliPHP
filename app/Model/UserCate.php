@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserCate extends Model
 {
+    use InsertOnDuplicateKey;
     protected $table='user_cate';
     protected $primaryKey='id';
     /**

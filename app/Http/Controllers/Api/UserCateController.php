@@ -21,9 +21,10 @@ class UserCateController extends JaseController
 
     public function index (Request $request)
     {
+        $userId = $request->item['uid'];
         $userCate = UserCate::with(['cate'=>function($query){
             $query->select(['id', 'cate_name']);
-        }])->where(['user_id'=>$request->item['uid']])->get()->toArray();
+        }])->where(['user_id'=>$userId])->get()->toArray();
         return $this->result->responses([
             'status' => 'success',
             'status_code' => '',
@@ -33,11 +34,30 @@ class UserCateController extends JaseController
 
     public function store (Request $request)
     {
-        $data = Cate::where(['cate_power'=>1,'pid'=>0])->orderBy('cate_sort', 'asc')->get()->toArray();
+        $all = $request->all();
+        $userId = $request->item['uid'];
+        if(isset($all['cate_ids'])) {
+            $cateIds = array_filter(array_unique(explode(',', $all['cate_ids'])));
+            $cates = Cate::whereIn('id', $cateIds)->get(['id'])->toArray();
+            $cates = array_column($cates, 'id');
+            if(empty($cates)) {
+                UserCate::where(['user_id'=>$userId])->delete();
+            } else {
+                UserCate::where(['user_id'=>$userId])->whereNotIn('cate_id', $cates)->delete();
+                $userCates = [];
+                foreach($cates as $cate_id) {
+                    $userCates[] = ['user_id'=>$userId, 'cate_id'=>$cate_id];
+                }
+                UserCate::InsertOnDuplicateKey($userCates);
+            }
+        }
+        $userCate = UserCate::with(['cate'=>function($query){
+            $query->select(['id', 'cate_name']);
+        }])->where(['user_id'=>$userId])->get()->toArray();
         return $this->result->responses([
             'status' => 'success',
             'status_code' => '',
-            'object' => $data
+            'object' => $userCate
         ]);
     }
 }

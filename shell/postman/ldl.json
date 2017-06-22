@@ -93,6 +93,67 @@
 				"description": "我的朋友圈"
 			},
 			"response": []
+		},
+		{
+			"name": "品类列表",
+			"request": {
+				"url": "{{url}}/api/cate/industry",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "用户品类列表",
+			"request": {
+				"url": "{{url}}/api/usercate",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "用户关注品类",
+			"request": {
+				"url": "{{url}}/api/usercate",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "cate_ids",
+							"value": "1,2",
+							"description": "品类id多个逗号分隔",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

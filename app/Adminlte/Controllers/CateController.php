@@ -211,15 +211,28 @@ class CateController extends Controller
      *
      * @return Form
      */
-    public function form()
+public function form()
     {
-        return Admin::form(Ctree::class, function (Form $form) {
-            $form->text('cate_name', '名称');
-            if(Input::get('pid')) {
-                $form->hidden('pid', '父id')->default(Input::get('pid', 0));
+        $request = app('request');
+        return Admin::form(Ctree::class, function (Form $form) use($request) {
+            $all = $request->all();
+            if($request->isMethod('POST')) {
+                $form->text('cate_name', '名称')->rules('required');
+            } elseif ($request->isMethod('PUT')) {
+                if(isset($all['cate_name'])) {
+                    $form->text('cate_name', '名称')->rules('required');
+                } else {
+                    $form->ignore('cate_name');
+                }
             } else {
-                $form->display('pid', '父id')->default(0);
+                $form->text('cate_name', '名称')->rules('required');
             }
+            if(is_null(Input::get('pid'))) {
+                $form->display('pid', '父id')->default(0);
+            } else {
+                $form->hidden('pid', '父id')->default(Input::get('pid', 0));
+            }
+            
             $form->text('cate_sort', '排序');//->rules('required');
             $form->saving(function (Form $form) {
 

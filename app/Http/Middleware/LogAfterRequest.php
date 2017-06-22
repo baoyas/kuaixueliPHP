@@ -44,7 +44,7 @@ class LogAfterRequest {
                 $jsonResponse = $response->getContent();
             }
         } else if($response instanceof Response) {
-            $jsonResponse = $response->getContent();
+            $jsonResponse = '';//$response->getContent();
         }
         $sqlArr = [];
         $queries = DB::getQueryLog();

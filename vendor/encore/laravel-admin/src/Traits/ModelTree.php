@@ -132,8 +132,7 @@ trait ModelTree
      */
     public function toTree()
     {
-        $nodes = $this->allNodes();
-        return $this->buildNestedArray($nodes);
+        return $this->buildNestedArray();
     }
 
     /**
@@ -144,17 +143,16 @@ trait ModelTree
      *
      * @return array
      */
-    protected function buildNestedArray(array &$nodes, $parentId = 0, $level = 0)
+    protected function buildNestedArray(array $nodes=[], $parentId = 0, $level = 0)
     {
         $branch = [];
 
         if (empty($nodes)) {
-            return $branch;
+            $nodes = $this->allNodes();
         }
 
         foreach ($nodes as $key=>$node) {
             if ($node[$this->parentColumn] == $parentId) {
-                unset($nodes[$key]);
                 $children = $this->buildNestedArray($nodes, $node[$this->getKeyName()], ++$level);
                 --$level;
                 if ($children) {

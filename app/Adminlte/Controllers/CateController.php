@@ -214,10 +214,14 @@ class CateController extends Controller
     {
         return Admin::form(Ctree::class, function (Form $form) {
             $form->text('cate_name', '名称');
-            $form->text('pid', '父id');
+            if(Input::get('pid')) {
+                $form->hidden('pid', '父id')->default(Input::get('pid', 0));
+            } else {
+                $form->display('pid', '父id')->default(0);
+            }
             $form->text('cate_sort', '排序');//->rules('required');
             $form->saving(function (Form $form) {
-                
+
             });
         });
     }

@@ -11,6 +11,7 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
+    $router->get('/test', 'HomeController@test');
 
 });
 
@@ -28,6 +29,7 @@ Route::group([
         $router->resource('user', 'UserController');
         $router->resource('user/{id}/privatechat', 'UserController@privateChat');
         $router->resource('cate', 'CateController');
+        $router->resource('cate/{id}/create', 'CateController@create');
     });
 
 });

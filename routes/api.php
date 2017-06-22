@@ -32,8 +32,8 @@ $api->version('v1', function ($api) {
         $api->get('share/{sellId}', 'HomeController@share'); //分享
         $api->get('version/{type}', 'HomeController@version'); //监察版本
         /*f分类*/
+        $api->get('cate/industry', 'CateController@industry');
         $api->get('cate', 'CateController@index');
-        $api->get('industry', 'CateController@industry');
 
         /*城市列表*/
         $api->get('city', 'HomeController@cityList');
@@ -55,6 +55,7 @@ $api->version('v1', function ($api) {
             $api->get('userInfoForPhone', 'UserController@userInfoForPhone'); //查看用户信息 for 用户手机号
             $api->post('userSetNotes', 'UserController@SetNotes'); //给好友设置备注
             $api->post('userSetBackground', 'UserController@userSetBackground'); //设置朋友圈背景
+            $api->resource('usercate', 'UserCateController'); //用户的品类
 
             /*我要买*/
             $api->post('business', 'BusinessController@Buystore'); //我要买

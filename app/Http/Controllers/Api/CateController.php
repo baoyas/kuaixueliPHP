@@ -39,4 +39,14 @@ class CateController extends JaseController
         }
         return Cache::get('CateIndex');
     }
+
+    public function industry ()
+    {
+        $data = Cate::where(['cate_power'=>1,'pid'=>0])->orderBy('cate_sort', 'asc')->get()->toArray();
+        return $this->result->responses([
+            'status' => 'success',
+            'status_code' => '',
+            'object' => $data
+        ]);
+    }
 }

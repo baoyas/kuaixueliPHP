@@ -33,6 +33,7 @@ $api->version('v1', function ($api) {
         $api->get('version/{type}', 'HomeController@version'); //监察版本
         /*f分类*/
         $api->get('cate', 'CateController@index');
+        $api->get('industry', 'CateController@industry');
 
         /*城市列表*/
         $api->get('city', 'HomeController@cityList');

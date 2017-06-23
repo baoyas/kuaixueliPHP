@@ -644,6 +644,7 @@ class UserController extends Controller
             $grid->column('user_face', '头像')->display(function () {
                 return '<img class="user-image" style="width:48px;height:48px;display:block;" src="'.config('web.QINIU_URL').'/'.$this->user_face.'" />';
             });
+            //$grid->column('user_face', '头像')->image();
             $grid->column('nickname', '昵称');
             $grid->column('user_reg_time', '注册时间')->display(function () {
                 return date('Y-m-d H:i:s', $this->user_reg_time);

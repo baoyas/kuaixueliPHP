@@ -2,7 +2,7 @@
     <div class="dd-handle">
         {!! $branchCallback($branch) !!}
         <span class="pull-right dd-nodrag">
-            @if(isset($branch['level']) && $branch['level']<=1)
+            @if(isset($branch['level']) && $branch['level']<=1 && false)
             <a href="/{{ $path }}/create?pid={{ $branch[$keyName] }}"><i class="fa fa-plus-circle"></i></a>
             @endif
             <a href="/{{ $path }}/{{ $branch[$keyName] }}/edit"><i class="fa fa-edit"></i></a>

@@ -15,6 +15,9 @@ use Encore\Admin\Controllers\ModelForm;
 use Encore\Admin\Tree;
 use Encore\Admin\Grid\Displayers\Editable;
 use Encore\Admin\Grid;
+use Encore\Admin\Layout\Row;
+use Encore\Admin\Layout\Column;
+use Encore\Admin\Widgets\Box;
 
 class CateController extends Controller
 {
@@ -46,28 +49,21 @@ class CateController extends Controller
         return Admin::content(function (Content $content) use($gridHtml) {
             $content->header('分类管理');
             $content->body(Ctree::tree(function (Tree $tree) use($gridHtml) {
+                //$tree->disableCreate();
+                $tree->query(function($query){
+                    return $query->where('cate_level','<=', 10);
+                });
                 $tree->branch(function ($branch) use ($gridHtml){
                     $html = empty($gridHtml[$branch['id']]) ? '' : $gridHtml[$branch['id']];
-                    return '<span style="float:left;">'."{$branch['id']} - {$branch['cate_name']}".'</span>'.
-                           '<span class="dd-nodrag" style="position:absolute;right:120px;">排序：'.$html.'</span>';
+                    $payload = '<span style="float:left;">'."{$branch['id']} - {$branch['cate_name']}".'</span>'.
+                    '<span class="dd-nodrag" style="position:absolute;right:100px;">排序：'.$html.'</span>';
+                    if($branch['level']<=1) {
+                        $payload .= '<span class="dd-nodrag" style="position:absolute;right:46px;"><a href="'.admin_url('cate/create').'?pid='.$branch['id'].'"><i class="fa fa-plus-circle"></i></a></span>';
+                    }
+                    return $payload;
                 });
             }));
         });
-        
-        return Ctree::tree(function (Tree $tree) {
-
-            $tree->branch(function ($branch) {
-
-                return "{$branch['id']} - {$branch['title']}";
-
-            });
-
-        });
-        $p = $request->get('p') ? $request->get('p') : 1 ;
-        $data = (new Cate)->tree();
-//        $data = collect($data)->forPage($p,20);
-//        dd($data);
-        return view('admin.cate.index', compact('data'));
     }
 
     /**
@@ -213,9 +209,10 @@ class CateController extends Controller
      */
 public function form()
     {
-        $request = app('request');
-        return Admin::form(Ctree::class, function (Form $form) use($request) {
+        return Admin::form(Ctree::class, function (Form $form) {
+            $request = app('request');
             $all = $request->all();
+
             if($request->isMethod('POST')) {
                 $form->text('cate_name', '名称')->rules('required');
             } elseif ($request->isMethod('PUT')) {
@@ -227,13 +224,28 @@ public function form()
             } else {
                 $form->text('cate_name', '名称')->rules('required');
             }
-            if(is_null(Input::get('pid'))) {
-                $form->display('pid', '父id')->default(0);
-            } else {
-                $form->hidden('pid', '父id')->default(Input::get('pid', 0));
+
+            if(strrchr($request->path(),"edit") == 'edit') {
+                //$form->display('piddesc', '上级品类')->default('（根分类---）');
+                //$form->hidden('pid')->default(0);
+            } elseif(strrchr($request->path(),"create") == 'create') {
+                if(is_null(Input::get('pid'))) {
+                    $form->display('pid', '上级品类')->default('（根分类）');
+                    $form->hidden('pid', '上级品类')->default(0);
+                } else {
+                    $ctree = Ctree::find(Input::get('pid'));
+                    $form->display('pid', '上级品类')->default($ctree->cate_name);
+                    $form->hidden('pid', '上级品类')->default($ctree->id);
+                }
             }
-            
-            $form->text('cate_sort', '排序');//->rules('required');
+
+            $states = [
+                'on'  => ['value' => 1, 'text' => '是', 'color' => 'success'],
+                'off' => ['value' => 0, 'text' => '否', 'color' => 'danger'],
+            ];
+            $form->switch('cate_power', '是否启用')->states($states);
+
+            $form->text('cate_sort', '排序');
             $form->saving(function (Form $form) {
 
             });

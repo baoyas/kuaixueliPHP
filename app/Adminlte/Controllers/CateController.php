@@ -245,7 +245,7 @@ public function form()
             ];
             $form->switch('cate_power', '是否启用')->states($states);
 
-            $form->text('cate_sort', '排序');
+            $form->number('cate_sort', '排序');
             $form->saving(function (Form $form) {
 
             });

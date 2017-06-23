@@ -33,8 +33,6 @@ class SellController extends Controller
             $content->header('出售/购买管理');
             $content->body($this->grid());
         });
-        $data = Sell::where('sell.is_del', 0)->orderBy('sell.sell_time', 'desc')->join('user as u', 'sell.sell_uid', '=', 'u.id')->select('sell.*', 'u.phone', 'u.nickname')->paginate(20);
-        return view('admin.sell.index', compact('data'));
     }
 
     public function grid() {
@@ -65,7 +63,6 @@ class SellController extends Controller
             $grid->disableBatchDeletion();
             $grid->disableExport();
             $grid->disableCreation();
-            //$grid->disableFilter();
         });
     }
     /**

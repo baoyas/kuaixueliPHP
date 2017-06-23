@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use Encore\Admin\Form;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
@@ -207,7 +206,7 @@ class CateController extends Controller
      *
      * @return Form
      */
-public function form()
+    public function form()
     {
         return Admin::form(Ctree::class, function (Form $form) {
             $request = app('request');

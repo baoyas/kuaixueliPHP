@@ -101,7 +101,7 @@ class FriendsVerification
                     ->whereIn('sell.sell_uid', $friends_ids)
                     ->orderBy('sell.sell_time', 'desc')
                     ->join('user as u', 'sell.sell_uid', '=', 'u.id')
-                    ->select('sell.*', 'u.user_face', 'u.nickname')
+                    ->select('sell.*', 'u.user_face', 'u.nickname', 'u.phone')
                     ->paginate(Config::get('web.api_page'))->toArray();
         if (empty($sell['data']) && $request->get('page') == 2)
         {

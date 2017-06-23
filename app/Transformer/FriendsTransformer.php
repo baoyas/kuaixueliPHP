@@ -25,6 +25,7 @@ class FriendsTransformer extends Transformer
             'sell_video_pic' => "".$item['sell_video_pic']."",
             'user_face' => "".$item['user_face']."",
             'nickname' => "".$item['nickname']."",
+            'phone' => "".$item['phone']."",
             'sell_thumbsUp' => "".$item['sell_thumbsUp']."",
             'sell_comment' => "".$item['sell_comment']."",
             'is_thumbsUp' => "".$item['is_thumbsUp']."",

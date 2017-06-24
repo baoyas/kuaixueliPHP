@@ -30,7 +30,7 @@
                 @foreach($grid->columnNames as $index=>$name)
                 @if($index == 0 && $level<=1)
                 <td class="dd-item-tk">
-                <i class="fa fa-plus" data-action="expand" data-id={{ $row->id() }} data-level="{{ $level }}" style="cursor:pointer;margin-left:{{ $level*20}}px;" onclick="loadChildren(this)"></i>
+                <i class="fa fa-plus" data-loading-text="<i class='fa fa-spinner fa-spin'></i>" data-action="expand" data-id={{ $row->id() }} data-level="{{ $level }}" style="cursor:pointer;margin-left:{{ $level*20}}px;" onclick="loadChildren(this)"></i>
                 {!! $row->column($name) !!}
                 </td>
                 @elseif($index == 0)
@@ -65,6 +65,8 @@ function loadChildren(obj) {
             $obj.attr('data-action', 'collapse');
             $obj.attr('class', 'fa fa-minus');
         } else {
+            $obj.button('loading');
+            $obj.attr('disabled', true);
             $.ajax({
                 url:document.URL,
                 data:{_token:LA.token, pid:id, level:parseInt(level)+1},
@@ -74,6 +76,8 @@ function loadChildren(obj) {
                     $obj.closest('tr').after($html);
                     $obj.attr('data-action', 'collapse');
                     $obj.attr('class', 'fa fa-minus');
+                    $obj.attr('disabled', false);
+                    $obj.button('reset');
                 }
             });
         }

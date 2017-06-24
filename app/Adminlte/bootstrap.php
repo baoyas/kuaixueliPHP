@@ -20,9 +20,11 @@
 use App\Adminlte\Extensions\Form\UEditor;
 use Encore\Admin\Form;
 use Encore\Admin\Grid\Column;
+
 Encore\Admin\Form::forget(['map', 'editor']);
 app('translator')->addNamespace('admin', resource_path('lang/admin'));
 
+//app('view')->prependNamespace('admin', resource_path('views/adminss'));
 
 Form::extend('ueditor', UEditor::class);
 Column::extend('prependIcon', function ($value, $icon) {

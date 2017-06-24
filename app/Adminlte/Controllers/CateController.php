@@ -21,6 +21,39 @@ use Encore\Admin\Widgets\Box;
 class CateController extends Controller
 {
     use ModelForm;
+    
+    public function grid() {
+        $grid = Admin::grid(Ctree::class, function(Grid $grid){
+            $grid->disablePagination();
+            $pid = Input::get('pid', 0);
+            $level = Input::get('level', 0);
+            $grid->model()->where(['pid'=>$pid])->orderBy('cate_sort', 'asc');
+            $grid->column('tid', 'ID')->display(function() {
+                return $this->id."-".$this->cate_name;
+            });
+            $grid->column('cate_sort', '排序')->editable();
+            $grid->column('cate_power', '状态')->display(function($cate_power){
+                return $cate_power==1 ? '可用' : '禁用';
+            });
+            
+            //$grid->disableActions();
+            $grid->disableBatchDeletion();
+            $grid->disableExport();
+            $grid->disableCreation();
+            $grid->disableRowSelector();
+        });
+        $grid->with(['level'=>Input::get('level', 0), 'pid'=>Input::get('pid', 0)]);
+        $grid->setView('adminlte.gridtree.table');
+        return $grid;
+    }
+    
+    public function cindex(Request $request)
+    {
+        return Admin::content(function (Content $content) {
+            $content->header('分类管理');
+            $content->body($this->grid());
+        });
+    }
     /**
      * Display a listing of the resource.
      *
@@ -32,6 +65,14 @@ class CateController extends Controller
         //print_r(Input::all());exit();
         Admin::script('$(document).ready(function(){
             $("a[data-action=collapse]").click();
+            $("ol[class=dd-list]").click(function(ev){
+                $target = $(ev.target);
+                if($target.attr("data-action")=="expand") {
+                    if($target.closest("li").find("ol[class=dd-list]>li").length==0) {
+                        alert(11);
+                    }
+                }
+            });
         });');
         //$request['id'] = '1';
         $grid = Admin::grid(Ctree::class ,function(Grid $grid){
@@ -50,7 +91,7 @@ class CateController extends Controller
             $content->body(Ctree::tree(function (Tree $tree) use($gridHtml) {
                 //$tree->disableCreate();
                 $tree->query(function($query){
-                    return $query->where('cate_level','<=', 10);
+                    return $query->where('cate_level','<=', 2);
                 });
                 $tree->branch(function ($branch) use ($gridHtml){
                     $html = empty($gridHtml[$branch['id']]) ? '' : $gridHtml[$branch['id']];

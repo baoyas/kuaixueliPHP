@@ -36,7 +36,7 @@ class SellController extends Controller
     }
 
     public function grid() {
-        return Admin::grid(Sell::class, function(Grid $grid){
+        return new Grid(Admin::getModel(Sell::class), function(Grid $grid){
             $grid->model()->where(['is_del'=>0])->orderBy('sell_time', 'desc');
             $grid->column('id', 'ID')->sortable();
             $grid->column('sell_order', '排序')->editable()->sortable();

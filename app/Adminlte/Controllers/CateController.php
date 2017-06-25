@@ -42,7 +42,7 @@ class CateController extends Controller
             $grid->disableCreation();
             $grid->disableRowSelector();
         });
-        $grid->with(['level'=>Input::get('level', 0), 'pid'=>Input::get('pid', 0)]);
+        $grid->with(['level'=>Input::get('level', 0), 'pid'=>Input::get('pid', 0), 'pidstr'=>Input::get('pidstr', 0)]);
         $grid->setView('adminlte.gridtree.table');
         return $grid;
     }

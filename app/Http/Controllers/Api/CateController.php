@@ -42,7 +42,7 @@ class CateController extends JaseController
 
     public function industry ()
     {
-        $data = Cate::where(['cate_power'=>1,'pid'=>0])->orderBy('cate_sort', 'asc')->get()->toArray();
+        $data = Cate::where(['cate_power'=>1,'pid'=>0])->orderBy('cate_sort', 'asc')->get(['id','cate_name'])->toArray();
         return $this->result->responses([
             'status' => 'success',
             'status_code' => '',

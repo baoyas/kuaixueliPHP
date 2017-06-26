@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ResultController as Result;
 use App\Verification\UserVerification;
+use App\Model\User;
+
 class UserController extends JaseController
 {
     private $result;
@@ -100,11 +102,13 @@ class UserController extends JaseController
     }
 
     public function check (Request $request) {
+        $user_id = $request->item['uid'];
+        $user = User::find($user_id);
         $data = ['nickname'=>1, 'user_face'=>1];
-        if($request->item['nickname']==config('web.DEFAULT_NICKNAME') || empty($request->item['nickname'])) {
+        if($user->nickname==config('web.DEFAULT_NICKNAME') || empty($user->nickname)) {
             $data['nickname'] = 2;
         }
-        if($request->item['user_face']=='default.png'|| empty($request->item['user_face'])) {
+        if($user->user_face=='default.png'|| empty($user->user_face)) {
             $data['user_face'] = 2;
         }
         return $this->result->responses([

@@ -35,7 +35,9 @@ class TestController extends JaseController
     public function grid() {
         return new Grid(Fast::getModel(UserArea::class), function(Grid $grid){
             //$grid->model()->where(['is_del'=>0])->orderBy('sell_time', 'desc');
-            $grid->column('id',  'ID');
+            $grid->column('id',  'ID')->display(function($id){
+                echo $id;
+            });
             $grid->disableActions();
             //$grid->disableBatchDeletion();
             $grid->disableExport();

@@ -34,7 +34,8 @@ $api->version('v1', function ($api) {
         /*f分类*/
         $api->get('cate/industry', 'CateController@industry');
         $api->get('cate', 'CateController@index');
-
+        $api->get('test/index', 'TestController@index');
+        
         /*城市列表*/
 
         $api->get('city', 'HomeController@cityList');

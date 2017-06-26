@@ -182,6 +182,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Stevenyangecho\UEditor\UEditorServiceProvider::class,
         Encore\Admin\Providers\AdminServiceProvider::class,
+        App\Fcore\Providers\FcoreServiceProvider::class,
     ],
 
     /*

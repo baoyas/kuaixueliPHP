@@ -10,6 +10,11 @@ use App\Http\Controllers\Api\ResultController as Result;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 
+use App\Fcore\Facades\Fast;
+use App\Fcore\Grid;
+use App\Fcore\Layout\Content;
+use App\Fcore\Controllers\ModelForm;
+
 class UserAddrController extends JaseController
 {
     private $result;
@@ -18,7 +23,47 @@ class UserAddrController extends JaseController
         $this->result = new Result();
     }
 
-    public function index (Request $request)
+    public function index()
+    {
+        return Fast::content(function (Content $content) {
+            $content->header('出售/购买管理');
+            $content->body($this->grid());
+        });
+    }
+    
+    public function grid() {
+        return Fast::grid(UserArea::class, function(Grid $grid){
+            $userId = app('request')->item['uid'];
+            $grid->model()->where(['user_id'=>$userId])->orderBy('is_default', 'desc');
+            $grid->column('id', 'id');
+            $grid->column('user_id', 'user_id');
+            $grid->column('real_name', 'real_name');
+            $grid->column('mobile', 'mobile');
+            $grid->column('detail', 'detail');
+            $grid->column('province_id', 'province_id');
+            $grid->column('city_id', 'city_id');
+            $grid->column('area_id', 'area_id');
+            $grid->column('is_default', 'is_default');
+            
+            $grid->column('province.name', 'province_aaaname')->display(function($name){
+                return $name;
+            });
+                
+            $grid->city()->display(function($city){
+                return $city['name'];
+            });
+            
+            $grid->area()->display(function($area){
+                return $area['name'];
+            });
+            $grid->disableActions();
+            $grid->disableBatchDeletion();
+            $grid->disableExport();
+            $grid->disableCreation();
+            $grid->disableRowSelector();
+        });
+    }
+    public function index_bak (Request $request)
     {
         $userId = $request->item['uid'];
         $userArea = UserArea::with('province')->with('city')->with('area')->where(['user_id'=>$userId,'is_delete'=>0])

@@ -200,6 +200,17 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "地区列表",
+			"request": {
+				"url": "{{url}}/api/area",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

@@ -36,7 +36,10 @@ $api->version('v1', function ($api) {
         $api->get('cate', 'CateController@index');
 
         /*城市列表*/
+
         $api->get('city', 'HomeController@cityList');
+
+        $api->resource('area', 'AreaController');
 
 
         /*分组需要token验证*/

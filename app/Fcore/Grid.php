@@ -11,7 +11,7 @@ use Encore\Admin\Grid\Exporter;
 use Encore\Admin\Grid\Filter;
 use Encore\Admin\Grid\Model;
 use Encore\Admin\Grid\Row;
-use Encore\Admin\Grid\Tools;
+use App\Fcore\Grid\Tools;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -182,7 +182,7 @@ class Grid
         $this->builder = $builder;
 
         $this->setDbColumns();
-        //$this->setupTools();
+        $this->setupTools();
         $this->setupFilter();
         //$this->setupExporter();
     }

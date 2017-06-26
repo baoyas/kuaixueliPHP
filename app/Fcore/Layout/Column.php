@@ -94,7 +94,7 @@ class Column implements Buildable
      */
     protected function startColumn()
     {
-        echo "<div class=\"col-md-{$this->width}\">";
+        echo '';
     }
 
     /**
@@ -102,6 +102,6 @@ class Column implements Buildable
      */
     protected function endColumn()
     {
-        echo '</div>';
+        echo '';
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\Helpers;
 use App\Model\UserArea;
 use App\Model\Area;
 use Illuminate\Http\Request;

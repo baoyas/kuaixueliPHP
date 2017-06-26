@@ -61,7 +61,7 @@ class Row implements Buildable
      */
     protected function startRow()
     {
-        echo '<div class="row">';
+        echo '';
     }
 
     /**
@@ -69,6 +69,6 @@ class Row implements Buildable
      */
     protected function endRow()
     {
-        echo '</div>';
+        echo '';
     }
 }

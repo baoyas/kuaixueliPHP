@@ -98,4 +98,19 @@ class UserController extends JaseController
     {
         return $this->userverification->userSetBackground($request);
     }
+
+    public function check (Request $request) {
+        $data = ['nickname'=>1, 'user_face'=>1];
+        if($request->item['nickname']==config('web.DEFAULT_NICKNAME') || empty($request->item['nickname'])) {
+            $data['nickname'] = 2;
+        }
+        if($request->item['user_face']=='default.png'|| empty($request->item['user_face'])) {
+            $data['user_face'] = 2;
+        }
+        return $this->result->responses([
+            'status' => 'success',
+            'status_code' => '',
+            'object' => $data
+        ]);
+    }
 }

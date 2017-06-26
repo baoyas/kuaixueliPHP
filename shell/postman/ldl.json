@@ -183,6 +183,23 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "用户信息完整性检查",
+			"request": {
+				"url": "{{url}}/user/check",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

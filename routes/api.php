@@ -58,8 +58,9 @@ $api->version('v1', function ($api) {
             $api->get('userInfoForPhone', 'UserController@userInfoForPhone'); //查看用户信息 for 用户手机号
             $api->post('userSetNotes', 'UserController@SetNotes'); //给好友设置备注
             $api->post('userSetBackground', 'UserController@userSetBackground'); //设置朋友圈背景
-            $api->resource('usercate', 'UserCateController'); //用户的品类
+            $api->resource('usercate', 'UserCateController'); //用户的品类相关
             $api->resource('user/check', 'UserController@check'); //用户信息完整检查
+            $api->resource('useraddr', 'UserAddrController'); //用户的地址相关
 
             /*我要买*/
             $api->post('business', 'BusinessController@Buystore'); //我要买

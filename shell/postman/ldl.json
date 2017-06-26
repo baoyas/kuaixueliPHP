@@ -211,6 +211,23 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "用户地址列表",
+			"request": {
+				"url": "{{url}}/api/useraddr",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

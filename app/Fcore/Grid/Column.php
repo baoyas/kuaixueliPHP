@@ -106,7 +106,7 @@ class Column
     {
         $this->name = $name;
 
-        $this->label = $this->formatLabel($label);
+        $this->label = $label;//$this->formatLabel($label);
     }
 
     /**

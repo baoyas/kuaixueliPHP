@@ -45,16 +45,16 @@ class UserAddrController extends JaseController
             $grid->column('area_id', 'area_id');
             $grid->column('is_default', 'is_default');
             
-            $grid->column('province.name', 'province_aaaname')->display(function($name){
-                return $name;
-            });
-                
-            $grid->city()->display(function($city){
-                return $city['name'];
+            $grid->province('province_name')->display(function($province){
+                return $province['name'];
             });
             
-            $grid->area()->display(function($area){
-                return $area['name'];
+            $grid->city()->name('city_name')->display(function($name){
+                return $name;
+            });
+            
+            $grid->area()->name('area_name')->display(function($name){
+                return $name;
             });
             $grid->disableActions();
             $grid->disableBatchDeletion();

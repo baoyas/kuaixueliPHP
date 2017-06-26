@@ -7,7 +7,7 @@ foreach($grid->columns() as $k=>$column) {
 $rowData = [];
 foreach($grid->rows() as $rIndex=>$row) {
     foreach($grid->columnNames as $k=>$name) {
-        $rowData[$rIndex][$name] = $row->column($name);
+        $rowData[$rIndex][$keys[$k]] = $row->column($name);
     }
 }
 echo json_encode($rowData, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);

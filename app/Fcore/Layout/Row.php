@@ -47,13 +47,13 @@ class Row implements Buildable
      */
     public function build()
     {
-        $this->startRow();
+        //$this->startRow();
 
         foreach ($this->columns as $column) {
             $column->build();
         }
 
-        $this->endRow();
+        //$this->endRow();
     }
 
     /**

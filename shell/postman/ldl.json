@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "ldl",
-		"_postman_id": "94e2c93b-b728-8b02-ae27-1ccef195c303",
+		"_postman_id": "b8e4cd40-f558-7719-5956-db3c915452de",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -72,7 +72,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "发现列表"
 			},
 			"response": []
@@ -89,7 +92,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": "我的朋友圈"
 			},
 			"response": []
@@ -106,7 +112,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -123,7 +132,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -151,6 +163,23 @@
 						}
 					]
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "分类列表",
+			"request": {
+				"url": "{{url}}/api/cate",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
 				"description": ""
 			},
 			"response": []

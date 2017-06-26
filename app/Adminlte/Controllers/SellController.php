@@ -59,7 +59,12 @@ class SellController extends Controller
             $grid->filter(function(Grid\Filter $filter){
                 $filter->is('recommend', '推荐');
             });
-            $grid->disableActions();
+            $grid->actions(function (Grid\Displayers\Actions $actions) {
+                $path = app('router')->current()->getPath();
+                $actions->disableDelete();
+                $actions->append('<a href="'.admin_url('/sell/'.$this->getKey()).'"><i class="fa fa-eye"></i></a> ');
+            });
+            //$grid->disableActions();
             $grid->disableBatchDeletion();
             $grid->disableExport();
             $grid->disableCreation();

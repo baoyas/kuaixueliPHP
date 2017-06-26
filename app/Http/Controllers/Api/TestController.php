@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Api;
 use App\Fcore\Facades\Fast;
 use App\Fcore\Grid;
 use App\Fcore\Layout\Content;
-
+use App\Fcore\Controllers\ModelForm;
 use App\Helpers\Helpers;
 use App\Model\UserArea;
 use App\Model\Area;
@@ -18,12 +18,7 @@ use Illuminate\Support\Facades\Config;
 
 class TestController extends JaseController
 {
-    private $result;
-    public function __construct ()
-    {
-        $this->result = new Result();
-    }
-
+    use ModelForm;
     /**
      * Display a listing of the resource.
      *

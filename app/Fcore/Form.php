@@ -3,11 +3,10 @@
 namespace App\Fcore;
 
 use Closure;
-use Encore\Admin\Exception\Handle;
-use Encore\Admin\Form\Builder;
-use Encore\Admin\Form\Field;
-use Encore\Admin\Form\Field\File;
-use Encore\Admin\Form\Tab;
+use App\Fcore\Exception\Handle;
+use App\Fcore\Form\Builder;
+use App\Fcore\Form\Field;
+use App\Fcore\Form\Field\File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
@@ -20,52 +19,7 @@ use Illuminate\Validation\Validator;
 use Spatie\EloquentSortable\Sortable;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * Class Form.
- *
- * @method Field\Text           text($column, $label = '')
- * @method Field\Checkbox       checkbox($column, $label = '')
- * @method Field\Radio          radio($column, $label = '')
- * @method Field\Select         select($column, $label = '')
- * @method Field\MultipleSelect multipleSelect($column, $label = '')
- * @method Field\Textarea       textarea($column, $label = '')
- * @method Field\Hidden         hidden($column, $label = '')
- * @method Field\Id             id($column, $label = '')
- * @method Field\Ip             ip($column, $label = '')
- * @method Field\Url            url($column, $label = '')
- * @method Field\Color          color($column, $label = '')
- * @method Field\Email          email($column, $label = '')
- * @method Field\Mobile         mobile($column, $label = '')
- * @method Field\Slider         slider($column, $label = '')
- * @method Field\Map            map($latitude, $longitude, $label = '')
- * @method Field\Editor         editor($column, $label = '')
- * @method Field\File           file($column, $label = '')
- * @method Field\Image          image($column, $label = '')
- * @method Field\Date           date($column, $label = '')
- * @method Field\Datetime       datetime($column, $label = '')
- * @method Field\Time           time($column, $label = '')
- * @method Field\Year           year($column, $label = '')
- * @method Field\Month          month($column, $label = '')
- * @method Field\DateRange      dateRange($start, $end, $label = '')
- * @method Field\DateTimeRange  datetimeRange($start, $end, $label = '')
- * @method Field\TimeRange      timeRange($start, $end, $label = '')
- * @method Field\Number         number($column, $label = '')
- * @method Field\Currency       currency($column, $label = '')
- * @method Field\HasMany        hasMany($relationName, $callback)
- * @method Field\SwitchField    switch($column, $label = '')
- * @method Field\Display        display($column, $label = '')
- * @method Field\Rate           rate($column, $label = '')
- * @method Field\Divide         divider()
- * @method Field\Password       password($column, $label = '')
- * @method Field\Decimal        decimal($column, $label = '')
- * @method Field\Html           html($html, $label = '')
- * @method Field\Tags           tags($column, $label = '')
- * @method Field\Icon           icon($column, $label = '')
- * @method Field\Embeds         embeds($column, $label = '')
- * @method Field\MultipleImage  multipleImage($column, $label = '')
- * @method Field\MultipleFile   multipleFile($column, $label = '')
- * @method Field\Captcha        captcha($column, $label = '')
- */
+
 class Form
 {
     /**
@@ -226,35 +180,6 @@ class Form
         $this->setFieldValue($id);
 
         return $this;
-    }
-
-    /**
-     * Use tab to split form.
-     *
-     * @param string  $title
-     * @param Closure $content
-     *
-     * @return $this
-     */
-    public function tab($title, Closure $content, $active = false)
-    {
-        $this->getTab()->append($title, $content, $active);
-
-        return $this;
-    }
-
-    /**
-     * Get Tab instance.
-     *
-     * @return Tab
-     */
-    public function getTab()
-    {
-        if (is_null($this->tab)) {
-            $this->tab = new Tab($this);
-        }
-
-        return $this->tab;
     }
 
     /**
@@ -744,7 +669,6 @@ class Form
         if ($this->isHasOneRelation($inserts)) {
             $inserts = array_dot($inserts);
         }
-
         foreach ($inserts as $column => $value) {
             if (is_null($field = $this->getFieldByColumn($column))) {
                 unset($inserts[$column]);
@@ -1121,51 +1045,10 @@ class Form
     public static function registerBuiltinFields()
     {
         $map = [
-            'button'            => \Encore\Admin\Form\Field\Button::class,
-            'checkbox'          => \Encore\Admin\Form\Field\Checkbox::class,
-            'color'             => \Encore\Admin\Form\Field\Color::class,
-            'currency'          => \Encore\Admin\Form\Field\Currency::class,
-            'date'              => \Encore\Admin\Form\Field\Date::class,
-            'dateRange'         => \Encore\Admin\Form\Field\DateRange::class,
-            'datetime'          => \Encore\Admin\Form\Field\Datetime::class,
-            'dateTimeRange'     => \Encore\Admin\Form\Field\DatetimeRange::class,
-            'datetimeRange'     => \Encore\Admin\Form\Field\DatetimeRange::class,
-            'decimal'           => \Encore\Admin\Form\Field\Decimal::class,
-            'display'           => \Encore\Admin\Form\Field\Display::class,
-            'divider'           => \Encore\Admin\Form\Field\Divide::class,
-            'divide'            => \Encore\Admin\Form\Field\Divide::class,
-            'embeds'            => \Encore\Admin\Form\Field\Embeds::class,
-            'editor'            => \Encore\Admin\Form\Field\Editor::class,
-            'email'             => \Encore\Admin\Form\Field\Email::class,
-            'file'              => \Encore\Admin\Form\Field\File::class,
-            'hasMany'           => \Encore\Admin\Form\Field\HasMany::class,
-            'hidden'            => \Encore\Admin\Form\Field\Hidden::class,
-            'id'                => \Encore\Admin\Form\Field\Id::class,
-            'image'             => \Encore\Admin\Form\Field\Image::class,
-            'ip'                => \Encore\Admin\Form\Field\Ip::class,
-            'map'               => \Encore\Admin\Form\Field\Map::class,
-            'mobile'            => \Encore\Admin\Form\Field\Mobile::class,
-            'month'             => \Encore\Admin\Form\Field\Month::class,
-            'multipleSelect'    => \Encore\Admin\Form\Field\MultipleSelect::class,
-            'number'            => \Encore\Admin\Form\Field\Number::class,
-            'password'          => \Encore\Admin\Form\Field\Password::class,
-            'radio'             => \Encore\Admin\Form\Field\Radio::class,
-            'rate'              => \Encore\Admin\Form\Field\Rate::class,
-            'select'            => \Encore\Admin\Form\Field\Select::class,
-            'slider'            => \Encore\Admin\Form\Field\Slider::class,
-            'switch'            => \Encore\Admin\Form\Field\SwitchField::class,
-            'text'              => \Encore\Admin\Form\Field\Text::class,
-            'textarea'          => \Encore\Admin\Form\Field\Textarea::class,
-            'time'              => \Encore\Admin\Form\Field\Time::class,
-            'timeRange'         => \Encore\Admin\Form\Field\TimeRange::class,
-            'url'               => \Encore\Admin\Form\Field\Url::class,
-            'year'              => \Encore\Admin\Form\Field\Year::class,
-            'html'              => \Encore\Admin\Form\Field\Html::class,
-            'tags'              => \Encore\Admin\Form\Field\Tags::class,
-            'icon'              => \Encore\Admin\Form\Field\Icon::class,
-            'multipleFile'      => \Encore\Admin\Form\Field\MultipleFile::class,
-            'multipleImage'     => \Encore\Admin\Form\Field\MultipleImage::class,
-            'captcha'           => \Encore\Admin\Form\Field\Captcha::class,
+            //'file'              => \App\Fcore\Form\Field\File::class,
+            'text'              => \App\Fcore\Form\Field\Text::class,
+            'url'               => \App\Fcore\Form\Field\Url::class,
+            //'year'              => \App\Fcore\Form\Field\Year::class,
         ];
 
         foreach ($map as $abstract => $class) {

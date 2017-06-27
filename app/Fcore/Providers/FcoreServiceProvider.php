@@ -8,6 +8,22 @@ use Illuminate\Support\ServiceProvider;
 
 class FcoreServiceProvider extends ServiceProvider
 {
+    protected $routeMiddleware = [
+        'fcore.bootstrap'   => \App\Fcore\Middleware\BootstrapMiddleware::class,
+    ];
+
+    /**
+     * The application's route middleware groups.
+     *
+     * @var array
+     */
+    protected $middlewareGroups = [
+        'fcore' => [
+            'fcore.bootstrap',
+        ],
+    ];
+
+
     /**
      * Boot the service provider.
      *
@@ -29,6 +45,25 @@ class FcoreServiceProvider extends ServiceProvider
             $loader = AliasLoader::getInstance();
             $loader->alias('Fast', Fast::class);
         });
+        $this->registerRouteMiddleware();
+    }
+
+    /**
+     * Register the route middleware.
+     *
+     * @return void
+     */
+    protected function registerRouteMiddleware()
+    {
+        // register route middleware.
+        foreach ($this->routeMiddleware as $key => $middleware) {
+            app('router')->middleware($key, $middleware);
+        }
+
+        // register middleware group.
+        foreach ($this->middlewareGroups as $key => $middleware) {
+            app('router')->middlewareGroup($key, $middleware);
+        }
     }
 
 }

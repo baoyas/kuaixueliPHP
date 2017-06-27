@@ -285,6 +285,56 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "编辑收货地址",
+			"request": {
+				"url": "{{url}}/api/useraddr/2",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					},
+					{
+						"key": "_method",
+						"value": "put",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "is_default",
+							"value": "1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "province_id",
+							"value": "222",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "city_id",
+							"value": "222",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "_method",
+							"value": "put",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

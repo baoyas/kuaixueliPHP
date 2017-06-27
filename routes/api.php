@@ -43,6 +43,8 @@ $api->version('v1', function ($api) {
         $api->resource('area', 'AreaController');
 
 
+
+
         /*分组需要token验证*/
         $api->group(['middleware' => 'user.auth'], function ($api) {
             $api->post('user/loginOut', 'RegisterController@loginOut'); //用户退出 token
@@ -61,7 +63,6 @@ $api->version('v1', function ($api) {
             $api->post('userSetBackground', 'UserController@userSetBackground'); //设置朋友圈背景
             $api->resource('usercate', 'UserCateController'); //用户的品类相关
             $api->resource('user/check', 'UserController@check'); //用户信息完整检查
-            $api->resource('useraddr', 'UserAddrController'); //用户的地址相关
 
             /*我要买*/
             $api->post('business', 'BusinessController@Buystore'); //我要买
@@ -137,6 +138,11 @@ $api->version('v1', function ($api) {
             /*统计我发布的买卖和朋友圈*/
             $api->get('totalSell', 'HomeController@totalSell');
 
+        });
+
+
+        $api->group(['middleware' => ['user.auth', 'fcore']], function ($api) {
+            $api->resource('useraddr', 'UserAddrController'); //用户的地址相关
         });
     });
 });

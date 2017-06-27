@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Model\UserArea;
 use App\Model\Area;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ResultController as Result;
@@ -12,11 +13,13 @@ use Illuminate\Support\Facades\Config;
 
 use App\Fcore\Facades\Fast;
 use App\Fcore\Grid;
+use App\Fcore\Form;
 use App\Fcore\Layout\Content;
 use App\Fcore\Controllers\ModelForm;
 
 class UserAddrController extends JaseController
 {
+    use ModelForm;
     private $result;
     public function __construct ()
     {
@@ -26,7 +29,7 @@ class UserAddrController extends JaseController
     public function index()
     {
         return Fast::content(function (Content $content) {
-            $content->header('出售/购买管理');
+            //$content->header('出售/购买管理');
             $content->body($this->grid());
         });
     }
@@ -46,7 +49,7 @@ class UserAddrController extends JaseController
             $grid->column('is_default', 'is_default');
             
             $grid->province('province_name')->display(function($province){
-                return $province;
+                return $province['name'];
             });
             
             $grid->city()->name('city_name')->display(function($name){
@@ -58,7 +61,6 @@ class UserAddrController extends JaseController
             });
             $grid->disableActions();
             $grid->disableBatchDeletion();
-            $grid->disableExport();
             $grid->disableCreation();
             $grid->disableRowSelector();
         });
@@ -94,8 +96,32 @@ class UserAddrController extends JaseController
         ]);
     }
 
-    public function store (Request $request)
+    /**
+     * Make a form builder.
+     *
+     * @return Form
+     */
+    public function form()
     {
-        $userId = $request->item['uid'];
+        return Fast::form(UserArea::class, function (Form $form) {
+            $request = app('request');
+            $all = $request->all();
+            $form->text('user_id', '用户ID')->rules('required');
+            $form->text('is_default', '是否默认')->rules('required');
+            $form->text('province_id', '省份ID')->rules('required');
+            $form->text('city_id', '城市ID')->rules('required');
+            $form->text('area_id', '区域ID')->rules('required');
+            $form->text('detail', '详细地址')->rules('required');
+            $form->saving(function (Form $form) {
+
+            });
+            $form->saved(function (Form $form) {
+                return $this->result->responses([
+                    'status' => 'success',
+                    'status_code' => '',
+                    'object' => $form
+                ]);
+            });
+        });
     }
 }

@@ -234,6 +234,7 @@ class Form
 
         // Handle validation errors.
         if ($validationMessages = $this->validationMessages($data)) {
+            return $validationMessages;
             return back()->withInput()->withErrors($validationMessages);
         }
 

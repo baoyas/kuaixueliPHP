@@ -228,6 +228,63 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "添加收货地址",
+			"request": {
+				"url": "{{url}}/api/useraddr",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "{{uid}}",
+							"description": "用户ID",
+							"type": "text"
+						},
+						{
+							"key": "is_default",
+							"value": "0",
+							"description": "是否是默认",
+							"type": "text"
+						},
+						{
+							"key": "province_id",
+							"value": "1",
+							"description": "省份ID",
+							"type": "text"
+						},
+						{
+							"key": "city_id",
+							"value": "1",
+							"description": "城市ID",
+							"type": "text"
+						},
+						{
+							"key": "area_id",
+							"value": "1",
+							"description": "区域ID",
+							"type": "text"
+						},
+						{
+							"key": "detail",
+							"value": "向阳街28号",
+							"description": "详细地址",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

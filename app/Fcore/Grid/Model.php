@@ -1,8 +1,7 @@
 <?php
 
-namespace Encore\Admin\Grid;
+namespace App\Fcore\Grid;
 
-use Encore\Admin\Middleware\PjaxMiddleware;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -259,8 +258,6 @@ class Model
             $lastPageUrl = Request::fullUrlWithQuery([
                 $paginator->getPageName() => $paginator->lastPage(),
             ]);
-
-            PjaxMiddleware::respond(redirect($lastPageUrl));
         }
     }
 

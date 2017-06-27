@@ -3,9 +3,7 @@
 namespace App\Fcore;
 
 use Closure;
-use Encore\Admin\Auth\Database\Menu;
 use App\Fcore\Layout\Content;
-use Encore\Admin\Widgets\Navbar;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -193,16 +191,6 @@ class Fast
     }
 
     /**
-     * Left sider-bar menu.
-     *
-     * @return array
-     */
-    public function menu()
-    {
-        return (new Menu())->toTree();
-    }
-
-    /**
      * Get admin title.
      *
      * @return Config
@@ -220,30 +208,6 @@ class Fast
     public function user()
     {
         return Auth::guard('admin')->user();
-    }
-
-    /**
-     * Set navbar.
-     *
-     * @param Closure $builder
-     */
-    public function navbar(Closure $builder)
-    {
-        call_user_func($builder, $this->getNavbar());
-    }
-
-    /**
-     * Get navbar object.
-     *
-     * @return \Encore\Admin\Widgets\Navbar
-     */
-    public function getNavbar()
-    {
-        if (is_null($this->navbar)) {
-            $this->navbar = new Navbar();
-        }
-
-        return $this->navbar;
     }
 
     public function registerAuthRoutes()

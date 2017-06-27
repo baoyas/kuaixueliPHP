@@ -3,14 +3,14 @@
 namespace App\Fcore;
 
 use Closure;
-use Encore\Admin\Exception\Handle;
+//use Encore\Admin\Exception\Handle;
 use App\Fcore\Grid\Column;
-use Encore\Admin\Grid\Displayers\Actions;
+//use Encore\Admin\Grid\Displayers\Actions;
 use App\Fcore\Grid\Displayers\RowSelector;
-use Encore\Admin\Grid\Exporter;
-use Encore\Admin\Grid\Filter;
-use Encore\Admin\Grid\Model;
-use Encore\Admin\Grid\Row;
+//use Encore\Admin\Grid\Exporter;
+use App\Fcore\Grid\Filter;
+use App\Fcore\Grid\Model;
+use App\Fcore\Grid\Row;
 use App\Fcore\Grid\Tools;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -203,22 +203,6 @@ class Grid
     protected function setupFilter()
     {
         $this->filter = new Filter($this->model());
-    }
-
-    /**
-     * Setup grid exporter.
-     *
-     * @return void
-     */
-    protected function setupExporter()
-    {
-        if (Input::has(Exporter::$queryName)) {
-            $this->model()->usePaginate(false);
-
-            call_user_func($this->builder, $this);
-
-            (new Exporter($this))->resolve($this->exporter)->export();
-        }
     }
 
     /**
@@ -632,63 +616,6 @@ class Grid
     public function renderTitle() {
         return empty($this->title) ? '' : $this->title;
     }
-    /**
-     * Set exporter driver for Grid to export.
-     *
-     * @param $exporter
-     *
-     * @return $this
-     */
-    public function exporter($exporter)
-    {
-        $this->exporter = $exporter;
-
-        return $this;
-    }
-
-    /**
-     * Export url.
-     *
-     * @return string
-     */
-    public function exportUrl()
-    {
-        $input = Input::all();
-
-        $input = array_merge($input, [Exporter::$queryName => true]);
-
-        return $this->resource().'?'.http_build_query($input);
-    }
-
-    /**
-     * If grid allows export.s.
-     *
-     * @return bool
-     */
-    public function allowExport()
-    {
-        return $this->option('useExporter');
-    }
-
-    /**
-     * Disable export.
-     *
-     * @return $this
-     */
-    public function disableExport()
-    {
-        return $this->option('useExporter', false);
-    }
-
-    /**
-     * Render export button.
-     *
-     * @return Tools\ExportButton
-     */
-    public function renderExportButton()
-    {
-        return new Tools\ExportButton($this);
-    }
 
     /**
      * If allow batch delete.
@@ -730,16 +657,6 @@ class Grid
     public function allowCreation()
     {
         return $this->option('allowCreate');
-    }
-
-    /**
-     * Render create button for grid.
-     *
-     * @return Tools\CreateButton
-     */
-    public function renderCreateButton()
-    {
-        return new Tools\CreateButton($this);
     }
 
     /**
@@ -884,19 +801,7 @@ class Grid
     public static function registerColumnDisplayer()
     {
         $map = [
-            'editable'      => \Encore\Admin\Grid\Displayers\Editable::class,
-            'switch'        => \Encore\Admin\Grid\Displayers\SwitchDisplay::class,
-            'switchGroup'   => \Encore\Admin\Grid\Displayers\SwitchGroup::class,
-            'select'        => \Encore\Admin\Grid\Displayers\Select::class,
-            'image'         => \Encore\Admin\Grid\Displayers\Image::class,
-            'label'         => \Encore\Admin\Grid\Displayers\Label::class,
-            'button'        => \Encore\Admin\Grid\Displayers\Button::class,
-            'link'          => \Encore\Admin\Grid\Displayers\Link::class,
-            'badge'         => \Encore\Admin\Grid\Displayers\Badge::class,
-            'progressBar'   => \Encore\Admin\Grid\Displayers\ProgressBar::class,
-            'radio'         => \Encore\Admin\Grid\Displayers\Radio::class,
-            'checkbox'      => \Encore\Admin\Grid\Displayers\Checkbox::class,
-            'orderable'     => \Encore\Admin\Grid\Displayers\Orderable::class,
+            'label'         => \App\Fcore\Grid\Displayers\Label::class,
         ];
 
         foreach ($map as $abstract => $class) {

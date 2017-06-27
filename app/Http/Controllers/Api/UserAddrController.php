@@ -46,7 +46,7 @@ class UserAddrController extends JaseController
             $grid->column('is_default', 'is_default');
             
             $grid->province('province_name')->display(function($province){
-                return $province['name'];
+                return $province;
             });
             
             $grid->city()->name('city_name')->display(function($name){

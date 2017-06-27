@@ -1,9 +1,9 @@
 <?php
 
-namespace Encore\Admin\Grid;
+namespace App\Fcore\Grid;
 
-use Encore\Admin\Facades\Admin;
-use Encore\Admin\Grid\Filter\AbstractFilter;
+use App\Fcore\Facades\Fast;
+use App\Fcore\Grid\Filter\AbstractFilter;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Request;
 use ReflectionClass;
@@ -59,7 +59,7 @@ class Filter
     /**
      * @var string
      */
-    protected $view = 'admin::grid.filter';
+    protected $view = 'Fcore::grid.filter';
 
     /**
      * Create a new filter instance.
@@ -185,7 +185,7 @@ class Filter
         }
 
         if ($this->useModal) {
-            $this->view = 'admin::filter.modal';
+            $this->view = 'Fcore::filter.modal';
 
             $script = <<<'EOT'
 
@@ -196,7 +196,7 @@ $("#filter-modal .submit").click(function () {
 });
 
 EOT;
-            Admin::script($script);
+            Fast::script($script);
         }
 
         return view($this->view)->with([
@@ -243,7 +243,7 @@ EOT;
     public function __call($method, $arguments)
     {
         if (in_array($method, $this->supports)) {
-            $className = '\\Encore\\Admin\\Grid\\Filter\\'.ucfirst($method);
+            $className = 'App\\Fcore\\Grid\\Filter\\'.ucfirst($method);
             $reflection = new ReflectionClass($className);
 
             return $this->addFilter($reflection->newInstanceArgs($arguments));

@@ -1,9 +1,9 @@
 <?php
 
-namespace Encore\Admin\Grid\Tools;
+namespace App\Fcore\Grid\Tools;
 
-use Encore\Admin\Admin;
-use Encore\Admin\Grid;
+use App\Fcore\Fast;
+use App\Fcore\Grid;
 
 class PerPageSelector extends AbstractTool
 {
@@ -65,7 +65,7 @@ class PerPageSelector extends AbstractTool
      */
     public function render()
     {
-        Admin::script($this->script());
+        Fast::script($this->script());
 
         $options = $this->getOptions()->map(function ($option) {
             $selected = ($option == $this->perPage) ? 'selected' : '';

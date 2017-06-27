@@ -310,8 +310,6 @@ class Form
      */
     protected function prepare($data = [])
     {
-        print_r($_REQUEST);
-        print_r($data);exit();
         $this->inputs = $this->removeIgnoredFields($data);
 
         if (($response = $this->callSaving()) instanceof Response) {

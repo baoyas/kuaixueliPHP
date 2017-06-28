@@ -29,7 +29,6 @@ class UserAddrController extends JaseController
     public function index()
     {
         return Fast::content(function (Content $content) {
-            //$content->header('出售/购买管理');
             $content->body($this->grid());
         });
     }
@@ -112,14 +111,23 @@ class UserAddrController extends JaseController
             $form->text('city_id', '城市ID')->rules('required');
             $form->text('area_id', '区域ID')->rules('required');
             $form->text('detail', '详细地址')->rules('required');
+            $form->error(function (Form $form) {
+                return response()->json([
+                    'status'  => 'error',
+                    'error' => [
+                        'status_code' => strval("401"),
+                        'message' => $form->getValidator()->messages()->first()
+                    ]
+                ]);
+            });
             $form->saving(function (Form $form) {
 
             });
             $form->saved(function (Form $form) {
-                return $this->result->responses([
-                    'status' => 'success',
-                    'status_code' => '',
-                    'object' => $form
+                return response()->json([
+                    'status'  => 'success',
+                    'status_code' => '200',
+                    'object' => $form->model()
                 ]);
             });
         });

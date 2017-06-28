@@ -54,6 +54,13 @@ class Form
     protected $saved;
 
     /**
+     * Saved callback.
+     *
+     * @var Closure
+     */
+    protected $error;
+
+    /**
      * Data for save to current model from input.
      *
      * @var array
@@ -234,8 +241,10 @@ class Form
 
         // Handle validation errors.
         if ($validationMessages = $this->validationMessages($data)) {
-            return $validationMessages;
-            return back()->withInput()->withErrors($validationMessages);
+            if (($result = $this->complete($this->error)) instanceof Response) {
+                return $result;
+            }
+            return false;
         }
 
         if (($response = $this->prepare($data)) instanceof Response) {
@@ -405,10 +414,9 @@ class Form
         $data = $this->handleFileDelete($data);
 
         if ($this->handleOrderable($id, $data)) {
-            return response([
-                'status'  => true,
-                'message' => trans('admin::lang.update_succeeded'),
-            ]);
+            if (($result = $this->complete($this->saved)) instanceof Response) {
+                return $result;
+            }
         }
 
         /* @var Model $this->model */
@@ -418,7 +426,11 @@ class Form
 
         // Handle validation errors.
         if ($validationMessages = $this->validationMessages($data)) {
-            return back()->withInput()->withErrors($validationMessages);
+            if (($result = $this->complete($this->error)) instanceof Response) {
+                return $result;
+            }
+            return false;
+            //return back()->withInput()->withErrors($validationMessages);
         }
 
         if (($response = $this->prepare($data)) instanceof Response) {
@@ -737,6 +749,19 @@ class Form
     }
 
     /**
+     * Set saving callback.
+     *
+     * @param Closure $callback
+     *
+     * @return void
+     */
+    public function error(Closure $callback)
+    {
+        $this->error = $callback;
+    }
+
+
+    /**
      * Ignore fields to save.
      *
      * @param string|array $fields
@@ -846,13 +871,11 @@ class Form
             }
 
             if (($validator instanceof Validator) && !$validator->passes()) {
-                $failedValidators[] = $validator;
+                $this->validator = $validator;
+                return $this->validator;
             }
         }
-
-        $message = $this->mergeValidationMessages($failedValidators);
-
-        return $message->any() ? $message : false;
+        return false;
     }
 
     /**
@@ -1181,5 +1204,9 @@ class Form
     public function __toString()
     {
         return $this->render();
+    }
+
+    public function getValidator() {
+        return $this->validator;
     }
 }

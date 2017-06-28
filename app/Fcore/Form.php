@@ -284,6 +284,12 @@ class Form
     {
         $data = Input::all();
 
+        foreach ($this->builder->fields() as $field) {
+            if(!isset($data[$field->column()])) {
+                $data[$field->column()] = $field->getDefault();
+            }
+        }
+        
         // Handle validation errors.
         if ($validationMessages = $this->validationMessages($data)) {
             if (($result = $this->complete($this->error)) instanceof Response) {
@@ -453,7 +459,13 @@ class Form
     public function update($id)
     {
         $data = Input::all();
-
+        
+        foreach ($this->builder->fields() as $field) {
+            if(!isset($data[$field->column()])) {
+                $data[$field->column()] = $field->getDefault();
+            }
+        }
+        
         $data = $this->handleEditable($data);
 
         $data = $this->handleFileDelete($data);

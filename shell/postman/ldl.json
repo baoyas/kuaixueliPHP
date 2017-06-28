@@ -279,6 +279,18 @@
 							"value": "{{uid}}",
 							"description": "",
 							"type": "text"
+						},
+						{
+							"key": "real_name",
+							"value": "哈哈",
+							"description": "收件人姓名",
+							"type": "text"
+						},
+						{
+							"key": "mobile",
+							"value": "15112341234",
+							"description": "收件人手机号",
+							"type": "text"
 						}
 					]
 				},
@@ -290,7 +302,7 @@
 			"name": "编辑收货地址",
 			"request": {
 				"url": {
-					"raw": "{{url}}/api/useraddr/3?is_default=1&province_id=110000&city_id=110100&area_id=110101&detail=详细地址",
+					"raw": "{{url}}/api/useraddr/3?is_default=1&province_id=110000&city_id=110100&area_id=110101&detail=详细地址111&real_name&mobile",
 					"host": [
 						"{{url}}"
 					],
@@ -326,9 +338,21 @@
 						},
 						{
 							"key": "detail",
-							"value": "详细地址",
+							"value": "详细地址111",
 							"equals": true,
 							"description": ""
+						},
+						{
+							"key": "real_name",
+							"value": "",
+							"equals": false,
+							"description": "收件人姓名"
+						},
+						{
+							"key": "mobile",
+							"value": "",
+							"equals": false,
+							"description": "收件人手机号"
 						}
 					],
 					"variable": []
@@ -343,6 +367,23 @@
 					{
 						"key": "_method",
 						"value": "put",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "查看某个地址",
+			"request": {
+				"url": "{{url}}/api/useraddr/2",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
 						"description": ""
 					}
 				],

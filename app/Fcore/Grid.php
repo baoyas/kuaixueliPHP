@@ -868,15 +868,16 @@ class Grid
      *
      * @return string
      */
-    public function render()
+    public function render($format='json')
     {
         try {
             $this->build();
         } catch (\Exception $e) {
             return Handle::renderException($e);
         }
-
-        return view($this->view, $this->variables())->render();
+        $variables = $this->variables();
+        $variables['format'] = $format;
+        return view($this->view, $variables)->render();
     }
 
     /**
@@ -886,6 +887,6 @@ class Grid
      */
     public function __toString()
     {
-        return $this->render();
+        return $this->render('json');
     }
 }

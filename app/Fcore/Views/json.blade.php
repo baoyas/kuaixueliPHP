@@ -11,6 +11,12 @@ foreach($grid->rows() as $rIndex=>$row) {
         $rowData[$rIndex][$keys[$k]] = $row->column($name);
     }
 }
-echo json_encode($rowData, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+if($format=='json') {
+    echo json_encode($rowData, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+} elseif($format=='array') {
+    echo json_encode($rowData, JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+} elseif($format=='object') {
+    echo json_encode($rowData[0], JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE);
+}
 
 

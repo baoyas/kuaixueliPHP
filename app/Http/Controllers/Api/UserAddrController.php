@@ -32,11 +32,19 @@ class UserAddrController extends JaseController
             $content->body($this->grid());
         });
     }
-    
-    public function grid() {
-        return Fast::grid(UserArea::class, function(Grid $grid){
-            $userId = app('request')->item['uid'];
-            $grid->model()->where(['user_id'=>$userId])->orderBy('is_default', 'desc');
+
+    public function edit($id) {
+        return Fast::content(function (Content $content) use($id) {
+            $content->body($this->grid($id)->render('object'));
+        });
+    }
+
+    public function grid($id=0) {
+        return Fast::grid(UserArea::class, function(Grid $grid) use ($id){
+            $where = [];
+            $id and $where['id'] = $id;
+            $where['user_id'] = app('request')->item['uid'];
+            $grid->model()->where($where)->orderBy('is_default', 'desc');
             $grid->column('id', 'id');
             $grid->column('user_id', 'user_id');
             $grid->column('real_name', 'real_name');
@@ -111,6 +119,8 @@ class UserAddrController extends JaseController
             $form->text('city_id', '城市ID')->rules('required');
             $form->text('area_id', '区域ID')->rules('required');
             $form->text('detail', '详细地址')->rules('required');
+            $form->text('real_name', '收件人姓名')->rules('required');
+            $form->text('mobile', '收件人手机号')->rules('required');
             $form->error(function (Form $form) {
                 return response()->json([
                     'status'  => 'error',
@@ -124,10 +134,11 @@ class UserAddrController extends JaseController
 
             });
             $form->saved(function (Form $form) {
+                $data = json_decode($this->grid($form->model()->id)->render('object'), true);
                 return response()->json([
                     'status'  => 'success',
                     'status_code' => '200',
-                    'object' => $form->model()
+                    'object' => $data
                 ]);
             });
         });

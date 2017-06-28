@@ -275,12 +275,6 @@
 							"type": "text"
 						},
 						{
-							"key": "user_id",
-							"value": "{{uid}}",
-							"description": "",
-							"type": "text"
-						},
-						{
 							"key": "real_name",
 							"value": "哈哈",
 							"description": "收件人姓名",
@@ -302,7 +296,7 @@
 			"name": "编辑收货地址",
 			"request": {
 				"url": {
-					"raw": "{{url}}/api/useraddr/3?is_default=1&province_id=110000&city_id=110100&area_id=110101&detail=详细地址111&real_name&mobile",
+					"raw": "{{url}}/api/useraddr/3?is_default=1&province_id=110000&city_id=110100&area_id=110101&detail=详细地址111&real_name=收件人姓名&mobile=收件人手机号",
 					"host": [
 						"{{url}}"
 					],
@@ -344,14 +338,14 @@
 						},
 						{
 							"key": "real_name",
-							"value": "",
-							"equals": false,
+							"value": "收件人姓名",
+							"equals": true,
 							"description": "收件人姓名"
 						},
 						{
 							"key": "mobile",
-							"value": "",
-							"equals": false,
+							"value": "收件人手机号",
+							"equals": true,
 							"description": "收件人手机号"
 						}
 					],

@@ -21,7 +21,7 @@ class UserAddrController extends JaseController
 {
     use ModelForm;
     private $result;
-    public function __construct ()
+    public function __construct (Request $request)
     {
         $this->result = new Result();
     }
@@ -34,6 +34,7 @@ class UserAddrController extends JaseController
     }
 
     public function edit($id) {
+        response('', 200, ['Content-Type'=>'application/json']);
         return Fast::content(function (Content $content) use($id) {
             $content->body($this->grid($id)->render('object'));
         });
@@ -111,8 +112,6 @@ class UserAddrController extends JaseController
     public function form()
     {
         return Fast::form(UserArea::class, function (Form $form) {
-            $request = app('request');
-            $all = $request->all();
             $form->text('user_id', '用户ID')->rules('required');
             $form->text('is_default', '是否默认')->rules('required');
             $form->text('province_id', '省份ID')->rules('required');
@@ -131,7 +130,9 @@ class UserAddrController extends JaseController
                 ]);
             });
             $form->saving(function (Form $form) {
-
+                $request = app('request');
+                //$form->model()->user_id = $request->item['uid'];
+                $form->user_id = $request->item['uid'];
             });
             $form->saved(function (Form $form) {
                 $data = json_decode($this->grid($form->model()->id)->render('object'), true);

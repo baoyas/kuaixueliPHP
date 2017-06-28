@@ -114,9 +114,9 @@ class UserAddrController extends JaseController
         return Fast::form(UserArea::class, function (Form $form) {
             $form->text('user_id', '用户ID')->rules('required');
             $form->text('is_default', '是否默认')->rules('required');
-            $form->text('province_id', '省份ID')->rules('required');
-            $form->text('city_id', '城市ID')->rules('required');
-            $form->text('area_id', '区域ID')->rules('required');
+            $form->number('province_id', '省份ID')->rules('required|integer|min:1');
+            $form->number('city_id', '城市ID')->rules('required|integer|min:1');
+            $form->number('area_id', '区域ID')->rules('required|integer|min:1');
             $form->text('detail', '详细地址')->rules('required');
             $form->text('real_name', '收件人姓名')->rules('required');
             $form->text('mobile', '收件人手机号')->rules('required');

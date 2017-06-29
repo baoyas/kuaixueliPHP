@@ -113,8 +113,8 @@ class UserAddrController extends JaseController
     {
         return Fast::form(UserArea::class, function (Form $form) {
             $form->model($form->model()->where(['user_id'=>app('request')->item['uid']]));
-            $form->text('user_id', '用户ID')->rules('required')->default(app('request')->item['uid']);
-            $form->text('is_default', '是否默认')->rules('required');
+            $form->text('user_id', '用户ID')->rules('required|integer')->default(app('request')->item['uid']);
+            $form->text('is_default', '是否默认')->rules('required|integer|regex:/^[01]$/');
             $form->number('province_id', '省份ID')->rules('required|integer|min:1');
             $form->number('city_id', '城市ID')->rules('required|integer|min:1');
             $form->number('area_id', '区域ID')->rules('required|integer|min:1');
@@ -125,7 +125,7 @@ class UserAddrController extends JaseController
                 return response()->json([
                     'status'  => 'error',
                     'error' => [
-                        'status_code' => strval("401"),
+                        'status_code' => strval("601"),
                         'message' => $form->getValidator()->messages()->first()
                     ]
                 ]);

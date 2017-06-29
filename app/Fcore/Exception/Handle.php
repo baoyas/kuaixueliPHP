@@ -29,7 +29,7 @@ class Handle
         return response()->json([
             'status'  => 'error',
             'error' => [
-                'status_code' => strval("401"),
+                'status_code' => strval("601"),
                 'message' => $message
             ]
         ]);

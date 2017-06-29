@@ -189,8 +189,11 @@ class Form
     /**
      * @return Model
      */
-    public function model()
+    public function model($model=null)
     {
+        if($model) {
+            $this->model = $model;
+        }
         return $this->model;
     }
 
@@ -476,9 +479,12 @@ class Form
             }
         }
 
-        /* @var Model $this->model */
-        $this->model = $this->model->with($this->getRelations())->findOrFail($id);
-
+        try {
+            /* @var Model $this->model */
+            $this->model = $this->model->with($this->getRelations())->findOrFail($id);
+        } catch (\Exception $e) {
+            return Handle::renderException($e);
+        }
         $this->setFieldOriginalValue();
 
         // Handle validation errors.

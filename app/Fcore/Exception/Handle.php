@@ -22,9 +22,21 @@ class Handle
             'line'      => $exception->getLine(),
         ]);
 
+        $message = $exception->getMessage();
+        if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+            $message = "没有找到数据[".$exception->getModel()."]";
+        }
+        return response()->json([
+            'status'  => 'error',
+            'error' => [
+                'status_code' => strval("401"),
+                'message' => $message
+            ]
+        ]);
+        /*
         $errors = new ViewErrorBag();
         $errors->put('exception', $error);
-
         return view('admin::partials.exception', compact('errors'))->render();
+        */
     }
 }

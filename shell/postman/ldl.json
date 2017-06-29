@@ -296,14 +296,14 @@
 			"name": "编辑收货地址",
 			"request": {
 				"url": {
-					"raw": "{{url}}/api/useraddr/3?is_default=1&province_id=110000&city_id=110100&area_id=110101&detail=详细地址111&real_name=收件人姓名&mobile=收件人手机号",
+					"raw": "{{url}}/api/useraddr/4?is_default=1&province_id=110000&city_id=110100&area_id=110101&detail=详细地址&real_name=姓名&mobile=13512341234",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
 						"useraddr",
-						"3"
+						"4"
 					],
 					"query": [
 						{
@@ -332,19 +332,19 @@
 						},
 						{
 							"key": "detail",
-							"value": "详细地址111",
+							"value": "详细地址",
 							"equals": true,
 							"description": ""
 						},
 						{
 							"key": "real_name",
-							"value": "收件人姓名",
+							"value": "姓名",
 							"equals": true,
 							"description": "收件人姓名"
 						},
 						{
 							"key": "mobile",
-							"value": "收件人手机号",
+							"value": "13512341234",
 							"equals": true,
 							"description": "收件人手机号"
 						}

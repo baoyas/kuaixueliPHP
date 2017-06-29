@@ -119,8 +119,8 @@ class UserAddrController extends JaseController
             $form->number('city_id', '城市ID')->rules('required|integer|min:1');
             $form->number('area_id', '区域ID')->rules('required|integer|min:1');
             $form->text('detail', '详细地址')->rules('required');
-            $form->text('real_name', '收件人姓名')->rules('required');
-            $form->text('mobile', '收件人手机号')->rules('required');
+            $form->text('real_name', '收件人姓名')->rules('required|min:2|max:10');
+            $form->text('mobile', '收件人手机号')->rules('required|regex:/^1[34578]\d{9}$/');
             $form->error(function (Form $form) {
                 return response()->json([
                     'status'  => 'error',

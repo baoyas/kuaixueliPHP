@@ -25,20 +25,23 @@ class AreaController extends JaseController
         $data = [];
         foreach($area as $v) {
             if(empty($v['parent_id']) || $v['parent_id']==100000) {
-                $data[$v['id']] = ['name'=>$v['name'], 'child'=>[]];
+                $data[$v['id']] = ['id'=>$v['id'], 'name'=>$v['name'], 'child'=>[]];
             } else if(isset($data[$v['parent_id']])) {
-                $data[$v['parent_id']]['child'][$v['id']] = ['name'=>$v['name'], 'child'=>[]];
+                $data[$v['parent_id']]['child'][$v['id']] = ['id'=>$v['id'], 'name'=>$v['name'], 'child'=>[]];
             } else {
                 list($province_id, $city_id, $area_id) = str_split($v['parent_id'], 2);
                 $parent_province_id = $province_id.'0000';
                 $parent_city_id = $province_id.$city_id.'00';
-                $data[$parent_province_id]['child'][$parent_city_id]['child'][$v['id']] = $v['name'];
+                $data[$parent_province_id]['child'][$parent_city_id]['child'][] = ['id'=>$v['id'], 'name'=>$v['name']];
             }
+        }
+        foreach($data as $k=>$v) {
+            $data[$k]['child'] = array_values($data[$k]['child']);
         }
         return $this->result->responses([
             'status' => 'success',
             'status_code' => '',
-            'object' => $data
+            'object' => array_values($data)
         ]);
     }
 }

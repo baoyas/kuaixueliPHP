@@ -112,8 +112,11 @@ class UserAddrController extends JaseController
     public function form()
     {
         return Fast::form(UserArea::class, function (Form $form) {
-            $form->model($form->model()->where(['user_id'=>app('request')->item['uid']]));
-            $form->text('user_id', '用户ID')->rules('required|integer')->default(app('request')->item['uid']);
+            $request = app('request');
+            if ($request->isMethod('PUT')) {
+                $form->model($form->model()->where(['user_id'=>$request->item['uid']]));
+            }
+            $form->text('user_id', '用户ID')->rules('required|integer')->default($request->item['uid']);
             $form->text('is_default', '是否默认')->rules('required|integer|regex:/^[01]$/');
             $form->number('province_id', '省份ID')->rules('required|integer|min:1');
             $form->number('city_id', '城市ID')->rules('required|integer|min:1');

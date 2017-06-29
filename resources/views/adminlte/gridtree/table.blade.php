@@ -1,5 +1,5 @@
 <style type="text/css">
-    .dd{position:relative;display:block;margin:0;padding:0;max-width:600px;list-style:none;line-height:20px;}
+    .dd{position:relative;display:block;margin:0;padding:0;max-width:100%;list-style:none;line-height:20px;}
     .dd-list{position:relative;display:block;margin:0;padding:0;list-style:none;}
     .dd-list .dd-list{padding-left:30px;}
     .dd-collapsed .dd-list{display:none;}
@@ -78,40 +78,54 @@
     <div class="box-body table-responsive no-padding">
         <!-- tree -->
         <!-- /tree -->
-        <table class="table table-hover">
-            <tr>
-                @foreach($grid->columns() as $column)
-                <th>{{$column->getLabel()}}{!! $column->sorter() !!}</th>
-                @endforeach
-            </tr>
-
-
-
-
-
-
-            
-        </table>
-
         <div class="box-body no-padding">
-            <div class="dd" id="{{ $id }}">
+            <div class="dd">
                 <ol class="dd-list">
+                    <li class="dd-item">
+                        <div class="dd-handle">
+                            <?php $colCount = count($grid->columns());?>
+                            @foreach($grid->columns() as $index=>$column)
+                            @if($index<$colCount-1)
+                            <span style="float:left;width:200px;">{{$column->getLabel()}}{!! $column->sorter() !!}</span>
+                            @else
+                            <span class="pull-right dd-nodrag">
+                            {{$column->getLabel()}}
+                            </span>
+                            @endif
+                            @endforeach
+                        </div>
+                        <ol class="dd-list">
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="box-body no-padding">
+            <div class="dd">
+                <ol class="dd-list" data-tk="data-row">
                     @foreach($grid->rows() as $row)
                     <li class="dd-item" data-id="{{ $row->id() }}">
                         <div class="dd-handle">
-                            <i class="fa fa-plus" style="float:left;" data-loading-text="<i class='fa fa-spinner fa-spin'></i>" data-action="expand" data-id={{ $row->id() }} data-level="{{ $level }}" style="cursor:pointer;margin-left:{{ $level*20}}px;" onclick="loadChildren(this)"></i>
-                            <span style="float:left;">{!! $row->column('tid') !!}</span>
-                            <span class="dd-nodrag" style="position:absolute;right:100px;">排序：{!! $row->column('cate_sort') !!}</span>
-                            <span class="dd-nodrag" style="position:absolute;right:46px;"><a href="{{admin_url('cate/create')}}?pid={{  $row->id() }}"><i class="fa fa-plus-circle"></i></a></span>
-
-
-                            <span class="pull-right dd-nodrag">
-                                <a href="/{{ app('router')->current()->getPath() }}/{{ $row->id() }}/edit"><i class="fa fa-edit"></i></a>
-                                <a href="javascript:void(0);" data-id="{{ $row->id() }}" class="tree_branch_delete"><i class="fa fa-trash"></i></a>
+                            @foreach($grid->columnNames as $index=>$name)
+                            @if($index==0)
+                            <span style="float:left;width:200px;">
+                                <i class="fa fa-plus" data-loading-text="<i class='fa fa-spinner fa-spin'></i>" data-action="expand" data-id={{ $row->id() }} data-level="{{ $level }}" style="cursor:pointer;margin-left:{{ $level*20}}px;" onclick="loadChildren(this)"></i>
+                                {!! $row->column($name) !!}
                             </span>
-
+                            @elseif($index<$colCount-1)
+                            <span style="float:left;width:200px;">
+                            {!! $row->column($name) !!}
+                            </span>
+                            @else
+                            <span class="pull-right dd-nodrag">
+                            {!! $row->column($name) !!}
+                            </span>
+                            @endif
+                            @endforeach
+                            
                         </div>
-                        <ol class="dd-list">
+                        <ol class="dd-list" style="padding: 0px;">
                         </ol>
                     </li>
                     @endforeach
@@ -146,7 +160,7 @@ function loadChildren(obj) {
                 data:{_token:LA.token, pid:id, level:parseInt(level)+1, pidstr:0},
                 dataType:'text',
                 success:function(data){
-                    $html = $(data).find('.dd>.dd-list').html();//prop('outerHTML');
+                    $html = $(data).find('[data-tk=data-row]').html();//prop('outerHTML');
                     $obj.closest('.dd-item').find('.dd-list').html($html);
                     $obj.attr('data-action', 'collapse');
                     $obj.attr('class', 'fa fa-minus');

@@ -31,7 +31,7 @@ class CateController extends Controller
             $grid->column('tid', 'ID')->display(function() {
                 return $this->id."-".$this->cate_name;
             });
-            $grid->column('cate_sort', '排序')->editable();
+            $grid->column('cate_sort', '排序');
             $grid->column('cate_power', '状态')->display(function($cate_power){
                 return $cate_power==1 ? '可用' : '禁用';
             });
@@ -42,12 +42,12 @@ class CateController extends Controller
             //$grid->disableCreation();
             $grid->disableRowSelector();
         });
-        $grid->with(['level'=>Input::get('level', 0), 'pid'=>Input::get('pid', 0), 'pidstr'=>Input::get('pidstr', 0)]);
+        $grid->with(['level'=>Input::get('level', 0), 'pid'=>Input::get('pid', 0)]);
         $grid->setView('adminlte.gridtree.table');
         return $grid;
     }
     
-    public function cindex(Request $request)
+    public function index(Request $request)
     {
         return Admin::content(function (Content $content) {
             $content->header('分类管理');
@@ -59,7 +59,7 @@ class CateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function cindex(Request $request)
     {
         //$request['abc'] = 'acb';
         //print_r(Input::all());exit();

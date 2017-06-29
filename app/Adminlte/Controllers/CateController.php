@@ -39,7 +39,7 @@ class CateController extends Controller
             //$grid->disableActions();
             $grid->disableBatchDeletion();
             $grid->disableExport();
-            $grid->disableCreation();
+            //$grid->disableCreation();
             $grid->disableRowSelector();
         });
         $grid->with(['level'=>Input::get('level', 0), 'pid'=>Input::get('pid', 0), 'pidstr'=>Input::get('pidstr', 0)]);
@@ -91,7 +91,7 @@ class CateController extends Controller
             $content->body(Ctree::tree(function (Tree $tree) use($gridHtml) {
                 //$tree->disableCreate();
                 $tree->query(function($query){
-                    return $query->where('cate_level','<=', 2);
+                    return $query->where('cate_level','<=', 1);
                 });
                 $tree->branch(function ($branch) use ($gridHtml){
                     $html = empty($gridHtml[$branch['id']]) ? '' : $gridHtml[$branch['id']];
@@ -264,7 +264,10 @@ class CateController extends Controller
             } else {
                 $form->text('cate_name', '名称')->rules('required');
             }
+            $tree = Ctree::where('cate_level', '<=', 2);
+            $form->select('pid', '上级品类')->options($tree->selectOptions());
 
+            /*
             if(strrchr($request->path(),"edit") == 'edit') {
                 //$form->display('piddesc', '上级品类')->default('（根分类---）');
                 //$form->hidden('pid')->default(0);
@@ -278,6 +281,7 @@ class CateController extends Controller
                     $form->hidden('pid', '上级品类')->default($ctree->id);
                 }
             }
+            */
 
             $states = [
                 'on'  => ['value' => 1, 'text' => '是', 'color' => 'success'],

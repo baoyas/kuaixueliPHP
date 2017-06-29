@@ -99,10 +99,17 @@
                     @foreach($grid->rows() as $row)
                     <li class="dd-item" data-id="{{ $row->id() }}">
                         <div class="dd-handle">
-                            <i class="fa fa-plus" data-loading-text="<i class='fa fa-spinner fa-spin'></i>" data-action="expand" data-id={{ $row->id() }} data-level="{{ $level }}" style="cursor:pointer;margin-left:{{ $level*20}}px;" onclick="loadChildren(this)"></i>{!! $row->column('tid') !!}
-                            <span class="pull-right dd-nodrag">
+                            <i class="fa fa-plus" style="float:left;" data-loading-text="<i class='fa fa-spinner fa-spin'></i>" data-action="expand" data-id={{ $row->id() }} data-level="{{ $level }}" style="cursor:pointer;margin-left:{{ $level*20}}px;" onclick="loadChildren(this)"></i>
+                            <span style="float:left;">{!! $row->column('tid') !!}</span>
+                            <span class="dd-nodrag" style="position:absolute;right:100px;">排序：{!! $row->column('cate_sort') !!}</span>
+                            <span class="dd-nodrag" style="position:absolute;right:46px;"><a href="{{admin_url('cate/create')}}?pid={{  $row->id() }}"><i class="fa fa-plus-circle"></i></a></span>
 
+
+                            <span class="pull-right dd-nodrag">
+                                <a href="/{{ app('router')->current()->getPath() }}/{{ $row->id() }}/edit"><i class="fa fa-edit"></i></a>
+                                <a href="javascript:void(0);" data-id="{{ $row->id() }}" class="tree_branch_delete"><i class="fa fa-trash"></i></a>
                             </span>
+
                         </div>
                         <ol class="dd-list">
                         </ol>

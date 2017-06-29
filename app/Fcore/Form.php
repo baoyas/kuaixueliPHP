@@ -106,6 +106,13 @@ class Form
     protected $error;
 
     /**
+     * Saved callback.
+     *
+     * @var Closure
+     */
+    protected $where;
+
+    /**
      * Data for save to current model from input.
      *
      * @var array
@@ -189,11 +196,8 @@ class Form
     /**
      * @return Model
      */
-    public function model($model=null)
+    public function model()
     {
-        if($model) {
-            $this->model = $model;
-        }
         return $this->model;
     }
 
@@ -481,7 +485,11 @@ class Form
 
         try {
             /* @var Model $this->model */
-            $this->model = $this->model->with($this->getRelations())->findOrFail($id);
+            if($this->where instanceof Closure) {
+                $this->model = $this->model->with($this->getRelations())->where($this->where)->findOrFail($id);
+            } else {
+                $this->model = $this->model->with($this->getRelations())->findOrFail($id);
+            }
         } catch (\Exception $e) {
             return Handle::renderException($e);
         }
@@ -823,6 +831,17 @@ class Form
         $this->error = $callback;
     }
 
+    /**
+     * Set saving callback.
+     *
+     * @param Closure $callback
+     *
+     * @return void
+     */
+    public function where(Closure $callback)
+    {
+        $this->where = $callback;
+    }
 
     /**
      * Ignore fields to save.

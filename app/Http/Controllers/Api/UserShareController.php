@@ -72,9 +72,16 @@ class UserShareController extends JaseController
                 ]);
             });
             $form->saving(function (Form $form) {
-                //$request = app('request');
-                //$form->model()->user_id = $request->item['uid'];
-                //$form->user_id = $request->item['uid'];
+                $userShare = UserShare::where(['user_id'=>$form->user_id, 'biz_type'=>$form->biz_type, 'biz_id'=>$form->biz_id, 'channel'=>$form->channel])->first();
+                if($userShare) {
+                    return response()->json([
+                        'status'  => 'error',
+                        'error' => [
+                            'status_code' => strval("602"),
+                            'message' => '已经分享'
+                        ]
+                    ]);
+                }
             });
             $form->saved(function (Form $form) {
                 $data = json_decode($this->grid($form->model()->id)->render('object'), true);

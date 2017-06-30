@@ -290,8 +290,16 @@ class CateController extends Controller
             $form->switch('cate_power', '是否启用')->states($states);
 
             $form->number('cate_sort', '排序');
+            $form->hidden('_previous_')->default(url()->current());
+            $form->ignore('_previous_');
+            $form->hidden('cate_level');
             $form->saving(function (Form $form) {
-
+                if($form->pid) {
+                    $form->cate_level = Ctree::find($form->pid)->cate_level+1;
+                }
+            });
+            $form->saved(function (Form $form) {
+                Ctree::where(['pid'=>$form->id])->update(['cate_level'=>$form->cate_level+1]);
             });
         });
     }

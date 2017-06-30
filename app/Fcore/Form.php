@@ -622,7 +622,8 @@ class Form
 
             $relation = $this->model->$name();
 
-            $hasDot = $relation instanceof \Illuminate\Database\Eloquent\Relations\HasOne;
+            $hasDot = $relation instanceof \Illuminate\Database\Eloquent\Relations\HasOne ||
+                      $relation instanceof \Illuminate\Database\Eloquent\Relations\BelongsTo;
 
             $prepared = $this->prepareUpdate([$name => $values], $hasDot);
 
@@ -640,7 +641,7 @@ class Form
                 case \Illuminate\Database\Eloquent\Relations\HasOne::class:
 
                     $related = $this->model->$name;
-
+                    
                     // if related is empty
                     if (is_null($related)) {
                         $related = $relation->getRelated();
@@ -651,6 +652,22 @@ class Form
                         $related->setAttribute($column, $value);
                     }
 
+                    $related->save();
+                    break;
+                case \Illuminate\Database\Eloquent\Relations\BelongsTo::class:
+                
+                    $related = $this->model->$name;
+                    
+                    // if related is empty
+                    if (is_null($related)) {
+                        $related = $relation->getRelated();
+                        $related->{$relation->getForeignKey()} = $this->model->{$this->model->getKeyName()};
+                    }
+                
+                    foreach ($prepared[$name] as $column => $value) {
+                        $related->setAttribute($column, $value);
+                    }
+                
                     $related->save();
                     break;
                 case \Illuminate\Database\Eloquent\Relations\HasMany::class:
@@ -694,11 +711,11 @@ class Form
 
         foreach ($this->builder->fields() as $field) {
             $columns = $field->column();
-
+            
             if ($this->invalidColumn($columns, $hasDot)) {
                 continue;
             }
-
+            
             $value = $this->getDataByColumn($updates, $columns);
 
             if ($value !== '' && $value !== '0' && empty($value)) {
@@ -1152,6 +1169,7 @@ class Form
     {
         $map = [
             //'file'              => \App\Fcore\Form\Field\File::class,
+            'hasMany'           => \App\Fcore\Form\Field\HasMany::class,
             'number'            => \App\Fcore\Form\Field\Number::class,
             'text'              => \App\Fcore\Form\Field\Text::class,
             'url'               => \App\Fcore\Form\Field\Url::class,

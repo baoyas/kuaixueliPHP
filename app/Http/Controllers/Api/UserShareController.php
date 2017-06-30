@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Model\User;
 use App\Model\UserShare;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ResultController as Result;
@@ -62,6 +63,14 @@ class UserShareController extends JaseController
             $form->text('biz_type', '业务类型')->rules('required|integer|regex:/^[123]$/');
             $form->number('biz_id', '业务ID')->rules('required|integer|min:1');
             $form->number('channel', '渠道')->rules('required|integer|regex:/^[1243]$/');
+            //$form->text('user.id', '业务类型')->default(1);
+            //$form->text('user.points', '业务类型')->default(1);
+            //$form->text('user.address', '业务类型')->default(1);
+            /*$form->hasMany('user', function (Form\NestedForm $form) {
+                //echo "-----+++---";exit();
+                //throw new \Exception('111', 111);
+                $form->text('points')->rules('required');//->default(1);
+            });*/
             $form->error(function (Form $form) {
                 return response()->json([
                     'status'  => 'error',
@@ -84,6 +93,7 @@ class UserShareController extends JaseController
                 }
             });
             $form->saved(function (Form $form) {
+                User::where(['id'=>$form->user_id])->increment('points', 3);
                 $data = json_decode($this->grid($form->model()->id)->render('object'), true);
                 return response()->json([
                     'status'  => 'success',

@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\Model\User;
 use Illuminate\Database\Eloquent\Model;
 
 class UserShare extends Model
@@ -38,7 +39,8 @@ class UserShare extends Model
 
     ];
 
-    public function cate() {
-        return $this->belongsTo(Cate::class, 'cate_id', 'id');
+    public function user() {
+        //return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

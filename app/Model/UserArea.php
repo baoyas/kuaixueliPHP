@@ -21,7 +21,7 @@ class UserArea extends Model
         'user_id', 'real_name', 'mobile', 'detail', 'province_id', 'city_id', 'area_id', 'is_default', 'is_delete'
     ];
 
-    public $timestamps=false;
+    public $timestamps=true;
 
     /**
      * The attributes that should be hidden for arrays.

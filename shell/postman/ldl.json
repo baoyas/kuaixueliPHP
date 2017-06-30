@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "ldl",
-		"_postman_id": "b8e4cd40-f558-7719-5956-db3c915452de",
+		"_postman_id": "d3f9dde6-8df3-b6a7-a76b-299ad85b3b13",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -179,7 +179,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -196,7 +199,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -207,7 +213,10 @@
 				"url": "{{url}}/api/area",
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -224,7 +233,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -364,7 +376,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -381,7 +396,49 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "添加分享",
+			"request": {
+				"url": "{{url}}/api/usershare",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "biz_type",
+							"value": "2",
+							"description": "业务类型   1购买  2出售  3朋友圈",
+							"type": "text"
+						},
+						{
+							"key": "biz_id",
+							"value": "1",
+							"description": "业务ID",
+							"type": "text"
+						},
+						{
+							"key": "channel",
+							"value": "1",
+							"description": "渠道   1微博 2QQ空间 3微信好友 4 微信朋友圈",
+							"type": "text"
+						}
+					]
+				},
 				"description": ""
 			},
 			"response": []

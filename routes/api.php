@@ -142,7 +142,8 @@ $api->version('v1', function ($api) {
 
 
         $api->group(['middleware' => ['user.auth', 'fcore']], function ($api) {
-            $api->resource('useraddr', 'UserAddrController'); //用户的地址相关
+            $api->resource('useraddr',  'UserAddrController'); //用户的地址相关
+            $api->resource('usershare', 'UserShareController'); //分享相关
         });
     });
 });

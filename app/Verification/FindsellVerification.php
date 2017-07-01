@@ -43,7 +43,7 @@ class FindsellVerification
         $uid = $request->item['uid'];
         //查找不是朋友圈的
         $sell = Sell::where('sell.is_del', 0)
-                    ->where('sell.is_circle', 0)
+                    //->where('sell.is_circle', 0)
                     ->where('recommend', 1)
                     ->orderBy('sell.sell_order', 'desc')
                     ->join('user as u', 'sell.sell_uid', '=', 'u.id' )

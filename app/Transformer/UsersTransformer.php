@@ -23,6 +23,7 @@ class UsersTransformer extends Transformer
             'autograph' => "".$item['autograph']."",
             'user_face' => Config::get('web.QINIU_URL').'/'.$item['user_face'],
             'backgroud_pic' => Config::get('web.QINIU_URL').'/'.$item['backgroud_pic'],
+            'points' => $item['points'],
         ];
     }
 }

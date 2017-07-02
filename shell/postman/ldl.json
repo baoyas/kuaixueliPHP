@@ -459,6 +459,23 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "用户信息",
+			"request": {
+				"url": "{{url}}/api/userInfo",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

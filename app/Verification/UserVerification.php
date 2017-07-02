@@ -226,7 +226,7 @@ class UserVerification
         {
             return $this->registerverification->getAuthenticatedUser($request);
         }
-        $user = User::where('id', $ta_uid)->first();
+        $user = User::where('id', $uid)->first();
         if ($user)
         {
             return $this->result->responses([

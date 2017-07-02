@@ -252,14 +252,22 @@ class Form
     {
         $ids = explode(',', $id);
 
-        foreach ($ids as $id) {
-            if (empty($id)) {
-                continue;
+        try {
+            foreach ($ids as $id) {
+                if (empty($id)) {
+                    continue;
+                }
+                $this->deleteFilesAndImages($id);
+                if($this->where instanceof Closure) {
+                    $this->model->where($this->where)->findOrFail($id)->delete();
+                } else {
+                    $this->model->findOrFail($id)->delete();
+                }
             }
-            $this->deleteFilesAndImages($id);
-            $this->model->find($id)->delete();
+        } catch (\Exception $e) {
+            return Handle::renderException($e);
         }
-
+        
         return true;
     }
 

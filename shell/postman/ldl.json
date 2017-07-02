@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "ldl",
-		"_postman_id": "d3f9dde6-8df3-b6a7-a76b-299ad85b3b13",
+		"_postman_id": "d010a353-eca1-2180-a2eb-ef70c00ecc82",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -385,6 +385,23 @@
 			"response": []
 		},
 		{
+			"name": "删除收货地址",
+			"request": {
+				"url": "{{url}}/api/useraddr/3",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "查看某个地址",
 			"request": {
 				"url": "{{url}}/api/useraddr/2",
@@ -427,14 +444,14 @@
 						},
 						{
 							"key": "biz_id",
-							"value": "1",
+							"value": "6",
 							"description": "业务ID",
 							"type": "text"
 						},
 						{
 							"key": "channel",
 							"value": "1",
-							"description": "渠道   1微博 2QQ空间 3微信好友 4 微信朋友圈",
+							"description": "渠道   1微博 2QQ空间 3微信好友 4 微信朋友圈 5了当了",
 							"type": "text"
 						}
 					]

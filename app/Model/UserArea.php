@@ -8,8 +8,6 @@ use Encore\Admin\Traits\ModelTree;
 
 class UserArea extends Model
 {
-    use ModelTree, AdminBuilder;
-
     protected $table='user_area';
     protected $primaryKey='id';
     /**

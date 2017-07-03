@@ -97,7 +97,7 @@ class UserShareController extends JaseController
                         'message' => '感谢分享！'
                     ]);
                 } else {
-                    User::where(['id'=>$form->user_id])->increment('points', 3);
+                    User::where(['id'=>$form->user_id])->increment('points', config('web.SHARE_POINTS'));
                     $data = json_decode($this->grid($form->model()->id)->render('object'), true);
                     return response()->json([
                         'status'  => 'success',

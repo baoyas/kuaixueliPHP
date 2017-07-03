@@ -89,6 +89,7 @@ class RegisterVerification
                     'user_reg_time' => time(),
                     'sex' => $sex,
                     $perfix[0].'_party_login' => $perfix[1],
+                    'points' => config('web.REGISTER_POINTS')
                 ];
             }
             else
@@ -100,7 +101,8 @@ class RegisterVerification
                     'password' => Crypt::encrypt($pass),
                     'backgroud_pic' => 'backgroud.jpg',
                     'autograph' => '这个家伙很懒，什么也没留下！',
-                    'user_reg_time' => time()
+                    'user_reg_time' => time(),
+                    'points' => config('web.REGISTER_POINTS')
                 ];
             }
             $statues = User::create($save);

@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "ldl",
-		"_postman_id": "d010a353-eca1-2180-a2eb-ef70c00ecc82",
+		"_postman_id": "18ee6c10-29b4-fe81-b881-1d46eba4ec8a",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -396,7 +396,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -451,7 +454,7 @@
 						{
 							"key": "channel",
 							"value": "1",
-							"description": "渠道   1微博 2QQ空间 3微信好友 4 微信朋友圈 5了当了",
+							"description": "渠道   1微博 2QQ空间 3微信好友 4 微信朋友圈 5了当了好友  6了当了朋友圈",
 							"type": "text"
 						}
 					]
@@ -472,7 +475,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []

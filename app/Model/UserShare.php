@@ -15,6 +15,8 @@ class UserShare extends Model
     const CHANNEL_QQ_ZONE = 2;
     const CHANNEL_WECHAT_FRIEND = 3;
     const CHANNEL_WECHAT_ZONE = 4;
+    const CHANNEL_LDL_FRIEND = 5;
+    const CHANNEL_LDL_ZONE = 6;
 
     use InsertOnDuplicateKey;
     protected $table='user_share';

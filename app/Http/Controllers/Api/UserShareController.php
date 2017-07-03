@@ -62,7 +62,7 @@ class UserShareController extends JaseController
             $form->text('user_id', '用户ID')->rules('required|integer')->default($request->item['uid']);
             $form->text('biz_type', '业务类型')->rules('required|integer|regex:/^[123]$/');
             $form->number('biz_id', '业务ID')->rules('required|integer|min:1');
-            $form->number('channel', '渠道')->rules('required|integer|regex:/^[1243]$/');
+            $form->number('channel', '渠道')->rules('required|integer|regex:/^[123456]$/');
             //$form->text('user.id', '业务类型')->default(1);
             //$form->text('user.points', '业务类型')->default(1);
             //$form->text('user.address', '业务类型')->default(1);

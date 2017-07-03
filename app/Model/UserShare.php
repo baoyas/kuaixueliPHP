@@ -12,11 +12,11 @@ class UserShare extends Model
     const BIZ_TYPE_CIRCLE = 3; //朋友圈
 
     const CHANNEL_MICRO_BLOG = 1;
-    const CHANNEL_QQ_ZONE = 2;
-    const CHANNEL_WECHAT_FRIEND = 3;
-    const CHANNEL_WECHAT_ZONE = 4;
-    const CHANNEL_LDL_FRIEND = 5;
-    const CHANNEL_LDL_ZONE = 6;
+    const CHANNEL_QQ_FRINED = 3;
+    const CHANNEL_QQ_ZONE = 4;
+    const CHANNEL_WECHAT_FRIEND = 5;
+    const CHANNEL_WECHAT_ZONE = 6;
+    const CHANNEL_LDL = 7;
 
     use InsertOnDuplicateKey;
     protected $table='user_share';

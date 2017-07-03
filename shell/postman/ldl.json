@@ -454,7 +454,7 @@
 						{
 							"key": "channel",
 							"value": "1",
-							"description": "渠道   1微博 2QQ空间 3微信好友 4 微信朋友圈 5了当了好友  6了当了朋友圈",
+							"description": "渠道   1微博 3QQ好友 4QQ空间 5微信好友 6微信朋友圈 7了当了",
 							"type": "text"
 						}
 					]

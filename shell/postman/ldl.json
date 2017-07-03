@@ -441,20 +441,20 @@
 					"formdata": [
 						{
 							"key": "biz_type",
-							"value": "2",
-							"description": "业务类型   1购买  2出售  3朋友圈",
+							"value": "3",
+							"description": "业务类型   1购买  2出售  3朋友圈 4了当了下载链接",
 							"type": "text"
 						},
 						{
 							"key": "biz_id",
-							"value": "6",
-							"description": "业务ID",
+							"value": "2",
+							"description": "业务ID 当biz_type=4时biz_id可以不传",
 							"type": "text"
 						},
 						{
 							"key": "channel",
-							"value": "1",
-							"description": "渠道   1微博 3QQ好友 4QQ空间 5微信好友 6微信朋友圈 7了当了",
+							"value": "3",
+							"description": "渠道   1微博 3QQ好友 4QQ空间 5微信好友 6微信朋友圈",
 							"type": "text"
 						}
 					]

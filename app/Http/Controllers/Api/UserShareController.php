@@ -60,9 +60,12 @@ class UserShareController extends JaseController
                 $query->where(['user_id'=>$request->item['uid']]);
             });
             $form->text('user_id', '用户ID')->rules('required|integer')->default($request->item['uid']);
-            $form->text('biz_type', '业务类型')->rules('required|integer|regex:/^[123]$/');
-            $form->number('biz_id', '业务ID')->rules('required|integer|min:1');
-            $form->number('channel', '渠道')->rules('required|integer|regex:/^[134567]$/');
+            $form->text('biz_type', '业务类型')->rules('required|integer|regex:/^[1234]$/');
+            if($request->get('biz_type', NULL)!=4) {
+                $form->number('biz_id', '业务ID')->rules('required|integer|min:1');
+            }
+            //$form->number('biz_id', '业务ID')->rules('required|integer|min:1|required_if:biz_type,1,2,3');
+            $form->number('channel', '渠道')->rules('required|integer|regex:/^[13456]$/');
             //$form->text('user.id', '业务类型')->default(1);
             //$form->text('user.points', '业务类型')->default(1);
             //$form->text('user.address', '业务类型')->default(1);
@@ -81,26 +84,28 @@ class UserShareController extends JaseController
                 ]);
             });
             $form->saving(function (Form $form) {
-                $userShare = UserShare::where(['user_id'=>$form->user_id, 'biz_type'=>$form->biz_type, 'biz_id'=>$form->biz_id, 'channel'=>$form->channel])->first();
-                if($userShare) {
-                    return response()->json([
-                        'status'  => 'error',
-                        'error' => [
-                            'status_code' => strval("602"),
-                            'message' => '已经分享'
-                        ]
-                    ]);
-                }
+
             });
             $form->saved(function (Form $form) {
-                User::where(['id'=>$form->user_id])->increment('points', 3);
-                $data = json_decode($this->grid($form->model()->id)->render('object'), true);
-                return response()->json([
-                    'status'  => 'success',
-                    'status_code' => '200',
-                    'object' => $data,
-                    'message' => '感谢分享,获得3积分！'
-                ]);
+                $count = UserShare::where(['user_id'=>$form->user_id, 'biz_type'=>$form->biz_type, 'biz_id'=>$form->biz_id, 'channel'=>$form->channel])->count();
+                if($count>=2) {
+                    $data = json_decode($this->grid($form->model()->id)->render('object'), true);
+                    return response()->json([
+                        'status'  => 'success',
+                        'status_code' => '200',
+                        'object' => $data,
+                        'message' => '感谢分享！'
+                    ]);
+                } else {
+                    User::where(['id'=>$form->user_id])->increment('points', 3);
+                    $data = json_decode($this->grid($form->model()->id)->render('object'), true);
+                    return response()->json([
+                        'status'  => 'success',
+                        'status_code' => '200',
+                        'object' => $data,
+                        'message' => '感谢分享,获得3积分！'
+                    ]);
+                }
             });
         });
     }

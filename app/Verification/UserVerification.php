@@ -3,6 +3,7 @@
 namespace App\Verification;
 use App\Helpers\Helpers;
 use App\Model\User;
+use App\Model\UserArea;
 use App\Model\Userremark;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ResultController as Result;
@@ -229,6 +230,8 @@ class UserVerification
         $user = User::where('id', $uid)->first();
         if ($user)
         {
+            $userArea = UserArea::where(['user_id'=>$user->id, 'is_default'=>1])->first();
+            $user->address = $userArea ? $userArea->detail : $user->address;
             return $this->result->responses([
                 'status' => 'success',
                 'status_code' => '',

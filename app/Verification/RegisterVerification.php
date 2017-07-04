@@ -3,6 +3,7 @@
 namespace App\Verification;
 use App\Helpers\Helpers;
 use App\Model\User;
+use App\Model\UserArea;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ResultController as Result;
 use Illuminate\Support\Facades\Crypt;
@@ -250,6 +251,8 @@ class RegisterVerification
         {
             return $this->result->setStatusMsg('error')->setStatusCode(405)->setMessage('该账号已被禁用！')->responseError();
         }
+        $userArea = UserArea::where(['user_id'=>$user->id, 'is_default'=>1])->first();
+        $user->address = $userArea ? $userArea->detail : $user->address;
         $userInfo = $this->usertransformer->transformController($user->toArray());
         if(is_object($user))
         {

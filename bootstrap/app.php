@@ -28,7 +28,7 @@ $env_hosts = [
 ];
 //环境处理
 if($app->runningInConsole()) {//命令行
-    $app_env = 'test';
+    $app_env = 'prod';
 } else {//HTTP形式
     $http_host = str_replace(':' . $_SERVER['SERVER_PORT'], '', $_SERVER['HTTP_HOST']);
     if (empty($http_host)) {

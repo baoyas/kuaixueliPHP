@@ -482,6 +482,51 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "重置密码",
+			"request": {
+				"url": "{{url}}/api/resetPass",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "phone",
+							"value": "15110264516",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "user_pass",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "user_confirmPass",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "401402",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

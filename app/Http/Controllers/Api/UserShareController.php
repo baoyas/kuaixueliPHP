@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Model\Sell;
 use App\Model\User;
 use App\Model\UserShare;
 use Illuminate\Http\Request;
@@ -84,7 +85,16 @@ class UserShareController extends JaseController
                 ]);
             });
             $form->saving(function (Form $form) {
-
+                $sell = Sell::find($form->biz_id);
+                if(empty($sell)) {
+                    return response()->json([
+                        'status'  => 'error',
+                        'error' => [
+                            'status_code' => strval("601"),
+                            'message' => '要分享的不存在'
+                        ]
+                    ]);
+                }
             });
             $form->saved(function (Form $form) {
                 $count = UserShare::where(['user_id'=>$form->user_id, 'biz_type'=>$form->biz_type, 'biz_id'=>$form->biz_id, 'channel'=>$form->channel])->count();

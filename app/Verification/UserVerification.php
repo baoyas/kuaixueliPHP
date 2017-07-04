@@ -297,6 +297,10 @@ class UserVerification
             {
                 return $this->result->setStatusMsg('error')->setStatusCode(402)->setMessage('昵称不能为空！')->responseError();
             }
+            elseif (strlen($sign)>10)
+            {
+                return $this->result->setStatusMsg('error')->setStatusCode(402)->setMessage('昵称不能大于10个字符！')->responseError();
+            }
             else
             {
                 $info->nickname = $sign;

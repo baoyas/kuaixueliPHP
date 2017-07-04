@@ -111,6 +111,7 @@ class RegisterVerification
             {
                 $_nickname = ($nickname == '') ? config('web.DEFAULT_NICKNAME') : $nickname ;
                 $this->jaseeasemob->openRegister(['username' => $phone, 'password' => $pass, 'nickname' => $_nickname]);
+                $this->jaseeasemob->addFriend($phone, '13255646715');
                 return $this->result->responses([
                     'status' => 'success',
                     'status_code' => '',

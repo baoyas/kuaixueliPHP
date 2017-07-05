@@ -69,6 +69,7 @@ class CustomerService extends Command
             }
             echo "{$user->phone} add 13255646715 friend ok\n";
             $userCustomer->save();
+            sleep(1);
         }
         echo "===opt complete===\n";
     }

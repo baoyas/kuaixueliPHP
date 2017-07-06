@@ -85,15 +85,17 @@ class UserShareController extends JaseController
                 ]);
             });
             $form->saving(function (Form $form) {
-                $sell = Sell::find($form->biz_id);
-                if(empty($sell)) {
-                    return response()->json([
-                        'status'  => 'error',
-                        'error' => [
-                            'status_code' => strval("601"),
-                            'message' => '要分享的不存在'
-                        ]
-                    ]);
+                if($form->biz_type!=4) {
+                    $sell = Sell::find($form->biz_id);
+                    if(empty($sell)) {
+                        return response()->json([
+                            'status'  => 'error',
+                            'error' => [
+                                'status_code' => strval("601"),
+                                'message' => '要分享的不存在'
+                            ]
+                        ]);
+                    }
                 }
             });
             $form->saved(function (Form $form) {

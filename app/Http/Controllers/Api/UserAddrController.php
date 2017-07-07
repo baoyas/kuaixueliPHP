@@ -48,7 +48,9 @@ class UserAddrController extends JaseController
             $grid->model()->where($where)->orderBy('is_default', 'desc');
             $grid->column('id', 'id');
             $grid->column('user_id', 'user_id');
-            $grid->column('real_name', 'real_name');
+            $grid->column('real_name', 'real_name')->display(function($real_name){
+                return html_entity_decode($real_name);
+            });
             $grid->column('mobile', 'mobile');
             $grid->column('detail', 'detail')->display(function($detail){
                 return html_entity_decode($detail);

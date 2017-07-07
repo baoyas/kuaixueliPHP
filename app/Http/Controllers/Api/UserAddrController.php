@@ -50,7 +50,9 @@ class UserAddrController extends JaseController
             $grid->column('user_id', 'user_id');
             $grid->column('real_name', 'real_name');
             $grid->column('mobile', 'mobile');
-            $grid->column('detail', 'detail');
+            $grid->column('detail', 'detail')->display(function($detail){
+                return html_entity_decode($detail);
+            });
             $grid->column('province_id', 'province_id');
             $grid->column('city_id', 'city_id');
             $grid->column('area_id', 'area_id');

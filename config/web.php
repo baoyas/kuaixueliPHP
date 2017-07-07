@@ -24,4 +24,9 @@
     'DEFAULT_UID' => 'admin',
     'SHARE_POINTS' => 3,
     'REGISTER_POINTS' => 10,
+    'SHARE_SELL_POINTS' => 10, //分享我要买 我要卖
+    'SHARE_AD_POINTS' => 10,   //分享平台广告
+    'RELEASE_SELL_POINTS' => 10,   //发布我要买 我要卖
+    'RELEASE_CIRCLE_POINTS' => 10, //发布朋友圈
+    //点赞2 评论4 群发5 加好友3 建群5 咨询代理5 用户注册填写邀请码5
 );

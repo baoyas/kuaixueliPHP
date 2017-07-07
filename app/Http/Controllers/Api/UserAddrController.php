@@ -141,6 +141,9 @@ class UserAddrController extends JaseController
                 //$form->user_id = $request->item['uid'];
             });
             $form->saved(function (Form $form) {
+                if($form->is_default==1) {
+                    UserArea::where('id', '!=', $form->model()->id)->update(['is_default'=>0]);
+                }
                 $data = json_decode($this->grid($form->model()->id)->render('object'), true);
                 return response()->json([
                     'status'  => 'success',

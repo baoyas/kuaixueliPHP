@@ -490,6 +490,7 @@ class BusinessVerification
                 $statues = Thumbs::create($save);
                 if ($statues)
                 {
+                    User::addPoints($uid, 2);
                     return $this->result->responses([
                         'status' => 'success',
                         'status_code' => '',

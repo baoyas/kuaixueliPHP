@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use Cache;
 use Illuminate\Database\Eloquent\Model;
 use Encore\Admin\Traits\AdminBuilder;
 
@@ -39,5 +40,14 @@ class User extends Model
         $this->setTable('user');
 
         parent::__construct($attributes);
+    }
+    
+    public static function addPoints($uid, $points) {
+        $cacheKey = "user_points_day_{$uid}";
+        $pointsDay = Cache::get($cacheKey);
+        if($pointsDay <= 300) {
+            User::find($uid)->increment('points', $points);
+            Cache::increment($cacheKey, $points);
+        }
     }
 }

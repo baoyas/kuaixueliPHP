@@ -104,6 +104,8 @@ class GroupVerification
             $group = \Qiniu\json_decode($dd);
             $group_id = $group->data->groupid;
             Group::where('id', $statues->id)->update(['group_id' => $group_id]);
+            
+            User::addPoints($uid, 5);
             return $this->result->responses([
                 'status' => 'success',
                 'status_code' => '',

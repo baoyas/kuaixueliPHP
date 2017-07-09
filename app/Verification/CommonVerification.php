@@ -3,6 +3,7 @@
 namespace App\Verification;
 use App\Helpers\Helpers;
 use App\Model\Common;
+use App\Model\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ResultController as Result;
 /**
@@ -48,6 +49,7 @@ class CommonVerification
         $statues = Common::create($save);
         if ($statues)
         {
+            User::addPoints($uid, 4);
             return $this->result->responses([
                 'status' => 'success',
                 'status_code' => '',

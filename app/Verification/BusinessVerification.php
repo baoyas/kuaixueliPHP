@@ -56,6 +56,11 @@ class BusinessVerification
         {
             return $this->result->setStatusMsg('error')->setStatusCode(402)->setMessage('标题不能为空！')->responseError();
         }
+
+        if(mb_strlen($sell_title)>10) {
+            return $this->result->setStatusMsg('error')->setStatusCode(403)->setMessage('标题不能超过10个字符！')->responseError();
+        }
+
         /**
          * 判断图片是否为空
          */
@@ -154,6 +159,9 @@ class BusinessVerification
         if ($sell_title == '')
         {
             return $this->result->setStatusMsg('error')->setStatusCode(402)->setMessage('标题不能为空！')->responseError();
+        }
+        if(mb_strlen($sell_title)>10) {
+            return $this->result->setStatusMsg('error')->setStatusCode(403)->setMessage('标题不能超过10个字符！')->responseError();
         }
         /**
          * 判断图片是否为空

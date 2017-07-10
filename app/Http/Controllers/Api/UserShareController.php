@@ -13,6 +13,7 @@ use App\Fcore\Grid;
 use App\Fcore\Form;
 use App\Fcore\Layout\Content;
 use App\Fcore\Controllers\ModelForm;
+use Cache;
 
 class UserShareController extends JaseController
 {
@@ -109,7 +110,17 @@ class UserShareController extends JaseController
                         'message' => '感谢分享！'
                     ]);
                 } else {
-                    User::where(['id'=>$form->user_id])->increment('points', config('web.SHARE_POINTS'));
+                    //User::where(['id'=>$form->user_id])->increment('points', config('web.SHARE_POINTS'));
+                    User::addPoints($form->user_id, config('web.SHARE_POINTS'));
+                    if($form->biz_type==1 || $form->biz_type==2) {
+                        $date = date('Y-m-d');
+                        $cacheKey = "user_money_day_{$date}_times_{$form->user_id}";
+                        $moneyDayTimes = Cache::get($cacheKey);
+                        if($moneyDayTimes <= 5) {
+                            User::addMoney($form->user_id, mt_rand(1, 100));
+                            Cache::increment($cacheKey, 1);
+                        }
+                    }
                     $data = json_decode($this->grid($form->model()->id)->render('object'), true);
                     return response()->json([
                         'status'  => 'success',

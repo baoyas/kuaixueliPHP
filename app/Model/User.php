@@ -43,11 +43,22 @@ class User extends Model
     }
     
     public static function addPoints($uid, $points) {
-        $cacheKey = "user_points_day_{$uid}";
+        $date = date('Y-m-d');
+        $cacheKey = "user_points_day_{$date}_{$uid}";
         $pointsDay = Cache::get($cacheKey);
         if($pointsDay <= 300) {
             User::find($uid)->increment('points', $points);
             Cache::increment($cacheKey, $points);
+        }
+    }
+
+    public static function addMoney($uid, $money) {
+        $date = date('Y-m-d');
+        $cacheKey = "user_money_day_{$date}_{$uid}";
+        $pointsDay = Cache::get($cacheKey);
+        if($pointsDay <= 30000) {
+            User::find($uid)->increment('money', $money);
+            Cache::increment($cacheKey, $money);
         }
     }
 }

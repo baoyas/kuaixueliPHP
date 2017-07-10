@@ -28,7 +28,7 @@ class RewardController extends JaseController
 
     public function index()
     {
-        $this->result->responses([
+        return $this->result->responses([
             'list' => $this->grid()->getFormatData(),
             'points' => 20,
         ]);

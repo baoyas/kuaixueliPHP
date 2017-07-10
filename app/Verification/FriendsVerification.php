@@ -97,7 +97,7 @@ class FriendsVerification
         $friends_ids = $my_friends['user_id'];
         $userInfo = User::where('id', $uid)->first()->toArray();
         $sell = Sell::where('sell.is_del', 0)
-                    ->where('sell.is_circle', 1)
+                    //->where('sell.is_circle', 1)
                     ->whereIn('sell.sell_uid', $friends_ids)
                     ->orderBy('sell.sell_time', 'desc')
                     ->join('user as u', 'sell.sell_uid', '=', 'u.id')

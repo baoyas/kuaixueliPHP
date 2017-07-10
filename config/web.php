@@ -25,6 +25,7 @@
     'SHARE_POINTS' => 3,
     'REGISTER_POINTS' => 10,
     'SHARE_SELL_POINTS' => 10, //分享我要买 我要卖
+    'SHARE_RECOMMEND_SELL_POINTS' => 5, //分享推荐我要买 我要卖
     'SHARE_AD_POINTS' => 10,   //分享平台广告
     'RELEASE_SELL_POINTS' => 10,   //发布我要买 我要卖
     'RELEASE_CIRCLE_POINTS' => 10, //发布朋友圈

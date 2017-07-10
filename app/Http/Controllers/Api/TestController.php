@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ResultController as Result;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
+use App\Model\Testp;
 
 class TestController extends JaseController
 {
@@ -23,6 +24,10 @@ class TestController extends JaseController
     
     public function index()
     {
+        $data = Testp::with('tests')->find(1);
+        print_r($data->toArray());
+        $data->destroy();
+        exit();
         return Fast::content(function (Content $content) {
             $content->header('出售/购买管理');
             $content->body($this->grid());

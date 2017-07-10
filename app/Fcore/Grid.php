@@ -880,6 +880,27 @@ class Grid
         return view($this->view, $variables)->render();
     }
 
+    public function getFormatData() {
+        try {
+            $this->build();
+        } catch (\Exception $e) {
+            return Handle::renderException($e);
+        }
+
+        $keys = [];
+        foreach($this->columns() as $k=>$column) {
+            $keys[$k] = $column->getLabel();
+        }
+
+        $rowData = [];
+        foreach($this->rows() as $rIndex=>$row) {
+            foreach($this->columnNames as $k=>$name) {
+                $rowData[$rIndex][$keys[$k]] = $row->column($name);
+            }
+        }
+        return $rowData;
+    }
+
     /**
      * Get the string contents of the grid view.
      *

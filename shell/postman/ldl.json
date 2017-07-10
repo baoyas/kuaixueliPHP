@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "ldl",
-		"_postman_id": "18ee6c10-29b4-fe81-b881-1d46eba4ec8a",
+		"_postman_id": "c65514fa-f6a9-c64e-2d80-8bf359914f11",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -524,6 +524,40 @@
 						}
 					]
 				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "抽奖列表",
+			"request": {
+				"url": "{{url}}/api/reward",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "抽奖",
+			"request": {
+				"url": "{{url}}/api/reward",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
 				"description": ""
 			},
 			"response": []

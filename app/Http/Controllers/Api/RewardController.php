@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Model\UserArea;
 use App\Model\RewardConf;
+use App\Model\UserReward;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -70,19 +71,52 @@ class RewardController extends JaseController
      */
     public function form()
     {
-        return Fast::form(UserArea::class, function (Form $form) {
+        return Fast::form(UserReward::class, function (Form $form) {
+            $reward = RewardConf::all()->toArray();
+            /****准备奖励--start--**/
+            $rew = [];
+            if($reward) {
+                $min = 0;
+                $max = 0;
+                foreach($reward as $key=>$val) {
+                    if(empty($val['weight']) || intval($val['weight'])<0) {
+                        continue;
+                    }
+                    $max = $max+$val['weight'];
+                }
+
+                if($max>0) {
+                    $rand_num = mt_rand(1, $max);
+                    $bonusIndex = '';
+
+                    foreach ($reward as $key=>$val) {
+                        if(empty($val['weight']) || intval($val['weight'])<0) {
+                            continue;
+                        }
+                        if ($rand_num > $min && $rand_num <= $min+$val['weight']) {
+                            $bonusIndex = $key;
+                            break;
+                        }
+                        $min = $min+$val['weight'];
+                    }
+                    if($bonusIndex!=='') {
+                        $rew = $reward[$bonusIndex];
+                    }
+                }
+            }
+            /****准备奖励--end--**/
             $request = app('request');
             $form->where(function($query) use($request) {
                 $query->where(['user_id'=>$request->item['uid']]);
             });
             $form->text('user_id', '用户ID')->rules('required|integer')->default($request->item['uid']);
-            $form->text('is_default', '是否默认')->rules('required|integer|regex:/^[01]$/');
-            $form->number('province_id', '省份ID')->rules('required|integer|min:1');
-            $form->number('city_id', '城市ID')->rules('required|integer|min:1');
-            $form->number('area_id', '区域ID')->rules('required|integer|min:1');
-            $form->text('detail', '详细地址')->rules('required');
-            $form->text('real_name', '收件人姓名')->rules('required|min:2|max:10');
-            $form->text('mobile', '收件人手机号')->rules('required|regex:/^1[34578]\d{9}$/');
+            $form->text('reward_id', '奖品ID')->rules('required|integer')->default($rew['id']);
+            $form->text('rname', '奖品名称')->rules('required|string')->default($rew['rname']);
+            $form->text('img_uri', '奖品图片')->rules('string')->default($rew['img_uri']);
+            $form->text('weight', '奖品权重')->rules('required|integer')->default($rew['weight']);
+            $form->text('type', '奖品类型')->rules('required|integer')->default($rew['type']);
+            $form->text('value', '奖品数量')->rules('required|integer')->default($rew['value']);
+
             $form->error(function (Form $form) {
                 return response()->json([
                     'status'  => 'error',
@@ -98,14 +132,10 @@ class RewardController extends JaseController
                 //$form->user_id = $request->item['uid'];
             });
             $form->saved(function (Form $form) {
-                if($form->is_default==1) {
-                    UserArea::where('id', '!=', $form->model()->id)->update(['is_default'=>0]);
-                }
-                $data = json_decode($this->grid($form->model()->id)->render('object'), true);
                 return response()->json([
                     'status'  => 'success',
                     'status_code' => '200',
-                    'object' => $data
+                    'object' => $form->model()->toArray()
                 ]);
             });
         });

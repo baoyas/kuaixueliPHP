@@ -121,6 +121,7 @@ class BusinessVerification
         $statues = Sell::create($save);
         if ($statues)
         {
+            User::addPoints($uid, config('web.RELEASE_SELL_POINTS'));
             return $this->result->responses([
                 'status' => 'success',
                 'status_code' => '',
@@ -220,6 +221,7 @@ class BusinessVerification
         $statues = Sell::create($save);
         if ($statues)
         {
+            User::addPoints($uid, config('web.RELEASE_SELL_POINTS'));
             return $this->result->responses([
                 'status' => 'success',
                 'status_code' => '',
@@ -498,7 +500,7 @@ class BusinessVerification
                 $statues = Thumbs::create($save);
                 if ($statues)
                 {
-                    User::addPoints($uid, 2);
+                    User::addPoints($uid, config('web.THUMBS_UP_POINTS'));
                     return $this->result->responses([
                         'status' => 'success',
                         'status_code' => '',

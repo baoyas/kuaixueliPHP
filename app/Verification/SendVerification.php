@@ -86,6 +86,7 @@ class SendVerification
                         ];
                         $this->jasseasemob->yy_hxSend($username, explode(',', $groups), $content, 'chatgroups', $ext);
                     }
+                    User::addPoints($uid, config('web.SENDUSERS_POINTS'));
                     return $this->result->responses([
                         'status' => 'success',
                         'status_code' => '',
@@ -131,6 +132,7 @@ class SendVerification
                         ];
                         $this->jasseasemob->yy_hxSend_img($username, explode(',', $groups),$dd['uri'].'/'.$dd['entities'][0]['uuid'], $file, $dd['entities'][0]['share-secret'], $dd['width'], $dd['height'], 'chatgroups', $ext);
                     }
+                    User::addPoints($uid, config('web.SENDUSERS_POINTS'));
                     return $this->result->responses([
                         'status' => 'success',
                         'status_code' => '',
@@ -176,6 +178,7 @@ class SendVerification
                         ];
                         $this->jasseasemob->yy_hxSend_audio($username, explode(',', $groups),$dd['uri'].'/'.$dd['entities'][0]['uuid'], $file, $dd['size'], $dd['entities'][0]['share-secret'], 'chatgroups', $ext);
                     }
+                    User::addPoints($uid, config('web.SENDUSERS_POINTS'));
                     return $this->result->responses([
                         'status' => 'success',
                         'status_code' => '',
@@ -222,6 +225,7 @@ class SendVerification
                         ];
                         $this->jasseasemob->yy_hxSend_video($username, explode(',', $groups), $file, $dd['uri'].'/'.$dd['thumb_image_uuid'], $dd['duration'], $dd['entities'][0]['share-secret'], $dd['size'], $dd['thumb_image_share-secret'], 'https://a1.easemob.com/nicai/text/chatfiles/'.$dd['entities'][0]['uuid'], 'chatgroups', $ext);
                     }
+                    User::addPoints($uid, config('web.SENDUSERS_POINTS'));
                     return $this->result->responses([
                         'status' => 'success',
                         'status_code' => '',

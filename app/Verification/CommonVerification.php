@@ -49,7 +49,7 @@ class CommonVerification
         $statues = Common::create($save);
         if ($statues)
         {
-            User::addPoints($uid, 4);
+            User::addPoints($uid, config('web.COMMENT_POINTS'));
             return $this->result->responses([
                 'status' => 'success',
                 'status_code' => '',

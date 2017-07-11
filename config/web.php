@@ -29,6 +29,10 @@
     'SHARE_AD_POINTS' => 10,   //分享平台广告
     'RELEASE_SELL_POINTS' => 10,   //发布我要买 我要卖
     'RELEASE_CIRCLE_POINTS' => 10, //发布朋友圈
-    'THUMBS_UP_POINTS' => 2,//点赞2 
-    //评论4 群发5 加好友3 建群5 咨询代理5 用户注册填写邀请码5
+    'THUMBS_UP_POINTS' => 2, //点赞2
+    'COMMENT_POINTS' => 4,   //评论4
+    'SENDUSERS_POINTS' => 5, //群发5
+    //加好友3
+    'CREATE_GROUP_POINTS' => 5,//建群5
+    //咨询代理5 用户注册填写邀请码5
 );

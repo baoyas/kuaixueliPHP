@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use DB;
 use App\Model\UserArea;
 use App\Model\RewardConf;
 use App\Model\UserReward;
@@ -127,9 +128,18 @@ class RewardController extends JaseController
                 ]);
             });
             $form->saving(function (Form $form) {
-                //$request = app('request');
-                //$form->model()->user_id = $request->item['uid'];
-                //$form->user_id = $request->item['uid'];
+                $sTime = date('Y-m-d');
+                $eTime = date('Y-m-d', strtotime($sTime)+3600*24);
+                $count = UserReward::where('user_id', $form->user_id)->whereBetween('created_at', [$sTime, $eTime])->groupBy(DB::raw('substring(created_at,1,10)'))->count();
+                if($count>=10) {
+                    return response()->json([
+                        'status'  => 'error',
+                        'error' => [
+                            'status_code' => strval("604"),
+                            'message' => '抽奖次数已用完'
+                        ]
+                    ]);
+                }
             });
             $form->saved(function (Form $form) {
                 return response()->json([

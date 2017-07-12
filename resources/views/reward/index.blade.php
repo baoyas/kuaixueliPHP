@@ -48,6 +48,7 @@ $(document).ready(function(){
     });
 });
 function userreward(){
+    alert(typeof(RewardInterface));
     $.ajax({
         dataType:'json',
         type: 'POST',

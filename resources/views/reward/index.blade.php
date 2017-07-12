@@ -18,13 +18,22 @@
 </script>
 <script type="text/javascript" src="{{ URL::asset('js/jquery-1.10.2.js') }}"></script>
 <script>
+    var CInterface = {};
+    if(typeof(RewardInterface)==="undefined") {
+
+    } else {
+        CInterface = RewardInterface;
+    }
 $(document).ready(function(){
     $.ajax({
         dataType:'json',
         type: 'GET',
         url: '/api/reward',
         beforeSend: function(request) {
-            //request.setRequestHeader("token", "MDAwMDAwMDAwMJewg2WSu4GgtM_JlISyqprJvrTOlqOYmZaMh86wmn_cgIt-rH6oeWmzqbfahaJ8pK7TvJaWfc-qjoh7m66Fi9t_e4pkft6bbLKtkp8");
+            if(CInterface && CInterface.getToken) {
+                //request.setRequestHeader("token", "MDAwMDAwMDAwMJewg2WSu4GgtM_JlISyqprJvrTOlqOYmZaMh86wmn_cgIt-rH6oeWmzqbfahaJ8pK7TvJaWfc-qjoh7m66Fi9t_e4pkft6bbLKtkp8");
+                request.setRequestHeader("token", CInterface.getToken());
+            }
         },
         success:function(data) {
             if(data.status=='error') {
@@ -44,7 +53,10 @@ function userreward(){
         type: 'POST',
         url: '/api/reward',
         beforeSend: function(request) {
-            //request.setRequestHeader("token", "MDAwMDAwMDAwMJewg2WSu4GgtM_JlISyqprJvrTOlqOYmZaMh86wmn_cgIt-rH6oeWmzqbfahaJ8pK7TvJaWfc-qjoh7m66Fi9t_e4pkft6bbLKtkp8");
+            if(CInterface && CInterface.getToken) {
+                //request.setRequestHeader("token", "MDAwMDAwMDAwMJewg2WSu4GgtM_JlISyqprJvrTOlqOYmZaMh86wmn_cgIt-rH6oeWmzqbfahaJ8pK7TvJaWfc-qjoh7m66Fi9t_e4pkft6bbLKtkp8");
+                request.setRequestHeader("token", CInterface.getToken());
+            }
         },
         success:function(data) {
             if(data.status=='error') {

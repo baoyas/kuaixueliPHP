@@ -49,6 +49,7 @@ $(document).ready(function(){
 });
 function userreward(){
     alert(typeof(RewardInterface));
+    alert(CInterface.getToken);
     $.ajax({
         dataType:'json',
         type: 'POST',

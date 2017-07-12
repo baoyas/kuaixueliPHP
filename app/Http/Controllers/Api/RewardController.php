@@ -3,20 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use DB;
-use App\Model\UserArea;
+use App\Model\User;
 use App\Model\RewardConf;
 use App\Model\UserReward;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ResultController as Result;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 
 use App\Fcore\Facades\Fast;
 use App\Fcore\Grid;
 use App\Fcore\Form;
-use App\Fcore\Layout\Content;
 use App\Fcore\Controllers\ModelForm;
 
 class RewardController extends JaseController
@@ -142,6 +137,7 @@ class RewardController extends JaseController
                 }
             });
             $form->saved(function (Form $form) {
+                User::where('id', $form->user_id)->decrement('points', 20);
                 return response()->json([
                     'status'  => 'success',
                     'status_code' => '200',

@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ config('app.name') }}</title>
+    <title></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="icon" href="https://www.qiyichao.cn/image/fire-orange.png">
-    <link rel="apple-touch-icon" href="https://www.qiyichao.cn/image/fire-orange.png">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/app.css') }}">
 </head>
 <body>
 <div id="app">
@@ -42,7 +39,21 @@ $(document).ready(function(){
     });
 });
 function userreward(){
-
+    $.ajax({
+        dataType:'json',
+        type: 'POST',
+        url: '/api/reward',
+        beforeSend: function(request) {
+            //request.setRequestHeader("token", "MDAwMDAwMDAwMJewg2WSu4GgtM_JlISyqprJvrTOlqOYmZaMh86wmn_cgIt-rH6oeWmzqbfahaJ8pK7TvJaWfc-qjoh7m66Fi9t_e4pkft6bbLKtkp8");
+        },
+        success:function(data) {
+            if(data.status=='error') {
+                alert(data.error.message);
+            } else {
+                alert(data.object.rname);
+            }
+        }
+    });
 }
 </script>
 </body>

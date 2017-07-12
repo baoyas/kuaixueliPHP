@@ -135,6 +135,15 @@ class RewardController extends JaseController
                         ]
                     ]);
                 }
+                if(User::find($form->user_id)->points < 20) {
+                    return response()->json([
+                        'status'  => 'error',
+                        'error' => [
+                            'status_code' => strval("605"),
+                            'message' => '积分不足'
+                        ]
+                    ]);
+                }
             });
             $form->saved(function (Form $form) {
                 User::where('id', $form->user_id)->decrement('points', 20);

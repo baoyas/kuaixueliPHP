@@ -10,6 +10,7 @@
 <div id="app">
     <p id="reward"></p>
     <button onclick="userreward()">抽奖</button>
+    <p id="winhtml"></p>
 </div>
 <script type="text/javascript">
     window.Laravel = {
@@ -25,6 +26,11 @@
         CInterface = RewardInterface;
     }
 $(document).ready(function(){
+    var html = '';
+    for(var k in window) {
+        html += k + ':' + typeof(k) + '<br/>';
+    }
+    $('#winhtml').html(html);
     $.ajax({
         dataType:'json',
         type: 'GET',

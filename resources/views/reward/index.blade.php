@@ -9,7 +9,7 @@
 <body>
 <div id="app">
     <p id="reward"></p>
-    <button onclick="userreward()">抽奖</button>
+    <button onclick="userreward()">抽奖啊</button>
     <p id="winhtml"></p>
 </div>
 <script type="text/javascript">

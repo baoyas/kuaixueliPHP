@@ -44,6 +44,7 @@ class RewardController extends JaseController
     public function grid($id=0) {
         return Fast::grid(RewardConf::class, function(Grid $grid) use ($id){
             $where = [];
+            $where['is_del'] = 0;
             $id and $where['id'] = $id;
             $grid->model()->where($where)->orderBy('id', 'asc');
             $grid->column('id', 'id');

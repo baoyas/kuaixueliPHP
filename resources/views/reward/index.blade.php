@@ -28,7 +28,12 @@
 $(document).ready(function(){
     var html = '';
     for(var k in window) {
-        html += k + ':' + typeof(k) + '<br/>';
+        if(k == 'RewardInterface') {
+            html += k + ':' + typeof(k) + '<br/>';
+            for(kk in window[k]) {
+                html += kk + ':' + typeof(kk) + '<br/>';
+            }
+        }
     }
     $('#winhtml').html(html);
     $.ajax({

@@ -82,7 +82,7 @@ function userreward(){
     });
 }
 function refresh() {
-    location.href = document.URL+"?rand="+Math.random();
+    location.href = location.pathname+"?rand="+Math.random();
 }
 </script>
 </body>

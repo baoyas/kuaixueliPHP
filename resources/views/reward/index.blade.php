@@ -10,7 +10,7 @@
 <div id="app">
     <p id="reward"></p>
     <button onclick="userreward()">抽奖啊!</button>
-    <button onclick="javascript:{location.reload(true)}">刷新</button>
+    <button onclick=javascript:{refresh();}>刷新</button>
     <p id="winhtml"></p>
 </div>
 <script type="text/javascript">
@@ -80,6 +80,9 @@ function userreward(){
             }
         }
     });
+}
+function refresh() {
+    location.href = document.URL+"?rand="+Math.random();
 }
 </script>
 </body>

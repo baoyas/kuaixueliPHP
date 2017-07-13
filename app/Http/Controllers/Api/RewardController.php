@@ -69,7 +69,7 @@ class RewardController extends JaseController
     public function form()
     {
         return Fast::form(UserReward::class, function (Form $form) {
-            $reward = RewardConf::all()->toArray();
+            $reward = RewardConf::where('is_del', 0)->get()->toArray();
             /****准备奖励--start--**/
             $rew = [];
             if($reward) {

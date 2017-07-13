@@ -11,6 +11,7 @@
     <p id="reward"></p>
     <button onclick="userreward()">抽奖啊!</button>
     <button onclick=javascript:{refresh();}>刷新</button>
+    <button onclick=javascript:{ldl_rule();}>活动规则</button>
     <p id="winhtml"></p>
 </div>
 <script type="text/javascript">
@@ -83,6 +84,9 @@ function userreward(){
 }
 function refresh() {
     location.href = location.pathname+"?rand="+Math.random();
+}
+function ldl_rule() {
+    location.href = "/content/2?rand="+Math.random();
 }
 </script>
 </body>

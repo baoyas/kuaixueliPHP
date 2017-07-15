@@ -146,6 +146,7 @@ $api->version('v1', function ($api) {
             $api->resource('usershare', 'UserShareController');     //分享相关
             $api->resource('reward', 'RewardController');           //抽奖相关
             $api->resource('userreward', 'UserRewardController');   //抽奖奖励相关
+            $api->resource('usermoney', 'UserMoneyController');     //分享相关
         });
     });
 });

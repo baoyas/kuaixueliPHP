@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Model\Sell;
 use App\Model\User;
-use App\Model\UserShare;
+use App\Model\UserMoney;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ResultController as Result;
 
@@ -15,7 +15,7 @@ use App\Fcore\Layout\Content;
 use App\Fcore\Controllers\ModelForm;
 use Cache;
 
-class UserShareController extends JaseController
+class UserMoneyController extends JaseController
 {
     use ModelForm;
     private $result;
@@ -32,7 +32,7 @@ class UserShareController extends JaseController
     }
 
     public function grid($id=0) {
-        return Fast::grid(UserShare::class, function(Grid $grid) use ($id){
+        return Fast::grid(UserMoney::class, function(Grid $grid) use ($id){
             $where = [];
             $id and $where['id'] = $id;
             $where['user_id'] = app('request')->item['uid'];
@@ -40,8 +40,8 @@ class UserShareController extends JaseController
             $grid->column('id', 'id');
             $grid->column('user_id', 'user_id');
             $grid->column('biz_type', 'biz_type');
-            $grid->column('biz_id', 'biz_id');
-            $grid->column('channel', 'channel');
+            $grid->column('flow_type', 'flow_type');
+            $grid->column('value', 'value');
             $grid->disableActions();
             $grid->disableBatchDeletion();
             $grid->disableCreation();
@@ -56,7 +56,7 @@ class UserShareController extends JaseController
      */
     public function form()
     {
-        return Fast::form(UserShare::class, function (Form $form) {
+        return Fast::form(UserMoney::class, function (Form $form) {
             $request = app('request');
             $form->where(function($query) use($request) {
                 $query->where(['user_id'=>$request->item['uid']]);
@@ -100,7 +100,7 @@ class UserShareController extends JaseController
                 }
             });
             $form->saved(function (Form $form) {
-                $count = UserShare::where(['user_id'=>$form->user_id, 'biz_type'=>$form->biz_type, 'biz_id'=>$form->biz_id, 'channel'=>$form->channel])->count();
+                $count = UserMoney::where(['user_id'=>$form->user_id, 'biz_type'=>$form->biz_type, 'biz_id'=>$form->biz_id, 'channel'=>$form->channel])->count();
                 if($count>=2) {
                     $data = json_decode($this->grid($form->model()->id)->render('object'), true);
                     return response()->json([
@@ -122,7 +122,7 @@ class UserShareController extends JaseController
                         $cacheKey = "user_money_day_{$date}_times_{$form->user_id}";
                         $moneyDayTimes = Cache::get($cacheKey);
                         if($moneyDayTimes <= 5) {
-                            User::addMoney($form->user_id, mt_rand(1, 100), '1');
+                            User::addMoney($form->user_id, mt_rand(1, 100));
                             Cache::increment($cacheKey, 1);
                         }
                     } else {

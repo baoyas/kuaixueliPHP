@@ -52,12 +52,13 @@ class User extends Model
         }
     }
 
-    public static function addMoney($uid, $money) {
+    public static function addMoney($uid, $money, $biz_type) {
         $date = date('Y-m-d');
         $cacheKey = "user_money_day_{$date}_{$uid}";
         $pointsDay = Cache::get($cacheKey);
         if($pointsDay <= 30000) {
             User::find($uid)->increment('money', $money);
+            UserMoney::create(['user_id'=>$uid, 'biz_type'=>$biz_type, 'flow_type'=>1, 'value'=>$money]);
             Cache::increment($cacheKey, $money);
         }
     }

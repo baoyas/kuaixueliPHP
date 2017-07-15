@@ -15,11 +15,11 @@
         <h2 class="title">幸运抽大奖</h2>
     </div>
     <div class="my_integral">
-        我的积分：<span class="integral_number" data-tk="points">3329</span>
+        我的积分：<span class="integral_number" data-tk="points"></span>
     </div>
     <div id="luck">
         <!-- luck -->
-        <h3 class="luck_time">您今日还可以抽 <span class="number" data-tk="can_use_count">10</span> 次</h3>
+        <h3 class="luck_time">您今日还可以抽 <span class="number" data-tk="can_use_count"></span> 次</h3>
         <ul class="luck_ul" data-tk="reward">
         </ul>
         <!-- luckEnd -->
@@ -68,9 +68,13 @@ var luck = {
         this.index = index;
         return false;
     },
-    stop: function(index) {
-        this.prize = index;
+    stop: function() {
+        this.prize = -1;
         this.running = false;
+        return false;
+    },
+    prizeIndex: function(index) {
+        this.prize = index;
         return false;
     },
     isStart: function() {
@@ -134,6 +138,13 @@ function userreward() {
     var roll = function() {
         luck.times += 1;
         luck.roll();
+        if(luck.isStart()==false) {
+            clearTimeout(luck.timer);
+            luck.prize = -1;
+            luck.times = 0;
+            luck.obj.find(".luck-unit").removeClass("active");
+            return;
+        }
         if (luck.times > luck.cycle + 9 && luck.prize == luck.index) {
             clearTimeout(luck.timer);
             luck.prize = -1;
@@ -166,15 +177,18 @@ function userreward() {
         beforeSend: function(request) {
             if(CInterface && CInterface.getToken) {
                 request.setRequestHeader("token", CInterface.getToken());
+            } else {
+                request.setRequestHeader("token", "MDAwMDAwMDAwMJewg2WSu4GgtM_N2oR8qprJvrTOlqOYmZaMh86wmn_cgIt-rH6oeWmyqaPZhIx8pK7TvJaWfc-qjoh7m66Fi9t_e5ytfriFrrK9kp8");
             }
         },
         success:function(data) {
             if(data.status=='error') {
+                luck.stop(-1);
                 alert(data.error.message);
             } else {
                 //alert(data.object.rname);
-                var index = $('[data-tk=reward]>li[data-id='+data.object.id+']').attr('data-index');
-                luck.stop(index);
+                var index = $('[data-tk=reward]>li[data-id='+data.object.reward_id+']').attr('data-index');
+                luck.prizeIndex(index);
                 $('[data-tk=points]').html(parseInt($('[data-tk=points]').html())-20);
                 $('[data-tk=can_use_count]').html(parseInt($('[data-tk=can_use_count]').html())-1);
             }

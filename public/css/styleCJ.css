@@ -78,11 +78,11 @@ img {
     background-size: 100%;
 }
 
-#btn.cjBtn {
+#btn-bak.cjBtn {
     background-image: url(../img/buttonUp.png);
 }
 
-#btn.cjBtnDom {
+#btn-bak.cjBtnDom {
     background-image: url(../img/buttonDown.png);
 }
 

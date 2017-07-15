@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\Model\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Thumbs extends Model
@@ -27,4 +28,8 @@ class Thumbs extends Model
     protected $hidden = [
 
     ];
+    
+    public function User() {
+        return $this->belongsTo(User::class, 'thumbs_uid', 'id');
+    }
 }

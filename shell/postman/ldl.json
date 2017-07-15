@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "ldl",
-		"_postman_id": "c65514fa-f6a9-c64e-2d80-8bf359914f11",
+		"_postman_id": "47807e3f-a0fa-603e-2b03-06a7dddba54c",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -38,7 +38,7 @@
 					"formdata": [
 						{
 							"key": "phone",
-							"value": "15110264516",
+							"value": "15110260001",
 							"description": "",
 							"type": "text"
 						},
@@ -540,7 +540,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -550,6 +553,44 @@
 			"request": {
 				"url": "{{url}}/api/reward",
 				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "个人主页",
+			"request": {
+				"url": {
+					"raw": "{{url}}/api/outherFriends?outher_id=15110264516",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"outherFriends"
+					],
+					"query": [
+						{
+							"key": "outher_id",
+							"value": "15110264516",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
 				"header": [
 					{
 						"key": "token",

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -8,9 +7,7 @@
     <title>抽奖</title>
     <link rel="stylesheet" type="text/css" href="css/styleCJ.css" />
 </head>
-
 <body>
-
     <div id="title">
         <h2 class="title">幸运抽大奖</h2>
     </div>
@@ -131,6 +128,14 @@ $(document).ready(function(){
     });
 });
 function userreward() {
+    if(parseInt($('[data-tk=points]').html()) < 20) {
+        alert('积分不足')!
+        return;
+    }
+    if(parseInt($('[data-tk=can_use_count]').html()) <=0 ) {
+        alert('次数已用完')!
+        return;
+    }
     if(luck.isStart()) {
         return;
     }

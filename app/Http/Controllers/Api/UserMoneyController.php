@@ -36,12 +36,13 @@ class UserMoneyController extends JaseController
             $where = [];
             $id and $where['id'] = $id;
             $where['user_id'] = app('request')->item['uid'];
-            $grid->model()->where($where);
+            $grid->model()->where($where)->orderBy('id', 'desc');
             $grid->column('id', 'id');
             $grid->column('user_id', 'user_id');
             $grid->column('biz_type', 'biz_type');
             $grid->column('flow_type', 'flow_type');
             $grid->column('value', 'value');
+            $grid->column('created_at', 'created_at');
             $grid->disableActions();
             $grid->disableBatchDeletion();
             $grid->disableCreation();

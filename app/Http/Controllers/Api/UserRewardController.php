@@ -36,7 +36,7 @@ class UserRewardController extends JaseController
             $where = [];
             $id and $where['id'] = $id;
             $where['user_id'] = app('request')->item['uid'];
-            $grid->model()->where($where);
+            $grid->model()->where($where)->orderBy('id', 'desc');
             $grid->column('id', 'id');
             $grid->column('user_id', 'user_id');
             $grid->column('biz_type', 'biz_type');

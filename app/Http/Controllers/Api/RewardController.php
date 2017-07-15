@@ -154,6 +154,11 @@ class RewardController extends JaseController
                 }
             });
             $form->saved(function (Form $form) {
+                if($form->type == 1) {
+                    User::addMoney($form->user_id, $form->value, 2);
+                } elseif($form->type == 4) {
+                    User::find($form->user_id)->increment('points', $form->value);
+                }
                 User::where('id', $form->user_id)->decrement('points', 20);
                 return response()->json([
                     'status'  => 'success',

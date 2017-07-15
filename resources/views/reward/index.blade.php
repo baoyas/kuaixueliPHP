@@ -111,7 +111,7 @@ $(document).ready(function(){
             if(CInterface && CInterface.getToken) {
                 request.setRequestHeader("token", CInterface.getToken());
             } else {
-                request.setRequestHeader("token", "MDAwMDAwMDAwMJewg2WSu4GgtM_N2oR8qprJvrTOlqOYmZaMh86wmn_cgIt-rH6oeWmyqaPZhIx8pK7TvJaWfc-qjoh7m66Fi9t_e5ytfriFrrK9kp8");
+                //request.setRequestHeader("token", "MDAwMDAwMDAwMJewg2WSu4GgtM_N2oR8qprJvrTOlqOYmZaMh86wmn_cgIt-rH6oeWmyqaPZhIx8pK7TvJaWfc-qjoh7m66Fi9t_e5ytfriFrrK9kp8");
             }
         },
         success:function(data) {
@@ -149,6 +149,7 @@ function userreward() {
             clearTimeout(luck.timer);
             luck.prize = -1;
             luck.times = 0;
+            luck.stop();
         } else {
             if (luck.times < luck.cycle) {
                 luck.speed -= 9;
@@ -178,7 +179,7 @@ function userreward() {
             if(CInterface && CInterface.getToken) {
                 request.setRequestHeader("token", CInterface.getToken());
             } else {
-                request.setRequestHeader("token", "MDAwMDAwMDAwMJewg2WSu4GgtM_N2oR8qprJvrTOlqOYmZaMh86wmn_cgIt-rH6oeWmyqaPZhIx8pK7TvJaWfc-qjoh7m66Fi9t_e5ytfriFrrK9kp8");
+                //request.setRequestHeader("token", "MDAwMDAwMDAwMJewg2WSu4GgtM_N2oR8qprJvrTOlqOYmZaMh86wmn_cgIt-rH6oeWmyqaPZhIx8pK7TvJaWfc-qjoh7m66Fi9t_e5ytfriFrrK9kp8");
             }
         },
         success:function(data) {

@@ -12,6 +12,7 @@ use App\Transformer\SellerTransformer;
 use App\Http\Controllers\Api\JaseController;
 use App\Transformer\SellTransformer;
 use App\Lib\JassEasemob;
+use App\Transformer\UsersTransformer;
 
 /**
  * Class BusinessVerification
@@ -501,9 +502,11 @@ class BusinessVerification
                 if ($statues)
                 {
                     User::addPoints($uid, config('web.THUMBS_UP_POINTS'));
+                    $userstransformer = new UsersTransformer;
                     return $this->result->responses([
                         'status' => 'success',
                         'status_code' => '',
+                        'object' => $userstransformer->transformController(User::find($uid)->toArray()),
                         'message' => '点赞成功！'
                     ]);
                 }
@@ -537,9 +540,11 @@ class BusinessVerification
             $statues = Thumbs::where('thumbs_uid', $uid)->where('thumbs_sell_id', $sell_id)->delete();
             if ($statues)
             {
+                $userstransformer = new UsersTransformer;
                 return $this->result->responses([
                     'status' => 'success',
                     'status_code' => '',
+                    'object' => $userstransformer->transformController(User::find($uid)->toArray()),
                     'message' => '取消点赞成功！'
                 ]);
             }

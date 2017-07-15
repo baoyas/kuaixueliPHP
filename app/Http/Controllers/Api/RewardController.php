@@ -25,13 +25,20 @@ class RewardController extends JaseController
 
     public function index()
     {
-
+        $user_id = app('request')->item['uid'];
+        $sTime = date('Y-m-d');
+        $eTime = date('Y-m-d', strtotime($sTime)+3600*24);
+        $count = UserReward::where('user_id', $user_id)->whereBetween('created_at', [$sTime, $eTime])->groupBy(DB::raw('substring(created_at,1,10)'))->count();
+        $points = User::find($user_id)->get(['points'])->points;
+        $points = empty($points) ? 0 : $points;
         return $this->result->responses([
             'status' => 'success',
             'status_code' => '200',
             'object' => [
                 'list' => $this->grid()->getFormatData(),
-                'points' => 20
+                'points'=>$points,
+                'use_points' => 20,
+                'can_user_count' => 10-$count
             ]
         ]);
     }
@@ -46,7 +53,7 @@ class RewardController extends JaseController
             $where = [];
             $where['is_del'] = 0;
             $id and $where['id'] = $id;
-            $grid->model()->where($where)->orderBy('id', 'asc');
+            $grid->model()->where($where)->orderBy('sort', 'asc');
             $grid->column('id', 'id');
             $grid->column('rname', 'rname')->display(function($rname){
                 return html_entity_decode($rname);

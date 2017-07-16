@@ -140,6 +140,7 @@ function userreward() {
         return;
     }
     luck.start('luck');
+    var rname = '';
     var roll = function() {
         luck.times += 1;
         luck.roll();
@@ -155,6 +156,10 @@ function userreward() {
             luck.prize = -1;
             luck.times = 0;
             luck.stop();
+            if(rname!='') {
+                alert(rname);
+                rname = '';
+            }
         } else {
             if (luck.times < luck.cycle) {
                 luck.speed -= 9;
@@ -193,10 +198,11 @@ function userreward() {
                 alert(data.error.message);
             } else {
                 var index = $('[data-tk=reward]>li[data-id='+data.object.reward_id+']').attr('data-index');
+                rname = data.object.rname;
                 luck.prizeIndex(index);
                 $('[data-tk=points]').html(parseInt($('[data-tk=points]').html())-20);
                 $('[data-tk=can_use_count]').html(parseInt($('[data-tk=can_use_count]').html())-1);
-                alert(data.object.rname);
+                //alert(data.object.rname);
             }
         }
     });

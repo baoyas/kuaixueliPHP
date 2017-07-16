@@ -602,6 +602,23 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "账单明细",
+			"request": {
+				"url": "{{url}}/api/usermoney",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

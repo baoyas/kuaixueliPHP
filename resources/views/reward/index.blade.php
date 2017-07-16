@@ -133,7 +133,7 @@ function userreward() {
         return;
     }
     if(parseInt($('[data-tk=can_use_count]').html()) <=0 ) {
-        alert('次数已用完')!
+        alert('次数已用完');
         return;
     }
     if(luck.isStart()) {

@@ -192,11 +192,11 @@ function userreward() {
                 luck.stop(-1);
                 alert(data.error.message);
             } else {
-                //alert(data.object.rname);
                 var index = $('[data-tk=reward]>li[data-id='+data.object.reward_id+']').attr('data-index');
                 luck.prizeIndex(index);
                 $('[data-tk=points]').html(parseInt($('[data-tk=points]').html())-20);
                 $('[data-tk=can_use_count]').html(parseInt($('[data-tk=can_use_count]').html())-1);
+                alert(data.object.rname);
             }
         }
     });

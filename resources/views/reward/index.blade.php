@@ -129,7 +129,7 @@ $(document).ready(function(){
 });
 function userreward() {
     if(parseInt($('[data-tk=points]').html()) < 20) {
-        alert('积分不足')!
+        alert('积分不足');
         return;
     }
     if(parseInt($('[data-tk=can_use_count]').html()) <=0 ) {

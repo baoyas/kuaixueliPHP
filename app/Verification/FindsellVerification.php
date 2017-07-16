@@ -13,6 +13,7 @@ use App\Helpers\Helpers;
 use App\Model\Common;
 use App\Model\Sell;
 use App\Model\User;
+use App\Model\Thumbs;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ResultController as Result;
 use Illuminate\Support\Facades\Config;
@@ -21,6 +22,7 @@ use App\Transformer\SellTransformer;
 use App\Transformer\CommonTransformer;
 use App\Transformer\FindselleditTransformer;
 use App\Transformer\FriendsTransformer;
+use App\Transformer\UsersTransformer;
 
 class FindsellVerification
 {
@@ -32,6 +34,7 @@ class FindsellVerification
         $this->commontransformer = new CommonTransformer();
         $this->findselledittransformer = new FindselleditTransformer();
         $this->firendsstransformer = new FriendsTransformer();
+        $this->userstransformer = new UsersTransformer();
     }
 
     /**
@@ -99,6 +102,15 @@ class FindsellVerification
                 $_tmp_sell[$k]['sell_thumbsUp'] = $this->jasecontroller->sell_thumbsUp($v['id']);
                 $_tmp_sell[$k]['sell_comment'] = $this->jasecontroller->sell_comment($v['id']);
                 $_tmp_sell[$k]['is_thumbsUp'] = $this->jasecontroller->is_thumbsUp($uid, $v['id']);
+                $_tmp_sell[$k]['thumbsUp'] = [];
+                $thumbsUp = Thumbs::with('User')->where('thumbs_sell_id', $v['id'])->orderBy('id', 'desc')->limit(5)->get(['thumbs_uid'])->toArray();
+                if($thumbsUp && is_array($thumbsUp)) {
+                    foreach($thumbsUp as $val) {
+                        if($val['user']) {
+                            $_tmp_sell[$k]['thumbsUp'][] = $this->userstransformer->transform($val['user']);
+                        }
+                    }
+                }
             }
         }
 

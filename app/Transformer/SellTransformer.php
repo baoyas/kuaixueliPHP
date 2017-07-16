@@ -28,7 +28,8 @@ class SellTransformer extends Transformer
             'cate_name' => "".$item['cate_name']."",
             'sell_thumbsUp' => "".$item['sell_thumbsUp']."",
             'sell_comment' => "".$item['sell_comment']."",
-            'is_thumbsUp' => "".$item['is_thumbsUp'].""
+            'is_thumbsUp' => "".$item['is_thumbsUp']."",
+            'thumbsUp' => empty($item['thumbsUp']) ? [] : $item['thumbsUp']
         ];
     }
 }

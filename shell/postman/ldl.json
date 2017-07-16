@@ -604,7 +604,7 @@
 			"response": []
 		},
 		{
-			"name": "账单明细",
+			"name": "账单明细 ",
 			"request": {
 				"url": "{{url}}/api/usermoney",
 				"method": "GET",
@@ -616,7 +616,7 @@
 					}
 				],
 				"body": {},
-				"description": ""
+				"description": "biz_type 1分享获得 2抽奖获得\n\nflow_type 1支出 2收入\n\nvalue 金额 单位（分）"
 			},
 			"response": []
 		}

@@ -40,6 +40,13 @@ class UserMoneyController extends JaseController
             $grid->column('id', 'id');
             $grid->column('user_id', 'user_id');
             $grid->column('biz_type', 'biz_type');
+            $grid->column('biz_desc', 'biz_desc')->display(function(){
+                if($this->biz_type == '1') {
+                    return '分享获得';
+                } elseif($this->biz_type == '2') {
+                    return '抽奖获得';
+                }
+            });
             $grid->column('flow_type', 'flow_type');
             $grid->column('value', 'value');
             $grid->column('created_at', 'created_at');

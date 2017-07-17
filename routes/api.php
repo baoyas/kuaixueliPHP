@@ -63,6 +63,7 @@ $api->version('v1', function ($api) {
             $api->post('userSetBackground', 'UserController@userSetBackground'); //设置朋友圈背景
             $api->resource('usercate', 'UserCateController'); //用户的品类相关
             $api->resource('user/check', 'UserController@check'); //用户信息完整检查
+            $api->post('user/setAlipayAccount', 'UserController@setAlipayAccount'); //绑定支付宝账号
 
             /*我要买*/
             $api->post('business', 'BusinessController@Buystore'); //我要买

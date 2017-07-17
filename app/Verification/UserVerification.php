@@ -396,5 +396,36 @@ class UserVerification
         }
     }
 
+    public function setAlipayAccount (Request $request)
+    {
+        $alipay_account = $request->get('alipay_account');
+        if(empty($alipay_account)) {
+            return $this->result->setStatusMsg('error')->setStatusCode(603)->setMessage('支付宝账号不能为空')->responseError();
+        }
+        $user_id = $request->item['uid'];
+        $user = User::find($user_id);
+        if ($user)
+        {
+            $user->alipay_account = $alipay_account;
+            $stuse = $user->update();
+            if ($stuse)
+            {
+                return $this->result->responses([
+                    'status' => 'success',
+                    'status_code' => '',
+                    'message' => '绑定支付宝账号成功！'
+                ]);
+            }
+            else
+            {
+                return $this->result->setStatusMsg('error')->setStatusCode(405)->setMessage('绑定支付宝账号成功！')->responseError();
+            }
+        }
+        else
+        {
+            return $this->result->setStatusMsg('error')->setStatusCode(403)->setMessage('没有找到该用户！')->responseError();
+        }
+    }
+
 
 }

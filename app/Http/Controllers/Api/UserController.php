@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ResultController as Result;
 use App\Verification\UserVerification;
 use App\Model\User;
+use App\Transformer\UsersTransformer;
 
 class UserController extends JaseController
 {
@@ -16,6 +17,7 @@ class UserController extends JaseController
     {
         $this->result = new Result();
         $this->userverification = new UserVerification();
+        $this->userstransformer = new UsersTransformer();
     }
 
     /**
@@ -116,5 +118,10 @@ class UserController extends JaseController
             'status_code' => '',
             'object' => $data
         ]);
+    }
+
+    public function setAlipayAccount (Request $request)
+    {
+        return $this->userverification->setAlipayAccount($request);
     }
 }

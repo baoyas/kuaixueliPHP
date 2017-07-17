@@ -625,6 +625,33 @@
 				"description": "biz_type 1分享获得 2抽奖获得\n\nbiz_desc 账单描述\n\nflow_type 1支出 2收入\n\nvalue 金额 单位（分）"
 			},
 			"response": []
+		},
+		{
+			"name": "绑定支付宝账号",
+			"request": {
+				"url": "{{url}}/api/user/setAlipayAccount",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "alipay_account",
+							"value": "alip12dos",
+							"description": "支付宝账号",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

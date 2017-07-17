@@ -25,6 +25,7 @@ class UsersTransformer extends Transformer
             'backgroud_pic' => Config::get('web.QINIU_URL').'/'.$item['backgroud_pic'],
             'points' => $item['points'],
             'money' => $item['money'],
+            'alipay_account' => $item['alipay_account']
         ];
     }
 }

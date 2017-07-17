@@ -248,6 +248,10 @@ function userreward() {
             luck.prize = -1;
             luck.times = 0;
             luck.stop();
+            if(rname) {
+                ldl.core.confirm(rname, 1);
+                rname = '';
+            }
         } else {
             if (luck.times < luck.cycle) {
                 luck.speed -= 9;
@@ -289,7 +293,7 @@ function userreward() {
                 luck.prizeIndex(index);
                 $('[data-tk=points]').html(parseInt($('[data-tk=points]').html())-20);
                 $('[data-tk=can_use_count]').html(parseInt($('[data-tk=can_use_count]').html())-1);
-                ldl.core.confirm(data.object.rname, 1);
+                rname = data.object.rname;
             }
         }
     });

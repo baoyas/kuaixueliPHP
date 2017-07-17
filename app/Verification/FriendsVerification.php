@@ -152,6 +152,7 @@ class FriendsVerification
                 $sell['data'][$k]['sell_comment'] = $this->jasecontroller->sell_comment($v['id']);
                 $sell['data'][$k]['is_thumbsUp'] = $this->jasecontroller->is_thumbsUp($uid, $v['id'], 1);
                 $sell['data'][$k]['user_face'] = config('web.QINIU_URL').'/'.$v['user_face'];
+                $sell['data'][$k]['sell_area'] = $v['sell_area'];
             }
         }
         else

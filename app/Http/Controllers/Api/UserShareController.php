@@ -42,6 +42,19 @@ class UserShareController extends JaseController
             $grid->column('biz_type', 'biz_type');
             $grid->column('biz_id', 'biz_id');
             $grid->column('channel', 'channel');
+            $grid->column('value', 'value');
+            $grid->column('biz_desc', 'biz_desc')->display(function(){
+                if($this->biz_type==1 || $this->biz_type==2 || $this->biz_type==3) {
+                    return '分享获得';
+                } else if($this->biz_type==4) {
+                    return '分享了当了获得';
+                } else if($this->biz_type==5) {
+                    return '抽奖获得';
+                } else {
+                    return '';
+                }
+            });
+            $grid->column('created_at', 'created_at');
             $grid->disableActions();
             $grid->disableBatchDeletion();
             $grid->disableCreation();
@@ -111,12 +124,15 @@ class UserShareController extends JaseController
                     ]);
                 } else {
                     //User::where(['id'=>$form->user_id])->increment('points', config('web.SHARE_POINTS'));
+                    $points = 0;
                     if($form->biz_type==1 || $form->biz_type==2) {
                         $sell = Sell::find($form->biz_id);
                         if($sell->recommend==1) {
-                            User::addPoints($form->user_id, config('web.SHARE_RECOMMEND_SELL_POINTS'));
+                            $points = config('web.SHARE_RECOMMEND_SELL_POINTS');
+                            User::addPoints($form->user_id, $points);
                         } else {
-                            User::addPoints($form->user_id, config('web.SHARE_SELL_POINTS'));
+                            $points = config('web.SHARE_SELL_POINTS');
+                            User::addPoints($form->user_id, $points);
                         }
                         $date = date('Y-m-d');
                         $cacheKey = "user_money_day_{$date}_times_{$form->user_id}";
@@ -126,14 +142,15 @@ class UserShareController extends JaseController
                             Cache::increment($cacheKey, 1);
                         }
                     } else {
-                        User::addPoints($form->user_id, config('web.SHARE_POINTS'));
+                        $points = config('web.SHARE_POINTS');
+                        User::addPoints($form->user_id, $points);
                     }
                     $data = json_decode($this->grid($form->model()->id)->render('object'), true);
                     return response()->json([
                         'status'  => 'success',
                         'status_code' => '200',
                         'object' => $data,
-                        'message' => '感谢分享,获得3积分！'
+                        'message' => "感谢分享,获得{$points}积分！"
                     ]);
                 }
             });

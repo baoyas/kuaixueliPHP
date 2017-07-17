@@ -6,6 +6,7 @@ use DB;
 use App\Model\User;
 use App\Model\RewardConf;
 use App\Model\UserReward;
+use App\Model\UserShare;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\ResultController as Result;
 
@@ -158,6 +159,7 @@ class RewardController extends JaseController
                     User::addMoney($form->user_id, $form->value, 2);
                 } elseif($form->type == 4) {
                     User::find($form->user_id)->increment('points', $form->value);
+                    UserShare::create(['user_id'=>$form->user_id, 'biz_type'=>5, value=>$form->value]);
                 }
                 User::where('id', $form->user_id)->decrement('points', 20);
                 return response()->json([

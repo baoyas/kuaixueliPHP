@@ -49,6 +49,7 @@ class User extends Model
         if($pointsDay <= 300) {
             User::find($uid)->increment('points', $points);
             Cache::increment($cacheKey, $points);
+            //UserShare::create(['user_id'=>$uid, 'biz_type'=>6, config('web.RELEASE_SELL_POINTS')]);
         }
     }
 

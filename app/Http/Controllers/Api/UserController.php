@@ -124,4 +124,9 @@ class UserController extends JaseController
     {
         return $this->userverification->setAlipayAccount($request);
     }
+
+    public function unSetAlipayAccount (Request $request)
+    {
+        return $this->userverification->unSetAlipayAccount($request);
+    }
 }

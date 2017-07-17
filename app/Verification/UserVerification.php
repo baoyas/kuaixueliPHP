@@ -427,5 +427,33 @@ class UserVerification
         }
     }
 
+    public function unSetAlipayAccount (Request $request)
+    {
+        $user_id = $request->item['uid'];
+        $user = User::find($user_id);
+        if ($user)
+        {
+            $user->alipay_account = '';
+            $stuse = $user->update();
+            if ($stuse)
+            {
+                return $this->result->responses([
+                    'status' => 'success',
+                    'status_code' => '',
+                    'message' => '解绑支付宝账号成功！'
+                ]);
+            }
+            else
+            {
+                return $this->result->setStatusMsg('error')->setStatusCode(405)->setMessage('解绑支付宝账号成功！')->responseError();
+            }
+        }
+        else
+        {
+            return $this->result->setStatusMsg('error')->setStatusCode(403)->setMessage('没有找到该用户！')->responseError();
+        }
+    }
+
+
 
 }

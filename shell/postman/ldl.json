@@ -652,6 +652,23 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "解绑定支付宝账号",
+			"request": {
+				"url": "{{url}}/api/user/unSetAlipayAccount",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

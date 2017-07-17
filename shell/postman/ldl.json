@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "ldl",
-		"_postman_id": "47807e3f-a0fa-603e-2b03-06a7dddba54c",
+		"_postman_id": "1b3e20de-2d77-63c6-3c96-8dbbca03a039",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -598,7 +598,10 @@
 						"description": ""
 					}
 				],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"description": ""
 			},
 			"response": []
@@ -615,8 +618,11 @@
 						"description": ""
 					}
 				],
-				"body": {},
-				"description": "biz_type 1分享获得 2抽奖获得\n\nflow_type 1支出 2收入\n\nvalue 金额 单位（分）"
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "biz_type 1分享获得 2抽奖获得\n\nbiz_desc 账单描述\n\nflow_type 1支出 2收入\n\nvalue 金额 单位（分）"
 			},
 			"response": []
 		}

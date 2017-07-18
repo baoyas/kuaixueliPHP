@@ -35,16 +35,22 @@ var ldl = {};
 ldl.alert = function(title, content) {
     var title = title || '';
     var content = content || '';
+    $('#ldl_tips').remove();
     var html = $('\
-        <div class="main">\
-            <div class="layer_content">\
+        <div class="main" id="ldl_tips">\
+            <div class="layer_content" id="ldl_tips_content">\
                 <h1>'+title+'</h1>\
                 <p>'+content+'</p>\
-                <a href="javascript:" class="okey">\
+                <a class="okey">\
                     <img src="img/icon_btn_queding@3x.png"/>\
                 </a>\
             </div>\
         </div>');
+    html.find('.okey').click(function(){
+        var _this = $(this).parents(".layui-layer").index();
+        $("#layui-layer-shade1").hide();
+        $(this).parents(".layui-layer").remove();
+    });
     $('body').append(html);
     layer.open({
         type: 1,
@@ -52,7 +58,7 @@ ldl.alert = function(title, content) {
         closeBtn: 0, //不显示关闭按钮
         anim: 2,
         shadeClose: true, //开启遮罩关闭
-        content: $('.layer_content')
+        content: $('#ldl_tips_content')
     });
 };
 </script>

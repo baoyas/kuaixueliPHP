@@ -57,9 +57,11 @@ ldl.alert = function(title, content) {
         closeBtn: 0, //不显示关闭按钮
         anim: 2,
         shadeClose: true, //开启遮罩关闭
+        area:['90%'],
         content: $('#ldl_tips_content')
     });
 };
+//ldl.alert('111','33333');
 </script>
 <script>
 var luck = {

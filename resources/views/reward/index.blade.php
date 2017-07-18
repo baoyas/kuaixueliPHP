@@ -47,9 +47,8 @@ ldl.alert = function(title, content) {
             </div>\
         </div>');
     html.find('.okey').click(function(){
-        var _this = $(this).parents(".layui-layer").index();
-        $("#layui-layer-shade1").hide();
-        $(this).parents(".layui-layer").remove();
+        html.remove();
+        $("#layui-layer-shade1").remove();
     });
     $('body').append(html);
     layer.open({

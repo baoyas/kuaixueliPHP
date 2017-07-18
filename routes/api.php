@@ -142,7 +142,7 @@ $api->version('v1', function ($api) {
             $api->get('totalSell', 'HomeController@totalSell');
 
             $api->put('alipay/bind', 'AlipayController@bind');
-            $api->get('alipay/unbind', 'AlipayController@unbind');
+            $api->put('alipay/unbind', 'AlipayController@unbind');
 
         });
 

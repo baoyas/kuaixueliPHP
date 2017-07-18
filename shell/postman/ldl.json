@@ -627,37 +627,10 @@
 			"response": []
 		},
 		{
-			"name": "绑定支付宝账号",
+			"name": "我的积分",
 			"request": {
-				"url": "{{url}}/api/user/setAlipayAccount",
-				"method": "POST",
-				"header": [
-					{
-						"key": "token",
-						"value": "{{token}}",
-						"description": ""
-					}
-				],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "alipay_account",
-							"value": "alip12dos",
-							"description": "支付宝账号",
-							"type": "text"
-						}
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "解绑定支付宝账号",
-			"request": {
-				"url": "{{url}}/api/user/unSetAlipayAccount",
-				"method": "POST",
+				"url": "{{url}}/api/userpoints",
+				"method": "GET",
 				"header": [
 					{
 						"key": "token",
@@ -671,10 +644,52 @@
 			"response": []
 		},
 		{
-			"name": "我的积分",
+			"name": "绑定支付宝账户",
 			"request": {
-				"url": "{{url}}/api/userpoints",
-				"method": "GET",
+				"url": {
+					"raw": "{{url}}/api/alipay/bind?auth_code=4b203fe6c11548bcabd8da5bb087a83b&alipay_userid=2088102150477652",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"alipay",
+						"bind"
+					],
+					"query": [
+						{
+							"key": "auth_code",
+							"value": "4b203fe6c11548bcabd8da5bb087a83b",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "alipay_userid",
+							"value": "2088102150477652",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "解绑支付宝账户",
+			"request": {
+				"url": "{{url}}/api/alipay/unbind",
+				"method": "PUT",
 				"header": [
 					{
 						"key": "token",

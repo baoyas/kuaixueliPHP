@@ -12,15 +12,16 @@ use App\Fcore\Controllers\ModelForm;
 use App\Lib\Alipay\aop\AopClient;
 use App\Lib\Alipay\aop\request\AlipaySystemOauthTokenRequest;
 use App\Lib\Alipay\aop\request\AlipayUserInfoShareRequest;
-use Mockery\CountValidator\Exception;
 
 class AlipayController extends JaseController
 {
     use ModelForm;
     private $result;
+    private $userverification;
     public function __construct()
     {
         $this->result = new Result();
+        $this->userverification = new UserVerification();
     }
 
 
@@ -79,5 +80,9 @@ class AlipayController extends JaseController
         {
             return $this->result->setStatusMsg('error')->setStatusCode(403)->setMessage('没有找到该用户！')->responseError();
         }
+    }
+
+    public function unbind (Request $request) {
+        return $this->userverification->unSetAlipayAccount($request);
     }
 }

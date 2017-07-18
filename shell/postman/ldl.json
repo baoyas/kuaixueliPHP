@@ -701,6 +701,39 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "支付宝签名",
+			"request": {
+				"url": "{{url}}/api/alipay/sign",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "key1",
+							"value": "content1",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "key2",
+							"value": "content2",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

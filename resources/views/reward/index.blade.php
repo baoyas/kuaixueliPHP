@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
     <title>抽奖</title>
     <link rel="stylesheet" type="text/css" href="css/styleCJ.css" />
-    <style>
-        html{font-size: 20px;}
-    </style>
+    <link rel="stylesheet" type="text/css" href="js/layer/mobile/need/layer.css"/>
 </head>
 <body>
     <div id="title">
@@ -27,96 +25,36 @@
     <div class="rules">
         <a onclick="ldl_rule()"><img src="img/rules.png"></a>
     </div>
+
+
 </body>
 <script type="text/javascript" src="{{ URL::asset('js/jquery-1.10.2.js') }}"></script>
+<script type="text/javascript" src="js/layer/layer.js"></script>
 <script>
 var ldl = {};
-
-ldl.core = (function ($) {
-    return {
-        confirm: function (tipsContent, isTip, options) {
-            var options = options || {};
-            options.confirm = options.confirm || '确定';
-            options.cancel = options.cancel   || '返回';
-            options.confirmCallBack = options.confirmCallBack || function(){};
-            if($('head').find('style[id="confirmCss"]').length==0) {
-                var style = $("<style type='text/css' id='confirmCss'>\
-                    .maskBg{touch-action: none;background:#000; position:fixed; z-index:999; display:none;left:0px; top:0px; bottom: 0px; width:100%; height:100%;opacity: 0.5; filter: alpha(opacity=50);}\
-                    .maskBox{width: 80%; text-align: center; position:absolute; z-index:1000; background: #fff; border-radius: .4rem; padding: .2rem 0; display:none;}\
-                    .maskBox .tipsContent{text-align: center; padding: .8rem .4rem; font-size: .6rem;}\
-                    .maskBox .tipsSure{width: 100%; height: 1.2rem; color: #248DFE; line-height: 1.2rem; border-top: 1px solid #dbdbde; margin-top: .2rem;}\
-                    .maskBox .tipsSure .btnHalf{width: 50%; height: 1.2rem; line-height: 1.2rem; font-size: .6rem; text-align: center; color: #222; display: block; float: left; margin-top: 0.2rem;}\
-                    </style>");
-                $('head').append(style);
-            }
-
-            var defer = $.Deferred();
-            if(isTip == 1) {
-                var box = $('\
-                    <div id="MaskBox" class="maskBox">\
-                        <div class="tipsContent"><ul style="width:100%;margin:0 auto;overflow:hidden;"><li style="float:left;width:100%;">\
-                        <p style="display:table;margin:0 auto;text-align:left;word-break:break-all;word-wrap:break-word;font-size:0.8rem;"></p>\
-                        </li></ul></div>\
-                        <div class="tipsSure"><p onclick="javascript:void(0);" class="btn-confirm">确定</p></div>\
-                    </div>\
-                    <div id="maskBg" class="maskBg"></div>');
-            } else if(isTip == 2) {
-                var box = $('\
-                    <div id="MaskBox" class="maskBox">\
-                        <div class="tipsContent"><ul style="width:100%;margin:0 auto;overflow:hidden;"><li style="float:left;width:100%;">\
-                        <p style="display:table;margin:0 auto;text-align:left;word-break:break-all;word-wrap:break-word;font-size:0.8rem;"></p>\
-                        </li></ul></div>\
-                        <div class="tipsSure">\
-                            <span class="btnHalf btn-cancel" onclick="javascript:void(0);">'+options.cancel+'</span>\
-                            <span class="btnHalf btn-confirm"  onclick="javascript:void(0);">'+options.confirm+'</span>\
-                        </div>\
-                    </div>\
-                    <div id="maskBg" class="maskBg"></div>');
-                box.find('.btn-cancel').css('border-right','1px solid #dbdbde');
-                box.find('.btnHalf').css('width', '49%');
-            }
-
-            if($('#MaskBox').length==0) {
-                $("body").after(box);
-            }else{
-                $('#MaskBox').remove();
-                $('#maskBg').remove();
-                $("body").after(box);
-            }
-            var boxConfirm = $('#MaskBox');
-            $("#maskBg").show();//fadeIn("slow");
-            $("#maskBg").css({ display: "block"});
-            boxConfirm.find('.tipsContent>ul>li>p:first').html(tipsContent);
-
-            var top = ($(window).height() - $(boxConfirm).height())/2;
-            var left = ($(window).width() - $(boxConfirm).width())/2;
-            var scrollTop = $(document).scrollTop();
-            var scrollLeft = $(document).scrollLeft();
-            $(boxConfirm).css({position:'absolute','top':top+scrollTop, left:left+scrollLeft}).show();
-
-            // 绑定确认、取消按钮
-            boxConfirm.find('.btn-confirm').bind('click', function () {
-                boxConfirm.hide(0, function () {
-                    defer.resolve(boxConfirm.find('.box-confirm-content').val());
-                    boxConfirm.remove();
-                    boxConfirm = null;
-                });
-                $("#maskBg").remove();
-                options.confirmCallBack();
-            });
-            boxConfirm.find('.btn-cancel').one('click', function () {
-                boxConfirm.hide(0, function () {
-                    defer.reject();
-                    boxConfirm.remove();
-                    boxConfirm = null;
-                });
-                $("#maskBg").remove();
-            });
-            boxConfirm.show();
-            return defer.promise();
-        }
-    };
-})(jQuery);
+ldl.alert = function(title, content) {
+    var title = title || '';
+    var content = content || '';
+    var html = $('\
+        <div class="main">\
+            <div class="layer_content">\
+                <h1>'+title+'</h1>\
+                <p>'+content+'</p>\
+                <a href="javascript:" class="okey">\
+                    <img src="img/icon_btn_queding@3x.png"/>\
+                </a>\
+            </div>\
+        </div>');
+    $('body').append(html);
+    layer.open({
+        type: 1,
+        title:false,
+        closeBtn: 0, //不显示关闭按钮
+        anim: 2,
+        shadeClose: true, //开启遮罩关闭
+        content: $('.layer_content')
+    });
+};
 </script>
 <script>
 var luck = {
@@ -205,7 +143,7 @@ $(document).ready(function(){
         },
         success:function(data) {
             if(data.status=='error') {
-                ldl.core.confirm(data.error.message, 1);
+                alert(data.error.message);
             } else {
                 $('[data-tk=points]').html(data.object.points);
                 $('[data-tk=can_use_count]').html(data.object.can_use_count);
@@ -221,18 +159,18 @@ $(document).ready(function(){
 });
 function userreward() {
     if(parseInt($('[data-tk=points]').html()) < 20) {
-        ldl.core.confirm('积分不足', 1);
+        alert('积分不足');
         return;
     }
     if(parseInt($('[data-tk=can_use_count]').html()) <=0 ) {
-        ldl.core.confirm('次数已用完', 1);
+        alert('次数已用完');
         return;
     }
     if(luck.isStart()) {
         return;
     }
     luck.start('luck');
-    var rname = '';
+    var reward = {};
     var roll = function() {
         luck.times += 1;
         luck.roll();
@@ -248,9 +186,13 @@ function userreward() {
             luck.prize = -1;
             luck.times = 0;
             luck.stop();
-            if(rname) {
-                ldl.core.confirm(rname, 1);
-                rname = '';
+            if(!$.isEmptyObject(reward)) {
+                if(reward.type==0) {
+                    ldl.alert('没有中奖！', reward.rname);
+                } else {
+                    ldl.alert('中奖啦！', '恭喜您！获得了<span>'+reward.rname+'</span>，红包已存入您的账户，您简直是幸运之星！快去再抽一次吧～');
+                }
+                reward = {};
             }
         } else {
             if (luck.times < luck.cycle) {
@@ -287,13 +229,13 @@ function userreward() {
         success:function(data) {
             if(data.status=='error') {
                 luck.stop(-1);
-                ldl.core.confirm(data.error.message, 1);
+                alert(data.error.message);
             } else {
                 var index = $('[data-tk=reward]>li[data-id='+data.object.reward_id+']').attr('data-index');
                 luck.prizeIndex(index);
                 $('[data-tk=points]').html(parseInt($('[data-tk=points]').html())-20);
                 $('[data-tk=can_use_count]').html(parseInt($('[data-tk=can_use_count]').html())-1);
-                rname = data.object.rname;
+                reward = data.object;
             }
         }
     });

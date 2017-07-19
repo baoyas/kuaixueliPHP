@@ -718,6 +718,12 @@
 					"mode": "formdata",
 					"formdata": [
 						{
+							"key": "sign_type",
+							"value": "RSA2",
+							"description": "取值范围 RSA 或 RSA2",
+							"type": "text"
+						},
+						{
 							"key": "key1",
 							"value": "content1",
 							"description": "",

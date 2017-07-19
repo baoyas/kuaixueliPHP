@@ -89,7 +89,13 @@ class AlipayController extends JaseController
 
     public function sign(Request $request) {
         $all  = $request->all();
-        $sign = $this->c->generateSign($all);
+        if(empty($all['sign_type'])) {
+            $all['sign_type'] = 'RSA2';
+        } else {
+            $all['sign_type'] = $all['sign_type']!='RSA' && $all['sign_type']!='RSA2' ? 'RSA2' : $all['sign_type'];
+        }
+        ksort($all);
+        $sign = $this->c->generateSign($all, $all['sign_type']);
         return $this->result->responses([
             'status' => 'success',
             'status_code' => '',

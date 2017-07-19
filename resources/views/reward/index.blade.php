@@ -198,9 +198,13 @@ function userreward() {
             luck.stop();
             if(!$.isEmptyObject(reward)) {
                 if(reward.type==0) {
-                    ldl.alert('没有中奖！', reward.rname);
-                } else {
+                    ldl.alert('谢谢参与！', '不要气馁，也许幸运之神会在下次抽奖时降临呢！快去再抽一次吧～');
+                } else if(reward.type==1){
                     ldl.alert('中奖啦！', '恭喜您！获得了<span>'+reward.rname+'</span>，红包已存入您的账户，您简直是幸运之星！快去再抽一次吧～');
+                } else if(reward.type==2){
+                    ldl.alert('中奖啦！', '恭喜您！获得了<span>'+reward.rname+'</span>，请在“我的“-“个人信息“填写好收货地址，我们将尽快为您发出~');
+                } else if(reward.type==4){
+                    ldl.alert('中奖啦！', '恭喜您！获得了<span>'+reward.rname+'</span>，积分已存入您的账户，您简直是幸运之星！快去再抽一次吧～');
                 }
                 reward = {};
             }

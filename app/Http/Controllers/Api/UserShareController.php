@@ -127,19 +127,63 @@ class UserShareController extends JaseController
                     $points = 0;
                     if($form->biz_type==1 || $form->biz_type==2) {
                         $sell = Sell::find($form->biz_id);
-                        if($sell->recommend==1) {
+                        if($sell->recommend==1 && ($sell->is_sell==1||$sell->is_sell==2)) {
+                            $date = date('Y-m-d');
+                            $cacheKey = "user_money_day_{$date}_times_{$form->user_id}";
+                            $moneyDayTimes = Cache::get($cacheKey);
+                            if($moneyDayTimes <= 5) {
+                                /*（0.01元­­­—1元）。此种方式每天最多获得红包5个，之后可以继续分享，但是不得红包。
+                                这里
+                                0.01至0.10占比60% ，
+                                0.11至0.60占比30%，
+                                0.61至0.80占比4%，
+                                0.81至1.00占比1%*/
+                                $reward = [
+                                    ['weight'=>60, 'min'=>1, 'max'=>10],
+                                    ['weight'=>35, 'min'=>11, 'max'=>60],
+                                    ['weight'=>4, 'min'=>61, 'max'=>80],
+                                    ['weight'=>1, 'min'=>81, 'max'=>100]
+                                ];
+                                /****准备奖励--start--**/
+                                $rew = [];
+                                if($reward) {
+                                    $min = 0;
+                                    $max = 0;
+                                    foreach($reward as $key=>$val) {
+                                        if(empty($val['weight']) || intval($val['weight'])<0) {
+                                            continue;
+                                        }
+                                        $max = $max+$val['weight'];
+                                    }
+
+                                    if($max>0) {
+                                        $rand_num = mt_rand(1, $max);
+                                        $bonusIndex = '';
+
+                                        foreach ($reward as $key=>$val) {
+                                            if(empty($val['weight']) || intval($val['weight'])<0) {
+                                                continue;
+                                            }
+                                            if ($rand_num > $min && $rand_num <= $min+$val['weight']) {
+                                                $bonusIndex = $key;
+                                                break;
+                                            }
+                                            $min = $min+$val['weight'];
+                                        }
+                                        if($bonusIndex!=='') {
+                                            $rew = $reward[$bonusIndex];
+                                        }
+                                    }
+                                }
+                                /****准备奖励--end--**/
+                                User::addMoney($form->user_id, mt_rand($rew['min'], $rew['max']), '1');
+                                Cache::increment($cacheKey, 1);
+                            }
                             $points = config('web.SHARE_RECOMMEND_SELL_POINTS');
                             User::addPoints($form->user_id, $points);
                         } else {
                             $points = config('web.SHARE_SELL_POINTS');
                             User::addPoints($form->user_id, $points);
-                        }
-                        $date = date('Y-m-d');
-                        $cacheKey = "user_money_day_{$date}_times_{$form->user_id}";
-                        $moneyDayTimes = Cache::get($cacheKey);
-                        if($moneyDayTimes <= 5) {
-                            User::addMoney($form->user_id, mt_rand(1, 100), '1');
-                            Cache::increment($cacheKey, 1);
                         }
                     } else {
                         $points = config('web.SHARE_POINTS');

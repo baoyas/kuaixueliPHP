@@ -51,17 +51,20 @@ ldl.alert = function(title, content) {
         $("#layui-layer-shade1").remove();
     });
     $('body').append(html);
+    var outHight = "";
+    $(window).resize(function(){
+        outHight = $(".layui-layer").outerHeight()
+    });
     layer.open({
         type: 1,
         title:false,
         closeBtn: 0, //不显示关闭按钮
         anim: 2,
         shadeClose: true, //开启遮罩关闭
-        area:['90%'],
+        area:['80%', outHight],
         content: $('#ldl_tips_content')
     });
 };
-//ldl.alert('111','33333');
 </script>
 <script>
 var luck = {

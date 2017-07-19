@@ -157,19 +157,16 @@ input:focus {
   width: 100%;
 }
 .main .share .download {
-  background: #E9EBEB;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 55px;
   text-align: center;
 }
 .main .share .download a {
-  padding: 8px 26px;
-  line-height: 55px;
-  color: #fff;
-  border-radius: 4px;
-  font-size: 16px;
-  background: #31BDA9;
+  display: block;
+}
+.main .share .download a img {
+  display: block;
+  width: 100%;
 }

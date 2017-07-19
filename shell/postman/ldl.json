@@ -734,6 +734,33 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "发起提现申请",
+			"request": {
+				"url": "{{url}}/api/withdraw",
+				"method": "POST",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "value",
+							"value": "100",
+							"description": "单位分",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

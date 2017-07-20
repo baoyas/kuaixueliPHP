@@ -767,6 +767,23 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "支付宝auth",
+			"request": {
+				"url": "{{url}}/api/alipay/auth",
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

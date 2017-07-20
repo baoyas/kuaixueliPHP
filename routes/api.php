@@ -144,6 +144,7 @@ $api->version('v1', function ($api) {
             $api->put('alipay/bind', 'AlipayController@bind');
             $api->put('alipay/unbind', 'AlipayController@unbind');
             $api->post('alipay/sign', 'AlipayController@sign');
+            $api->get('alipay/auth', 'AlipayController@auth');
         });
 
 

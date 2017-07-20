@@ -128,7 +128,7 @@ class AlipayController extends JaseController
         return $this->result->responses([
             'status' => 'success',
             'status_code' => '',
-            'object' => http_build_query($sign)
+            'object' => http_build_query($all)
         ]);
     }
 }

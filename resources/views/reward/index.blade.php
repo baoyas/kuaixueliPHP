@@ -50,7 +50,8 @@ ldl.alert = function(title, content, clickbtn, callback) {
         </div>');
     html.find('.okey').click(function(){
         html.remove();
-        $("#layui-layer-shade1").remove();
+        layer.close();
+        $('.layui-layer-shade').remove();
         callback();
     });
     $('body').append(html);

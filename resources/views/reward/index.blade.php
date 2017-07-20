@@ -32,9 +32,11 @@
 <script type="text/javascript" src="js/layer/layer.js"></script>
 <script>
 var ldl = {};
-ldl.alert = function(title, content) {
+ldl.alert = function(title, content, clickbtn, callback) {
     var title = title || '';
     var content = content || '';
+    var clickbtn = clickbtn || '好的';
+    var callback = callback || function(){};
     $('#ldl_tips').remove();
     var html = $('\
         <div class="main" id="ldl_tips">\
@@ -42,13 +44,14 @@ ldl.alert = function(title, content) {
                 <h1>'+title+'</h1>\
                 <p>'+content+'</p>\
                 <a class="okey">\
-                    好的\
+                    '+clickbtn+'\
                 </a>\
             </div>\
         </div>');
     html.find('.okey').click(function(){
         html.remove();
         $("#layui-layer-shade1").remove();
+        callback();
     });
     $('body').append(html);
     var outHight = "";
@@ -203,7 +206,9 @@ function userreward() {
                 } else if(reward.type==1){
                     ldl.alert('中奖啦！', '恭喜您！获得了<span>'+reward.rname+'</span>，红包已存入您的账户，您简直是幸运之星！快去再抽一次吧～');
                 } else if(reward.type==2){
-                    ldl.alert('中奖啦！', '恭喜您！获得了<span>'+reward.rname+'</span>，请在“我的“-“个人信息“填写好收货地址，我们将尽快为您发出~');
+                    ldl.alert('中奖啦！', '恭喜您！获得了<span>'+reward.rname+'</span>，请在“我的“-“个人信息“填写好收货地址，我们将尽快为您发出~', '去填写', function(){
+                        alert('跳转至客户单填写地址');
+                    });
                 } else if(reward.type==4){
                     ldl.alert('中奖啦！', '恭喜您！获得了<span>'+reward.rname+'</span>，积分已存入您的账户，您简直是幸运之星！快去再抽一次吧～');
                 }

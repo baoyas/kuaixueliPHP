@@ -42,7 +42,7 @@ ldl.alert = function(title, content) {
                 <h1>'+title+'</h1>\
                 <p>'+content+'</p>\
                 <a class="okey">\
-                    <img src="img/icon_btn_queding@3x.png"/>\
+                    好的\
                 </a>\
             </div>\
         </div>');
@@ -65,6 +65,7 @@ ldl.alert = function(title, content) {
         content: $('#ldl_tips_content')
     });
 };
+ldl.alert('谢谢参与！', '不要气馁，也许幸运之神会在下次抽奖时降临呢！快去再抽一次吧～');
 </script>
 <script>
 var luck = {

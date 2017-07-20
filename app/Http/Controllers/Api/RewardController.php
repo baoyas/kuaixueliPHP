@@ -39,7 +39,7 @@ class RewardController extends JaseController
                 'list' => $this->grid()->getFormatData(),
                 'points'=>$points,
                 'use_points' => 20,
-                'can_use_count' => 10-$count
+                'can_use_count' => max(0, 5-$count)
             ]
         ]);
     }
@@ -135,7 +135,7 @@ class RewardController extends JaseController
                 $sTime = date('Y-m-d');
                 $eTime = date('Y-m-d', strtotime($sTime)+3600*24);
                 $count = UserReward::where('user_id', $form->user_id)->whereBetween('created_at', [$sTime, $eTime])->groupBy(DB::raw('substring(created_at,1,10)'))->count();
-                if($count>=10) {
+                if($count>=5) {
                     return response()->json([
                         'status'  => 'error',
                         'error' => [

@@ -102,4 +102,33 @@ class AlipayController extends JaseController
             'object'=>['input'=>$all, 'sign'=>urlencode($sign)]
         ]);
     }
+
+    public function auth(Request $request) {
+        $all = [
+            'biz_type' => 'openservice',
+            'scope' => 'kuaijie',
+            'product_id' => 'APP_FAST_LOGIN',
+            'auth_type' => 'AUTHACCOUNT',
+            'apiname' => 'com.alipay.account.auth',
+            'sign_type' => 'RSA2',
+            'pid' => '2088901865907742',
+            'app_id' => '2017071607774564',
+            'app_name' => 'mc',
+            'target_id' => 'kkkkk091125',
+            'method' => 'alipay.open.auth.sdk.code.get'
+        ];
+        if(empty($all['sign_type'])) {
+            $all['sign_type'] = 'RSA2';
+        } else {
+            $all['sign_type'] = $all['sign_type']!='RSA' && $all['sign_type']!='RSA2' ? 'RSA2' : $all['sign_type'];
+        }
+        ksort($all);
+        $sign = $this->c->generateSign($all, $all['sign_type']);
+        $all['sign'] = $sign;
+        return $this->result->responses([
+            'status' => 'success',
+            'status_code' => '',
+            'object' => http_build_query($sign)
+        ]);
+    }
 }

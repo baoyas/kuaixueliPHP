@@ -13,7 +13,7 @@ use App\Lib\Alipay\aop\AopClient;
 use App\Lib\Alipay\aop\request\AlipaySystemOauthTokenRequest;
 use App\Lib\Alipay\aop\request\AlipayUserInfoShareRequest;
 
-class AlipayController extends JaseController
+class AlipayController extends Controller
 {
     use ModelForm;
     private $result;

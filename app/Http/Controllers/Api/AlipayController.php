@@ -99,7 +99,7 @@ class AlipayController extends Controller
         return $this->result->responses([
             'status' => 'success',
             'status_code' => '',
-            'object'=>['input'=>$all, 'sign'=>urlencode($sign)]
+            'object'=>['input'=>$all, 'sign'=>($sign)]
         ]);
     }
 

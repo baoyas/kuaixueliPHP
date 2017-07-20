@@ -119,9 +119,9 @@ class AopClient {
 	protected function sign($data, $signType = "RSA") {
 		if($this->checkEmpty($this->rsaPrivateKeyFilePath)){
 			$priKey=$this->rsaPrivateKey;
-			$res = "-----BEGIN RSA PRIVATE KEY-----\n" .
+			$res = openssl_get_privatekey("-----BEGIN RSA PRIVATE KEY-----\n" .
 				wordwrap($priKey, 64, "\n", true) .
-				"\n-----END RSA PRIVATE KEY-----";
+				"\n-----END RSA PRIVATE KEY-----");
 		}else {
 			$priKey = file_get_contents($this->rsaPrivateKeyFilePath);
 			$res = openssl_get_privatekey($priKey);
@@ -135,7 +135,7 @@ class AopClient {
 			openssl_sign($data, $sign, $res);
 		}
 
-		if(!$this->checkEmpty($this->rsaPrivateKeyFilePath)){
+		if(!$this->checkEmpty($this->rsaPrivateKeyFilePath) || true){
 			openssl_free_key($res);
 		}
 		$sign = base64_encode($sign);

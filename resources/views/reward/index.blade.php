@@ -65,7 +65,7 @@ ldl.alert = function(title, content) {
         content: $('#ldl_tips_content')
     });
 };
-ldl.alert('谢谢参与！', '不要气馁，也许幸运之神会在下次抽奖时降临呢！快去再抽一次吧～');
+//ldl.alert('谢谢参与！', '不要气馁，也许幸运之神会在下次抽奖时降临呢！快去再抽一次吧～');
 </script>
 <script>
 var luck = {

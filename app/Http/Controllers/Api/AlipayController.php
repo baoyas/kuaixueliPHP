@@ -33,7 +33,7 @@ class AlipayController extends Controller
         $this->c->charset= "UTF-8";
         $this->c->signType= "RSA2";
         $this->c->alipayrsaPublicKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmmjf8EThiRRA65xwzYoYF6bxo8IlunN3Zu+epQGBKBPehVeY2n1cDJ1ydNsvmg+aU0sf96cVG2FJWu2Ak11So9m3jqpP8XRfKhnMr7igqwEdmajocb334b2xu70NFDnJ/d4vQDJzqzDFBS9/n13CmmqnWVBs+/7Fuom29cGD3iyE7mb0qxfeXTReZtd6pmQT8UzDz+Lrsa4WhB9V9nbbVVmGRfbKreqOb5QCzJhZg9BS0J2MqqF/+jgcqSaMS0bVl2hhY2XT7ctdHm/SGa8FvTgytiKGhQB17qtDh6VMQlMjLqDm2p56MlYA8483ls9lhRHH4+G4J/Dzc4l7XvaWDQIDAQAB';
-
+        $this->c->alipayrsaPublicKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlkR+whMRcYIybSBl5b1O4Gyv2Y00th/fxn+4tpCRkU1OmGo6l3UESg319yJCXWfIFIHRVCe+11JKiV7OyTYBVX4wC83ekqDVrVwGNBziU0ZrE2gerDRihX66xGGCs0w1TIhQsoawCH1hd61VOz6ABWp3l7yN8WM2KrXkl0OyGC2PVOO01eF9Y8cojPAm3nvOts/056C6X+o5Le9UTZ5m/AGAWOf9u3BBigG8lDrrG1P83+QON6irZcjgI55TJl9QtiNsb9W22xfbJzWVTS1xR4R1EfrkUyE4Cbw2peJSkUqIedZn2vndIN1aQ1G0uXp237rJEQiwRX6vKtm7/RpaeQIDAQAB';
     }
 
 
@@ -53,17 +53,22 @@ class AlipayController extends Controller
         }
         $shareRequest = new AlipayUserInfoShareRequest();
         try {
-            $shareResponse = $this->c->execute($shareRequest, $tokenResponse['alipay_system_oauth_token_response']['access_token']);
+            $shareResponse = $this->c->execute($shareRequest, $tokenResponse->alipay_system_oauth_token_response->access_token);
             app('log')->info('fullurl==>'.$request->fullUrl()."\nhttpmethod==>".$request->getMethod()."\nshareResponse==>".\json_encode($shareResponse, JSON_UNESCAPED_UNICODE));
         } catch (\Exception $e){
             return $this->result->setStatusMsg('error')->setStatusCode(605)->setMessage($e->getMessage())->responseError();
         }
 
+        $user = User::where('alipay_account', $shareResponse->alipay_user_userinfo_share_response->user_id)->first();
+        if(!empty($user)) {
+            return $this->result->setStatusMsg('error')->setStatusCode(605)->setMessage('该支付宝账户已经绑定过了')->responseError();
+        }
         $user_id = $request->item['uid'];
         $user = User::find($user_id);
         if ($user)
         {
-            $user->alipay_account = $shareResponse['alipay_user_userinfo_share_response']['email'];
+            $user->alipay_account = $shareResponse->alipay_user_userinfo_share_response->user_id;
+            $user->alipay_nickname = $shareResponse->alipay_user_userinfo_share_response->nick_name;
             $stuse = $user->update();
             if ($stuse)
             {

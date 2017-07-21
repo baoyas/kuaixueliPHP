@@ -75,6 +75,10 @@ class AlipayController extends Controller
                 return $this->result->responses([
                     'status' => 'success',
                     'status_code' => '',
+                    'object'=>[
+                        'alipay_account'  => $user->alipay_account,
+                        'alipay_nickname' => $user->alipay_nickname,
+                    ],
                     'message' => '绑定支付宝账号成功！'
                 ]);
             }

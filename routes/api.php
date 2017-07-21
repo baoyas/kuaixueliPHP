@@ -157,6 +157,7 @@ $api->version('v1', function ($api) {
             $api->resource('userpoints', 'UserShareController');    //积分相关
             $api->resource('withdraw/info', 'WithdrawController@info');       //提现页面数据
             $api->resource('withdraw', 'WithdrawController');       //提现相关
+            $api->resource('userredpack', 'UserRedpackController', ['except' => ['create', 'store', '', 'destroy']]); //红包相关
         });
     });
 });

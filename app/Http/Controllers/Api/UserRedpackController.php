@@ -25,14 +25,6 @@ class UserRedpackController extends JaseController
         $this->result = new Result();
     }
 
-    public function info(Request $request)
-    {
-        $user_id = $request->item['uid'];
-        $user = User::find($user_id);
-        $limit_money = max(0, $user->money-10);
-        return $this->response(['limit_money'=>$limit_money]);
-    }
-
     public function index()
     {
         return Fast::content(function (Content $content) {
@@ -49,6 +41,17 @@ class UserRedpackController extends JaseController
             $grid->column('id', 'id');
             $grid->column('user_id', 'user_id');
             $grid->column('value', 'value');
+            $grid->column('biz_type', 'biz_type');
+            $grid->column('biz_desc', 'biz_desc')->display(function(){
+                if($this->biz_type == '1') {
+                    return '分享获得';
+                } elseif($this->biz_type == '2') {
+                    return '抽奖获得';
+                }elseif($this->biz_type == '3') {
+                    return '邀请获得';
+                }
+            });
+            $grid->column('status', 'status');
             $grid->column('status_cn', 'status_cn')->display(function(){
                 if($this->status == '0') {
                     return '未领取';

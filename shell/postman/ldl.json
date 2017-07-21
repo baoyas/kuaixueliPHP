@@ -455,6 +455,46 @@
 			]
 		},
 		{
+			"name": "红包相关",
+			"description": "",
+			"item": [
+				{
+					"name": "红包列表",
+					"request": {
+						"url": "{{url}}/api/userredpack",
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "领取红包",
+					"request": {
+						"url": "{{url}}/api/userredpack/1",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "资金相关",
 			"description": "",
 			"item": [

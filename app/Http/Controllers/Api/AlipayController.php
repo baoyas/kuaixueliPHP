@@ -58,7 +58,7 @@ class AlipayController extends Controller
         } catch (\Exception $e){
             return $this->result->setStatusMsg('error')->setStatusCode(605)->setMessage($e->getMessage())->responseError();
         }
-
+        
         $user = User::where('alipay_account', $shareResponse->alipay_user_userinfo_share_response->user_id)->first();
         if(!empty($user)) {
             return $this->result->setStatusMsg('error')->setStatusCode(605)->setMessage('该支付宝账户已经绑定过了')->responseError();
@@ -67,8 +67,8 @@ class AlipayController extends Controller
         $user = User::find($user_id);
         if ($user)
         {
-            $user->alipay_account = $shareResponse->alipay_user_userinfo_share_response->user_id;
-            $user->alipay_nickname = $shareResponse->alipay_user_userinfo_share_response->nick_name;
+            $user->alipay_account = $shareResponse->alipay_user_info_share_response->user_id;
+            $user->alipay_nickname = $shareResponse->alipay_user_info_share_response->nick_name;
             $stuse = $user->update();
             if ($stuse)
             {

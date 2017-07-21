@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Transformer\AdobjectTransformer;
 use App\Lib\JassEasemob;
+use App\Http\Controllers\Api\ResultController as Result;
 
 class JaseController extends Controller
 {
@@ -176,5 +177,18 @@ class JaseController extends Controller
             'user_id' => $user_id
         ];
         return $obj;
+    }
+
+    public function response($data, $code, $message='') {
+        $result = new Result();
+        if(empty($code) || $code==200) {
+            return $result->responses([
+                'status' => 'success',
+                'status_code' => strval($code),
+                'object' => $data
+            ]);
+        } else {
+            return $result->setStatusMsg('error')->setStatusCode($code)->setMessage($message)->responseError();
+        }
     }
 }

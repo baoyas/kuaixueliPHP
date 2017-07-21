@@ -25,6 +25,14 @@ class WithdrawController extends JaseController
         $this->result = new Result();
     }
 
+    public function info(Request $request)
+    {
+        $user_id = $request->item['uid'];
+        $user = User::find($user_id);
+        $limit_money = max(0, $user->money-10);
+        return $this->response(['limit_money'=>$limit_money]);
+    }
+
     public function index()
     {
         return Fast::content(function (Content $content) {

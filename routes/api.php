@@ -155,6 +155,7 @@ $api->version('v1', function ($api) {
             $api->resource('userreward', 'UserRewardController');   //抽奖奖励相关
             $api->resource('usermoney', 'UserMoneyController');     //账单明细
             $api->resource('userpoints', 'UserShareController');    //积分相关
+            $api->resource('withdraw/info', 'WithdrawController@info');       //提现页面数据
             $api->resource('withdraw', 'WithdrawController');       //提现相关
         });
     });

@@ -51,6 +51,11 @@ class AlipayController extends Controller
         } catch (\Exception $e){
             return $this->result->setStatusMsg('error')->setStatusCode(605)->setMessage($e->getMessage())->responseError();
         }
+        $tokenResponseNode = str_replace(".", "_", $tokenRequest->getApiMethodName()) . "_response";
+        $tokenResponse = $tokenResponse->$tokenResponseNode ? $tokenResponse->$tokenResponseNode : $tokenResponse->error_response;
+        if(empty($tokenResponse->code) || $tokenResponse->code != 10000) {
+            return $this->result->setStatusMsg('error')->setStatusCode($tokenResponse->code)->setMessage($tokenResponse->sub_msg)->responseError();
+        }
         $shareRequest = new AlipayUserInfoShareRequest();
         try {
             $shareResponse = $this->c->execute($shareRequest, $tokenResponse->alipay_system_oauth_token_response->access_token);
@@ -58,7 +63,11 @@ class AlipayController extends Controller
         } catch (\Exception $e){
             return $this->result->setStatusMsg('error')->setStatusCode(605)->setMessage($e->getMessage())->responseError();
         }
-        
+        $shareResponseNode = str_replace(".", "_", $shareRequest->getApiMethodName()) . "_response";
+        $shareResponse = $shareResponse->$shareResponseNode ? $shareResponse->$shareResponseNode : $shareResponse->error_response;
+        if(empty($shareResponse->code) || $shareResponse->code != 10000) {
+            return $this->result->setStatusMsg('error')->setStatusCode($shareResponse->code)->setMessage($shareResponse->sub_msg)->responseError();
+        }
         $user = User::where('alipay_account', $shareResponse->alipay_user_userinfo_share_response->user_id)->first();
         if(!empty($user)) {
             return $this->result->setStatusMsg('error')->setStatusCode(605)->setMessage('该支付宝账户已经绑定过了')->responseError();

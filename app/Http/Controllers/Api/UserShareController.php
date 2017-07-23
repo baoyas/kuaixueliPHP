@@ -24,6 +24,16 @@ class UserShareController extends JaseController
         $this->result = new Result();
     }
 
+    public function ldl(Request $request) {
+        $user_id = $request->item['uid'];
+        $user = User::find($user_id);
+        return $this->response([
+            'accounts'=>strval($user->accounts), 
+            'invite_max_count_day'=>'200',
+            'invite_current_count_day'=>'3',
+            'invite_income_money_day'=>'400',
+        ]);
+    }
     public function index()
     {
         return Fast::content(function (Content $content) {

@@ -151,6 +151,7 @@ $api->version('v1', function ($api) {
 
         $api->group(['middleware' => ['user.auth', 'fcore']], function ($api) {
             $api->resource('useraddr',  'UserAddrController');      //用户的地址相关
+            $api->resource('usershare/ldl', 'UserShareController@ldl');     //分享相关
             $api->resource('usershare', 'UserShareController');     //分享相关
             $api->resource('reward', 'RewardController');           //抽奖相关
             $api->resource('userreward', 'UserRewardController');   //抽奖奖励相关

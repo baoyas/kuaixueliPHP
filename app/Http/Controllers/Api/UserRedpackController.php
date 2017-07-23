@@ -55,7 +55,7 @@ class UserRedpackController extends JaseController
                 } elseif($this->biz_type == '2') {
                     return '抽奖获得';
                 }elseif($this->biz_type == '3') {
-                    return '邀请获得';
+                    return '成功邀请';
                 }
             });
             $grid->column('status', 'status');
@@ -68,6 +68,9 @@ class UserRedpackController extends JaseController
             });
             $grid->user('user_face')->display(function($user){
                 return Config::get('web.QINIU_URL').'/'.$user['user_face'];
+            });
+            $grid->user('nickname')->display(function($user){
+                return $user['nickname'];
             });
             $grid->column('created_at', 'created_at');
             $grid->disableActions();

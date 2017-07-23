@@ -53,12 +53,12 @@ class AlipayController extends Controller
         }
         $tokenResponseNode = str_replace(".", "_", $tokenRequest->getApiMethodName()) . "_response";
         $tokenResponse = $tokenResponse->$tokenResponseNode ? $tokenResponse->$tokenResponseNode : $tokenResponse->error_response;
-        if(empty($tokenResponse->code) || $tokenResponse->code != 10000) {
+        if(!empty($tokenResponse->code) && $tokenResponse->code != 10000) {
             return $this->result->setStatusMsg('error')->setStatusCode($tokenResponse->code)->setMessage($tokenResponse->sub_msg)->responseError();
         }
         $shareRequest = new AlipayUserInfoShareRequest();
         try {
-            $shareResponse = $this->c->execute($shareRequest, $tokenResponse->alipay_system_oauth_token_response->access_token);
+            $shareResponse = $this->c->execute($shareRequest, $tokenResponse->access_token);
             app('log')->info('fullurl==>'.$request->fullUrl()."\nhttpmethod==>".$request->getMethod()."\nshareResponse==>".\json_encode($shareResponse, JSON_UNESCAPED_UNICODE));
         } catch (\Exception $e){
             return $this->result->setStatusMsg('error')->setStatusCode(605)->setMessage($e->getMessage())->responseError();
@@ -68,7 +68,7 @@ class AlipayController extends Controller
         if(empty($shareResponse->code) || $shareResponse->code != 10000) {
             return $this->result->setStatusMsg('error')->setStatusCode($shareResponse->code)->setMessage($shareResponse->sub_msg)->responseError();
         }
-        $user = User::where('alipay_account', $shareResponse->alipay_user_userinfo_share_response->user_id)->first();
+        $user = User::where('alipay_account', $shareResponse->user_id)->first();
         if(!empty($user)) {
             return $this->result->setStatusMsg('error')->setStatusCode(605)->setMessage('该支付宝账户已经绑定过了')->responseError();
         }
@@ -76,8 +76,8 @@ class AlipayController extends Controller
         $user = User::find($user_id);
         if ($user)
         {
-            $user->alipay_account = $shareResponse->alipay_user_info_share_response->user_id;
-            $user->alipay_nickname = $shareResponse->alipay_user_info_share_response->nick_name;
+            $user->alipay_account = $shareResponse->user_id;
+            $user->alipay_nickname = empty($shareResponse->nick_name) ? '' : $shareResponse->nick_name;
             $stuse = $user->update();
             if ($stuse)
             {

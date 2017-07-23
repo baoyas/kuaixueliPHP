@@ -28,7 +28,12 @@ class UserRedpackController extends JaseController
 
     public function index()
     {
-        return $this->response(['list'=>$this->grid()->getFormatData(),'total_value'=>'10324']);
+        $user_id = app('request')->item['uid'];
+        return $this->response(
+            [
+                'list'=>$this->grid()->getFormatData(),
+                'total_value'=>UserRedpack::where(['user_id'=>$user_id, 'status'=>1])->sum('value')
+            ]);
         return Fast::content(function (Content $content) {
             $content->body($this->grid());
         });

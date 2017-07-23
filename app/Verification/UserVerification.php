@@ -445,7 +445,7 @@ class UserVerification
             }
             else
             {
-                return $this->result->setStatusMsg('error')->setStatusCode(405)->setMessage('解绑支付宝账号成功！')->responseError();
+                return $this->result->setStatusMsg('error')->setStatusCode(405)->setMessage('解绑支付宝账号失败！')->responseError();
             }
         }
         else
@@ -454,6 +454,40 @@ class UserVerification
         }
     }
 
+    public function inviteCode (Request $request)
+    {
+        $user_id = $request->item['uid'];
+        $accounts = $request->get('accounts');
+        $user = User::where(['accounts'=>$accounts])->first();
+        if(empty($user) || empty($accounts)) {
+            return $this->result->setStatusMsg('error')->setStatusCode(403)->setMessage('邀请码不存在')->responseError();
+        }
+        $user = User::find($user_id);
+        if ($user)
+        {
+            if($user->parent_ldlcode) {
+                return $this->result->setStatusMsg('error')->setStatusCode(403)->setMessage('已经设置过邀请码了')->responseError();
+            }
+            $user->parent_ldlcode = $accounts;
+            $stuse = $user->update();
+            if ($stuse)
+            {
+                return $this->result->responses([
+                    'status' => 'success',
+                    'status_code' => '',
+                    'message' => '邀请码设置成功！'
+                ]);
+            }
+            else
+            {
+                return $this->result->setStatusMsg('error')->setStatusCode(405)->setMessage('邀请码设置失败！')->responseError();
+            }
+        }
+        else
+        {
+            return $this->result->setStatusMsg('error')->setStatusCode(403)->setMessage('没有找到该用户！')->responseError();
+        }
+    }
 
 
 }

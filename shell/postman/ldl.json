@@ -2,11 +2,53 @@
 	"variables": [],
 	"info": {
 		"name": "ldl",
-		"_postman_id": "1b3e20de-2d77-63c6-3c96-8dbbca03a039",
+		"_postman_id": "c6bb0812-c57b-c3cd-5299-524f66ca9172",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "我的(用户中心)",
+			"description": "",
+			"item": [
+				{
+					"name": "设置邀请码",
+					"request": {
+						"url": {
+							"raw": "{{url}}/api/user/inviteCode?accounts=9109550",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"inviteCode"
+							],
+							"query": [
+								{
+									"key": "accounts",
+									"value": "9109550",
+									"equals": true,
+									"description": "了当了号"
+								}
+							],
+							"variable": []
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "抽奖相关",
 			"description": "",
@@ -94,7 +136,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -111,7 +156,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -215,7 +263,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -447,7 +498,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -470,7 +524,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -487,7 +544,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -510,7 +570,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": "limit_money 可提现金额单位分"
 					},
 					"response": []

@@ -57,6 +57,7 @@ $api->version('v1', function ($api) {
             $api->post('user/changeSign', 'UserController@changeSign'); //用户修改签名
             $api->post('user/changeArea', 'UserController@changeArea'); //用户修改区域
             $api->post('user/changeNickname', 'UserController@changeNickname'); //用户修改区域
+            $api->put('user/inviteCode', 'UserController@inviteCode');    //设置邀请码
             $api->get('userInfo', 'UserController@userInfo'); //查看用户信息
             $api->get('userInfoForPhone', 'UserController@userInfoForPhone'); //查看用户信息 for 用户手机号
             $api->post('userSetNotes', 'UserController@SetNotes'); //给好友设置备注

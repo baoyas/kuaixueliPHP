@@ -90,7 +90,7 @@ class UserRedpackController extends JaseController
                 $query->where(['user_id'=>$request->item['uid']]);
             });
             $form->text('user_id', '用户ID')->rules('required|integer')->default($request->item['uid']);
-            $form->text('value',   '红包金额')->rules('required|integer');
+            //$form->text('value',   '红包金额')->rules('required|integer');
             $form->text('status',  '状态')->rules('required|integer|regex:/^[01]$/')->default(1);
             $form->error(function (Form $form) {
                 return response()->json([
@@ -102,12 +102,14 @@ class UserRedpackController extends JaseController
                 ]);
             });
             $form->saving(function (Form $form) {
-
+                if(UserRedpack::find($form->model()->id)->status==1) {
+                    return $this->response('', '601', '已经领取');
+                }
             });
             $form->saved(function (Form $form) {
                 $data = json_decode($this->grid($form->model()->id)->render('object'), true);
-                User::find($form->user_id)->increment('money', $form->value);
-                UserMoney::create(['user_id'=>$form->user_id, 'biz_type'=>$data['biz_type'], 'flow_type'=>1, 'value'=>$form->value]);
+                User::find($form->user_id)->increment('money', $data['value']);
+                UserMoney::create(['user_id'=>$form->user_id, 'biz_type'=>$data['biz_type'], 'flow_type'=>1, 'value'=>$data['value']]);
                 return response()->json([
                     'status'  => 'success',
                     'status_code' => '200',

@@ -30,7 +30,8 @@ class FriendsTransformer extends Transformer
             'sell_comment' => "".$item['sell_comment']."",
             'is_thumbsUp' => "".$item['is_thumbsUp']."",
             'sell_area' => "".$item['sell_area']."",
-            'thumbsUp' => empty($item['thumbsUp']) ? [] : $item['thumbsUp']
+            'thumbsUp' => empty($item['thumbsUp']) ? [] : $item['thumbsUp'],
+            'has_redpack' => empty($item['has_redpack']) ? strval(0) : strval(1),
         ];
     }
 }

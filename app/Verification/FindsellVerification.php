@@ -101,6 +101,7 @@ class FindsellVerification
                 $_tmp_sell[$k]['sell_time'] = Helpers::timeFormat($v['sell_up_time']);
                 $_tmp_sell[$k]['sell_thumbsUp'] = $this->jasecontroller->sell_thumbsUp($v['id']);
                 $_tmp_sell[$k]['sell_comment'] = $this->jasecontroller->sell_comment($v['id']);
+                $_tmp_sell[$k]['has_redpack'] = ($v['is_sell']!=3 && $v['recommend']) ? 1 : 0;
                 $_tmp_sell[$k]['is_thumbsUp'] = $this->jasecontroller->is_thumbsUp($uid, $v['id']);
                 $_tmp_sell[$k]['thumbsUp'] = [];
                 $thumbsUp = Thumbs::with('User')->where('thumbs_sell_id', $v['id'])->orderBy('id', 'desc')->limit(5)->get(['thumbs_uid'])->toArray();

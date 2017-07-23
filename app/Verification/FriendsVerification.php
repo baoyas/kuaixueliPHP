@@ -153,6 +153,7 @@ class FriendsVerification
                 $sell['data'][$k]['is_thumbsUp'] = $this->jasecontroller->is_thumbsUp($uid, $v['id'], 1);
                 $sell['data'][$k]['user_face'] = config('web.QINIU_URL').'/'.$v['user_face'];
                 $sell['data'][$k]['sell_area'] = $v['sell_area'];
+                $sell['data'][$k]['has_redpack'] = ($v['is_sell']!=3 && $v['recommend']) ? 1 : 0;
                 $sell['data'][$k]['thumbsUp'] = [];
                 $thumbsUp = Thumbs::with('User')->where('thumbs_sell_id', $v['id'])->orderBy('id', 'desc')->limit(5)->get(['thumbs_uid'])->toArray();
                 if($thumbsUp && is_array($thumbsUp)) {
@@ -267,6 +268,7 @@ class FriendsVerification
                 $_show_sell[$k]['sell_time'] = Helpers::timeFormat($v['sell_up_time']);
                 $_show_sell[$k]['sell_thumbsUp'] = $this->jasecontroller->sell_thumbsUp($v['id']);
                 $_show_sell[$k]['sell_comment'] = $this->jasecontroller->sell_comment($v['id']);
+                $_show_sell[$k]['has_redpack'] = ($v['is_sell']!=3 && $v['recommend']) ? 1 : 0;
                 $_show_sell[$k]['is_thumbsUp'] = $this->jasecontroller->is_thumbsUp($uid, $v['id']);
                 $_show_sell[$k]['thumbsUp'] = [];
                 $thumbsUp = Thumbs::with('User')->where('thumbs_sell_id', $v['id'])->orderBy('id', 'desc')->limit(5)->get(['thumbs_uid'])->toArray();

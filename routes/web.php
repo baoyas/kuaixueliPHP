@@ -97,3 +97,4 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['web
 });
 
 Route::resource('reward', 'Home\RewardController');
+Route::get('share/ldl/{user_id}', 'Home\ShareController@ldl');

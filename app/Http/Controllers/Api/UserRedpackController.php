@@ -15,6 +15,7 @@ use App\Fcore\Layout\Content;
 use App\Fcore\Controllers\ModelForm;
 use DB;
 use Cache;
+use Illuminate\Support\Facades\Config;
 
 class UserRedpackController extends JaseController
 {
@@ -27,6 +28,7 @@ class UserRedpackController extends JaseController
 
     public function index()
     {
+        return $this->response(['list'=>$this->grid()->getFormatData(),'total_value'=>'10324']);
         return Fast::content(function (Content $content) {
             $content->body($this->grid());
         });
@@ -58,6 +60,9 @@ class UserRedpackController extends JaseController
                 } elseif($this->status == '1') {
                     return '已领取';
                 }
+            });
+            $grid->user('user_face')->display(function($user){
+                return Config::get('web.QINIU_URL').'/'.$user['user_face'];
             });
             $grid->column('created_at', 'created_at');
             $grid->disableActions();

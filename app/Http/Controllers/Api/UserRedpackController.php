@@ -66,11 +66,11 @@ class UserRedpackController extends JaseController
                     return '已领取';
                 }
             });
-            $grid->user('user_face')->display(function($user){
-                return Config::get('web.QINIU_URL').'/'.$user['user_face'];
+            $grid->column('user.user_face', 'user_face')->display(function($user_face){
+                return Config::get('web.QINIU_URL').'/'.$user_face;
             });
-            $grid->user('nickname')->display(function($user){
-                return $user['nickname'];
+            $grid->column('user.nickname', 'nickname')->display(function($nickname){
+                return $nickname;
             });
             $grid->column('created_at', 'created_at');
             $grid->disableActions();

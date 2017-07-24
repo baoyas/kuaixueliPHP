@@ -4,9 +4,9 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Adplace extends Model
+class EducationSchool extends Model
 {
-    protected $table='ad_place';
+    protected $table='education_school';
     protected $primaryKey='id';
     /**
      * The attributes that are mass assignable.
@@ -14,10 +14,9 @@ class Adplace extends Model
      * @var array
      */
     protected $fillable = [
-        'ad_place_name', 'ad_place_power'
     ];
 
-    public $timestamps=false;
+    public $timestamps=true;
 
     /**
      * The attributes that should be hidden for arrays.

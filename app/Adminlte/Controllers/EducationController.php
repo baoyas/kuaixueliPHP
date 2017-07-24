@@ -5,6 +5,7 @@ namespace App\Adminlte\Controllers;
 use App\Model\Ad;
 use App\Model\Education;
 use App\Model\EducationLevel;
+use App\Model\EducationSchool;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -61,6 +62,9 @@ class EducationController extends Controller
             $grid->model()->where($where);
             $grid->column('id', 'id');
             $grid->column('name', '学历名称');
+            $grid->column('school.name', '学校名称')->display(function($school_name){
+                return $school_name;
+            });
             $grid->column('level.name', '学历级别')->display(function($level_name){
                 return $level_name;
             });
@@ -78,6 +82,9 @@ class EducationController extends Controller
         return Admin::form(Education::class, function (Form $form) {
             $form->display('id', '学历ID');
             $form->text('name', '学历名称')->rules('required');
+            $form->select('school_id', '学历级别')->options(
+                EducationSchool::all()->pluck('name', 'id')
+            );
             $form->select('level_id', '学历级别')->options(
                 EducationLevel::all()->pluck('name', 'id')
             );//->load('address.city_id', '/admin/api/china-area/city');

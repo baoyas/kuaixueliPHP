@@ -29,4 +29,8 @@ class Education extends Model
     public function level() {
         return $this->hasOne(EducationLevel::class, 'id', 'level_id');
     }
+
+    public function school() {
+        return $this->hasOne(EducationSchool::class, 'id', 'school_id');
+    }
 }

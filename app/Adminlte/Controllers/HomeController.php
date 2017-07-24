@@ -34,7 +34,7 @@ class HomeController extends Controller
             $content->description('...');
             
             $content->row(function ($row) {
-                $user_count = User::where('is_del', 0)->count();
+                /*$user_count = User::where('is_del', 0)->count();
                 $sell_count = Sell::where('is_circle', 0)->count();
                 $cate_sell = Cate::count();
                 $group_count = Group::count();
@@ -42,7 +42,7 @@ class HomeController extends Controller
                 $row->column(3, new InfoBox('用户', 'users', 'aqua', '/adminlte/user', $user_count));
                 $row->column(3, new InfoBox('出售/购买', 'shopping-cart', 'green', '/admin/orders', $sell_count));
                 $row->column(3, new InfoBox('分类数量', 'book', 'yellow', '/admin/articles', $cate_sell));
-                $row->column(3, new InfoBox('群组数量', 'file', 'red', '/admin/files', $group_count));
+                $row->column(3, new InfoBox('群组数量', 'file', 'red', '/admin/files', $group_count));*/
             });
         });
     }

@@ -26,6 +26,9 @@ class Education extends Model
     protected $hidden = [
     ];
 
+    public static $studyMode = ['1'=>'自学考试', '2'=>'电大', '3'=>'远程教育', '4'=>'成人高考'];
+    public static $fullTime  = ['1'=>'是', '2'=>'否'];
+
     public function level() {
         return $this->hasOne(EducationLevel::class, 'id', 'level_id');
     }

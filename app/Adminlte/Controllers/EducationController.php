@@ -68,7 +68,12 @@ class EducationController extends Controller
             $grid->column('level.name', '学历级别')->display(function($level_name){
                 return $level_name;
             });
-
+            $grid->column('studymode_id', '进修方式')->display(function($studymode_id){
+                return isset(Education::$studyMode[$studymode_id]) ? Education::$studyMode[$studymode_id] : '';
+            });
+            $grid->column('fulltime_id', '是否全日制')->display(function($fulltime_id){
+                return isset(Education::$fullTime[$fulltime_id]) ? Education::$fullTime[$fulltime_id] : '';
+            });
         });
     }
 
@@ -87,7 +92,19 @@ class EducationController extends Controller
             );
             $form->select('level_id', '学历级别')->options(
                 EducationLevel::all()->pluck('name', 'id')
-            );//->load('address.city_id', '/admin/api/china-area/city');
+            );
+            $form->select('studymode_id', '进修方式')->options(
+                Education::$studyMode
+            );
+            $fullTimeStates = [
+                'on'  => ['value' => 1, 'text' => '是', 'color' => 'success'],
+                'off' => ['value' => 2, 'text' => '否', 'color' => 'danger'],
+            ];
+            $form->switch('fulltime_id', '是否全日制')->states($fullTimeStates);
+            $form->radio('notfulltime_id', '脱产')->options([
+                1 => '全日制脱产',
+                2 => '周末脱产'
+            ]);
         });
     }
 }

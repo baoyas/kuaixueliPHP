@@ -134,7 +134,7 @@ class SearchVerification
         $search = $request->get('search_name');
         if (!is_numeric($search))
         {
-            return $this->result->setStatusMsg('error')->setStatusCode(402)->setMessage('请填写您要搜索的了当了账号！')->responseError();
+            return $this->result->setStatusMsg('error')->setStatusCode(402)->setMessage('请填写您要搜索的快学历账号！')->responseError();
         }
         $user = User::where('accounts', $search)->where('is_del', 0)->paginate(Config::get('web.api_page'))->toArray();
         if (empty($user['data']))

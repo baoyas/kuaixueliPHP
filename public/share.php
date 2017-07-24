@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>了当了</title>
+<title>快学历</title>
 <meta name="author" content="JudaMedia">
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="format-detection" content="telephone=no" />
@@ -61,7 +61,7 @@ body{font-size:16px;max-width:640px;margin:0 auto;background-color:#fafafa;paddi
   
   </div>
 </div>
-<div class="logo"><a href="./downapp.html">下载</a><div class="icon"><h1>了当了</h1><p>商家版的“微信”</p></div></div>
+<div class="logo"><a href="./downapp.html">下载</a><div class="icon"><h1>快学历</h1><p>商家版的“微信”</p></div></div>
 
 <script src="http://cdn.bootcss.com/zepto/1.0/zepto.min.js"></script><script>
 var id = "<?php echo $_GET['id']; ?>";

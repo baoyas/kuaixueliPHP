@@ -115,7 +115,7 @@ $api->version('v1', function ($api) {
             $api->get('searchBusiness/sell', 'SearchController@searchBusinessSell');  //我要卖搜索
             $api->get('searchPeople', 'SearchController@searchPeople');  //好友搜索
 
-            /*了当了群管理*/
+            /*快学历群管理*/
             $api->post('group/create', 'GroupController@create'); //创建群
             $api->get('group/info', 'GroupController@groupInfo'); //我的群组 的信息
             $api->post('group/edit/groupname', 'GroupController@groupEditGroupname'); //群组修改昵称

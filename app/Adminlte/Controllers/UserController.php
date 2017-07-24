@@ -647,7 +647,7 @@ class UserController extends Controller
             });
             //$grid->column('user_face', '头像')->image();
             $grid->column('nickname', '昵称');
-            $grid->column('accounts', '了当了号')->sortable();
+            $grid->column('accounts', '快学历号')->sortable();
             $grid->column('user_reg_time', '注册时间')->display(function () {
                 return date('Y-m-d H:i:s', $this->user_reg_time);
             })->sortable()->prependIcon('clock-o');
@@ -677,7 +677,7 @@ class UserController extends Controller
             $grid->filter(function ($filter) {
                 $filter->is('phone', '手机号');
                 $filter->like('nickname', '昵称');
-                $filter->like('accounts', '了当了号');
+                $filter->like('accounts', '快学历号');
                 //$filter->useModal();
             });
             $grid->disableExport();

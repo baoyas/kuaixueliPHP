@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    了当了
+                    快学历
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>了当了</title>
+	<title>快学历</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;">
 	<meta name="format-detection" content="telephone=no">
 	<link rel="stylesheet" type="text/css" href="/css/style.css"/>
@@ -15,7 +15,7 @@
 			<img src="/img/wallhaven-317512.jpg"/>
 			<span>小尼尼</span>
 		</div>
-		<h6 class="yq-text">您的好友邀请您注册《了当了》</h6>
+		<h6 class="yq-text">您的好友邀请您注册《快学历》</h6>
 		<div class="yq-code">
 			3567220
 		</div>

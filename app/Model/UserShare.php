@@ -10,7 +10,7 @@ class UserShare extends Model
     const BIZ_TYPE_BUY = 1;    //购买
     const BIZ_TYPE_SELL = 2;   //出售
     const BIZ_TYPE_CIRCLE = 3; //朋友圈
-    const BIZ_TYPE_LDL = 4;    //了当了
+    const BIZ_TYPE_LDL = 4;    //快学历
 
     const CHANNEL_MICRO_BLOG = 1;
     const CHANNEL_QQ_FRINED = 3;

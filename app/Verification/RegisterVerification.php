@@ -132,7 +132,7 @@ class RegisterVerification
      */
     public function Login (Request $request)
     {
-        $phone = $request->get('phone'); // 手机号或者了当了账号
+        $phone = $request->get('phone'); // 手机号或者快学历账号
         $pass = $request->get('password'); //密码
         $push_code = $request->get('push_code'); //推送号
         $model = $request->get('model'); //手机种类 1ios 2android

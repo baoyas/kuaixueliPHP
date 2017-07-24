@@ -29,8 +29,8 @@ class Notegory extends \App\Http\Controllers\Api\JaseController{
 		$req = new AlibabaAliqinFcSmsNumSendRequest;
 		$req->setExtend("123456");
 		$req->setSmsType("normal");
-		$req->setSmsFreeSignName("了当了");
-		$req->setSmsParam('{"code":"'.$cc.'","product":"了当了"}');
+		$req->setSmsFreeSignName("快学历");
+		$req->setSmsParam('{"code":"'.$cc.'","product":"快学历"}');
 		$req->setRecNum("".$tel."");
 		$req->setSmsTemplateCode("SMS_35070517");
 		$resp = $c->execute($req);

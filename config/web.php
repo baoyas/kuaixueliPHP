@@ -1,10 +1,10 @@
 <?php return array (
-    'web_title' => '了当了',
+    'web_title' => '快学历',
     'QINIU_SK' => 'aDuytzviP_wFznDKqTSmj5TttcfIrF_V8Kmu1J-0',
     'QINIU_BUCKET' => 'ledangle',
     'QINIU_URL' => 'http://om6im9i3r.bkt.clouddn.com',
     'admin_page' => '50',
-    'copyright' => ' © 2017 了当了 V1.0.1',
+    'copyright' => ' © 2017 快学历 V1.0.1',
     'QINIU_AK' => 'QEvc--kyw4RhXxC4wbaepr7guPShRBwR7BU47fK7',
     'seo_title' => '微商人自己的App',
     'JIGUANG_Ak' => '5ed600f15e5b35b1a35c29c6',

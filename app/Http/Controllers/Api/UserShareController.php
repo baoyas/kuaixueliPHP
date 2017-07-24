@@ -57,7 +57,7 @@ class UserShareController extends JaseController
                 if($this->biz_type==1 || $this->biz_type==2 || $this->biz_type==3) {
                     return '分享获得';
                 } else if($this->biz_type==4) {
-                    return '分享了当了获得';
+                    return '分享快学历获得';
                 } else if($this->biz_type==5) {
                     return '抽奖获得';
                 } else {

@@ -4,9 +4,9 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Findback extends Model
+class EducationLevel extends Model
 {
-    protected $table='findback';
+    protected $table='education_level';
     protected $primaryKey='id';
     /**
      * The attributes that are mass assignable.
@@ -14,10 +14,9 @@ class Findback extends Model
      * @var array
      */
     protected $fillable = [
-        'findback_uid', 'findback_content', 'findback_time', 'findback_handle'
     ];
 
-    public $timestamps=false;
+    public $timestamps=true;
 
     /**
      * The attributes that should be hidden for arrays.

@@ -24,7 +24,7 @@ Route::group([
 ], function (Router $router) {
     $attributes = ['middleware' => 'admin.permission:allow,administrator,manager'];
     $router->group($attributes, function ($router) {
-        $router->resource('ceditor', 'CeditorController');
+        $router->resource('education', 'EducationController');
         $router->resource('config', 'ConfigController');
         $router->resource('user', 'UserController');
         $router->resource('user/{id}/privatechat', 'UserController@privateChat');

@@ -121,6 +121,19 @@ class EducationController extends Controller
             );
             $form->text('province_desc', '户籍限制说明')->rules('required');
             $form->text('major', '可选专业')->rules('required');
+            $form->hasMany('contacts', '课程顾问',function (Form\NestedForm $form) {
+                $atypeStates = [
+                    'on'  => ['value' => 1, 'text' => 'QQ', 'color' => 'success'],
+                    'off' => ['value' => 2, 'text' => '微信', 'color' => 'danger'],
+                ];
+                $form->switch('atype', '类型')->states($atypeStates);
+                $form->text('account', '账号');
+            });
+            $form->checkbox('coaches', '学位辅导')->options([
+                1 => '论文辅导',
+                2 => '计算机',
+                3 => '英语',
+            ]);
         });
     }
 }

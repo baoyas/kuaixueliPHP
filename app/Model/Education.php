@@ -76,4 +76,24 @@ class Education extends Model
     public function provinces() {
         return $this->belongsToMany(Province::class, 'education_province', 'education_id', 'province_id');
     }
+
+    public function contacts()
+    {
+        return $this->hasMany(EducationContact::class, 'education_id');
+    }
+
+    public function setCoachesAttribute($options)
+    {
+        if (is_array($options)) {
+            $this->attributes['coaches'] = implode(',', $options);
+        }
+    }
+
+    public function getCoachesAttribute($options)
+    {
+        if (is_string($options)) {
+            return explode(',', $options);
+        }
+        return $options;
+    }
 }

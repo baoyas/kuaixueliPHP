@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Encore\Admin\Traits\AdminBuilder;
 use Encore\Admin\Traits\ModelTree;
 
-class Area extends Model
+class EducationContact extends Model
 {
     use ModelTree, AdminBuilder;
 
-    protected $table='area';
+    protected $table='education_contact';
     protected $primaryKey='id';
     /**
      * The attributes that are mass assignable.
@@ -18,10 +18,10 @@ class Area extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'parent_id', 'short_name', 'level_type', 'city_code'
+        'education_id', 'account', 'atype'
     ];
 
-    public $timestamps=false;
+    public $timestamps=true;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -31,12 +31,4 @@ class Area extends Model
     protected $hidden = [
 
     ];
-
-    public function __construct(array $attributes = [])
-    {
-        $connection = config('admin.database.connection') ?: config('database.default');
-
-        $this->setConnection($connection);
-        parent::__construct($attributes);
-    }
 }

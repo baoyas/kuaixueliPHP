@@ -4,9 +4,10 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Adskip extends Model
+
+class Province extends Model
 {
-    protected $table='ad_skip';
+    protected $table='province';
     protected $primaryKey='id';
     /**
      * The attributes that are mass assignable.
@@ -14,10 +15,10 @@ class Adskip extends Model
      * @var array
      */
     protected $fillable = [
-        'ad_skip_name', 'ad_skip_describe', 'ad_skip_power'
+        'id', 'level', 'name'
     ];
 
-    public $timestamps=false;
+    public $timestamps=true;
 
     /**
      * The attributes that should be hidden for arrays.

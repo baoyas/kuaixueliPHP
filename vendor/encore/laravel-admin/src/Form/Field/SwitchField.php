@@ -3,6 +3,8 @@
 namespace Encore\Admin\Form\Field;
 
 use Encore\Admin\Form\Field;
+use Encore\Admin\Facades\Admin;
+use Illuminate\Support\Str;
 
 class SwitchField extends Field
 {
@@ -18,6 +20,8 @@ class SwitchField extends Field
         'on'  => ['value' => 1, 'text' => 'ON', 'color' => 'primary'],
         'off' => ['value' => 0, 'text' => 'OFF', 'color' => 'default'],
     ];
+
+    protected $tshowScript = '';
 
     public function states($states = [])
     {
@@ -56,11 +60,43 @@ $('{$this->getElementClassSelector()}.la_checkbox').bootstrapSwitch({
     offColor: '{$this->states['off']['color']}',
     onSwitchChange: function(event, state) {
         $('{$this->getElementClassSelector()}').val(state ? 'on' : 'off');
+        {$this->tshowScript}
     }
 });
 
 EOT;
 
         return parent::render();
+    }
+
+    /**
+     * Load options for other select on change.
+     *
+     * @param string $field
+     * @param string $sourceUrl
+     * @param string $idField
+     * @param string $textField
+     *
+     * @return $this
+     */
+    public function tshow($field, $showKey='on')
+    {
+        if (Str::contains($field, '.')) {
+            $field = $this->formatName($field);
+            $class = str_replace(['[', ']'], '_', $field);
+        } else {
+            $class = $field;
+        }
+
+        $this->tshowScript = <<<EOT
+    var target = $(this).closest('.fields-group').find(".$class").closest('.form-group');
+    if($('{$this->getElementClassSelector()}').val()=='$showKey') {
+        $(target).show();
+    } else {
+        $(target).hide();
+    }
+EOT;
+
+        return $this;
     }
 }

@@ -4,14 +4,9 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * 资金流向 后台更新用户金额 用户充值
- * Class Bankroll
- * @package App\Model
- */
-class Bankroll extends Model
+class EducationProvince extends Model
 {
-    protected $table='bankroll';
+    protected $table='education_province';
     protected $primaryKey='id';
     /**
      * The attributes that are mass assignable.
@@ -19,7 +14,7 @@ class Bankroll extends Model
      * @var array
      */
     protected $fillable = [
-        'bank_uid', 'bank_event', 'bank_money_type', 'bank_money', 'bank_terrace', 'bank_creatr_time', 'bank_terrace_type', 'serial_number', 'wx_order_sn', 'wx_pay_statues', 'wx_pay_money'
+        'ad_skip_name', 'ad_skip_describe', 'ad_skip_power'
     ];
 
     public $timestamps=false;

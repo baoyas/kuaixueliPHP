@@ -159,7 +159,7 @@ class RewardController extends JaseController
                     User::addMoney($form->user_id, $form->value, 2);
                 } elseif($form->type == 4) {
                     User::find($form->user_id)->increment('points', $form->value);
-                    UserShare::create(['user_id'=>$form->user_id, 'biz_type'=>5, value=>$form->value]);
+                    UserShare::create(['user_id'=>$form->user_id, 'biz_type'=>5, 'value'=>$form->value]);
                 }
                 User::where('id', $form->user_id)->decrement('points', 20);
                 return response()->json([

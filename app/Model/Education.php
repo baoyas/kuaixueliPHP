@@ -72,4 +72,8 @@ class Education extends Model
     public function school() {
         return $this->hasOne(EducationSchool::class, 'id', 'school_id');
     }
+
+    public function provinces() {
+        return $this->belongsToMany(Province::class, 'education_province', 'education_id', 'province_id');
+    }
 }

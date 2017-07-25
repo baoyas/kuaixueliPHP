@@ -6,6 +6,8 @@ use App\Model\Ad;
 use App\Model\Education;
 use App\Model\EducationLevel;
 use App\Model\EducationSchool;
+use App\Model\EducationProvince;
+use App\Model\Province;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -51,7 +53,7 @@ class EducationController extends Controller
         return Admin::content(function (Content $content) use ($id){
             $content->header('学历管理');
             $content->description(trans('admin::lang.edit'));
-            $content->body($this->form()->edit($id));
+            $content->body($this->form($id)->edit($id));
         });
     }
 
@@ -82,9 +84,9 @@ class EducationController extends Controller
      *
      * @return Form
      */
-    public function form()
+    public function form($id='')
     {
-        return Admin::form(Education::class, function (Form $form) {
+        return Admin::form(Education::class, function (Form $form) use($id) {
             $form->display('id', '学历ID');
             $form->text('name', '学历名称')->rules('required');
             $form->select('school_id', '学历级别')->options(
@@ -100,7 +102,7 @@ class EducationController extends Controller
                 'on'  => ['value' => 1, 'text' => '是', 'color' => 'success'],
                 'off' => ['value' => 2, 'text' => '否', 'color' => 'danger'],
             ];
-            $form->switch('fulltime_id', '是否全日制')->states($fullTimeStates);
+            $form->switch('fulltime_id', '是否全日制')->states($fullTimeStates)->tshow('notfulltime_id', 'on');
             $form->radio('notfulltime_id', '脱产')->options([
                 1 => '全日制脱产',
                 2 => '周末脱产'
@@ -114,6 +116,11 @@ class EducationController extends Controller
                 '4' => '4年',
                 '5' => '5年',
             ]);
+            $form->multipleSelect('provinces', '户籍限制')->options(Province::all()->pluck('name', 'id'))->default(
+                EducationProvince::where('education_id', $id)->get()->pluck('id', 'id')
+            );
+            $form->text('province_desc', '户籍限制说明')->rules('required');
+            $form->text('major', '可选专业')->rules('required');
         });
     }
 }

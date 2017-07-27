@@ -89,7 +89,7 @@ class EducationController extends Controller
         return Admin::form(Education::class, function (Form $form) use($id) {
             $form->display('id', '学历ID');
             $form->text('name', '学历名称')->rules('required');
-            $form->select('school_id', '学历级别')->options(
+            $form->select('school_id', '学校名称')->options(
                 EducationSchool::all()->pluck('name', 'id')
             );
             $form->select('level_id', '学历级别')->options(

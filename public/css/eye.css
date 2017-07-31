@@ -1,0 +1,520 @@
+.eye-wrap {
+    padding: 50px 0 30px;
+    background-color: #fff;
+}
+
+.eye-wrap .hidden {
+    display: none;
+}
+
+.eye-list {
+    width: 1170px;
+    margin: 0 auto;
+    height: 100px;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #e7ebec;
+    height: 447px;
+}
+
+.eye-list .eye-title .tab-common {
+    float: left;
+    display: inline-block;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    /*width: 288px;*/
+    width: 50%;
+    height: 43px;
+    border-bottom: 1px solid #e7ebec;
+}
+
+.eye-list .eye-title .tab-item {
+    border-top: 3px solid hsla(0, 0%, 90%, 0);
+    transition: border-top .6s;
+    -moz-transition: border-top .6s;
+    -webkit-transition: border-top .6s;
+    -o-transition: border-top .6s;
+}
+
+.eye-list .eye-title .tab-item:hover {
+    border-top: 3px solid #e6e6e6;
+}
+
+.eye-list .eye-title .tab-item.hover {
+    border-top: 3px solid #007bc7;
+    border-bottom: none;
+    border-left: 1px solid #e7ebec;
+    border-right: 1px solid #e7ebec;
+}
+
+.eye-list .eye-title .tab-item.hover-left.hover {
+    border-top: 3px solid #007bc7;
+    border-bottom: none;
+    border-left: 1px solid #e7ebec;
+}
+
+.eye-list .eye-contain {
+    height: 400px;
+    overflow-y: scroll;
+}
+
+.eye-list .eye-tab-1 {
+    padding: 27px 41px 0 41px;
+}
+
+.eye-list .eye-tab-1 .line {
+    width: 130px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.eye-list .eye-tab-1 .line .bace {
+    margin-bottom: 36px;
+}
+
+.eye-list .eye-tab-1 .line .bace .area {
+    padding-bottom: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 15px;
+    color: #8491a3;
+    display: block;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.eye-list .eye-tab-1 .line .bace .city {
+    padding-bottom: 13px;
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    color: #5b5b5b;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.eye-list .eye-tab-1 .line .bace .city:hover,
+.eye-list .eye-tab-1 .line .bace .area:hover {
+    color: #009bae;
+}
+
+.eye-list .eye-tab-1 .line .bace .city .eye-icon {
+    display: inline-block;
+    margin-right: 10px;
+    color: #d5d5d5;
+}
+
+.eye-list .eye-tab-2 {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.eye-list .eye-tab-2 .line {
+    margin-right: 40px;
+    width: 230px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.eye-list .eye-tab-2 .line .bace {
+    margin-bottom: 35px;
+}
+
+.eye-list .eye-tab-2 .line .bace .area {
+    padding-bottom: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    color: #8491a3;
+    display: block;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.eye-list .eye-tab-2 .line .bace .city {
+    padding-bottom: 12px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    color: #5b5b5b;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.eye-list .eye-tab-2 .line .bace .city:hover,
+.eye-list .eye-tab-2 .line .bace .area:hover {
+    color: #009bae;
+}
+
+.eye-list .eye-tab-2 .line .bace .city .eye-icon {
+    display: inline-block;
+    margin-right: 10px;
+    color: #d5d5d5;
+}
+
+.eye-list .eye-tab-3 {
+    overflow: visible;
+}
+
+.eye-list .eye-tab-3 table {
+    width: 100%;
+    margin-left: 10px;
+    background-color: transparent;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.eye-list .eye-tab-3 table tr td {
+    width: 33%;
+    border: none;
+    text-align: left;
+    line-height: normal;
+}
+
+.eye-list .eye-tab-3 table tr td .cell {
+    border-bottom: 1px dashed #ccc;
+    width: 95%;
+    padding-top: 28px;
+    padding-bottom: 38px;
+    height: 130px;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .index {
+    width: 17%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .index .icon {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    background: url(../Image/sprite.png) 0 -1px no-repeat;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .index .icon-1 {
+    background-position-x: 0px;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .index .icon-2 {
+    background-position-x: -336px;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .index .icon-3 {
+    background-position-x: -252px;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .index .icon-4 {
+    background-position-x: -210px;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .index .icon-5 {
+    background-position-x: -168px;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .index .icon-6 {
+    background-position-x: -126px;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .index .icon-7 {
+    background-position-x: -84px;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .index .icon-8 {
+    background-position-x: -42px;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .index .icon-9 {
+    background-position-x: -294px;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .box {
+    display: inline-block;
+    width: 80%;
+    vertical-align: top;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .box .name {
+    width: 73%;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 24px;
+    cursor: pointer;
+    color: #5b5b5b;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .box .name:hover {
+    color: #009bae;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .box .base {
+    font-size: 12px;
+    color: #8491a3;
+    line-height: 24px;
+    display: inline-block;
+}
+
+.eye-list .eye-tab-3 table tr td .cell .box .sub-name {
+    font-size: 12px;
+    color: #8491a3;
+    cursor: pointer;
+}
+
+
+/*list-page*/
+
+.list-page {
+    padding-bottom: 20px;
+}
+
+.list-page .list-title {
+    position: relative;
+    padding: 20px 0 15px;
+    font-size: 13px;
+    color: #999;
+}
+
+.list-page .list-title .eye-logo {
+	display: block;
+    width: 117px;
+    height: 39px;
+    background: url(../Image/eye-logo.png) no-repeat;
+    position: absolute;
+    top: 7px;
+    right: 15px;
+}
+
+.list-page .list-contain {
+    border: 1px solid #eee;
+}
+
+.list-page .list-contain .list-item {
+    position: relative;
+    padding: 25px 30px 35px 35px;
+}
+
+.list-page .list-contain .list-item:hover {
+    transition: box-shadow .2s;
+    -moz-transition: box-shadow .2s;
+    -webkit-transition: box-shadow .2s;
+    -o-transition: box-shadow .2s;
+    box-shadow: 0 0 22px 10px #e2e7e8;
+}
+
+.list-page .list-contain .list-item .item-title {
+    padding-bottom: 20px;
+}
+
+.list-page .list-contain .list-item .item-title a {
+    display: inline-block;
+    color: #6d6d6d;
+    word-break: break-all;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.list-page .list-contain .list-item .item-title a:hover {
+	color: #333;
+}
+
+.list-page .list-contain .list-item .item-title span {
+    display: inline-block;
+    padding: 1px 6px;
+    white-space: nowrap;
+    color: #5fa8de;
+    border: 1px solid #5fa8de;
+    font-size: 12px;
+    line-height: 20px;
+    vertical-align: top;
+    margin-left: 15px;
+}
+
+.list-page .list-contain .list-item .item-info .sub-info {
+    display: inline-block;
+    color: #666;
+    display: inline-block;
+    border-right: 1px dotted #aaa;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 13px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list-page .list-contain .list-item .item-info .sub-info span {
+    color: #111;
+    font-size: 13px;
+}
+
+.list-page .list-contain .list-item .item-right {
+    position: absolute;
+    top: 33px;
+    right: 30px;
+}
+
+.no-padding-left {
+    padding-left: 0!important;
+}
+
+.no-border {
+    border: none!important;
+}
+
+.no-overflow {
+    overflow: visible;
+    clear: both;
+}
+
+
+/*detail*/
+
+.detail .header {
+	position: relative;
+    padding: 20px 30px;
+}
+
+.detail .header span {
+    display: inline-block;
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.detail .header .header-top a {
+    display: inline-block;
+    height: 24px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #44b7e5;
+    font-size: 12px;
+    line-height: 24px;
+    padding: 0 5px;
+    margin-left: 5px;
+}
+
+.detail .header .header-top {
+    margin-bottom: 10px;
+}
+
+.detail .header .header-info {
+    line-height: 26px;
+    font-size: 14px;
+    color: #111;
+}
+
+.detail .header .header-info>div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+}
+
+.detail .header .header-info .w-220 {
+    width: 220px;
+}
+
+.detail .header .header-info span {
+    font-size: 14px;
+    line-height: 26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.detail .header .header-info a {
+    color: #009bae;
+}
+
+.detail .header .eye-logo {
+	display: block;
+	width: 117px;
+	height: 39px;
+	background: url(../Image/eye-logo.png) no-repeat;
+	position: absolute;
+	top: 18px;
+	right: 30px;
+}
+
+.detail .content {
+    padding: 0px 30px;
+}
+
+.detail .content .content-top {
+    line-height: 15px;
+    padding-left: 8px;
+    border-left: 4px solid #44b7e5;
+    font-size: 14px;
+    color: #111;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.detail .content .basic table {
+    margin-top: 15px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    padding: 5px;
+    border-bottom: 1px solid #d5d5d5;
+    margin-bottom: 20px;
+    border: 1px solid #e2e7e8!important;
+    font-size: 14px;
+    text-align: center;
+    background-color: transparent;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.detail .content .basic table thead {
+    background-color: #f9f9fc;
+    border-top: 1px solid #e2e7e8;
+}
+
+.detail .content .basic table td {
+    height: 40px;
+    line-height: 40px;
+    font-size: 13px;
+}
+
+.detail .content .basic table thead td {
+    color: #111;
+}
+
+.detail .company table {
+	width: 100%;
+}
+
+.detail .company table td {
+    height: 35px;
+    line-height: 20px;
+    text-align: left;
+    border: none;
+    font-size: 13px;
+}
+
+.detail .company table td span {
+    color: #111;
+}
+
+.detail .company .more {
+    display: inline-block;
+    height: 24px;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #44b7e5;
+    font-size: 12px;
+    line-height: 24px;
+    padding: 0 10px;
+    margin: 20px 0;
+}

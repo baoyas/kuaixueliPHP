@@ -1,0 +1,74 @@
+.selArea{
+    width: 210px;
+    height: 30px;
+    border: #e0e0e0 solid 1px;
+    padding-left: 12px;
+    position: relative;
+    color: #757575;
+    z-index: 1;
+}
+#serviceInfo{
+	font-size: 14px;
+	padding: 10px 0 0;
+}
+#serviceInfo .price{
+	color: #ff5f00;
+}
+#serviceInfo .ourPrice{
+	color: #12971a;
+	font-weight: bold;
+}
+#serviceInfo .floatRight{
+	float: right;
+}
+#serviceInfo .lThrow{
+	text-decoration: line-through;
+}
+#serviceInfo .pdlr4{
+	padding: 0 15px;
+}
+#serviceInfo li{
+	border-bottom: 1px solid #e5e5e5;
+	padding: 10px 20px 10px 50px;
+	line-height: 25px;
+	position: relative;
+	overflow: hidden;
+}
+#serviceInfo li:hover{
+	background: #e5e5e5;
+}
+#serviceInfo li span.addToShoppingCar{
+	float: right;
+	color: #fff;
+	background: #ff6100;
+	margin: 10px 0;
+	padding: 2px 15px;
+	position: relative;
+	left: -30px;
+	border-radius: 3px;
+	/*font-weight: bold;*/
+	cursor: pointer;
+}
+#serviceInfo li span.addToShoppingCar:hover{
+	background:#cd4101;
+}
+#serviceInfo li .floatRight{
+	cursor:pointer;
+	font-size: 12px;
+}
+#serviceInfo li .floatRight:hover{
+	color:#127bc7;
+}
+#serviceInfo li .require{
+	display: inline-block;
+	padding: 0 70px;
+	position: relative;
+}
+#serviceInfo li .require span{
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+#serviceInfo li .showMoreBox{
+	display: none;
+}

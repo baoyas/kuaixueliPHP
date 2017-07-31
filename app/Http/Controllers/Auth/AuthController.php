@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Model\User;
 use Validator;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -29,8 +30,21 @@ class AuthController extends Controller
     public function getLogin() {
         return view('auth/login');
     }
+
     public function getRegister() {
         return view('auth/register');
     }
 
+    public function postLogin(Request $request) {
+        return response()->json([
+            'code'  => '100',
+            'ret' => false,
+            'msg' => "感谢分享"
+        ]);
+        return response()->json([
+            'code'  => '0',
+            'ret' => 'true',
+            'msg' => "感谢分享"
+        ]);
+    }
 }

@@ -9,7 +9,7 @@ use Encore\Admin\Traits\AdminBuilder;
 class User extends Model
 {
     use AdminBuilder;
-    protected $table='user';
+    protected $table='users';
     protected $primaryKey='id';
     /**
      * The attributes that are mass assignable.
@@ -17,7 +17,7 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'nickname', 'phone', 'accounts', 'address', 'sex', 'area', 'autograph', 'user_face', 'backgroud_pic', 'user_reg_time', 'statues', 'qq_party_login', 'wx_party_login', 'weibo_party_login', 'password',  'token', 'expire', 'is_del', 'push_code', 'model'
+        'nickname', 'mobile', 'email', 'password'
     ];
 
     public $timestamps=false;

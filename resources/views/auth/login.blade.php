@@ -13,7 +13,7 @@
                         <!--</li>-->
                         <li class="register-li">
 						<span>
-                                                            <input type="text" id="usermobile"  maxlength='11' name="mobile" autocomplete="off" onfocus="huodejiaodian(this)" onBlur="shiqujiaodian(this,'tishi-1')">
+                                                            <input type="text" id="usermobile"  maxlength='11' name="user[mobile]" autocomplete="off" onfocus="huodejiaodian(this)" onBlur="shiqujiaodian(this,'tishi-1')">
                                                     </span>
                             <label class="register-li-span" for="usermobile">手机号码</label>
                             <!-- <div class="register-li-1">请输入11位手机号码</div> -->
@@ -21,7 +21,7 @@
                             <div class="register-li-3 chenggong-1"></div>
                         </li>
                         <li class="register-li">
-                            <span><input type="password" id="password" name="password" onfocus="huodejiaodian(this)" onBlur="shiqujiaodian(this,'tishi-2')"></span>
+                            <span><input type="password" id="password" name="user[userpass]" onfocus="huodejiaodian(this)" onBlur="shiqujiaodian(this,'tishi-2')"></span>
                             <label class="register-li-span" for="password">密码</label>
                             <!-- <div class="register-li-1">密码为6~8位的数字或字符</div> -->
                             <div class="register-li-1 tishi-2" style="display: none">请输入密码</div>
@@ -90,7 +90,7 @@
                 errorElement: "div",
                 errorClass: "register-li-1",
                 rules: {
-                    'mobile':{
+                    'user[mobile]':{
                         required: true,
                         mobile: true
                         /*
@@ -107,13 +107,13 @@
                         }
                         */
                     },
-                    'password':{
+                    'user[userpass]':{
                         required: true,
                         userpass: true
                     }
                 },
                 messages: {
-                    'mobile':{
+                    'user[mobile]':{
                         required: "请输入手机号",
                         mobile: "手机号格式有误，请重新输入",
                         remote:function() {
@@ -121,7 +121,7 @@
                         }
 
                     },
-                    'password':{
+                    'user[userpass]':{
                         required: "请输入密码",
                         userpass: "密码为6-18位的数字或字符"
                     }
@@ -130,7 +130,7 @@
                     label.parent().after(error);
                 },
                 submitHandler:function(form){
-                    submitForm("/login", 'regForm', function(result){
+                    submitForm("/auth/login", 'regForm', function(result){
                         if (result.ret)
                         {
                             $(".chenggong-2").show();
@@ -163,14 +163,14 @@
                             }
                         }
                         // 加载错误提示
-                        /*var errObj = $("div[for='password']");
+                        /*var errObj = $("div[for='user[userpass]']");
                          if (errObj.length > 0)
                          {
                          errObj.html(result.msg).show();
                          }
                          else
                          {
-                         $("input[name='password']").eq(0).parent().after('<div for="password" generated="true" style="display:block" class="register-li-1">'+result.msg+'</div>');
+                         $("input[name='user[userpass]']").eq(0).parent().after('<div for="user[userpass]" generated="true" style="display:block" class="register-li-1">'+result.msg+'</div>');
                          }*/
                     });
                     return false;

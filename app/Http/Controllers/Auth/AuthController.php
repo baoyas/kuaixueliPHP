@@ -7,6 +7,7 @@ use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Crypt;
 
 class AuthController extends Controller
 {
@@ -36,15 +37,35 @@ class AuthController extends Controller
     }
 
     public function postLogin(Request $request) {
-        return response()->json([
-            'code'  => '100',
-            'ret' => false,
-            'msg' => "感谢分享"
-        ]);
+        $user = $request->get('user');
+        $mobile = empty($user['mobile']) ? '' : $user['mobile'];
+        $password = empty($user['userpass']) ? '' : $user['userpass'];
+        if(empty($mobile) || empty($password)) {
+            return response()->json([
+                'code'  => '7',
+                'ret' => false,
+                'msg' => "账号或密码错误"
+            ]);
+        }
+        $user = User::where('mobile', $mobile)->first();
+        if(empty($user)) {
+            return response()->json([
+                'code'  => '100',
+                'ret' => false,
+                'msg' => ""
+            ]);
+        }
+        if ($password != Crypt::decrypt($user->password)) {
+            return response()->json([
+                'code'  => '7',
+                'ret' => false,
+                'msg' => "账号或密码错误"
+            ]);
+        }
         return response()->json([
             'code'  => '0',
             'ret' => 'true',
-            'msg' => "感谢分享"
+            'url' => "/"
         ]);
     }
 }

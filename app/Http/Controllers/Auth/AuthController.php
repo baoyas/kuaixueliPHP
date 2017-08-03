@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -55,17 +56,31 @@ class AuthController extends Controller
                 'msg' => ""
             ]);
         }
-        if ($password != Crypt::decrypt($user->password)) {
+
+        $credentials['mobile'] = $mobile;
+        $credentials['password'] = $password;
+
+        if (!Auth::guard()->attempt($credentials)) {
             return response()->json([
                 'code'  => '7',
                 'ret' => false,
                 'msg' => "账号或密码错误"
             ]);
         }
+
         return response()->json([
             'code'  => '0',
             'ret' => 'true',
             'url' => "/"
         ]);
+    }
+
+    public function getLogout()
+    {
+        Auth::guard()->logout();
+
+        session()->forget('url.intented');
+
+        return redirect('/');
     }
 }

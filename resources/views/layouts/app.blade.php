@@ -56,8 +56,13 @@
             </li>
         </ul>
         <ul class="overflowhidden floatRight headerOverflowInherit">
-            <li><a class="noBorder" href="login.html">登录</a></li>
-            <li><a href="register.html">免费注册</a></li>
+            @if (Auth::guest())
+                <li><a class="noBorder" href="{{ url('/auth/login') }}">登录</a></li>
+                <li><a href="{{ url('/auth/register') }}">免费注册</a></li>
+            @else
+                <li><a class="noBorder">欢迎xxx</a></li>
+                <li><a class="noBorder" href="{{ url('/auth/logout') }}">退出</a></li>
+            @endif
             <li><a href="/user/orders/index.html">我的订单</a></li>
             <li><a class="welcome1" href="/cart/info.html"><i class="gw floatLeft"></i>购物车<em>0</em>件</a></li>
             <li><a href="#" target="_blank">院校入驻</a></li>

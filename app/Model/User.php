@@ -9,7 +9,7 @@ use Encore\Admin\Traits\AdminBuilder;
 class User extends Model
 {
     use AdminBuilder;
-    protected $table='users';
+    protected $table='user';
     protected $primaryKey='id';
     /**
      * The attributes that are mass assignable.

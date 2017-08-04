@@ -27,7 +27,7 @@
 
                     <ol>
                         <li class="goods">
-                            <img class="floatLeft marL40 imgW50" src="Image/166.png" alt="服务图片">
+                            <img class="floatLeft marL40 imgW50" src="/Image/166.png" alt="服务图片">
                             <div class="textImgSeparation goods-text">
                                 <div>
                                     <span>北京人民大学</span>
@@ -90,7 +90,7 @@
                     </li>
                 </ul>
                 <div class="marT30 floatRight">
-                    <a class="butpadding64 inlineBlock floatRight butRed" href="html/pay.html" id="orderButton" data-urlkey="">去结账</a>
+                    <a class="butpadding64 inlineBlock floatRight butRed" href="{{ url('/order/pay') }}" id="orderButton" data-urlkey="">去结账</a>
                     <a class="butpadding21 inlineBlock floatRight butWhiteGreyborder marR20" href="index.html">继续逛逛</a>
                 </div>
                 <!-- 如何获取发票 -->

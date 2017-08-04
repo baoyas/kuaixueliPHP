@@ -46,14 +46,14 @@
                             <a href="#" ><h5>硕士研究生</h5></a>
                             <div class="kfwNavOne">
                                 <a class="active" href="{{ url('/education/level') }}">在职研究生</a>
-                                <a  href="/product/virtualaddress.html">英国一年研究生</a>
-                                <a class="active" href="/product/readd2.html">MBA</a>
+                                <a  href="{{ url('/education/level') }}">英国一年研究生</a>
+                                <a class="active" href="{{ url('/education/level') }}">MBA</a>
                             </div>
                         </li>
                         <li>
-                            <a href="/product/change.html" ><h5>博士研究生</h5></a>
+                            <a href="{{ url('/education/level') }}" ><h5>博士研究生</h5></a>
                             <div >
-                                <a class="active" href="/product/stock_change_tax.html">EMBA</a>
+                                <a class="active" href="{{ url('/education/level') }}">EMBA</a>
                             </div>
                         </li>
                     </ul>

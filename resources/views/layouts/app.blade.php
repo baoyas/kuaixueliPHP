@@ -117,6 +117,28 @@
 <!-- 导航 -->
 <div class="main bgWhite border000 headerOverflowInherit" style="z-index: 10;">
     <!-- LOGO -->
+    @if (Request::path()=='order/pay')
+    <div class="minwidth kfwLogo">
+        <a class="floatLeft" href="/">
+            <img id="logoImg" src="/Image/LOGO.png" alt="快学历">
+        </a>
+        <div class="logo-sub">订单</div>
+        <div class="stepflex">
+            <dl class="first done">
+                <dt class="s-num">1</dt>
+                <dd class="s-text">1.确认服务信息<s></s><b></b></dd>
+            </dl>
+            <dl class="normal done">
+                <dt class="s-num">2</dt>
+                <dd class="s-text">2.我的购物车<s></s><b></b></dd>
+            </dl>
+            <dl class="normal doing">
+                <dt class="s-num">3</dt>
+                <dd class="s-text">3.提交订单并支付<s></s><b></b></dd>
+            </dl>
+        </div>
+    </div>
+    @else
     <div class="minwidth kfwLogo">
         <a class="floatLeft" href="index.html">
             <img src="/Image/LOGO1.png" alt="快学历">
@@ -124,6 +146,7 @@
         <!-- 这里是与info相同却删除的内容 -->
         <div class="logo-sub">欢迎注册</div>
     </div>
+    @endif
     <!-- LOGO -->
 
 </div>

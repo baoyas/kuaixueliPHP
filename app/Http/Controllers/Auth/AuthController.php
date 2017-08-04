@@ -83,4 +83,39 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
+    public function postRegister(Request $request) {
+        $user = $request->get('reg');
+        $mobile = empty($user['mobile']) ? '' : $user['mobile'];
+        $verifycode = empty($user['verifycode']) ? '' : $user['verifycode'];
+        $email = empty($user['email']) ? '' : $user['email'];
+        $realname = empty($user['realname']) ? '' : $user['realname'];
+        $password = empty($user['userpass']) ? '' : $user['userpass'];
+        $user = User::where(['mobile'=>$mobile])->first();
+        if($user) {
+            return response()->json([
+                'code'  => '0',
+                'ret' => false,
+                'msg' => "手机号已经注册"
+            ]);
+        }
+        User::create(['mobile'=>$mobile, 'email'=>$email, 'realname'=>$realname, 'password'=>bcrypt($password)]);
+
+        $credentials['mobile'] = $mobile;
+        $credentials['password'] = $password;
+
+        if (Auth::guard()->attempt($credentials)) {
+            return response()->json([
+                'code'  => '0',
+                'ret' => true,
+                'url' => "/"
+            ]);
+        }
+        return response()->json([
+            'code'  => '0',
+            'ret' => true,
+            'url' => "/"
+        ]);
+        return redirect('/auth/register');
+    }
 }

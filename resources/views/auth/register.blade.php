@@ -5,6 +5,7 @@
         <div class="llMain">
             <div class="group mlLe">
                 <form action="" id="regForm">
+                    {{ csrf_field() }}
                     <ul class="relative" style="left:100px;">
                         <li class="register-li">
                             <p><input type="text" value="" id="reg_mobile" name="reg[mobile]" maxlength='11' onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" onFocus="huodewenan(this,'tishi-div-1','tishi-div-2','tishi-div-3')" onBlur="shiquwenan(this,'tishi-div-1','tishi-div-2','tishi-div-3')"></p>
@@ -170,10 +171,10 @@
                 $(".tishi-div-2").hide();
                 $(".tishi-div-3").hide();
 //		$("#regForm").submit();
-                $.post('/signup/register',$("#regForm").serialize(),function (result) {
+                $.post('/auth/register', $("#regForm").serialize(), function (result) {
                     if( result.ret ){
                         window.location.href = result.url;
-                    }else{
+                    } else {
                         alert(result.msg);
                     }
                 });
@@ -246,7 +247,7 @@
                     //label.parent().find('.register-li-3').hide();
                 },
                 submitHandler:function(form) {
-                    submitForm("/signup/register.html", 'regForm', function (result) {
+                    submitForm("auth/register", 'regForm', function (result) {
                         if (true == result.ret) {
                             $(".verifycodetishi").show();
 

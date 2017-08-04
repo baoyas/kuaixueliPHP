@@ -469,3 +469,4 @@ table td,table th{border:1px solid #bebebe;text-align: center;font-size: 14px;co
 /*******错识信息******/
 .myService-list .popError{float: left;width: 100%;height: auto;line-height: normal;text-align: left;text-indent: 190px;background: url("../Image/error.jpg") no-repeat scroll 168px center;font-size: 12px;color: #f14b4c;margin-bottom: 20px;}
 input{-webkit-box-sizing: content-box;-moz-box-sizing: content-box;box-sizing: content-box;}
+#logoImg{margin-top:-15px;}

@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'Home\HomeController@index');
+Route::get('/education/level', 'Home\EducationController@level');
+Route::get('/education/info', 'Home\EducationController@info');
 
 //Auth::routes();
 

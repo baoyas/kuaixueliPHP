@@ -12,13 +12,21 @@
 
     <!-- Styles -->
     <link href="/css/baseold.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
     <link href="/css/header.css" rel="stylesheet">
     <link href="/css/home.css" rel="stylesheet">
+    <link href="/css/product.css" rel="stylesheet">
+    <link href="/css/product_new.css" rel="stylesheet">
+    <link href="/css/kfwpop.css" rel="stylesheet">
+    <link href="/css/serviceInfo.css" rel="stylesheet">
+    <link href="/css/buy.css" rel="stylesheet">
+
     <!-- Scripts -->
     <script src="/js/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="/js/base.js"></script>
     <script type="text/javascript"  src="/js/jquery.validate.js"></script>
     <script type="text/javascript" src="/js/global.js"></script>
+    <script type="text/javascript" src="/js/kfwnav.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
@@ -147,6 +155,107 @@
 <!-- 侧边栏 -->
 
 @yield('content')
+
+
+
+<!-- 关于快学历平台 -->
+<!-- 友情链接 -->
+<link rel="stylesheet" href="/css/home_index.css">
+<!-- 友情链接 -->
+<div class="main bgWhite">
+    <div class="main greyf5f5f5">
+        <a href="javascript:void(0);" target="_blank">
+            <ul class="index-fo-info overflowhidden">
+                <li class="firstLi">
+                    <i class="zz"></i>
+                    <div class="textImgSeparation">
+                        <h3>资质认证</h3>
+                        <span>服务商100%实名审核认证</span>
+                    </div>
+                </li>
+                <li>
+                    <i class="zf"></i>
+                    <div class="textImgSeparation">
+                        <h3>支付安全</h3>
+                        <span>明码标价支付及信息安全</span>
+                    </div>
+                </li>
+                <li>
+                    <i class="fw"></i>
+                    <div class="textImgSeparation">
+                        <h3>保险赔付</h3>
+                        <span>太平洋保险提供担保赔付</span>
+                    </div>
+                </li>
+                <li>
+                    <i class="sh"></i>
+                    <div class="textImgSeparation">
+                        <h3>售后无忧</h3>
+                        <span>服务出问题客服经理全程跟进</span>
+                    </div>
+                </li>
+            </ul>
+        </a>
+    </div>
+    <div class="minwidth">
+        <div class="minwidthauto">
+            <ul class="overflowhidden index-fo-link">
+                <li class="margin0">
+                    <h5>关于快学历</h5>
+                    <a target="_blank" href="/help/about.html" rel="nofollow">了解我们</a>
+                    <a target="_blank" href="/brand/index.html" rel="nofollow">品牌故事</a>
+                    <a target="_blank" href="/help/joinus.html" rel="nofollow">加入我们</a>
+                    <a target="_blank" href="/help/contact.html" rel="nofollow">联系我们</a>
+                </li>
+                <li>
+                    <h5>常见问题</h5>
+                    <a target="_blank" href="/help/faq.html" rel="nofollow">新手帮助</a>
+                    <a target="_blank" href="/help/support.html" rel="nofollow">支付帮助</a>
+                    <a target="_blank" href="/help/kaijufapiao.html" rel="nofollow">开具发票</a>
+                    <a target="_blank" href="/knowledge/index.html">知识库</a>
+                </li>
+                <li>
+                    <h5>商务合作</h5>
+                    <a target="_blank" href="/help/cooperation.html" rel="nofollow">商务合作</a>
+                    <!--<a target="_blank" href="/event/channel_join.html" rel="nofollow">渠道加盟</a>-->
+                    <a target="_blank" href="/help/links.html">友情链接</a>
+                    <a target="_blank" href="/index/incubator.html">孵化器</a>
+                </li>
+                <li>
+                    <h5>服务商入口</h5>
+                    <a href="http://f.kuaifawu.com" rel="nofollow">院校入驻</a>
+                    <a href="/help/joining.html" rel="nofollow" style="color:#00a5d5;">助学机构入驻</a>
+                </li>
+                <li>
+                    <div class="floatLeft bd"></div>
+                    <div class="floatLeft link-weixi">
+                        <i></i>
+                        <div class="textImgSeparation">
+                            <span>扫描二维码</span>
+                            <span>关注快学历微信</span>
+                            <span>学历一手掌握</span>
+                        </div>
+                    </div>
+                    <div class="floatLeft link-th">
+                        <h5>服务支持</h5>
+                        <h3>400-618-1106</h3>
+                        <span>周一至周日<em>8:00-22:00</em></span>
+                        <div class="mx-button">售后服务</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 关于快学历平台 -->
+
+<!-- footer -->
+<div class="footer">
+    <div class="footer-inner footer-index minwidth">
+        <p>Copyright © 2011-2015 www.xueli985.com All Rights Reserved &nbsp; &nbsp;技术支持：北京维思天下教育科技有限公司&nbsp;京ICP备12002978号</p>
+    </div>
+</div>
+<!-- footer -->
 
 <!-- Scripts -->
 <script src="/js/app.js"></script>

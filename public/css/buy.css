@@ -1120,7 +1120,6 @@ body{background: #f5f5f5;}
    overflow: hidden;
    width: 5px;
    height: 5px;
-   background-image: url("../Image/iconStep.png");
 }
 .stepflex .s-num {
 	font-weight: 700;
@@ -1133,7 +1132,6 @@ body{background: #f5f5f5;}
 	margin: -15px auto 0;
 
 	color: #fff;
-	background-image: url("../Image/iconStep.png");
 }.stepflex .s-text {
 	 color: #ccc;
  }

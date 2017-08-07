@@ -9,7 +9,7 @@
                 <a href="../index.html">首页</a>
             </li>
             <li class="interval"></li>
-            <li class="active">在职研究生</li>
+            <li class="active">{{ $eLevel->name }}</li>
         </ul>
     </div>
     <!-- breadcru -->
@@ -30,7 +30,7 @@
             <!-- 商品简介 -->
             <div class="product-item-inner floatLeft">
                 <div class="name">
-                    <h1>在职研究生</h1>
+                    <h1>{{ $eLevel->name }}</h1>
                     <!--<p class="tips">股权、注册一步到位的服务</p>-->
                     <p class="tips" style="color: gray;">在职研究生是国家面向没能在高等院校或科研机构接受系统的全日制研究生教育、但具有一定学术和专门技术水平的在职人员所开展的硕士学位教育，是国家促进高层次专门人才成长的一项重要措施，使在职人员边工作、边学习提高业务水平的同时也能有机会获得硕士学位，有效满足了我国在职人员对高层次学历学位的需求。
                     </p>
@@ -128,47 +128,21 @@
                         <!-- 服务介绍 -->
                         <div class="product-details-content bdTopNo">
                             <ul id="serviceInfo">
+                                @foreach($edu as $k=>$v)
                                 <li>
                                     <span class="floatRight">更多&gt;</span>
-                                    <h3>北京人民大学</h3>
-                                    <p><span>学制：2年</span><span class="pdlr4"></span><span>户籍：山东</span></p>
-                                    <p><span>报名费：<em class="price">200</em>元</span></p>
-                                    <p><span>官方学费：<em class="price lThrow">9999</em>元<span class="pdlr4"></span>快学历学费：<em class="ourPrice">8888</em>元</span></p>
+                                    <h3>{{ $v->school->name }}</h3>
+                                    <p><span>学制：{{ $v->length }}年</span><span class="pdlr4"></span><span>户籍：山东</span></p>
+                                    <p><span>报名费：<em class="price">{{ $v->entry_fee }}</em>元</span></p>
+                                    <p><span>官方学费：<em class="price lThrow">{{ $v->market_fee }}</em>元<span class="pdlr4"></span>快学历学费：<em class="ourPrice">{{ $v->kxl_fee }}</em>元</span></p>
                                     <div class="showMoreBox">
-                                        <p><span>是否全日制：否</span><span class="pdlr4"></span><span>进修方式：成人自考</span></p>
-                                        <p><span>可选专业：经理管理学，土木工程</span></p>
-                                        <p class="require"><span>入学要求：</span>招生对象为任何专业的本科毕业生。申请者最好在自我陈述（PS）中指出自己对创业方面的特殊兴趣及打算（例如：日后有创业计划、想在初创型/创新性公司里工作、将会承接家族企业等）。</p>
-                                        <p><a href="{{ url('/education/info') }}"><span class="addToShoppingCar">我要报名</span></a></p>
+                                        <p><span>是否全日制：{{ App\Model\Education::$fullTime[$v->fulltime_id] }}</span><span class="pdlr4"></span><span>进修方式：{{ App\Model\Education::$studyMode[$v->studymode_id] }}</span></p>
+                                        <p><span>可选专业：{{ $v->major }}</span></p>
+                                        <p class="require"><span>入学要求：</span>{{ $v->admission }}</p>
+                                        <p><a href="{{ url('/education/info?education_id='.$v->id) }}"><span class="addToShoppingCar">我要报名</span></a></p>
                                     </div>
                                 </li>
-                                <li>
-                                    <span class="floatRight">更多&gt;</span>
-                                    <h3>北京人民大学</h3>
-                                    <p><span>学制：2年</span><span class="pdlr4"></span><span>户籍：山东</span></p>
-                                    <p><span>报名费：<em class="price">200</em>元</span></p>
-                                    <p><span>官方价格：<em class="price lThrow">9999</em>元<span class="pdlr4"></span>快学历价格：<em class="ourPrice">8888</em>元</span></p>
-                                    <div class="showMoreBox">
-                                        <p><span>是否全日制：否</span><span class="pdlr4"></span><span>进修方式：成人自考</span></p>
-                                        <p><span>可选专业：经理管理学，土木工程</span></p>
-                                        <p><span>入学要求：招生对象为非工商管理类和实用经济学类的本科毕业生</span></p>
-                                        <p><a href="{{ url('/education/info') }}"><span class="addToShoppingCar">我要报名</span></a></p>
-                                    </div>
-
-                                </li>
-                                <li>
-                                    <span class="floatRight">更多&gt;</span>
-                                    <h3>北京人民大学</h3>
-                                    <p><span>学制：2年</span><span class="pdlr4"></span><span>户籍：山东</span></p>
-                                    <p><span>报名费：<em class="price">200</em>元</span></p>
-                                    <p><span>官方价格：<em class="price lThrow">9999</em>元<span class="pdlr4"></span>快学历价格：<em class="ourPrice">8888</em>元</span></p>
-                                    <div class="showMoreBox">
-                                        <p><span>是否全日制：否</span><span class="pdlr4"></span><span>进修方式：成人自考</span></p>
-                                        <p><span>可选专业：经理管理学，土木工程</span></p>
-                                        <p><span>入学要求：招生对象为非工商管理类和实用经济学类的本科毕业生</span></p>
-                                        <p><a href="{{ url('/education/info') }}"><span class="addToShoppingCar">我要报名</span></a></p>
-                                    </div>
-
-                                </li>
+                                @endforeach
                             </ul>
 
                         </div>

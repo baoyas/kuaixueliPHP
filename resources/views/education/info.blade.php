@@ -30,7 +30,7 @@
                             <img class="floatLeft marL40 imgW50" src="/Image/166.png" alt="服务图片">
                             <div class="textImgSeparation goods-text">
                                 <div>
-                                    <span>北京人民大学</span>
+                                    <span>{{ $edu->school->name }}</span>
                                 </div>
                                 <div class="area">
                                     <em>地区：</em>
@@ -39,7 +39,7 @@
                             </div>
                         </li>
                         <li class="unit-price">
-                            <span>1399元</span>
+                            <span>{{ $edu->kxl_fee + $edu->entry_fee }}元</span>
                         </li>
                         <li class="shopp-num">
                             <div class="numAddSubtract overflowhidden">
@@ -49,7 +49,7 @@
                             </div>
                         </li>
                         <li class="shopp-subtotal">
-                            <span id="productTotalPrice_0">8888元</span>
+                            <span id="productTotalPrice_0">{{ $edu->kxl_fee + $edu->entry_fee }}元</span>
                         </li>
                         <li class="operation">
                             <a href="javascript:void(0)">删除</a>
@@ -78,7 +78,7 @@
                 <ul class="checkout floatRight">
                     <li>
                         <span class="checkout-le">金额合计：</span>
-                        <span class="checkout-ri" id="totalPrice">4197元</span>
+                        <span class="checkout-ri" id="totalPrice">{{ $edu->kxl_fee + $edu->entry_fee }}元</span>
                     </li>
                     <li>
                         <span class="checkout-le">代金券抵扣：</span>
@@ -86,11 +86,11 @@
                     </li>
                     <li>
                         <span class="checkout-le">应付总额：</span>
-                        <span class="checkout-ri"><em id="totalPayPrice">4197元</em></span>
+                        <span class="checkout-ri"><em id="totalPayPrice">{{ $edu->kxl_fee + $edu->entry_fee }}元</em></span>
                     </li>
                 </ul>
                 <div class="marT30 floatRight">
-                    <a class="butpadding64 inlineBlock floatRight butRed" href="{{ url('/order/pay') }}" id="orderButton" data-urlkey="">去结账</a>
+                    <a class="butpadding64 inlineBlock floatRight butRed" href="{{ url('/order/pay?education_id='.$edu->id) }}" id="orderButton" data-urlkey="">去结账</a>
                     <a class="butpadding21 inlineBlock floatRight butWhiteGreyborder marR20" href="index.html">继续逛逛</a>
                 </div>
                 <!-- 如何获取发票 -->

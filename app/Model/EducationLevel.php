@@ -31,6 +31,30 @@ class EducationLevel extends Model
 
     ];
 
+    public function parent()
+    {
+        return $this->belongsTo(EducationLevel::class, 'pid');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(EducationLevel::class, 'pid');
+    }
+
+    public function brothers()
+    {
+        return $this->parent->children();
+    }
+
+    public static function options($id)
+    {
+        if (! $self = static::find($id)) {
+            return [];
+        }
+
+        return $self->brothers()->pluck('name', 'id');
+    }
+
     public function __construct(array $attributes = [])
     {
         $connection = config('admin.database.connection') ?: config('database.default');

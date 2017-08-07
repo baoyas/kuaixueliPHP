@@ -2,6 +2,7 @@
 
 namespace App\Adminlte\Controllers;
 
+use DB;
 use App\Model\Ad;
 use App\Model\Education;
 use App\Model\EducationLevel;
@@ -92,12 +93,20 @@ class EducationController extends Controller
             $form->select('school_id', '学校名称')->options(
                 EducationSchool::all()->pluck('name', 'id')
             );
-            $form->select('level_id', '学历级别')->options(
-                EducationLevel::all()->pluck('name', 'id')
-            );
+            $form->select('level_1_id', '学历级别1')->options(
+                EducationLevel::where(['pid'=>0])->get()->pluck('name', 'id')
+            )->load('level_2_id', '/adminlte/education/levelNext');
+            $form->select('level_2_id', '学历级别2')->options(function ($id) {
+                return EducationLevel::options($id);
+            })->load('level_3_id', '/adminlte/education/levelNext');
+            $form->select('level_3_id', '学历级别3')->options(function ($id) {
+                return EducationLevel::options($id);
+            });
+
             $form->select('studymode_id', '进修方式')->options(
                 Education::$studyMode
             );
+
             $fullTimeStates = [
                 'on'  => ['value' => 1, 'text' => '是', 'color' => 'success'],
                 'off' => ['value' => 2, 'text' => '否', 'color' => 'danger'],
@@ -134,7 +143,16 @@ class EducationController extends Controller
                 2 => '计算机',
                 3 => '英语',
             ]);
+            $form->text('entry_fee', '报名费')->rules('required');
+            $form->text('market_fee', '官方学费')->rules('required');
+            $form->text('kxl_fee', '快学历学费')->rules('required');
         });
+    }
+
+    public function levelNext(Request $request)
+    {
+        $pid = $request->get('q');
+        return EducationLevel::where(['pid'=>$pid])->get(['id', DB::raw('name as text')]);
     }
 }
 

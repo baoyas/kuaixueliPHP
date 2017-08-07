@@ -33,33 +33,24 @@ body{background: #fff;}
 .kfwHot li:hover p{top:280px;}
 .kfwHot img{vertical-align: middle}
 /***企业客户***/
-.enetrCustomer{width: 1177px;margin: 0 auto;}
+.enetrCustomer{width: 1179px;margin: 0 auto;border: 1px solid #a0a0a0;}
 .enetrCustomer li{float: left;width: 100%;}
-.enetrCustomer a{width: 196px;height: 145px;float: left;background: url("../Image/customer.png") no-repeat scroll 0 0 #ffffff;cursor: default;}
+.enetrCustomer a{width: 196px;height: 145px;float: left;background: url("../Image/customer.png") no-repeat scroll 0 0 #ffffff;cursor: default;border-right: 1px solid #a0a0a0;}
+.enetrCustomer a:hover{background-position-y: -147px;}
+.enetrCustomer .eCFirstLi a{border-bottom: 1px solid #a0a0a0;}
+.enetrCustomer .eCFirstLi a:hover{background-position-y: -2px;}
 .enetrCustomer .mi{background-position: 0 0;}
-.enetrCustomer .mi:hover{background-position: 0 -379px;}
 .enetrCustomer .k36{background-position: -196px 0;}
-.enetrCustomer .k36:hover{background-position: -196px -379px;}
 .enetrCustomer .dd{background-position: -392px 0;}
-.enetrCustomer .dd:hover{background-position: -392px -379px;}
 .enetrCustomer .aly{background-position: -588px 0;}
-.enetrCustomer .aly:hover{background-position: -588px -379px;}
 .enetrCustomer .cyj{background-position: -784px 0;}
-.enetrCustomer .cyj:hover{background-position: -784px -379px;}
-.enetrCustomer .gk{background-position: -980px 0;width: 197px;}
-.enetrCustomer .gk:hover{background-position: -980px -379px;}
+.enetrCustomer .gk{background-position: -980px 0;border-right-color:#f6f6f5;}
 .enetrCustomer .boss{background-position: 0 -145px;}
-.enetrCustomer .boss:hover{background-position: 0 -524px;}
 .enetrCustomer .lg{background-position: -196px -145px;;}
-.enetrCustomer .lg:hover{background-position: -196px -524px;}
 .enetrCustomer .the{background-position: -392px -145px;;}
-.enetrCustomer .the:hover{background-position: -392px -524px;}
 .enetrCustomer .xsy{background-position: -588px -145px;;}
-.enetrCustomer .xsy:hover{background-position: -588px -524px;}
 .enetrCustomer .shan{background-position: -784px -145px;;}
-.enetrCustomer .shan:hover{background-position: -784px -524px;}
-.enetrCustomer .worktitle{background-position: -980px -145px; width: 197px;}
-.enetrCustomer .worktitle:hover{background-position: -980px -524px;}
+.enetrCustomer .worktitle{background-position: -980px -145px; border-right-color:#f6f6f5;}
 
 .enetrCustomer .eCFirst{margin: 0;}
 /***马上注册***/

@@ -8,54 +8,28 @@
         <div class="kfwNaSubSub kfwNaSubSubIsHome">
             <div class="floatLeft headerOverflowInherit kfwISubNav">
                 <ul class="iNav overflowhidden headerOverflowInherit">
-                    <li class="iNavFirst">
+                @foreach($eLevel as $key=>$val)
+                    <li @if(empty($key))class="iNavFirst"@else''@endif>
                         <i></i>
-                        <h4>研究生进修</h4>
+                        <h4>{{ $val['name'] }}</h4>
                     </li>
-                    <li >
-                        <i></i>
-                        <h4>本科进修</h4>
-                    </li>
-                    <li >
-                        <i></i>
-                        <h4>专科进修</h4>
-                    </li>
-                    <li >
-                        <i></i>
-                        <h4>中职进修</h4>
-                    </li>
-                    <li>
-                        <i></i>
-                        <h4>论文指导与发表</h4>
-                    </li>
-                    <li >
-                        <i></i>
-                        <h4>职业技能证书</h4>
-                    </li>
-                    <li >
-                        <i></i>
-                        <h4>就业课堂</h4>
-                    </li>
+                @endforeach
                 </ul>
             </div>
             <div class="floatLeft iSubNav">
-                <!-- 研究生进修 -->
+                @foreach($eLevel as $k=>$v)
                 <div class="kfwanimate">
                     <ul class="floatLeft iSubNavLe overflowhidden">
+                        @foreach($v['children'] as $kk=>$vv)
                         <li>
-                            <a href="#" ><h5>硕士研究生</h5></a>
+                            <a href="#"><h5>{{ $vv['name'] }}</h5></a>
                             <div class="kfwNavOne">
-                                <a class="active" href="{{ url('/education/level') }}">在职研究生</a>
-                                <a  href="{{ url('/education/level') }}">英国一年研究生</a>
-                                <a class="active" href="{{ url('/education/level') }}">MBA</a>
+                                @foreach($vv['children'] as $kkk=>$vvv)
+                                <a class="active" href="{{ url('/education/level?level_id='.$vvv['id']) }}">{{ $vvv['name'] }}</a>
+                                @endforeach
                             </div>
                         </li>
-                        <li>
-                            <a href="{{ url('/education/level') }}" ><h5>博士研究生</h5></a>
-                            <div >
-                                <a class="active" href="{{ url('/education/level') }}">EMBA</a>
-                            </div>
-                        </li>
+                        @endforeach
                     </ul>
                     <ul class="floatLeft iSubNavRi overflowhidden">
                         <li class="iSubNavRi1">
@@ -75,198 +49,7 @@
                         </li>
                     </ul>
                 </div>
-                <!-- 研究生进修 -->
-                <!-- 本科进修-->
-                <div class="kfwanimate">
-                    <ul class="floatLeft iSubNavLe overflowhidden">
-                        <li>
-                            <a href="/product/kssb.html" ><h5>自学考试</h5></a>
-                            <div class="kfwNavOne">
-
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/product/Americasb.html" ><h5>电大</h5></a>
-                            <div>
-
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/product/trademarktransfer.html" ><h5>成人高考</h5></a>
-                            <div>
-
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/product/trademarktransfer.html" ><h5>远程教育</h5></a>
-                            <div >
-
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="floatLeft iSubNavRi overflowhidden">
-                        <li class="iSubNavRi1">
-                            <a href="/product/company.html">
-                                <img src="Image/Home_index/inav-1.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/trsearch/index.html">
-                                <img src="Image/Home_index/inav-2.jpg" alt="3">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/legalvip">
-                                <img  class="lastMar" src="Image/Home_index/inav-3.jpg" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- 本科进修 -->
-                <!-- 专科进修 -->
-                <div class="kfwanimate">
-                    <ul class="floatLeft iSubNavLe overflowhidden">
-                        <li>
-                            <a href="/product/securityservice-20times.html"><h5>自学考试</h5></a>
-                            <div class="kfwNavOne">
-
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/product/gerenshebaogongjijin.html"><h5>成人高考</h5></a>
-                            <div>
-
-                            </div>
-                        </li>
-                        <li>
-                            <a href="/product/HRConsultant-PhoneMonth.html"><h5>电大</h5></a>
-                            <div></div>
-                        </li>
-                        <li>
-                            <a href="/product/HRConsultant-PhoneMonth.html"><h5>远程教育</h5></a>
-                            <div></div>
-                        </li>
-                    </ul>
-                    <ul class="floatLeft iSubNavRi overflowhidden">
-                        <li class="iSubNavRi1">
-                            <a href="/product/company.html">
-                                <img src="Image/Home_index/inav-1.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/trsearch/index.html">
-                                <img src="Image/Home_index/inav-2.jpg" alt="3">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/legalvip">
-                                <img  class="lastMar" src="Image/Home_index/inav-3.jpg" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- 专科进修 -->
-                <!-- 中职进修 -->
-                <div class="kfwanimate">
-                    <ul class="floatLeft iSubNavLe overflowhidden">
-
-                    </ul>
-                    <ul class="floatLeft iSubNavRi overflowhidden">
-                        <li class="iSubNavRi1">
-                            <a href="/product/company.html">
-                                <img src="Image/Home_index/inav-1.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/trsearch/index.html">
-                                <img src="Image/Home_index/inav-2.jpg" alt="3">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/legalvip">
-                                <img  class="lastMar" src="Image/Home_index/inav-3.jpg" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- 中职进修 -->
-
-                <!-- 论文指导与发表-->
-                <div class="kfwanimate">
-                    <ul class="floatLeft iSubNavLe overflowhidden">
-
-                    </ul>
-                    <ul class="floatLeft iSubNavRi overflowhidden">
-                        <li class="iSubNavRi1">
-                            <a href="/product/company.html">
-                                <img src="Image/Home_index/inav-1.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/trsearch/index.html">
-                                <img src="Image/Home_index/inav-2.jpg" alt="3">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/legalvip">
-                                <img  class="lastMar" src="Image/Home_index/inav-3.jpg" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- 论文指导与发表 -->
-                <!-- 职业技能证书 -->
-                <div class="kfwanimate">
-                    <ul class="floatLeft iSubNavLe overflowhidden">
-                        <li>
-                            <a href="/product/account.html" ><h5>软件水平资格</h5></a>
-
-                        </li>
-
-                    </ul>
-                    <ul class="floatLeft iSubNavRi overflowhidden">
-                        <li class="iSubNavRi1">
-                            <a href="/product/company.html">
-                                <img src="Image/Home_index/inav-1.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/trsearch/index.html">
-                                <img src="Image/Home_index/inav-2.jpg" alt="3">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/legalvip">
-                                <img  class="lastMar" src="Image/Home_index/inav-3.jpg" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- 职业技能证书 -->
-                <!-- 就业课堂 -->
-                <div class="kfwanimate">
-                    <ul class="floatLeft iSubNavLe overflowhidden">
-
-                    </ul>
-                    <ul class="floatLeft iSubNavRi overflowhidden">
-                        <li class="iSubNavRi1">
-                            <a href="/product/company.html">
-                                <img src="Image/Home_index/inav-1.jpg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/trsearch/index.html">
-                                <img src="Image/Home_index/inav-2.jpg" alt="3">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/legalvip">
-                                <img  class="lastMar" src="Image/Home_index/inav-3.jpg" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- 就业课堂 -->
+                @endforeach
             </div>
         </div>
     </div>
@@ -295,10 +78,10 @@
     <div class="indexFirst-in">
         <div class="lunhuan">
             <div id="lunhuanback">
-                <p style=" background: url(Image/shoutu.jpg) no-repeat scroll center center; opacity: 1;filter:alpha(opacity=100);">
+                <p style=" background: url(Image/lunbotu1.png) no-repeat scroll center center; opacity: 1;filter:alpha(opacity=100);">
                     <a href="javascript:void(0);" target="_blank" rel="nofollow"></a>
                 </p>
-                <p style=" background: url(Image/kuaixueli2.jpg) no-repeat scroll center center; ">
+                <p style=" background: url(Image/lunbotu2.png) no-repeat scroll center center; ">
                     <a href="javascript:void(0);" target="_blank" rel="nofollow"></a>
                 </p>
             </div>

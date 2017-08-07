@@ -27,6 +27,7 @@
     <script type="text/javascript"  src="/js/jquery.validate.js"></script>
     <script type="text/javascript" src="/js/global.js"></script>
     <script type="text/javascript" src="/js/kfwnav.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
@@ -143,7 +144,12 @@
         <a class="floatLeft" href="index.html">
             <img src="/Image/LOGO1.png" alt="快学历">
         </a>
-        <!-- 这里是与info相同却删除的内容 -->
+        <ul class="floatRight overflowhidden marT30">
+            <li><i class="zzrz"></i>资质认证</li>
+            <li><i class="zfaq"></i>支付安全</li>
+            <li><i class="zrfw"></i>保险赔付</li>
+            <li><i class="shwy"></i>售后无忧</li>
+        </ul>
         <div class="logo-sub">欢迎注册</div>
     </div>
     @endif

@@ -1,5 +1,5 @@
 <?php
-header("Content-type:text/html; charset=UTF-8");
+namespace App\Util;
 
 /* *
  * 类名：ChuanglanSmsApi
@@ -12,7 +12,7 @@ header("Content-type:text/html; charset=UTF-8");
  * 该代码仅供学习和研究创蓝接口使用，只是提供一个参考。
  */
 
-class SmsApi {
+class Sms {
 
     //创蓝发送短信接口URL, 如无必要，该参数可不用修改
     const API_SEND_URL_BAK='http://sms.253.com/msg/send';
@@ -31,8 +31,8 @@ class SmsApi {
      * @param string $msg           短信内容
      * @param string $needstatus    是否需要状态报告
      */
-    public function sendSMS( $mobile, $msg, $needstatus = true) {
-
+    public function send( $mobile, $msg, $needstatus = true) {
+        //http://sapi.253.com/msg/HttpBatchSendSM?account=zhijian123&pswd=@253.com&mobile=15110264516&msg=您的注册验证码是：1131.请完成注册&needstatus=true
         //创蓝接口参数
         $postArr = array (
             'account' => self::API_ACCOUNT,
@@ -100,6 +100,3 @@ class SmsApi {
         $this->$name=$value;
     }
 }
-
-$sms = new SmsApi();
-$sms->sendSMS('15110264516', '哈哈');

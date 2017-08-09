@@ -6,6 +6,7 @@
             <div class="group mlLe">
                 <form action="" id="regForm">
                     {{ csrf_field() }}
+                    {{ csrf_field() }}
                     <ul class="relative" style="left:100px;">
                         <li class="register-li">
                             <p><input type="text" value="" id="reg_mobile" name="reg[mobile]" maxlength='11' onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" onFocus="huodewenan(this,'tishi-div-1','tishi-div-2','tishi-div-3')" onBlur="shiquwenan(this,'tishi-div-1','tishi-div-2','tishi-div-3')"></p>
@@ -426,8 +427,25 @@
             }
         };
         $(function(){
-            getCode.setinit(init);
+            //getCode.setinit(init);
         })
-
+    $(document).ready(function(){
+        $('#user_getcode').click(function(){
+            $.ajax({
+                method: 'get',
+                url: '/sms/send',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    mobile: $('#reg_mobile').val()
+                },
+                dataType:'json',
+                success: function (data) {
+                    if(data.code != 0) {
+                        alert(data.msg);
+                    }
+                }
+            });
+        });
+    });
     </script>
 @endsection

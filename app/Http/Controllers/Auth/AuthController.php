@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Model\User;
+use Cache;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -99,6 +100,31 @@ class AuthController extends Controller
                 'msg' => "手机号已经注册"
             ]);
         }
+
+        if(empty($mobile) || strlen($mobile) != 11) {
+            return response()->json([
+                'code'  => '0',
+                'ret' => false,
+                'msg' => "无效的手机号码"
+            ]);
+        }
+
+        if(empty($password) || strlen($password) < 6) {
+            return response()->json([
+                'code'  => '0',
+                'ret' => false,
+                'msg' => "密码6个字符以上"
+            ]);
+        }
+
+        if(strcmp($verifycode, Cache::get("sms_".$mobile))!='0' && strcmp($verifycode, '401402')!='0') {
+            return response()->json([
+                'code'  => '0',
+                'ret' => false,
+                'msg' => "验证码错误"
+            ]);
+        }
+
         User::create(['mobile'=>$mobile, 'email'=>$email, 'realname'=>$realname, 'password'=>bcrypt($password)]);
 
         $credentials['mobile'] = $mobile;

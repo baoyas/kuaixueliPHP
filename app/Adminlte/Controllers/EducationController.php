@@ -59,7 +59,8 @@ class EducationController extends Controller
     }
 
     public function grid($id=0) {
-        return Admin::grid(Education::class, function(Grid $grid) use ($id){
+        $eLevel = EducationLevel::all()->pluck('name', 'id');
+        return Admin::grid(Education::class, function(Grid $grid) use ($id, $eLevel){
             $where = [];
             $id and $where['id'] = $id;
             $grid->model()->where($where);
@@ -68,8 +69,8 @@ class EducationController extends Controller
             $grid->column('school.name', '学校名称')->display(function($school_name){
                 return $school_name;
             });
-            $grid->column('level.name', '学历级别')->display(function($level_name){
-                return $level_name;
+            $grid->column('level', '学历级别')->display(function() use($eLevel) {
+                return $eLevel[$this->level_1_id]."-".$eLevel[$this->level_2_id]."-".$eLevel[$this->level_3_id];
             });
             $grid->column('studymode_id', '进修方式')->display(function($studymode_id){
                 return isset(Education::$studyMode[$studymode_id]) ? Education::$studyMode[$studymode_id] : '';

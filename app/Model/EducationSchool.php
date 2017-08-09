@@ -26,4 +26,8 @@ class EducationSchool extends Model
     protected $hidden = [
 
     ];
+
+    public function province() {
+        return $this->hasOne(Province::class, 'id', 'province_id');
+    }
 }

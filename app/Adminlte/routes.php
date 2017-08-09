@@ -32,7 +32,12 @@ Route::group([
         $router->get('cate/cindex', 'CateController@cindex');
         $router->resource('cate', 'CateController');
         $router->resource('sell', 'SellController');
-
+        $router->resource('school', 'SchoolController');
     });
 
+});
+
+
+Route::get('upload/{one?}/{two?}/{three?}/{four?}/{five?}/{six?}/{seven?}/{eight?}/{nine?}',function(){
+    \App\Util\ImageRoute::imageStorageRoute();
 });

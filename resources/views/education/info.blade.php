@@ -27,7 +27,7 @@
 
                     <ol>
                         <li class="goods">
-                            <img class="floatLeft marL40 imgW50" src="/Image/166.png" alt="服务图片">
+                            <img class="floatLeft marL40 imgW50" src="/upload/{{ $edu->school->logo_url }}" alt="服务图片">
                             <div class="textImgSeparation goods-text">
                                 <div>
                                     <span>{{ $edu->school->name }}</span>

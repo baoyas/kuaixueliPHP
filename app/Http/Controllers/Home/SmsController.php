@@ -52,7 +52,6 @@ class SmsController extends Controller
         $code = mt_rand(100000, 999999);
         $sms = new Sms();
         $result = $sms->send($mobile, '您的注册验证码是：'.$code);
-        var_dump($result);
         if(isset($result['code']) && strcmp($result['code'], '0')===0) {
             Cache::put("sms_".$mobile, $code, 60*2);
             return $this->response();

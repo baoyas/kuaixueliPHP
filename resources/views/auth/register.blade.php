@@ -189,6 +189,7 @@
                     'reg[mobile]':{
                         required: true,
                         mobile: true,
+                        /*
                         remote: {
                             url :"/communal/checkmobile.html",
                             type:'post',
@@ -199,6 +200,7 @@
                                 }
                             }
                         }
+                        */
                     },
                     'reg[email]':{
                         required: true,
@@ -442,6 +444,8 @@
                 success: function (data) {
                     if(data.code != 0) {
                         alert(data.msg);
+                    } else {
+                        alert('已经发送');
                     }
                 }
             });

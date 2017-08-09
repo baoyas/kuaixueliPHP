@@ -11,13 +11,19 @@
     <title>Laravel-Auth</title>
 
     <!-- Styles -->
-    <link href="/css/baseold.css" rel="stylesheet">
-    <link href="/css/base.css" rel="stylesheet">
+    @if (Request::path()=='auth/login' || Request::path()=='auth/register')
+        <link href="/css/baseold.css" rel="stylesheet">
+    @else
+        <link href="/css/base.css" rel="stylesheet">
+    @endif
     <link href="/css/header.css" rel="stylesheet">
     <link href="/css/home.css" rel="stylesheet">
     <link href="/css/product.css" rel="stylesheet">
     <link href="/css/product_new.css" rel="stylesheet">
-    <link href="/css/kfwpop.css" rel="stylesheet">
+    @if (Request::path()=='auth/login' || Request::path()=='auth/register')
+    @else
+        <link href="/css/kfwpop.css" rel="stylesheet">
+    @endif
     <link href="/css/serviceInfo.css" rel="stylesheet">
     <link href="/css/buy.css" rel="stylesheet">
 

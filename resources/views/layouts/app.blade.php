@@ -148,7 +148,7 @@
     @else
     <div class="minwidth kfwLogo">
         <a class="floatLeft" href="index.html">
-            <img src="/Image/LOGO1.png" alt="快学历">
+            <img src="/Image/LOGO.png" alt="快学历">
         </a>
         <ul class="floatRight overflowhidden marT30">
             <li><i class="zzrz"></i>资质认证</li>

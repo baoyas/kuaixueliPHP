@@ -14,6 +14,7 @@ class EducationOrder extends Model
      * @var array
      */
     protected $fillable = [
+        'user_id',
         'education_id',
         'order_no',
         'status',

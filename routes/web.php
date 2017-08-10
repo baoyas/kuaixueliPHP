@@ -14,7 +14,12 @@
 Route::get('/', 'Home\HomeController@index');
 Route::get('/education/level', 'Home\EducationController@level');
 Route::get('/education/info', 'Home\EducationController@info');
-Route::get('/order/pay', 'Home\OrderController@pay');
+
+Route::group(['namespace'=>'Home', 'middleware' => ['web','user.auth']], function() {
+    Route::get('/order/pay', 'OrderController@pay');
+});
+
+
 Route::get('/sms/send', 'Home\SmsController@send');
 //Auth::routes();
 

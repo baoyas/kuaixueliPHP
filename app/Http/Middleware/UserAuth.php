@@ -3,14 +3,15 @@
 namespace App\Http\Middleware;
 
 use App\Helpers\Helpers;
-use App\Http\Controllers\Api\ResultController as Result;
 use Closure;
+use Auth;
+use Response;
+use Illuminate\Http\Request;
 
 class UserAuth
 {
     public function __construct()
     {
-        $this->result = new Result();
     }
 
     /**
@@ -20,16 +21,14 @@ class UserAuth
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        $token = $request->get('token');
-        $token = empty($token) ? $request->header('token') : $token;
-        $is = Helpers::is_login($token);
-        if (!$is)
-        {
-            return $this->result->setStatusMsg('error')->setStatusCode(401)->setMessage('Token 过期请重新登陆！')->responseError();
+        try {
+            $user = Auth::authenticate();
+        } catch(\Exception $e) {
+            return redirect('auth/login');
         }
-        $request->item = $is;
+        $request->item['user'] = $user;
         return $next($request);
     }
 }

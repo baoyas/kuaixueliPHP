@@ -254,7 +254,6 @@
                     <a target="_blank" href="/help/cooperation.html" rel="nofollow">商务合作</a>
                     <!--<a target="_blank" href="/event/channel_join.html" rel="nofollow">渠道加盟</a>-->
                     <a target="_blank" href="/help/links.html">友情链接</a>
-                    <a target="_blank" href="/index/incubator.html">孵化器</a>
                 </li>
                 <li>
                     <h5>服务商入口</h5>

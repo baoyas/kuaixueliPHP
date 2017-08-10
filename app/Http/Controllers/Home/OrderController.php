@@ -29,4 +29,20 @@ class OrderController extends Controller
         }
         return Response::view('order/pay', ['eduOrder'=>$eduOrder])->header('Cache-Control', 'no-store');
     }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function list (Request $request)
+    {
+        $user_id = $request->user()->id;
+        $status = $request->get('status', NULL);
+        $where['user_id'] = $user_id;
+        if(!is_null($status)) {
+            $where['status'] = $status;
+        }
+        $eduOrder = EducationOrder::with('school')->where($where)->get();
+        return Response::view('order/list', ['eduOrder'=>$eduOrder])->header('Cache-Control', 'no-store');
+    }
 }

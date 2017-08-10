@@ -45,4 +45,8 @@ class EducationOrder extends Model
      */
     protected $hidden = [
     ];
+
+    public function school() {
+        return $this->hasOne(EducationSchool::class, 'id', 'school_id');
+    }
 }

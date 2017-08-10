@@ -106,7 +106,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{color: #b5
 /*logo*/
 .kfwLogo a{margin: 24px 0;}
 .newEvent a{margin: 16px 0;}
-.kfwLogo a img{display: block;}
+.kfwLogo a img{display: block;margin-top: -15px;}
 .kfwLogo li{float: left;font-size: 12px;color: #acb0b0;margin-right: 20px;line-height: 20px;}
 .kfwLogo i{width: 20px;height: 20px;float: left;margin-right: 5px;}
 .iNav h4 a{color: #ffffff;}

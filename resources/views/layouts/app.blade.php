@@ -75,10 +75,10 @@
                 <li><a class="noBorder" href="{{ url('/auth/login') }}">登录</a></li>
                 <li><a href="{{ url('/auth/register') }}">免费注册</a></li>
             @else
-                <li><a class="noBorder">欢迎xxx</a></li>
+                <li><a class="noBorder">欢迎{{ app('request')->user()->realname }}</a></li>
                 <li><a class="noBorder" href="{{ url('/auth/logout') }}">退出</a></li>
             @endif
-            <li><a href="/user/orders/index.html">我的订单</a></li>
+            <li><a href="{{ url('order/list') }}">我的订单</a></li>
             <li><a class="welcome1" href="/cart/info.html"><i class="gw floatLeft"></i>购物车<em>0</em>件</a></li>
             <li><a href="#" target="_blank">院校入驻</a></li>
             <li><a href="/help/joining.html" target="_blank" style="color:#00a5d5;">助学机构入驻</a></li>

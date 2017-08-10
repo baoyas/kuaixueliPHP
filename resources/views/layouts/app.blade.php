@@ -165,8 +165,12 @@
                 我的订单
             @elseif(Request::path()=='order/pay')
                 支付订单
+            @elseif(Request::path()=='help/about')
+                关于我们
+            @elseif(Request::path()=='/')
+                首页
             @else
-                
+
             @endif
         </div>
     </div>

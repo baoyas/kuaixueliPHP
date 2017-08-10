@@ -80,8 +80,8 @@
             @endif
             <li><a href="{{ url('order/list') }}">我的订单</a></li>
             <li><a class="welcome1" href="/cart/info.html"><i class="gw floatLeft"></i>购物车<em>0</em>件</a></li>
-            <li><a href="#" target="_blank">院校入驻</a></li>
-            <li><a href="/help/joining.html" target="_blank" style="color:#00a5d5;">助学机构入驻</a></li>
+            <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">院校入驻</a></li>
+            <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" style="color:#00a5d5;">助学机构入驻</a></li>
             <li class="asj app">
                 <a href="/mobile/index.html">
                     <i class="sj floatLeft"></i><i class="jt floatRight"></i>移动应用
@@ -168,7 +168,7 @@
 <!-- 侧边栏 -->
 <ul class="overflowhidden navSidebars headerOverflowInherit">
     <li style="border-top: 1px solid #dddddd;" class="li-1">
-        <a href="javascript:void(0);" class="mx-a-1">
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" class="mx-a-1">
             <i class="gwc"></i>
             <div class="mx-green">在线咨询</div>
         </a>
@@ -257,8 +257,8 @@
                 </li>
                 <li>
                     <h5>服务商入口</h5>
-                    <a href="http://f.kuaifawu.com" rel="nofollow">院校入驻</a>
-                    <a href="/help/joining.html" rel="nofollow" style="color:#00a5d5;">助学机构入驻</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow">院校入驻</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow" style="color:#00a5d5;">助学机构入驻</a>
                 </li>
                 <li>
                     <div class="floatLeft bd"></div>

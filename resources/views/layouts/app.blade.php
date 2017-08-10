@@ -147,7 +147,7 @@
     </div>
     @else
     <div class="minwidth kfwLogo">
-        <a class="floatLeft" href="index.html">
+        <a class="floatLeft" href="/">
             <img src="/Image/LOGO.png" alt="快学历">
         </a>
         <ul class="floatRight overflowhidden marT30">

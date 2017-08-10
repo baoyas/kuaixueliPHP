@@ -20,7 +20,7 @@ class User extends Model
         'realname', 'mobile', 'email', 'password'
     ];
 
-    public $timestamps=false;
+    public $timestamps=true;
 
     /**
      * The attributes that should be hidden for arrays.

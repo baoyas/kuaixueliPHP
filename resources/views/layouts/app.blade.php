@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laravel-Auth</title>
+    <title>快学历</title>
 
     <!-- Styles -->
     @if (Request::path()=='auth/login' || Request::path()=='auth/register')

@@ -17,7 +17,7 @@
                     <ul class="clearfix marB20">
                         <li>
                             <span>订单号：</span>
-                            <div>9170802550503</div>
+                            <div>{{ $eduOrder->order_no }}</div>
                             <p></p>
                         </li>
                         <li id="infoDetails">
@@ -29,7 +29,7 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="orderPrice">应付总额：<em>4197元</em></div>
+                    <div class="orderPrice">应付总额：<em>{{ $eduOrder->kxl_fee + $eduOrder->entry_fee }}元</em></div>
                 </div>
             </li>
         </ul>

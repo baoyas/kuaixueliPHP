@@ -35,7 +35,7 @@ input.ria:hover{background: #91a144;cursor: pointer;}
 button,input{outline: none;border: none;}
 *:focus{outline: none;}
 textarea{resize: none;border: none;}
-img{max-width: 100%;border: none;vertical-align: top;margin-top: -15px;}
+img{max-width: 100%;border: none;vertical-align: top;}
 a,a:hover{text-decoration: none;}
 ul,li,ol{list-style: none;}
 .clears{clear: both;}

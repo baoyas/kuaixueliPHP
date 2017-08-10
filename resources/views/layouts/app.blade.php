@@ -237,7 +237,7 @@
             <ul class="overflowhidden index-fo-link">
                 <li class="margin0">
                     <h5>关于快学历</h5>
-                    <a target="_blank" href="/help/about.html" rel="nofollow">了解我们</a>
+                    <a target="_blank" href="{{ url('help/about') }}" rel="nofollow">了解我们</a>
                     <a target="_blank" href="/brand/index.html" rel="nofollow">品牌故事</a>
                     <a target="_blank" href="/help/joinus.html" rel="nofollow">加入我们</a>
                     <a target="_blank" href="/help/contact.html" rel="nofollow">联系我们</a>

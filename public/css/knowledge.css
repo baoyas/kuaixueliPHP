@@ -1,0 +1,1230 @@
+@charset "utf-8";
+input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body{background: #ffffff}
+.lesslistDiv{
+    width: 100%;
+    position: relative;
+}
+.lesslistDiv .floatRight {
+    bottom: 80px;
+    left: 50%;
+    margin-left: -212px;
+    position: absolute;
+    z-index: 8;
+}
+.lesslistDiv .floatRight.ri1 {
+    bottom: 232px;
+    height: 100px;
+    position: absolute;
+    width: 480px;
+    margin-left: -240px;
+}
+.lesslistDiv .ri1 .kh2,.lesslistDiv .ri1 h3{
+    color: #ffffff;
+    text-align: center;
+}
+.lesslistDiv .ri1 .kh2{
+    font-size: 46px;
+    font-weight: bold;
+    margin-top: 43px;
+}
+.lesslistDiv .ri1 h3{
+    font-size: 24px;
+    line-height: 1.6;
+}
+.lawyerCont .textImgSeparation > div.ted {
+    padding: 0 !important;
+}
+.stCont.sc > .currenta:hover h3,.stCont.sc > .currenta:hover{
+    color: #00c9ff;
+}
+
+/**/
+.imgLayer{
+    width: 1180px;
+    height: 600px;
+    background: url("../Image/Knowledge/knowledgeindex-text.png") no-repeat scroll 388px 277px;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -590px;
+    z-index: 6;
+    min-width: 1180px;
+}
+
+/******顶部图片**********/
+.noImgCurrent,.currentNotice,.lesslist{
+    position: relative;
+    width: 100%;
+    z-index: 5;
+    min-width: 1180px;
+}
+.currentNotice {
+    margin-top: -100px;
+    min-height: 460px;
+}
+.noImgCurrent{
+    min-height: 5px;
+    float: left;
+}
+.lesslist{
+    margin-top: -100px;
+    min-height: 520px;
+}
+
+/******************知识库主体内容公用*****************************/
+.mine{
+    width: 100%;
+    float: left;
+    height: auto;
+    min-width: 1180px;
+}
+.knowMine{
+    width: 1060px;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/*分享*/
+.shareBut{
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin: 40px 0;
+}
+.shareBut a{
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    border: 1px solid #e64949;
+    padding: 0 20px 0 52px;
+    color: #e64949;
+    background:  url("../Image/Knowledge/line.png") no-repeat scroll 20px 7px;
+}
+.shareBut a:hover{
+    background-color: #e64949;
+    color: #ffffff;
+    background-position: 20px -79px;
+}
+.shareBut .sBRi{
+    border: 1px solid #81ac55;
+    color: #81ac55;
+    margin-left: 20px;
+    background-position: 20px -33px;
+}
+.shareBut .sBRi:hover{
+    background-color: #81ac55;
+    background-position: 20px -123px;
+}
+
+
+/******************知识库主体内容--文章详情*****************************/
+/*标题区*/
+.knowMine h3,.knowMine h5{
+    width: 100%;
+    text-align: center;
+}
+.knowMine h3{
+    font-size: 24px;
+    color: #595758;
+    line-height: 2;
+}
+.knowMine h5{
+    color: #727171;
+    font-weight: normal;
+    margin-top: 11px;
+}
+.knowMine h5 span{
+    display: inline-block;
+}
+.knowMine h5 span em{
+    margin-left: 16px;
+    display: inline-block;
+}
+.reading{
+    margin-left: 73px;
+}
+/*1像素线条*/
+.line{
+    width: 100%;
+    display: block;
+    height: 1px;
+    background: #dddddd;
+    margin: 30px 0 0 0;
+}
+/*内容区*/
+.contBlock{
+    width: 100%;
+    height: auto;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    margin-top: 28px;
+    word-wrap: break-word;
+    text-align: left;
+}
+/*排版*/
+.contBlock ,contBlock p{
+     line-height: 30px;
+     padding-bottom: 30px;
+     color:#666;
+     font-size: 14px;
+}
+/*上一页和下一页*/
+.cPages{
+    float: left;
+    height: 50px;
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.cPages span{
+    display: block;
+    text-align: left;
+    color: #898989;
+    line-height: 1;
+}
+.cPages .floatRight span,.cPages .floatRight a{
+    text-align: right;
+}
+.cPages .cPagesText{
+    display: inline-block;
+    text-align: left;
+    color: #595758;
+    margin-top: 10px;
+}
+.cPages a:hover span{
+    color: #00c9ff;
+}
+.cPages .group,.cPages .floatRight{
+    height: 100%;
+}
+.cPages .group{
+    background: url("../Image/Knowledge/prevnext.png") no-repeat scroll left 0;
+    padding-left: 40px;
+}
+.cPages .floatRight{
+    padding-right: 50px;
+    background: url("../Image/Knowledge/prevnext.png") no-repeat scroll right -100px;
+}
+
+/*相关产品*/
+.relPro{
+    width: 100%;
+    float: left;
+    height: auto;
+    font-size: 14px;
+    color: #595758;
+}
+.relPro > a{
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.relPro > img {
+    margin-bottom: 20px;
+}
+.relPro h5{
+    text-align: left;
+    margin: 25px 0 22px 0;
+}
+
+/*知识库评价*/
+
+/********************知识库-搜索结果**************************************/
+/*search*/
+.nav-index .searchLe span{
+    font-size: 14px;
+    color: #f14b4b;
+}
+.nav-index .searchLe span i{
+    margin: 0 11px;
+    font-style: inherit;
+}
+.ri .search-form{
+    float: left; 
+    background-color: #fff;
+    border:1px solid #dddddd;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    width: 424px;
+}
+.ri .search-text{
+    height:27px;
+    line-height: 27px;
+    float: left;
+    width: 350px;
+    border: 0;
+    outline: none;
+    margin: 5px; 
+}
+.ri .search-button{
+    background: url("../Image/Knowledge/search.png") no-repeat scroll center center;
+    width:60px;
+    height:38px;
+    float: left;
+    border: none;
+    border-left: 1px solid #dddddd;
+    cursor: pointer;
+}
+.ri .search-text:hover,.ri .search-text:focus{
+    border: none !important;
+}
+.ri .search-button:hover{
+    border-left:1px solid #dddddd;
+    border-bottom: none !important;
+    border-top: none !important;
+    border-right: none !important;
+}
+
+/*search 内容*/
+.seachCont{
+    float: left;
+    width: 100%;
+    height: auto; 
+    text-align: left;
+}
+.borTop,.sc,.sc h3,.sc p{
+    word-wrap: break-word;
+}
+.borTop{
+    border-top: 1px solid #dddddd;
+}
+.sc{
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #dddddd;
+    color: #595758;
+    padding: 32px 0 37px 0;
+}
+.sc h1 a{
+    color: #595758;
+}
+.sc h3{
+    text-align: left;
+    font-size: 24px;
+    line-height: 1.7;
+}
+.sc h3 a{
+    color: #595758;
+}
+.sc h3 a:hover,.sc h3 a:hover em{
+    color: #00c9ff;
+}
+.sc em{
+    color: #f14b4b;
+}
+.sc p{
+    font-size: 14px;
+    line-height: 1.7;
+}
+.sc span{
+    font-size: 14px;
+    color: #dddddd;
+    line-height: 2;
+    display: inline-block;
+    margin-top: 3px;
+}
+.sc i{
+    font-style: inherit;
+    margin-left: 18px;
+}
+
+/*********************************************************公开课*************************************************/
+.lessMine{
+    width: 1180px;
+}
+
+/*****************公开课-当期预告***************************************/
+
+
+/***内容区***/
+.currentNotice h4,.not-Top h4{
+    font-size: 24px;
+    color: #595758;
+}
+/**/
+.not-Top{
+    width: 100%;
+    margin-bottom: 60px;
+}
+.not-Top .group,.aside,.nav-index .group{
+    margin-left: 40px;
+}
+.not-Top .floatRight{
+    text-align: center;
+    width: 820px;
+}
+.not-Top .floatRight h4{
+    font-weight: normal;
+    display: inline-block;
+}
+.not-Top .floatRight a{
+    padding: 0 60px;
+    height: 40px;
+    line-height: 40px;
+    background: #00c9ff;
+    color: #ffffff;
+    display: inline-block;
+    margin-left: 45px;
+}
+.not-Top .floatRight a:hover{
+    background: #00aad7;
+}
+/*内容公用*/
+.noticeCont{
+    height: auto;
+    width: 100%;
+    float: left;
+}
+/*左内容*/
+.aside{
+    width: 280px;
+    height: auto;
+    text-align: left;
+}
+.a1 img{
+    width: 80px;
+    height: 80px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+.aText{
+    height: 80px;
+    padding: 20px 0 20px 20px;
+}
+.aText h3{
+    font-size: 18px;
+    color: #595758;
+    line-height: 1.1;
+}
+.aText span{
+    font-size: 16px;
+    color: #b5b5b5;
+}
+.spCont{
+    font-size: 14px;
+    color: #595758;
+    line-height: 2;
+    margin-top: 11px;
+}
+.aside p{
+    font-size: 14px;
+    color: #b5b5b5;
+    line-height: 1.6;
+}
+.aside > div{
+    float: left;
+    height: auto;
+    margin-bottom: 48px;
+    width: 100%;
+}
+/*往期回顾*/
+.reviewPast{
+    border: 1px solid #dddddd;
+    width: 100%;
+    padding: 20px 20px 0 20px;
+    font-size: 12px;
+    text-align: center;
+}
+.reviewPast .group{
+    background: #00c9ff;
+    margin: 0;
+    position: relative;
+    line-height: 20px;
+    height: 20px;
+    padding: 0 30px 0 5px;
+    color: #ffffff;
+}
+.reviewPast em{
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    right: -10px;
+    display: inline-block;
+    border-left: 10px solid #00c9ff;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: none;
+}
+.reviewPast a{
+    display: block;
+    float: left;
+    text-align: left;
+    font-size: 18px;
+    color: #595758;
+    border-top: 1px solid #dddddd;
+    padding: 19px 0;
+    line-height: 1.5;
+    width: 100%;
+}
+.reviewPast .floatRight > a:hover,.reviewPast a:hover{
+    color: #00c9ff;
+}
+.reviewPast .floatRight > a {
+    border: medium none;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    color: #9fa1a0;
+}
+.noBorTop{
+    border-top: none !important;
+}
+.reviewPast img{
+    margin-bottom: 14px;
+    width: auto !important;
+}
+.reviewPast span{
+    display: block;
+    width: 100%;
+    color: #00c9ff;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.reviewPast.weiRe{
+    padding: 20px;
+    margin-bottom: 0;
+}
+.reviewPast.review{
+    margin-bottom: 20px;
+}
+
+/*右内容*/
+.theme{
+    height: auto;
+    width: 820px;
+    color: #595758;
+    text-align: left;
+    margin-left: 40px;
+}
+.lessMine .theme{
+    text-align: center;
+}
+.lessMine .theme1{ 
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    padding: 0 40px 13px;
+    height: auto;
+    text-align: left;
+}
+.theme h5,.theme h4{
+    float: left;
+    width: 100%;
+    text-align: left;
+}
+.theme h5{
+    font-weight: bold;
+    margin-top: 40px;
+    color: #595758;
+}
+.theme h4{
+    margin: 33px 0;
+    font-size: 24px;
+}
+.th1{
+    font-size: 14px;
+    margin: 0 0 29px 0;
+    width: 100%;
+    clear: both;
+}
+.th1 p{
+    line-height: 1.6;
+    text-align: left;
+}
+.theme .noMarTop{
+    margin-top: 0; 
+}
+.th1 > div {
+    float: left;
+    width: 100%;
+    margin-top: 15px;
+}
+.topTh1{
+   clear: both;
+   font-size: 14px;
+   line-height: 1.6;
+   color: #595758;
+   margin-top: 37px;
+   text-align: left;
+}
+.not-Top .floatRight .hasEnd,.not-Top .floatRight .hasEnd:hover{
+    background: #e4e4e4;
+}
+
+
+/**********************************公开课-往期列表*************************************/
+/*top*/
+.knoSquareNav{
+    background: #1d2737;
+    height: auto;
+    width: 100%;
+    min-width: 1180px;
+}
+.squareNavIn{
+    width: 1180px;
+    margin: 0 auto;
+    height: 100px;
+    position: relative;
+    z-index: 1;
+}
+.sn,.snRi{
+    display: inline-block;
+    height: 100%;
+}
+.sn{
+    background: url("../Image/Knowledge/squareNavInimgle.png") no-repeat scroll  center 22px;
+    width: 100px;
+}
+.sn:hover{
+    background-position: center -122px;
+}
+.snRi{
+    background: url("../Image/Knowledge/squareNavInimgri.png") no-repeat scroll  center 26px;
+    width: 170px;
+    position: relative;
+    display: block;
+}
+.snRi:hover{
+    background-position: center -74px;
+}
+
+/*创业--公开课--弹层*/
+.snRiPop{
+    width: 160px;
+    height: 102px;
+    background: #ffffff;
+    position: absolute;
+    top: 90px;
+    right: 0;
+    z-index: 100;
+    border:1px solid #c5c5c5;
+    padding: 27px 0 0 30px;
+    display: none;
+}
+.snRiPop em,.sqNav li .snRiPop em{
+    background: url("../Image/Knowledge/triangle.png") no-repeat scroll center 1px; 
+    border: none; 
+    height: 7px;
+    width: 14px;
+    position: absolute;
+    left: 50%;
+    top: -7px;
+    margin-left: -7px;
+}
+.snRiPop span{
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    width: 100%;
+    font-size: 14px;
+    color: #5d5d5d;
+}
+.snRiPop span a{
+    height: 20px;
+    line-height: 20px;
+    padding: 0 4px;
+    font-size: 12px;
+    color: #ffffff;
+    background: #ed5a5a;
+    display: inline-block;
+    margin-left: 5px;
+}
+.snRiPop span .s-a{
+    background: none;
+    color: #5d5d5d;
+}
+.snRiPop span .s-a:hover{
+    color: #00c9ff;
+}
+
+.issueList{
+    width: 100%;
+    height: auto;
+    clear: both;
+    margin-top: 2px;
+}
+/**导航列表**/
+.sqNav{
+    margin: 30px 0 0 10px;
+}
+.sqNav li{
+    float: left;
+    height: 40px;
+    margin-right: 20px;
+    position: relative;
+}
+.sqNav .noMarRr{
+    margin-right: 0;
+}
+.sqNav li a{
+    color: #ffffff;
+    font-size: 18px;
+    display: inline-block;
+    padding: 0 30px 0 18px; 
+    height: 40px;
+    line-height: 40px;
+}
+.sqNav li a:hover{
+    background: #00c9ff;
+}
+/**/
+.sqNav .snRiPop{
+    height: auto;
+    padding: 22px 30px 22px 10px;
+    width: 444px;
+    background: #ffffff;
+    top: 57px;
+    left: -40px;
+    display: none;
+    z-index: 999999;
+}
+.sqNav li .snRiPop em{
+    margin-left: -137px;
+}
+.sqNav li .snRiPop.sli2 em{
+    margin-left: -108px;
+}
+
+/*二级内容*/
+.sqNav .snRiPop li,.sqNav .snRiPop li a{
+    line-height: normal;
+    height: auto;
+}
+.sqNav .snRiPop li{
+    margin: 0;
+    margin-left: 20px;
+}
+.sqNav .snRiPop li a{
+    font-size: 14px;
+    color: #5d5d5d;
+    width: 114px;
+    padding: 0;
+    background: none;
+    line-height: 2;
+}
+.sqNav .snRiPop li a:hover{
+    color: #00c9ff;
+}
+.snRiPop.sli1 > ul {
+    overflow: hidden;
+}
+
+/*三角形*/
+.sqNav li em{
+    height: 0;
+    width: 0;
+    display: 
+    inline-block; 
+    cursor: pointer; 
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+    border-left:7px solid transparent;
+    border-bottom:7px solid #ffffff;
+    border-right:none;
+    border-top:none;
+}
+
+
+/*左侧内容*/
+.iList {
+    clear: both;
+    margin-bottom: 40px;
+}
+.iList.noMarBot,.noMar.stCont{
+    margin-bottom: 0;
+}
+.issueList .iList .group{
+    width: 260px;
+    height: 260px;
+    position: relative;
+}
+.iList span{
+    display: inline-block;
+    height: 70px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: url("../Image/Knowledge/lessle.png") no-repeat scroll 15px center;
+}
+/*右侧内容*/
+.issueList .iList .lessThCont{
+    border: 1px solid #dddddd;
+    border-left: none;
+    width: 920px;
+    padding: 33px 40px 37px;
+    *width: 830px;
+    *height: auto;
+}
+.lessThCont{
+    position: relative;
+}
+.lessThCont a{
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    display: inline-block;
+    border:1px solid #dddddd;
+    padding: 0 35px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #5d5d5d;
+}
+.lessThCont a:hover{
+    background: #00c9ff;
+    color: #ffffff;
+    border:1px solid #00c9ff;
+}
+.lessThCont p,.lessThCont h4{
+    text-align: left;
+    color: #595758;
+}
+.lessThCont h4{
+    font-size: 24px;
+    margin-bottom: 28px;
+}
+.lessThCont p{
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 5px;
+}
+
+
+/*******************************************瀑布流***********************************************/
+.waterfall,.waterLess{width: 1208px;}
+.waterfall{
+    height: auto;
+    clear: both;
+    position: relative;
+}
+/*分块公用样式*/
+.pin{
+    border: 1px solid #dddddd;
+    width: 282px;
+    height: auto;
+    margin: 0 0 20px 20px;
+    float: left;
+}
+.box{
+    padding: 20px;
+}
+
+/*顶部三角词条*/
+.entry{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: left;
+}
+.entry span{
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    position: relative;
+    padding: 0 6px 0 6px;
+}
+.entry span em{
+    height: 0;
+    width: 0;
+    display: 
+    inline-block; 
+    cursor: pointer; 
+    position: absolute;
+    top: 0; 
+    right: -10px;
+    border-top:10px solid transparent;
+    border-bottom:10px solid transparent;
+    border-right:none;
+}
+.enNav span{background: #ea5f49;}
+.enNav span em{border-left:10px solid #ea5f49;}
+.synthesize span{background: #56c5a9;}
+.synthesize span em{border-left:10px solid #56c5a9;}
+
+/*分页导航*/
+.box li{
+    margin-top: 20px;
+}
+.box li a{
+    width: 100%;
+    display: inline-block;
+    background: #fff3eb;
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    color: #935c54;
+    text-align: center;
+}
+
+/*综合内容块*/
+.box h4{
+    text-align: left;
+    font-weight: normal;
+    line-height: 1.4;
+    margin-top: 20px;
+    word-wrap:break-word;
+}
+.box h4 a{
+    font-size: 18px;
+    color: #595758;
+    font-weight: normal;
+}
+.time,.box p{
+    font-size: 14px;
+    color: #9e9e9e;
+    text-align: left;
+}
+.time {
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+}
+.time i{
+    font-style: inherit;
+    margin-left: 10px;
+}
+.box img{
+    margin-top: 20px;
+    width: 280px;
+}
+.box p{
+    text-align: left;
+    line-height: 1.6;
+    margin-top: 20px;
+    word-wrap: break-word;
+}
+
+
+
+/********************知识库-首页********************************************/
+.waterfall.indexWF {
+    margin-top: 40px;
+}
+.box.banner {
+    padding: 0 0 60px;
+    border: 1px solid #dddddd;
+    margin-bottom: 20px;
+}
+.box .fPic img{
+    margin-top: 0;
+}
+.pin .reviewPast.review {
+    border-top: none;
+    border-bottom: 1px solid #dddddd;
+    clear: both;
+    margin-bottom: 0;
+}
+.pin .reviewPast{
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+.reviewPast.weiRe {
+    border-top: 1px solid #ddd;
+    margin-bottom: 0;
+    padding: 20px;
+}
+.box.pass{
+    border: 1px solid #dddddd;
+    padding: 0;
+}
+.box.pass1{
+    border: 1px solid #dddddd;
+    margin-top: 20px;
+}
+.box .refresh {
+    clear: both;
+    height: 60px;
+    display: inline-block;
+    line-height: 60px;
+    width: 100%;
+    font-size: 14px;
+    color: #595758;
+    background: url("../Image/Knowledge/refresh.png") no-repeat scroll 89px center;
+}
+.pass1 .reviewPast.weiRe {
+    padding: 0;
+    border-top: none; 
+    margin-top: -20px;
+}
+.box > a {
+    display: inline-block;
+    width: 240px;
+}
+
+
+/*焦点图*/
+.focus{ position:relative; width: 280px; height:280px; background-color: #000; float: left;}  
+.focus img{ width: 280px; height: 280px;} 
+.focus .shadow .title{width: 260px; height: 65px;padding-left: 30px;padding-top: 20px;}
+.focus .shadow .title a{ text-decoration:none; color:#fff; font-size:14px; font-weight:bolder; overflow:hidden; }
+.focus .btn{ position:absolute; bottom:34px; left:510px; overflow:hidden; zoom:1;} 
+.focus .btn a{position:relative; display:inline; width:13px; height:13px; border-radius:7px; margin:0 5px;color:#B0B0B0;font:12px/15px "\5B8B\4F53"; text-decoration:none; text-align:center; outline:0; float:left; background:#b2efff; }  
+.focus .btn a:hover,.focus .btn a.current{  cursor:pointer;background:#00c9ff;}  
+.focus .fPic{ position:absolute; left:0px; top:0px; }  
+.focus .D1fBt{ overflow:hidden; zoom:1;  height:16px; z-index:10;  }  
+.focus .shadow{ width:100%; position:absolute; bottom:0; left:0px; z-index:10; height:40px; line-height: 40px; background:rgba(0,0,0,0.6);    
+filter:progid:DXImageTransform.Microsoft.gradient( GradientType = 0,startColorstr = '#80000000',endColorstr = '#80000000')\9;  display:block;  text-align:left; }  
+.focus .shadow a{ width: 100%; display: inline-block; text-align: center; text-decoration:none; color:#fff; font-size:18px; overflow:hidden; margin-left:10px; font-family: "\5FAE\8F6F\96C5\9ED1";}  
+.focus .fcon{ position:relative; width:100%; float:left;  display:none; background:#000  }  
+.focus .fcon img{ display:block; }  
+.focus .fbg{bottom:-42px; right:90px; position:absolute; height:21px; text-align:center; z-index: 200; }  
+.focus .fbg div{margin:4px auto 0;overflow:hidden;zoom:1;height:14px}    
+.focus .D1fBt a{position:relative; display:inline; width:12px; height:12px; border-radius:7px; margin:0 5px;color:#B0B0B0;font:12px/15px "\5B8B\4F53"; text-decoration:none; text-align:center; outline:0; float:left; background:#b2efff; }    
+.focus .D1fBt .current,.focus .D1fBt a:hover{background:#00c9ff;}    
+.focus .D1fBt img{display:none}    
+.focus .D1fBt i{display:none; font-style:normal; }    
+
+/***************************************品牌故事*******************************************/
+/*品牌故事-定稿*/
+.story{
+    height: auto;
+    width: 820px;
+    color: #595758;
+    text-align: left;
+    margin-left: 40px;
+}
+.stCont{
+    padding: 31px 40px 35px 40px;
+    height: auto;
+    border: 1px solid #dddddd;
+    color: #595758;
+    margin-bottom: 40px; 
+    position: relative;
+}
+.stCont h3{
+    font-size: 24px;
+    text-align: left;
+}
+.stCont.sc span{
+    color: #727171;
+    margin-top: 8px;
+}
+.stCont img{
+    text-align: center;
+    margin: 30px 0;
+}
+.fallImgCurrent{
+    height: 400px;
+    /* margin-top: -100px; */
+    width: 100%;
+    float: left;
+    background: url("../Image/Knowledge/pingpaigushi.jpg") no-repeat scroll center center;
+}
+
+/*置顶*/
+.stCont.sc > em {
+    background: url("../Image/Knowledge/zhiding.png") no-repeat scroll center center;
+    display: inline-block;
+    height: 61px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 61px;
+}
+
+/*************************关于我们********************************/
+.group.gCenter {
+    margin-left: 155px;
+}
+.gCenter ul{
+    overflow: hidden;
+    height: auto;
+    padding: 0;
+    margin-top: 1px;
+}
+.gCenter li{
+    float: left;
+    margin-left: 7px;
+}
+.gCenter li,.gCenter li a{
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+.gCenter li a{
+    padding: 0 7px;
+    display: inline-block;
+}
+.gCenter li a:hover,.gCenter li a.current{
+    color: #ffffff;
+    background: #00c9ff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+
+.loading-wrap{
+    text-align: center;
+    margin: 20px 0; 
+}
+
+/*瀑布流内容加载完成*/
+.loading{
+    display: inline-block;
+    width: 305px;
+    height: 237px;
+    margin: 0 auto;
+    background: url("../Image/Knowledge/lodding.png") no-repeat scroll center center;
+}
+/*首页没有内容*/
+.waterfallms{
+    width: 480px;
+    height: 312px;
+    display: inline-block;
+    margin: 20px 0;
+    background: url("../Image/Knowledge/waterfall.png") no-repeat scroll center center;
+}
+/*没搜到内容*/
+.noFind{
+    width: 100%;
+    height: 540px;
+    margin: 0 auto;
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    margin-bottom: 80px;
+    background: url("../Image/Knowledge/nofind.png") no-repeat scroll center center;
+}
+
+#mask{
+    background: #000000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99998;
+    opacity: 0.7;
+    filter:alpha(opacity=70);
+}
+/*分享到微博*/
+/*分享到微信*/
+.knowPoper{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -290px;
+    margin-top: -260px;
+    height: 520px;
+    width: 580px;
+    background: #ffffff;
+    z-index: 999999;
+    display: none;
+    text-align: center;
+}
+.knowPoper h4{
+    font-size: 14px;
+    color: #595758;
+    text-align: center;
+    margin-top: 115px;
+}
+.knowPoper img{
+    margin-top: 21px;
+    width: 250px;
+}
+.colse{
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+    background: url("../Image/Knowledge/close.png") no-repeat scroll center center;
+}
+.knowPoper h2{
+    font-size: 24px;
+    color: #686667;
+    text-align: center;
+    margin: 53px 0 16px;
+}
+#knowPoperwb img{
+    margin: 20px 0;
+}
+#knowPoperwb p{
+    line-height: 1.8;
+    text-align: left;
+    font-size: 14px;
+    color: #686667;
+}
+#knowPoperwb h3{
+    text-align: left;
+    font-size: 16px;
+    margin: 30px 0;
+}
+#knowPoperwb > div{
+    overflow-x: hidden;
+    height: 298px;
+    padding: 0 30px;
+    width: 100%;
+}
+#knowPoperwb > div img{
+    width: auto;
+}
+#knowPoperwb .knowPButOut{
+    background: #ffffff;
+    height: auto;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 0;
+    text-align: center;
+    overflow-y: hidden;
+}
+#knowPoperwb .knowPBut{
+    display: inline-block;
+    width: 240px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    color: #ffffff;
+    background: #f14b4b;
+    margin: 30px 0; 
+}
+#knowPoperwb .knowPBut:hover{
+    background: #00c9ff;
+}
+.knowMine iframe {
+    margin-bottom: 43px;
+}
+#noticelist .refresh{
+    clear: both;
+    color: #595758;
+    display: inline-block;
+    font-size: 14px;
+    height: 60px;
+    line-height: 60px;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+    background: url("../Image/Knowledge/refresh.png") no-repeat scroll 72px center;
+}
+
+/*友言评论的样式*/
+.t-youyan {
+    clear: both;
+    content: ".";
+    display: block;
+    padding-top: 25px;
+}

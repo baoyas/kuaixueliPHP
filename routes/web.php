@@ -11,34 +11,33 @@
 |
 */
 
-Route::get('/', 'Home\HomeController@index');
-Route::get('/education/level', 'Home\EducationController@level');
-Route::get('/education/info', 'Home\EducationController@info');
+
+
+Route::group(['namespace'=>'Home', 'middleware' => ['web']], function() {
+    Route::get('/', 'HomeController@index');
+    Route::get('/education/level', 'EducationController@level');
+    Route::get('/education/info', 'EducationController@info');
+    Route::get('/sms/send', 'SmsController@send');
+    Route::get('/help/about', 'HelpController@about');
+});
 
 Route::group(['namespace'=>'Home', 'middleware' => ['web','user.auth']], function() {
     Route::get('/order/pay', 'OrderController@pay');
 });
 
 
-Route::get('/sms/send', 'Home\SmsController@send');
 //Auth::routes();
-
-
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-*/
-Route::get('content/{id?}', 'Home\ContentController@index');
-Route::get('auth/github', 'Home\AuthController@github');
 
-Route::any('auth/githubCallback', 'Home\AuthController@githubCallback');
+
+
+
+
 
 
 //后台路由
@@ -116,5 +115,3 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['web
     Route::resource('ceditor', 'CeditorController');
 });
 
-Route::resource('reward', 'Home\RewardController');
-Route::get('share/ldl/{user_id}', 'Home\ShareController@ldl');

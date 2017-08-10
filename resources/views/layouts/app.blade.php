@@ -79,7 +79,7 @@
                 <li><a class="noBorder" href="{{ url('/auth/logout') }}">退出</a></li>
             @endif
             <li><a href="{{ url('order/list') }}">我的订单</a></li>
-            <li><a class="welcome1" href="/cart/info.html"><i class="gw floatLeft"></i>购物车<em>0</em>件</a></li>
+            <li><a class="welcome1" href="javascript:{void(0);}"><i class="gw floatLeft"></i>购物车<em>0</em>件</a></li>
             <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">院校入驻</a></li>
             <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" style="color:#00a5d5;">助学机构入驻</a></li>
             <li class="asj app">
@@ -156,7 +156,19 @@
             <li><i class="zrfw"></i>保险赔付</li>
             <li><i class="shwy"></i>售后无忧</li>
         </ul>
-        <div class="logo-sub">欢迎注册</div>
+        <div class="logo-sub">
+            @if (Request::path()=='auth/login')
+                登录
+            @elseif(Request::path()=='auth/register')
+                欢迎注册
+            @elseif(Request::path()=='order/list')
+                我的订单
+            @elseif(Request::path()=='order/pay')
+                支付订单
+            @else
+                
+            @endif
+        </div>
     </div>
     @endif
     <!-- LOGO -->

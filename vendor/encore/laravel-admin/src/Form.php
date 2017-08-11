@@ -307,6 +307,12 @@ class Form
     {
         $data = Input::all();
 
+        foreach ($this->builder->fields() as $field) {
+            if(!isset($data[$field->column()])) {
+                $data[$field->column()] = $field->getDefault();
+            }
+        }
+
         // Handle validation errors.
         if ($validationMessages = $this->validationMessages($data)) {
             return back()->withInput()->withErrors($validationMessages);
@@ -474,6 +480,12 @@ class Form
     {
         $data = Input::all();
 
+        foreach ($this->builder->fields() as $field) {
+            if(!isset($data[$field->column()])) {
+                $data[$field->column()] = $field->getDefault();
+            }
+        }
+        
         $data = $this->handleEditable($data);
 
         $data = $this->handleFileDelete($data);

@@ -86,17 +86,12 @@ class SchoolController extends Controller
             );
             $form->image('logo_url', '学校logo')->dir(function(Form $form){
                 return 'school';
-            });//->default('');
+            });
             $form->saving(function(Form $form){
                 $form->logo_url = $form->logo_url ? $form->logo_url : '';
             });
         });
     }
 
-    public function levelNext(Request $request)
-    {
-        $pid = $request->get('q');
-        return EducationLevel::where(['pid'=>$pid])->get(['id', DB::raw('name as text')]);
-    }
 }
 

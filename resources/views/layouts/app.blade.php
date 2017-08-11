@@ -169,6 +169,8 @@
                 关于我们
             @elseif(Request::path()=='/')
                 首页
+            @elseif(Request::path()=='auth/forget')
+                忘记密码
             @else
 
             @endif

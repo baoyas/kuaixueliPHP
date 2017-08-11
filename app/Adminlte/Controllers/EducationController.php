@@ -153,6 +153,9 @@ class EducationController extends Controller
     public function level2(Request $request)
     {
         $pid = $request->get('q');
+        if(empty($pid)) {
+            return [];
+        }
         $data = EducationLevel::where(['pid'=>$pid])->get(['id', DB::raw('name as text')])->toArray();
         //array_unshift($data,['id'=>0, 'text'=>'请选择']);
         return $data;
@@ -161,6 +164,9 @@ class EducationController extends Controller
     public function level3(Request $request)
     {
         $pid = $request->get('q');
+        if(empty($pid)) {
+            return [];
+        }
         $data = EducationLevel::where(['pid'=>$pid])->get(['id', DB::raw('name as text')])->toArray();
         //array_unshift($data,['id'=>0, 'text'=>'请选择']);
         return $data;

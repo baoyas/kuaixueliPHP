@@ -25,6 +25,8 @@ Route::group([
     $attributes = ['middleware' => 'admin.permission:allow,administrator,manager'];
     $router->group($attributes, function ($router) {
         $router->get('education/levelNext', 'EducationController@levelNext');
+        $router->get('education/level2', 'EducationController@level2');
+        $router->get('education/level3', 'EducationController@level3');
         $router->resource('education', 'EducationController');
         $router->resource('config', 'ConfigController');
         $router->resource('user', 'UserController');

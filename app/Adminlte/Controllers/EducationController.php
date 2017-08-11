@@ -96,10 +96,10 @@ class EducationController extends Controller
             );
             $form->select('level_1_id', '学历级别1')->options(
                 EducationLevel::where(['pid'=>0])->get()->pluck('name', 'id')
-            )->load('level_2_id', '/adminlte/education/levelNext');
+            )->load('level_2_id', '/adminlte/education/level2');
             $form->select('level_2_id', '学历级别2')->options(function ($id) {
                 return EducationLevel::options($id);
-            })->load('level_3_id', '/adminlte/education/levelNext');
+            })->load('level_3_id', '/adminlte/education/level3');
             $form->select('level_3_id', '学历级别3')->options(function ($id) {
                 return EducationLevel::options($id);
             });
@@ -150,11 +150,19 @@ class EducationController extends Controller
         });
     }
 
-    public function levelNext(Request $request)
+    public function level2(Request $request)
     {
         $pid = $request->get('q');
         $data = EducationLevel::where(['pid'=>$pid])->get(['id', DB::raw('name as text')])->toArray();
-        array_unshift($data,['id'=>0, 'text'=>'请选择']);
+        //array_unshift($data,['id'=>0, 'text'=>'请选择']);
+        return $data;
+    }
+
+    public function level3(Request $request)
+    {
+        $pid = $request->get('q');
+        $data = EducationLevel::where(['pid'=>$pid])->get(['id', DB::raw('name as text')])->toArray();
+        //array_unshift($data,['id'=>0, 'text'=>'请选择']);
         return $data;
     }
 }

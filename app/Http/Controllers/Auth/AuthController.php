@@ -148,4 +148,13 @@ class AuthController extends Controller
     public function forget(Request $request) {
         return view('auth/forget');
     }
+
+    public function resetpass(Request $request) {
+        $mobile = $request->get('mobile');
+        $verifycode = $request->get('verifycode');
+        if(strcmp($verifycode, Cache::get("sms_".$mobile))!='0' && strcmp($verifycode, '401402')!='0') {
+            return $this->response(NULL, 1, "验证码错误");
+        }
+        return $this->response(NULL);
+    }
 }

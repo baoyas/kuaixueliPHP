@@ -34,7 +34,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('auth/forget', 'Auth\AuthController@forget');
-
+Route::get('auth/resetpass', 'Auth\AuthController@resetpass');
 
 
 

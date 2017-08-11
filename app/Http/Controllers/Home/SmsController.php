@@ -51,7 +51,12 @@ class SmsController extends Controller
         Cache::forget("vcode_by_mobile{$mobile}");
         $code = mt_rand(100000, 999999);
         $sms = new Sms();
-        $result = $sms->send($mobile, '您的注册验证码是：'.$code);
+        $type = $request->get('type', 'register');
+        if($type=='register') {
+            $result = $sms->send($mobile, '您的注册验证码是：'.$code);
+        } elseif($type=='forget') {
+            $result = $sms->send($mobile, '您的找回账号操作，验证码是：'.$code);
+        }
         if(isset($result['code']) && strcmp($result['code'], '0')===0) {
             Cache::put("sms_".$mobile, $code, 60*2);
             return $this->response();

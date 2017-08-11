@@ -37,11 +37,99 @@
                     <h4>现在，您可以去登录了！</h4>
                 </li>
                 <li class="login-li">
-                    <a class="" href="../login.html">去登录</a>
+                    <a class="" href="{{ url('auth/login') }}">去登录</a>
                 </li>
             </ul>
         </div>
 
     </div>
 </div>
+<script type="text/javascript">
+    //手机号 验证码 通过跳转提示
+    $("#submitbtn1").on("click",function(){
+
+        if($('#forgetmobile').length!=11 || $('#validate_code').length!=6) {
+            return;
+        }
+        $.ajax({
+            method: 'get',
+            url: '/auth/resetpass',
+            data: {
+                _token: '{{ csrf_token() }}',
+                mobile: $('#forgetmobile').val(),
+                verifycode: $('#validate_code').val()
+            },
+            dataType:'json',
+            success: function (data) {
+                if(data.code != 0) {
+                    alert(data.msg);
+                } else {
+                    alert("验证成功！");
+                    $(this).closest("ul").hide();
+                    $(this).closest(".loginLayout").find("a.pass-1").removeClass("passC");
+                    $(this).closest(".loginLayout").find("a.pass-2").addClass("passC");
+                    $(this).closest(".loginLayout").find("#succPop").show();
+                }
+            }
+        });
+    });
+    function huodejiaodian(obj){
+        var aa = $(obj).parent().parent();
+        aa.children("div.register-li-1").hide();
+    }
+
+    function shiqujiaodian(obj,obj1)
+    {
+        var aa = $(obj).parent().parent();
+        if('' == $(obj).val())
+        {
+            aa.children("div.register-li-1").hide();
+            $("." + obj1).show();
+        }
+        else
+        {
+            if($(obj).attr("id")=="forgetmobile"){
+                var length = $(obj).val().length;
+                if (11 == length && /^(1[3|4|5|7|8]\d{9})$/.test($(obj).val())){
+                }else{
+                    console.log("1");
+                    $("." + obj1).html("手机号格式不正确!");
+                    $("." + obj1).show();
+                }
+            }
+        }
+    }
+
+    $(function(){
+        $("#validate_code").val('');
+        $("#validate_mobile").val('');
+
+        //$("#forgetmobile").focus();
+        $(".register-li input").focus(function(){
+            $(this).parents('.register-li').find('label').addClass("register-li-span")
+        });
+        $('#user_getcode').click(function(){
+            if($('#forgetmobile').length!=11) {
+                return;
+            }
+            $.ajax({
+                method: 'get',
+                url: '/sms/send?type=forget',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    mobile: $('#forgetmobile').val()
+                },
+                dataType:'json',
+                success: function (data) {
+                    if(data.code != 0) {
+                        alert(data.msg);
+                    } else {
+                        alert('已经发送');
+                    }
+                }
+            });
+        });
+    });
+
+</script>
 @endsection

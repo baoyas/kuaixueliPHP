@@ -87,6 +87,9 @@ class SchoolController extends Controller
             $form->image('logo_url', '学校logo')->dir(function(Form $form){
                 return 'school';
             });//->default('');
+            $form->saving(function(Form $form){
+                $form->logo_url = $form->logo_url ? $form->logo_url : '';
+            });
         });
     }
 

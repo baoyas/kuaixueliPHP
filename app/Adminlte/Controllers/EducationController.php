@@ -69,7 +69,7 @@ class EducationController extends Controller
             $grid->column('school.name', '学校名称')->display(function($school_name){
                 return $school_name;
             });
-            $grid->column('level', '学历级别')->display(function() use($eLevel) {
+            $grid->column('level', '分类')->display(function() use($eLevel) {
                 return $eLevel[$this->level_1_id]."-".$eLevel[$this->level_2_id]."-".$eLevel[$this->level_3_id];
             });
             $grid->column('studymode_id', '进修方式')->display(function($studymode_id){
@@ -94,13 +94,13 @@ class EducationController extends Controller
             $form->select('school_id', '学校名称')->options(
                 EducationSchool::all()->pluck('name', 'id')
             );
-            $form->select('level_1_id', '学历级别1')->options(
+            $form->select('level_1_id', '分类1')->options(
                 EducationLevel::where(['pid'=>0])->get()->pluck('name', 'id')
             )->load('level_2_id', '/adminlte/education/level2')->default(0);
-            $form->select('level_2_id', '学历级别2')->options(function ($id) {
+            $form->select('level_2_id', '分类2')->options(function ($id) {
                 return EducationLevel::options($id);
             })->load('level_3_id', '/adminlte/education/level3')->default(0);
-            $form->select('level_3_id', '学历级别3')->options(function ($id) {
+            $form->select('level_3_id', '分类3')->options(function ($id) {
                 return EducationLevel::options($id);
             })->default(0);
 

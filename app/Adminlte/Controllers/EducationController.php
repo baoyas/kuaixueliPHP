@@ -106,17 +106,17 @@ class EducationController extends Controller
 
             $form->select('studymode_id', '进修方式')->options(
                 Education::$studyMode
-            );
+            )->default(0);
 
             $fullTimeStates = [
                 'on'  => ['value' => 1, 'text' => '是', 'color' => 'success'],
                 'off' => ['value' => 2, 'text' => '否', 'color' => 'danger'],
             ];
-            $form->switch('fulltime_id', '是否全日制')->states($fullTimeStates)->tshow('notfulltime_id', 'on');
+            $form->switch('fulltime_id', '是否全日制')->states($fullTimeStates)->tshow('notfulltime_id', 'on')->default(0);
             $form->radio('notfulltime_id', '脱产')->options([
                 1 => '全日制脱产',
                 2 => '周末脱产'
-            ]);
+            ])->default(0);
             $form->select('length', '学制')->options([
                 '1' => '1年',
                 '1.5' => '1.5年',

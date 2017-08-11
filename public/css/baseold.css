@@ -247,7 +247,7 @@ option.optHeight {padding: 5px 0;text-indent: 8px;vertical-align: middle;}
 .annotation { float:left;color: #999999;font-size: 12px;font-weight: normal;line-height: 18px;margin-bottom: 8px;margin-left: 136px;margin-top: -12px;text-align: left; background: url(../Image/Login/reg-icon.png) no-repeat -8px -39px; padding-left: 22px;}
 
 /************页脚**************/
-.footer-index{ min-width: 1180px; width: 100%;float: left;background: #595757;text-align: center;font-size: 14px;color: #f5f5f5;font-weight: bold;padding: 50px 0;}
+.footer-index{ min-width: 1180px; width: 100%;text-align: center;font-size: 14px;color: #f5f5f5;font-weight: bold;padding: 50px 0;}
 .footer{ min-width: 1180px; width: 100%;float: left;text-align: center;font-size: 14px;color: #666;}
 .f-link a{color: #f5f5f5;font-weight: normal;border-right:1px solid #f5f5f5; padding-right: 5px;padding-left: 2px; height: 17px;line-height: 17px;}
 .f-link a:hover{color: #7fe4ff;}
@@ -584,17 +584,7 @@ h4.validateForm-nobg{
 	height: auto;
 	overflow: hidden;
 }
-/*输入验证码和设置新密码*/
-.web-login-pass a.pass-4.pass-44,.web-login-pass a.pass-3.pass-33,.web-login-pass a.pass-2.pass-22{
-    border-bottom: 2px solid #00abe3;
-    color: #00abe3;
-}
-.web-login-pass a.pass-2.pass-22 {background: url("../Image/Password/pass-2.png") no-repeat scroll 30px 8px;}
-.web-login-pass a.pass-2 {
-    background: url("../Image/Password/pass-22.png") no-repeat scroll 30px 8px;
-    border-bottom: medium none;
-    color: #dbdbdb;
-}
+
 /*验证码*/
 .pass-input.verification{
 	width: 110px;

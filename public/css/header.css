@@ -335,10 +335,6 @@ a.smclass{display: inline-block;width: 166px;height: 78px;background-color: #fff
 .web-login-pass {border-bottom: 2px solid #dbdbdb;height: 30px;line-height: 30px;margin: 26px auto 0;text-align: center;width: 95%;}
 .web-login-pass a {color: #dbdbdb;display: inline-block;font-size: 14px;padding: 0 30px 0 55px;position: relative;top: -3px;}
 .back-pass{width: 51%;margin: 55px auto 0;height: auto;overflow: hidden;}
-/*输入验证码和设置新密码*/
-.web-login-pass a.pass-4.pass-44,.web-login-pass a.pass-3.pass-33,.web-login-pass a.pass-2.pass-22{border-bottom: 2px solid #00abe3;color: #00abe3;}
-.web-login-pass a.pass-2.pass-22 {background: url("../Image/Password/pass-2.png") no-repeat scroll 30px 8px;}
-.web-login-pass a.pass-2 {background: url("../Image/Password/pass-22.png") no-repeat scroll 30px 8px;border-bottom: medium none;color: #dbdbdb;}
 /*验证码*/
 .pass-input.verification{width: 110px;}
 .form-panel .ver-img {height: 35px;width: 90px;float: left;margin: 0 10px 0 18px;}

@@ -476,78 +476,9 @@ body{
 .paddingTop{
     padding-top: 50px;
 }
-/*.mlRi div{*/
-    /*position: absolute;
-    /*left: 0;
-    bottom: 0;*/
-   /* height: 140px;
-    width: auto;
-    padding-left: 75px; */
-/*}
-.mlRi span{
-    display: block;
-    font-size: 14px;
-    color: #000000;
-    line-height: 1.7;
-    width: 100%;
-    text-align: left;
-}
-.mlRi .mlReg{
-    color: #d73838;
-    cursor: pointer;
-}
-.mlRi span a:hover{
-    color: #00abe3;
-}
-.mlRi .mla{
-    display: inline-block;
-    width: 52px;
-    height: 52px;
-    float: left;
-    text-align: center;
-    position: relative;
-    margin-top: 10px;
-    background: url("../Image/Login/qqweixinbg.png") no-repeat scroll center center;
-}
-.mla-ri{
-    margin-left: 25px;
-}*/
-/*.mla img{*/
-   /* position: absolute;
-    top: 50%;
-    left: 50%;*/
-   /* margin-top: -18.5px;
-    margin-left: -16px;
-}
-
-.mlRi.dengLu{
-    height: 305px;
-    background: url("../Image/Login/login.png") no-repeat scroll left center;
-}
-.mlRi.zhuCei{
-    height: 421px;
-    background: url("../Image/Login/reg.png") no-repeat scroll left center;
-}
-.ser-aget{
-    font-size: 12px;
-    display: block;
-    width: 100%;
-    text-align: left;
-}
-.ser-aget a{
-   color: #00abe3; 
-}*/
 
 /*找回密码*/
-.web-login-pass a.pass-3.pass-33 {background: url("../Image/Password/pass-33.png") no-repeat scroll 30px 8px;}
-.web-login-pass a.pass-3 {background: url("../Image/Password/pass-3.png") no-repeat scroll 30px 8px;}
-.web-login-pass a.pass-4.pass-44 {background: url("../Image/Password/pass-okk.png") no-repeat scroll 30px 8px;}
-.web-login-pass a.pass-4 {background: url("../Image/Password/pass-ok.png") no-repeat scroll 30px 8px;}
-.web-login-pass a.pass-1.pass-11 {background: url("../Image/Password/pass-11.png") no-repeat scroll 30px 8px;border-bottom: 2px solid #00abe3;color: #00abe3;}
-.web-login-pass a.pass-1 {background: url("../Image/Password/pass-1.png") no-repeat scroll 30px 8px;}
-.web-login-pass a.pass-2 {background: url("../Image/Password/pass-22.png") no-repeat scroll 30px 8px;border-bottom: medium none;color: #dbdbdb;}
-.web-login-pass a.pass-3 {background: url("../Image/Password/pass-3.png") no-repeat scroll 30px 8px;}
-.web-login-pass a.pass-4 {background: url("../Image/Password/pass-ok.png") no-repeat scroll 30px 8px;}
+.web-login-pass a.passC{border-bottom: 2px solid #00abe3;color: #00abe3;padding: 0 50px;}
 .back-panel .form-buttom{
     margin-top: 50px;
     background: #0eadd8;

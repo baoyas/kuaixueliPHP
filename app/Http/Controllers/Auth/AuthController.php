@@ -144,4 +144,8 @@ class AuthController extends Controller
         ]);
         return redirect('/auth/register');
     }
+
+    public function forget(Request $request) {
+        return view('auth/forget');
+    }
 }

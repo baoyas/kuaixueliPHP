@@ -11,7 +11,7 @@
     <title>快学历</title>
 
     <!-- Styles -->
-    @if (Request::path()=='auth/login' || Request::path()=='auth/register')
+    @if (Request::path()=='auth/login' || Request::path()=='auth/register' || Request::path()=='auth/forget')
         <link href="/css/baseold.css" rel="stylesheet">
     @else
         <link href="/css/base.css" rel="stylesheet">
@@ -21,7 +21,7 @@
     <link href="/css/product.css" rel="stylesheet">
     <link href="/css/product_new.css" rel="stylesheet">
     @if (Request::path()=='auth/login' || Request::path()=='auth/register')
-    @else
+    @elseif (Request::path()=='education/info')
         <link href="/css/kfwpop.css" rel="stylesheet">
     @endif
     <link href="/css/serviceInfo.css" rel="stylesheet">

@@ -32,7 +32,7 @@
                             <label for="">
                                 <input type="checkbox" name="user[autologin]" value="1">一周内自动登录
                             </label>
-                            <a href="/communal/forgetpass.html" class="forget-pass" target="_blank">忘记密码？</a>
+                            <a href="{{ url('auth/forget') }}" class="forget-pass" target="_blank">忘记密码？</a>
                         </li>
                         <li class="register-li">
                             <a class="reg-now" id="regButton">

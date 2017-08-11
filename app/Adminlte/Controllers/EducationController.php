@@ -153,7 +153,9 @@ class EducationController extends Controller
     public function levelNext(Request $request)
     {
         $pid = $request->get('q');
-        return EducationLevel::where(['pid'=>$pid])->get(['id', DB::raw('name as text')]);
+        $data = EducationLevel::where(['pid'=>$pid])->get(['id', DB::raw('name as text')])->toArray();
+        array_unshift($data,['id'=>0, 'text'=>'请选择']);
+        return $data;
     }
 }
 

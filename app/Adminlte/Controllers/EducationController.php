@@ -96,13 +96,13 @@ class EducationController extends Controller
             );
             $form->select('level_1_id', '学历级别1')->options(
                 EducationLevel::where(['pid'=>0])->get()->pluck('name', 'id')
-            )->load('level_2_id', '/adminlte/education/level2');
+            )->load('level_2_id', '/adminlte/education/level2')->default(0);
             $form->select('level_2_id', '学历级别2')->options(function ($id) {
                 return EducationLevel::options($id);
-            })->load('level_3_id', '/adminlte/education/level3');
+            })->load('level_3_id', '/adminlte/education/level3')->default(0);
             $form->select('level_3_id', '学历级别3')->options(function ($id) {
                 return EducationLevel::options($id);
-            });
+            })->default(0);
 
             $form->select('studymode_id', '进修方式')->options(
                 Education::$studyMode

@@ -148,9 +148,10 @@ class EducationController extends Controller
             $form->text('market_fee', '官方学费')->rules('required');
             $form->text('kxl_fee', '快学历学费')->rules('required');
             $form->saving(function(Form $form){
-                $form->level_1_id = empty($form->level_1_id) ? 0 : $form->level_1_id;
-                $form->level_2_id = empty($form->level_2_id) ? 0 : $form->level_2_id;
-                $form->level_3_id = empty($form->level_3_id) ? 0 : $form->level_3_id;
+                $form->level_1_id  = empty($form->level_1_id) ? 0 : $form->level_1_id;
+                $form->level_2_id  = empty($form->level_2_id) ? 0 : $form->level_2_id;
+                $form->level_3_id  = empty($form->level_3_id) ? 0 : $form->level_3_id;
+                $form->fulltime_id = empty($form->fulltime_id) ? 0 : $form->fulltime_id;
             });
         });
     }

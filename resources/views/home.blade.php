@@ -11,7 +11,7 @@
                 @foreach($eLevel as $key=>$val)
                     <li @if(empty($key))class="iNavFirst"@else''@endif>
                         <i></i>
-                        <h4>{{ $val['name'] }}</h4>
+                        <h4><a href="{{ url('/education/level?level_id='.$val['id']) }}">{{ $val['name'] }}</a></h4>
                     </li>
                 @endforeach
                 </ul>

@@ -129,8 +129,8 @@ class EducationController extends Controller
             $form->multipleSelect('provinces', '户籍限制')->options(Province::all()->pluck('name', 'id'))->default(
                 EducationProvince::where('education_id', $id)->get()->pluck('id', 'id')
             );
-            $form->text('province_desc', '户籍限制说明')->rules('required');
-            $form->text('major', '可选专业')->rules('required');
+            $form->text('province_desc', '户籍限制说明')->default('');
+            $form->text('major', '可选专业')->default('');
             $form->hasMany('contacts', '课程顾问',function (Form\NestedForm $form) {
                 $atypeStates = [
                     'on'  => ['value' => 1, 'text' => 'QQ', 'color' => 'success'],
@@ -148,12 +148,10 @@ class EducationController extends Controller
             $form->text('market_fee', '官方学费')->rules('required');
             $form->text('kxl_fee', '快学历学费')->rules('required');
             $form->saving(function(Form $form){
-                /*
-                $form->level_1_id  = empty($form->level_1_id) ? 0 : $form->level_1_id;
-                $form->level_2_id  = empty($form->level_2_id) ? 0 : $form->level_2_id;
-                $form->level_3_id  = empty($form->level_3_id) ? 0 : $form->level_3_id;
-                $form->fulltime_id = empty($form->fulltime_id) ? 0 : $form->fulltime_id;
-                */
+                $form->level_1_id  = $form->level_1_id ? $form->level_1_id : 0;
+                $form->level_2_id  = $form->level_2_id ? $form->level_2_id : 0;
+                $form->level_3_id  = $form->level_3_id ? $form->level_3_id : 0;
+                $form->fulltime_id = $form->fulltime_id ? $form->fulltime_id : 0;
             });
         });
     }

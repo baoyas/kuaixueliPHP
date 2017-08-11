@@ -46,9 +46,9 @@
 </div>
 <script type="text/javascript">
     //手机号 验证码 通过跳转提示
-    $("#submitbtn1").on("click",function(){
-
-        if($('#forgetmobile').length!=11 || $('#validate_code').length!=6) {
+    $("#submitbtn1").on("click", function(){
+        var submitObj = $("#submitbtn1");
+        if($('#forgetmobile').val().length!=11 || $('#validate_code').val().length!=6) {
             return;
         }
         $.ajax({
@@ -65,10 +65,10 @@
                     alert(data.msg);
                 } else {
                     alert("验证成功！");
-                    $(this).closest("ul").hide();
-                    $(this).closest(".loginLayout").find("a.pass-1").removeClass("passC");
-                    $(this).closest(".loginLayout").find("a.pass-2").addClass("passC");
-                    $(this).closest(".loginLayout").find("#succPop").show();
+                    $(submitObj).closest("ul").hide();
+                    $(submitObj).closest(".loginLayout").find("a.pass-1").removeClass("passC");
+                    $(submitObj).closest(".loginLayout").find("a.pass-2").addClass("passC");
+                    $(submitObj).closest(".loginLayout").find("#succPop").show();
                 }
             }
         });
@@ -108,8 +108,10 @@
         $(".register-li input").focus(function(){
             $(this).parents('.register-li').find('label').addClass("register-li-span")
         });
+    });
+    $(document).ready(function(){
         $('#user_getcode').click(function(){
-            if($('#forgetmobile').length!=11) {
+            if($('#forgetmobile').val().length!=11) {
                 return;
             }
             $.ajax({
@@ -130,6 +132,5 @@
             });
         });
     });
-
 </script>
 @endsection

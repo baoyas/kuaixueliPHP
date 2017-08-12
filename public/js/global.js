@@ -1,5 +1,5 @@
 var isSubmit = false;
-$(function(jQuery){
+$(function(){ 
     if (jQuery.validator)
     {
         /**
@@ -62,7 +62,7 @@ $(function(jQuery){
 	{  
 	    alert("对不起，您的浏览器的Cookie功能被禁用，请开启");        
 	}
-}(jQuery));
+});
 
 
 // 表单提交公共函数

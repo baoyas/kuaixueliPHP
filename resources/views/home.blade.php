@@ -2,11 +2,11 @@
 
 @section('content')
 <!-- logo -->
-<div class="minwidth kxlNav headerOverflowInherit" style="z-index:100;">
-    <div class="floatLeft kxlNaSub headerOverflowInherit">
+<div class="minwidth kfwNav headerOverflowInherit" style="z-index:100;">
+    <div class="floatLeft kfwNaSub headerOverflowInherit">
         <a href="javascript:;" style="cursor: default" rel="nofollow">全部服务分类</a>
-        <div class="kxlNaSubSub kxlNaSubSubIsHome">
-            <div class="floatLeft headerOverflowInherit kxlISubNav">
+        <div class="kfwNaSubSub kfwNaSubSubIsHome">
+            <div class="floatLeft headerOverflowInherit kfwISubNav">
                 <ul class="iNav overflowhidden headerOverflowInherit">
                 @foreach($eLevel as $key=>$val)
                     <li @if(empty($key))class="iNavFirst"@else''@endif>
@@ -18,12 +18,12 @@
             </div>
             <div class="floatLeft iSubNav">
                 @foreach($eLevel as $k=>$v)
-                <div class="kxlanimate">
+                <div class="kfwanimate">
                     <ul class="floatLeft iSubNavLe overflowhidden">
                         @foreach($v['children'] as $kk=>$vv)
                         <li>
                             <a href="{{ url('/education/level?level_id='.$vv['id']) }}"><h5>{{ $vv['name'] }}</h5></a>
-                            <div class="kxlNavOne">
+                            <div class="kfwNavOne">
                                 @foreach($vv['children'] as $kkk=>$vvv)
                                 <a class="active" href="{{ url('/education/level?level_id='.$vvv['id']) }}">{{ $vvv['name'] }}</a>
                                 @endforeach
@@ -53,7 +53,7 @@
             </div>
         </div>
     </div>
-    <div class="floatLeft kxlNavs">
+    <div class="floatLeft kfwNavs">
         <!--<a href="/">首页</a>-->
         <a href="/product/company.html">一年专科
             <img class="hotNew" alt="" src="Image/hot.gif">

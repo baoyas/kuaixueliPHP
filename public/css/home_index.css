@@ -2,36 +2,36 @@
 body{background: #fff;}
 .indexBorderB{border-bottom: 1px solid #dfdfdf;}
 .index-fo-info h3,.index-fo-info span,.index-fo-link h5,.index-fo-link a,.link-th h3,
-.link-th span,.menuLi h3,.menuLi > p,.indexPublicClass .z2 .btn,.kfwHot h4,.kfwHot p{line-height: 1;}
-.index-fo-info i,.link-weixi i,.posit i,.z2 i,.kfwHot i,.s-uebut i{background: url("../Image/Home_index/index.png") no-repeat scroll left 0;display: inline-block;}
+.link-th span,.menuLi h3,.menuLi > p,.indexPublicClass .z2 .btn,.kxlHot h4,.kxlHot p{line-height: 1;}
+.index-fo-info i,.link-weixi i,.posit i,.z2 i,.kxlHot i,.s-uebut i{background: url("../Image/Home_index/index.png") no-repeat scroll left 0;display: inline-block;}
 .link-th span,.link-th h3,.link-th h5,.index-fo-link h5,.index-fo-info li,
-.usere-text p,.z2 h3,.z1 .indexEnd,.kfwHot h4{color: #666666;}
+.usere-text p,.z2 h3,.z1 .indexEnd,.kxlHot h4{color: #666666;}
 .index-fo-info li,.index-fo-link li,.entrship li,.indexPublicClass li,
-.indexPublicClass li > a,.kfwHot li{float: left;}
+.indexPublicClass li > a,.kxlHot li{float: left;}
 .index_title{font-size: 18px;color: #333333;margin: 30px 0;text-align: center;line-height: 1;font-weight: normal;}
-.indexPublicClass li,.kfwHot li{margin: 0 0 0 20px;}
-.indexPublicClass .iactive,.kfwHot .iactive{margin-left:0;}
-.kfwHot i,.kfwHot h4,.kfwHot span,.kfwHot h5,.kfwHot div,.kfwHot p{position: absolute;left: 0;}
-.kfwHot h4,.kfwHot span,.kfwHot h5,.kfwHot p{width: 220px;}
+.indexPublicClass li,.kxlHot li{margin: 0 0 0 20px;}
+.indexPublicClass .iactive,.kxlHot .iactive{margin-left:0;}
+.kxlHot i,.kxlHot h4,.kxlHot span,.kxlHot h5,.kxlHot div,.kxlHot p{position: absolute;left: 0;}
+.kxlHot h4,.kxlHot span,.kxlHot h5,.kxlHot p{width: 220px;}
 /***热门推荐***/
-.kfwHot li{width: 220px;height: 310px;background: #ffffff;text-align: center;position: relative;cursor: text;}
-.kfwHot li a{display: block;width: 220px;height: 310px;}
-.kfwHot i{display: block;width: 80px;height: 80px;line-height: 80px;text-align: center;background-position: 0 -717px;margin: 0 auto;top: 40px;left: 50%;margin-left: -40px;}
-.kfwHot h4{top: 150px;font-size: 18px;font-weight: normal;}
-.kfwHot span{top: 175px;font-size: 12px;color: #b0b0b0;}
-.kfwHot h5{top: 238px;font-size: 18px;color: #fd5a66;font-weight: normal;}
-.kfwHot div{top: 310px;display: inline-block;width: 100px;left: 50%;margin-left: -50px;padding: 7px 0;color: #ffffff;background: #fd5a66;font-size: 12px;}
-.kfwHot div:hover{background: #cd4958;}
-.kfwHot p{top: 323px;font-size: 12px;color: #cbcbcb;}
-.kfwHot p em{color: #ffa9af;}
-.kfwHot i,.kfwHot h4,.kfwHot span,.kfwHot h5,.kfwHot div,.kfwHot p{-webkit-transition: top 0.2s;-moz-transition: top 0.2s;-ms-transition: top 0.2s;-o-transition: top 0.2s;transition: top 0.2s;}
-.kfwHot li:hover i{top:30px;}
-.kfwHot li:hover h4{top:130px;}
-.kfwHot li:hover span{top:157px;}
-.kfwHot li:hover h5{top:190px;}
-.kfwHot li:hover div{top:240px;}
-.kfwHot li:hover p{top:280px;}
-.kfwHot img{vertical-align: middle}
+.kxlHot li{width: 220px;height: 310px;background: #ffffff;text-align: center;position: relative;cursor: text;}
+.kxlHot li a{display: block;width: 220px;height: 310px;}
+.kxlHot i{display: block;width: 80px;height: 80px;line-height: 80px;text-align: center;background-position: 0 -717px;margin: 0 auto;top: 40px;left: 50%;margin-left: -40px;}
+.kxlHot h4{top: 150px;font-size: 18px;font-weight: normal;}
+.kxlHot span{top: 175px;font-size: 12px;color: #b0b0b0;}
+.kxlHot h5{top: 238px;font-size: 18px;color: #fd5a66;font-weight: normal;}
+.kxlHot div{top: 310px;display: inline-block;width: 100px;left: 50%;margin-left: -50px;padding: 7px 0;color: #ffffff;background: #fd5a66;font-size: 12px;}
+.kxlHot div:hover{background: #cd4958;}
+.kxlHot p{top: 323px;font-size: 12px;color: #cbcbcb;}
+.kxlHot p em{color: #ffa9af;}
+.kxlHot i,.kxlHot h4,.kxlHot span,.kxlHot h5,.kxlHot div,.kxlHot p{-webkit-transition: top 0.2s;-moz-transition: top 0.2s;-ms-transition: top 0.2s;-o-transition: top 0.2s;transition: top 0.2s;}
+.kxlHot li:hover i{top:30px;}
+.kxlHot li:hover h4{top:130px;}
+.kxlHot li:hover span{top:157px;}
+.kxlHot li:hover h5{top:190px;}
+.kxlHot li:hover div{top:240px;}
+.kxlHot li:hover p{top:280px;}
+.kxlHot img{vertical-align: middle}
 /***企业客户***/
 .enetrCustomer{width: 1179px;margin: 0 auto;border: 1px solid #a0a0a0;}
 .enetrCustomer li{float: left;width: 100%;}

@@ -22,7 +22,7 @@
     <link href="/css/product_new.css" rel="stylesheet">
     @if (Request::path()=='auth/login' || Request::path()=='auth/register')
     @elseif (Request::path()=='education/info')
-        <link href="/css/kfwpop.css" rel="stylesheet">
+        <link href="/css/kxlpop.css" rel="stylesheet">
     @endif
     <link href="/css/serviceInfo.css" rel="stylesheet">
     <link href="/css/buy.css" rel="stylesheet">
@@ -32,7 +32,7 @@
     <script type="text/javascript" src="/js/base.js"></script>
     <script type="text/javascript"  src="/js/jquery.validate.js"></script>
     <script type="text/javascript" src="/js/global.js"></script>
-    <script type="text/javascript" src="/js/kfwnav.js"></script>
+    <script type="text/javascript" src="/js/kxlnav.js"></script>
     <script type="text/javascript" src="/js/index.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([
@@ -43,11 +43,11 @@
 <body>
 <!-- 欢迎来到快学历 -->
 <div class="main greyf5f5f5 headerOverflowInherit">
-    <div class="minwidth welcomeKfw headerOverflowInherit" id='loginbar'>
+    <div class="minwidth welcomekxl headerOverflowInherit" id='loginbar'>
         <ul class="overflowhidden floatLeft headerOverflowInherit" >
             <li class="navLocation">
                 <a href="javascript:;" class="locatinIcon">
-                    <i class="mykfw floatRight"></i>北京市</a>
+                    <i class="mykxl floatRight"></i>北京市</a>
                 <div class="locationLayer">
                     <em></em>
                     <ul>
@@ -86,7 +86,7 @@
                 <a href="/mobile/index.html">
                     <i class="sj floatLeft"></i><i class="jt floatRight"></i>移动应用
                 </a>
-                <div class="welcomeKfwShow aimationKfw">
+                <div class="welcomekxlShow aimationkxl">
                     <em></em>
                     <img src="/Image/Home_index/kuaixuelierweima.png" alt="微信图片">
                     <h4>关注快学历官方微信</h4>
@@ -113,7 +113,7 @@
                 //市区选择
                 $(".locationLayer").on("click","ul li a",function(e){
                     console.log($(e.target).html());
-                    $(".locatinIcon").html($(e.target).html()+"市<i class='mykfw floatRight'></i>");
+                    $(".locatinIcon").html($(e.target).html()+"市<i class='mykxl floatRight'></i>");
                 })
             })
         </script>
@@ -125,7 +125,7 @@
 <div class="main bgWhite border000 headerOverflowInherit" style="z-index: 10;">
     <!-- LOGO -->
     @if (Request::path()=='order/pay')
-    <div class="minwidth kfwLogo">
+    <div class="minwidth kxlLogo">
         <a class="floatLeft" href="/">
             <img id="logoImg" src="/Image/LOGO.png" alt="快学历">
         </a>
@@ -146,7 +146,7 @@
         </div>
     </div>
     @else
-    <div class="minwidth kfwLogo">
+    <div class="minwidth kxlLogo">
         <a class="floatLeft" href="/">
             <img src="/Image/LOGO.png" alt="快学历">
         </a>

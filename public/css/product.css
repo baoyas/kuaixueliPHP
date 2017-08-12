@@ -1,6 +1,6 @@
 @charset "utf-8";
 .noevalt{background: url("../Image/userEval.png") no-repeat scroll center center;height: 300px;}
-.ser-title ul,.ser-title div,.kfw-se-ul,.infor-list,.kfw-se-ul li,.user-eval ul,.ev-list,.ev-le div,.ev-cen div,.ev-ri div,.ev-le ol,.problems ul{
+.ser-title ul,.ser-title div,.kxl-se-ul,.infor-list,.kxl-se-ul li,.user-eval ul,.ev-list,.ev-le div,.ev-cen div,.ev-ri div,.ev-le ol,.problems ul{
 	height: auto;
 	overflow: hidden;
 }
@@ -164,54 +164,54 @@
 	width: 100%;
 }
 /**快法务服务保障**/
-.kfw-security{
+.kxl-security{
 	height: 520px !important;
 	background: url("../Image/Product/porotextlast.jpg") no-repeat scroll center center;
 }
-.kfw-security h2{
+.kxl-security h2{
 	margin: 40px 0 60px 0;
 	font-size: 24px;
 	color: #565656;
 	text-align: center;
 }
-.kfw-security >  div{
+.kxl-security >  div{
 	width: 720px;
 	height: 360px;
 	margin: 0 auto;
 	background: url("../Image/Product/lastbg.png") repeat scroll center center;
 }
-.kfw-security p {
+.kxl-security p {
     text-align: center;
     color: #f14b4b;
     font-size: 12px;
     padding-top: 26px;
 }
-.kfw-security p img{
+.kxl-security p img{
 	margin-right: 10px;
 }
-.kfw-se-ul{
+.kxl-se-ul{
 	margin-top: 20px;
 }
-.kfw-se-ul li{
+.kxl-se-ul li{
 	float: left;
 	width: 25%;
 }
-.kfw-se-ul i,.kfw-se-ul span,.kfw-se-ul h4{
+.kxl-se-ul i,.kxl-se-ul span,.kxl-se-ul h4{
 	text-align: center;
 }
-.kfw-se-ul i,.kfw-se-ul span{
+.kxl-se-ul i,.kxl-se-ul span{
 	display: block;
 	width: 100%;
 }
-.kfw-se-ul i{
+.kxl-se-ul i{
 	height: 80px;
 	background: url("../Image/Product/textlast.png") no-repeat scroll 0 0;
 }
-.kfw-se-ul .text-last-1{background-position: 10px 4px;}
-.kfw-se-ul .text-last-2{background-position: -160px 4px;}
-.kfw-se-ul .text-last-3{background-position: -330px 4px;}
-.kfw-se-ul .text-last-4{background-position: -502px 4px;}
-.kfw-se-ul h4{
+.kxl-se-ul .text-last-1{background-position: 10px 4px;}
+.kxl-se-ul .text-last-2{background-position: -160px 4px;}
+.kxl-se-ul .text-last-3{background-position: -330px 4px;}
+.kxl-se-ul .text-last-4{background-position: -502px 4px;}
+.kxl-se-ul h4{
 	font-size: 18px;
 	color: #595757;
 	line-height: 40px;
@@ -219,7 +219,7 @@
 	font-weight: normal;
 	margin-top: 4px;
 }
-.kfw-se-ul span{
+.kxl-se-ul span{
 	font-size: 12px;
 	color: #9e9e9e;
 	line-height: 1.8;
@@ -450,7 +450,7 @@
 .tab640 .marpaddiv{padding: 0 24px;}
 .tab640-p{line-height: 1.6;padding: 8px 24px;}
 .iImg{background: url("../Image/c-sst.png") no-repeat scroll 0 0;display: inline-block;float: left;height: 60px;margin: 0;padding: 0;width: 43px;}
-.iImg.kfw{background-position: 0 -297px;margin: 0 20px 0 60px;}
+.iImg.kxl{background-position: 0 -297px;margin: 0 20px 0 60px;}
 /**常见问题**/
 .problemsmk{width: 740px;margin: 0 auto;}
 .problemsmk h2{text-align: center;color: #565656;font-size: 24px;font-weight: normal;line-height: 1;}

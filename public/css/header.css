@@ -28,29 +28,29 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{color: #b5
 .floatNone{float: none;}
 .floatLeft,.group{float: left;}
 .relative{position: relative;}
-.welcomeKfw i,.iMyPavatar i,.kfwLogo i,.iNav > li > i,.kfwSp i,.navSidebars i,.classification{background: url("../Image/Home_index/index.png") no-repeat scroll left 0;display: inline-block;}
-.kfwLogo .marT30{margin-top: 30px;}
+.welcomekxl i,.iMyPavatar i,.kxlLogo i,.iNav > li > i,.kxlSp i,.navSidebars i,.classification{background: url("../Image/Home_index/index.png") no-repeat scroll left 0;display: inline-block;}
+.kxlLogo .marT30{margin-top: 30px;}
 /**首屏**/
 #loginbar{height:30px;}
-.welcomeKfw li{float: left;font-size: 12px;position: relative;z-index: 12;}
-.welcomeKfw li{height: 30px;line-height: 30px;color: #666;}
-.welcomeKfw .welcome1{padding-right: 20px;}
-.welcomeKfw a{color: #666;line-height: 16px;padding: 0 20px;border-left: 1px solid #e3e3e3;}
-.welcomeKfw a{display: block;position: relative;top: 6px;display: inline-block\0;top: 0\0;}
-.welcomeKfw .noBorder{border-left:none}
-.welcomeKfw .sj,.welcomeKfw .jt,.welcomeKfw .gw,.welcomeKfw a,.welcomeKfw .mykfw{height: 16px;}
-.welcomeKfw .jt,.welcomeKfw .mykfw,.welcomeKfw .mykfw,.classification{-webkit-transition: transform 0.1s ease-in 0s;-moz-transition: transform 0.1s ease-in 0s;-ms-transition: transform 0.1s ease-in 0s;-o-transition: transform 0.1s ease-in 0s;transition: transform 0.1s ease-in 0s;}
-.welcomeKfw .sj{width: 8px;background-position: 0 -837px;margin-right: 13px;}
-.welcomeKfw .jt,.welcomeKfw .mykfw{width: 10px;background-position: 0 -891px;margin-left: 16px;}
-.welcomeKfw .gw{width: 16px;background-position: 0 -926px;margin-right: 7px;}
+.welcomekxl li{float: left;font-size: 12px;position: relative;z-index: 12;}
+.welcomekxl li{height: 30px;line-height: 30px;color: #666;}
+.welcomekxl .welcome1{padding-right: 20px;}
+.welcomekxl a{color: #666;line-height: 16px;padding: 0 20px;border-left: 1px solid #e3e3e3;}
+.welcomekxl a{display: block;position: relative;top: 6px;display: inline-block\0;top: 0\0;}
+.welcomekxl .noBorder{border-left:none}
+.welcomekxl .sj,.welcomekxl .jt,.welcomekxl .gw,.welcomekxl a,.welcomekxl .mykxl{height: 16px;}
+.welcomekxl .jt,.welcomekxl .mykxl,.welcomekxl .mykxl,.classification{-webkit-transition: transform 0.1s ease-in 0s;-moz-transition: transform 0.1s ease-in 0s;-ms-transition: transform 0.1s ease-in 0s;-o-transition: transform 0.1s ease-in 0s;transition: transform 0.1s ease-in 0s;}
+.welcomekxl .sj{width: 8px;background-position: 0 -837px;margin-right: 13px;}
+.welcomekxl .jt,.welcomekxl .mykxl{width: 10px;background-position: 0 -891px;margin-left: 16px;}
+.welcomekxl .gw{width: 16px;background-position: 0 -926px;margin-right: 7px;}
 
 /*移动应用*/
-.welcomeKfwShow{width: 150px;}
-.welcomeKfwShow img{margin-top: 14px;}
-.welcomeKfwShow h4{font-size: 12px;color: #b0b0b0;font-weight: normal;margin: 0 10px;border-bottom: 1px solid #e3e3e3;}
-.welcomeKfwShow a{padding: 7px 0;margin: 14px 25px;}
-.aimationKfw em{display: inline-block;position: absolute;height: 1px;background: #e3e3e3;top: 0;right: 0;}
-.welcomeKfwShow em{width: 13px;}
+.welcomekxlShow{width: 150px;}
+.welcomekxlShow img{margin-top: 14px;}
+.welcomekxlShow h4{font-size: 12px;color: #b0b0b0;font-weight: normal;margin: 0 10px;border-bottom: 1px solid #e3e3e3;}
+.welcomekxlShow a{padding: 7px 0;margin: 14px 25px;}
+.aimationkxl em{display: inline-block;position: absolute;height: 1px;background: #e3e3e3;top: 0;right: 0;}
+.welcomekxlShow em{width: 13px;}
 .iMyInfoOk em{width: 21px;}
 .iMyPavatar em{width: 120px;}
 /*我的快法务*/
@@ -85,51 +85,51 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{color: #b5
 .navLocation:hover .locatinIcon{border: none;background-position: 20px -16px;}
 .navLocation:hover .locationLayer{padding: 10px 0 8px;opacity: 1;filter:alpha(opacity=100);height: 139px;}
 /*动画*/
-.aimationKfw{overflow: hidden;background: #ffffff;border: 1px solid #e3e3e3;left: -1px;position: absolute;top: 30px;border-top: 0;text-align:center;}
-.aimationKfw a{height: auto;line-height: normal;color: #ffffff;border: none;top:0;}
-.aimationKfw,.locationLayer{opacity: 0;filter:alpha(opacity=0);height: 0;-webkit-transition: height 0.5s;-moz-transition: height 0.5s;-ms-transition: height 0.5s;-o-transition: height 0.5s;transition: height 0.5s;}
-.welcomeKfw li:hover > a{color: #007bc7;}
-.welcomeKfw .app{border-right: 1px solid #f5f5f5;}
-.welcomeKfw .asj:hover{background: #fff;height: 30px;line-height: 30px;margin: 0;border-right: 1px solid #e3e3e3;border-left: 1px solid #e3e3e3;}
-.welcomeKfw .asj:hover > a{border: none !important;}
-.welcomeKfw .asj:hover .sj{background-position: -59px -837px;}
-.welcomeKfw .asj:hover .jt,.welcomeKfw .asj:hover .mykfw,.navLocation:hover .mykfw{background-position: -59px -891px;}
-.welcomeKfw .asj:hover div{opacity: 1;filter:alpha(opacity=100);}
-.welcomeKfw .asj:hover .welcomeKfwShow{height: 218px;z-index: 12;}
-.welcomeKfw .asj:hover .iMyInfo{height: 177px;}
-.welcomeKfw .asj:hover .iMyPavatar{height: 234px;}
+.aimationkxl{overflow: hidden;background: #ffffff;border: 1px solid #e3e3e3;left: -1px;position: absolute;top: 30px;border-top: 0;text-align:center;}
+.aimationkxl a{height: auto;line-height: normal;color: #ffffff;border: none;top:0;}
+.aimationkxl,.locationLayer{opacity: 0;filter:alpha(opacity=0);height: 0;-webkit-transition: height 0.5s;-moz-transition: height 0.5s;-ms-transition: height 0.5s;-o-transition: height 0.5s;transition: height 0.5s;}
+.welcomekxl li:hover > a{color: #007bc7;}
+.welcomekxl .app{border-right: 1px solid #f5f5f5;}
+.welcomekxl .asj:hover{background: #fff;height: 30px;line-height: 30px;margin: 0;border-right: 1px solid #e3e3e3;border-left: 1px solid #e3e3e3;}
+.welcomekxl .asj:hover > a{border: none !important;}
+.welcomekxl .asj:hover .sj{background-position: -59px -837px;}
+.welcomekxl .asj:hover .jt,.welcomekxl .asj:hover .mykxl,.navLocation:hover .mykxl{background-position: -59px -891px;}
+.welcomekxl .asj:hover div{opacity: 1;filter:alpha(opacity=100);}
+.welcomekxl .asj:hover .welcomekxlShow{height: 218px;z-index: 12;}
+.welcomekxl .asj:hover .iMyInfo{height: 177px;}
+.welcomekxl .asj:hover .iMyPavatar{height: 234px;}
 .welcome1 em{margin: 0 4px;}
-.welcomeKfw .asj:hover .jt,.welcomeKfw .asj:hover .mykfw,.welcomeKfw .asj:hover .mykfw,.kfwNaSub > a:hover .classification,.navLocation:hover .mykfw{-webkit-transform: rotate(180deg);-moz-transform: rotate(180deg);-ms-transform: rotate(180deg);-o-transform: rotate(180deg);transform: rotate(180deg);}
-.kfwNaSub > a .classification.classification1{-webkit-transition: transform 0s ease-in 0s;-moz-transition: transform 0s ease-in 0s;-ms-transition: transform 0s ease-in 0s;-o-transition: transform 0s ease-in 0s;transition: transform 0s ease-in 0s;}
-.kfwNaSub > a .classification.classification1{-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);-o-transform: rotate(0deg);transform: rotate(0deg);}
+.welcomekxl .asj:hover .jt,.welcomekxl .asj:hover .mykxl,.welcomekxl .asj:hover .mykxl,.kxlNaSub > a:hover .classification,.navLocation:hover .mykxl{-webkit-transform: rotate(180deg);-moz-transform: rotate(180deg);-ms-transform: rotate(180deg);-o-transform: rotate(180deg);transform: rotate(180deg);}
+.kxlNaSub > a .classification.classification1{-webkit-transition: transform 0s ease-in 0s;-moz-transition: transform 0s ease-in 0s;-ms-transition: transform 0s ease-in 0s;-o-transition: transform 0s ease-in 0s;transition: transform 0s ease-in 0s;}
+.kxlNaSub > a .classification.classification1{-webkit-transform: rotate(0deg);-moz-transform: rotate(0deg);-ms-transform: rotate(0deg);-o-transform: rotate(0deg);transform: rotate(0deg);}
 /***导航***/
 /*logo*/
-.kfwLogo a{margin: 24px 0;}
+.kxlLogo a{margin: 24px 0;}
 .newEvent a{margin: 16px 0;}
-.kfwLogo a img{display: block;margin-top: -15px;}
-.kfwLogo li{float: left;font-size: 12px;color: #acb0b0;margin-right: 20px;line-height: 20px;}
-.kfwLogo i{width: 20px;height: 20px;float: left;margin-right: 5px;}
+.kxlLogo a img{display: block;margin-top: -15px;}
+.kxlLogo li{float: left;font-size: 12px;color: #acb0b0;margin-right: 20px;line-height: 20px;}
+.kxlLogo i{width: 20px;height: 20px;float: left;margin-right: 5px;}
 .iNav h4 a{color: #ffffff;}
 .iNav h4 a:hover{color: #007bc7 !important;}
-.kfwLogo .zzrz{background-position: 1px -966px;}
-.kfwLogo .zfaq{background-position: 2px -1006px;}
-.kfwLogo .zrfw{background-position: 1px -1043px;}
-.kfwLogo .shwy{background-position: -2px -1073px;}
+.kxlLogo .zzrz{background-position: 1px -966px;}
+.kxlLogo .zfaq{background-position: 2px -1006px;}
+.kxlLogo .zrfw{background-position: 1px -1043px;}
+.kxlLogo .shwy{background-position: -2px -1073px;}
 /*导航*/
-.kfwNaSub{position: relative;}
-.kfwNaSub > a,.kfwNavs a{float: left;display: inline-block;height: 40px;line-height: 40px;font-size: 15px;color: #575757;}
-.kfwNavs a:hover{background:#007bc7;color: #fff}
-.kfwNaSub > a{color: #007bc7;border: 1px solid #007bc7;border-bottom: none;background: url("../Image/navicon_new.png") 40px 13px no-repeat;}
-.kfwNavs{margin-left: 10px;width: 933px;}
-.kfwNavs a{margin: 0 5px;padding: 0 15px;position: relative;}
-.kfwNavs .telephone{padding-left: 22px; height: 40px;line-height: 40px;font-size: 14px;font-weight:bold;font-family:"Microsoft Yahei";color: #666;background: url("../Image/navicon_new.png") 0 -22px no-repeat;}
+.kxlNaSub{position: relative;}
+.kxlNaSub > a,.kxlNavs a{float: left;display: inline-block;height: 40px;line-height: 40px;font-size: 15px;color: #575757;}
+.kxlNavs a:hover{background:#007bc7;color: #fff}
+.kxlNaSub > a{color: #007bc7;border: 1px solid #007bc7;border-bottom: none;background: url("../Image/navicon_new.png") 40px 13px no-repeat;}
+.kxlNavs{margin-left: 10px;width: 933px;}
+.kxlNavs a{margin: 0 5px;padding: 0 15px;position: relative;}
+.kxlNavs .telephone{padding-left: 22px; height: 40px;line-height: 40px;font-size: 14px;font-weight:bold;font-family:"Microsoft Yahei";color: #666;background: url("../Image/navicon_new.png") 0 -22px no-repeat;}
 .newEvent .telephone{padding-left: 22px; height: 60px;line-height: 60px;font-size: 14px;font-weight:bold;font-family:"Microsoft Yahei";color: #666;background: url("../Image/navicon_new.png") 0 -12px no-repeat;}
-.kfwNaSub > a{width: 220px;text-align: center;}
-.kfwNavs .huohuo{margin: -27px 0 0 10px}
-.kfwNavs .huohuo:hover{background: none;}
+.kxlNaSub > a{width: 220px;text-align: center;}
+.kxlNavs .huohuo{margin: -27px 0 0 10px}
+.kxlNavs .huohuo:hover{background: none;}
 /*一级*/
-.kfwNaSub .iSubNav,.kfwNaSub > div{height: 441px;}
-.kfwNaSub > .kfwNaDivs{overflow: hidden !important;height: 0;}
+.kxlNaSub .iSubNav,.kxlNaSub > div{height: 441px;}
+.kxlNaSub > .kxlNaDivs{overflow: hidden !important;height: 0;}
 
 .iNav > li{border-top: 1px solid rgba(255,255,255,0.2);padding: 0 0 0 37px;float: left;width: 100%;height: 63px; line-height:64px;position: relative;cursor: default !important;}
 .iNav > .iNavFirst{height: 63px;}
@@ -137,19 +137,19 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{color: #b5
 .iNav > li > h4 > a{font-size: 14px;font-weight: normal;}
 .iNav > li > div a{float: left;margin-right: 19px;display: inline-block;text-align: left;font-size: 12px;color: #ffffff;line-height: 1.6;}
 .iNav > li > i{width: 6px;height: 9px;position: absolute;right: 19px;top: 50%;margin-top: -4.5px;background-position: -87px -1193px;}
-.kfwNaSub > a .classification{background-position: 0 -1475px;height: 40px;margin-left: 51px;position: absolute;width: 16px;}
-.kfwNaSub > a:hover .classification{background-position: 0 -1507px;}
-.kfwNaSub > a .classification.classification1{background-position: 0 -1534px;}
+.kxlNaSub > a .classification{background-position: 0 -1475px;height: 40px;margin-left: 51px;position: absolute;width: 16px;}
+.kxlNaSub > a:hover .classification{background-position: 0 -1507px;}
+.kxlNaSub > a .classification.classification1{background-position: 0 -1534px;}
 .iSubNavDivZ a:hover{color:#007bc7}
 /*二级*/
-.kfwNaSub .iSubNav{position: absolute;z-index: 8;}
+.kxlNaSub .iSubNav{position: absolute;z-index: 8;}
 .iSubNav > div > ul{height: 100%;}
 
 /*le*/
 .iSubNavLe{width: 659px;background: url("../Image/navbg1.png") no-repeat scroll right bottom;}
 .iSubNavLe li{float: left;width: 100%;}
 .iSubNavLe li > div{float: left;width: 520px;border-top: 1px solid #eaeaea;padding: 23px 0;}
-.iSubNavLe li > .kfwNavOne{border-top: none;}
+.iSubNavLe li > .kxlNavOne{border-top: none;}
 .iSubNavLe h5{width: 112px;float: left;text-align: center;color: #575757;font-size: 14px;margin-top: 21px;}
 .iSubNavLe li a:hover > h5{color: #007bc7 !important;}
 .iSubNavLe a{float: left;margin-right: 20px;color: #575757;font-size: 12px;line-height: 2;}
@@ -167,21 +167,21 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{color: #b5
 .iSubNavRi > li > a{width: 100%;height: 100%;display: block;}
 .iSubNavRi > li > a .lastMar{margin-top: 3px;}
 /*hover*/
-.kfwNaSub .kfwNaSubSub{width: auto;position: absolute;top: 40px;}
-.kfwNaSubSub > .kfwISubNav{width: 220px;background: url("../Image/navbg.png") repeat scroll center center;left: 0;position: absolute;top: 0;z-index: 10;}
-.kfwNaSubSub > .kfwISubNav.active{border-right: 1px solid #007bc7;}
-.kfwNaSubSub > .kfwISubNav.active > .iNav > li > i{right: 18px;}
-.kfwNaSubSub > .iSubNav{left: 220px;}
+.kxlNaSub .kxlNaSubSub{width: auto;position: absolute;top: 40px;}
+.kxlNaSubSub > .kxlISubNav{width: 220px;background: url("../Image/navbg.png") repeat scroll center center;left: 0;position: absolute;top: 0;z-index: 10;}
+.kxlNaSubSub > .kxlISubNav.active{border-right: 1px solid #007bc7;}
+.kxlNaSubSub > .kxlISubNav.active > .iNav > li > i{right: 18px;}
+.kxlNaSubSub > .iSubNav{left: 220px;}
 .iSubNav > div{width: 0;opacity: 0;filter:alpha(opacity=0);overflow: hidden;}
-.kfwNaSubSub > .iSubNav > div{height: 441px;background: #ffffff;border: 1px solid #007bc7;border-left: none;position:absolute;margin-left:-1px}
-.kfwNaSubSub > .iSubNav > .kfwanimate{-webkit-transition: width 0.4s;-moz-transition: width 0.4s;-ms-transition: width 0.4s;-o-transition: width 0.4s;transition: width 0.4s;}
+.kxlNaSubSub > .iSubNav > div{height: 441px;background: #ffffff;border: 1px solid #007bc7;border-left: none;position:absolute;margin-left:-1px}
+.kxlNaSubSub > .iSubNav > .kxlanimate{-webkit-transition: width 0.4s;-moz-transition: width 0.4s;-ms-transition: width 0.4s;-o-transition: width 0.4s;transition: width 0.4s;}
 .iSubNav > .iSubNavDivZ{width: 960px;opacity: 1;filter:alpha(opacity=100);}
 .iNav > ul{border-right: 1px solid #007bc7;}
 .iNav > li:hover,.iNav > .active{width: 220px;background: #ffffff;cursor: pointer;border: 1px solid #007bc7;border-right: none;}
 .iNav > li:hover h4,.iNav > li:hover a,.iNav > .active h4,.iNav > .active a{color: #575757;}
-.kfwNaSub .kfwNaSubSub.noIsHome{opacity: 1;height: 441px;width: 100%;overflow: inherit;}
-.kfwNaSub .kfwNaSubSub {height: 0;opacity: 0;overflow: hidden;-webkit-transition: height 0.5s ease 0s;-moz-transition: height 0.5s ease 0s;-ms-transition: height 0.5s ease 0s;-o-transition: height 0.5s ease 0s;transition: height 0.5s ease 0s;width: 100%;}
-.kfwNaSub .kfwNaSubSub.kfwNaSubSubIsHome{opacity: 1;filter:alpha(opacity=100);height: 441px;overflow: inherit;}
+.kxlNaSub .kxlNaSubSub.noIsHome{opacity: 1;height: 441px;width: 100%;overflow: inherit;}
+.kxlNaSub .kxlNaSubSub {height: 0;opacity: 0;overflow: hidden;-webkit-transition: height 0.5s ease 0s;-moz-transition: height 0.5s ease 0s;-ms-transition: height 0.5s ease 0s;-o-transition: height 0.5s ease 0s;transition: height 0.5s ease 0s;width: 100%;}
+.kxlNaSub .kxlNaSubSub.kxlNaSubSubIsHome{opacity: 1;filter:alpha(opacity=100);height: 441px;overflow: inherit;}
 /**侧边栏**/
 .navSidebars{margin-top: 200px;bottom: 150px;height: auto;position: fixed;right: 0px;width: 70px;z-index: 1000;}
 .navSidebars i{background: url("../Image/Home_index/slide.png") no-repeat scroll left 0;display: inline-block;}

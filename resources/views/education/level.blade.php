@@ -335,7 +335,7 @@
                         <div class="product-details-content">
                             <span class="targetPos" id="proAboutus" style="top: -1px;"></span>
                             <h2 class="detailTit">关于快学历</h2>
-                            <div class="about-kfw">
+                            <div class="about-kxl">
                                 <p>快学历只做最靠谱的学历教育，最快取得本科学历，只需8个月，教育部终身可查，快学历本科学历快速取证，快速拿到本科学历。</p>
                                 <p>学历进修的路上，希望与您携手同行！</p>
                                 <!--<div class="pikachoose">

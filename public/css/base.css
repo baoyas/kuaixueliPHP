@@ -30,7 +30,7 @@ table{border-collapse: collapse;margin: 0 auto;}
 table td,table th{border:1px solid #bebebe;text-align: center;font-size: 14px;color: #686667;line-height: 60px;}
 *,*:after,*:before{box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-ms-box-sizing: border-box;-o-box-sizing: border-box;}
 .butNoBorder,.butNoBorder:hover,.butNoBorder:focus,.noBorder{border: none;}
-.ser-title ul,.ser-title div,.kfw-se-ul,.infor-list,.kfw-se-ul li,.user-eval ul,.ev-list,.ev-le div,.ev-cen div,.ev-ri div,.ev-le ol,.problems ul{height: auto;overflow: hidden;}
+.ser-title ul,.ser-title div,.kxl-se-ul,.infor-list,.kxl-se-ul li,.user-eval ul,.ev-list,.ev-le div,.ev-cen div,.ev-ri div,.ev-le ol,.problems ul{height: auto;overflow: hidden;}
 /*手形*/
 .cursorPointer{cursor: pointer;}
 .cursortText{cursor: text;}
@@ -257,8 +257,8 @@ table td,table th{border:1px solid #bebebe;text-align: center;font-size: 14px;co
 .breadcrumb .interval{background: url("../Image/breadcrumb.png") no-repeat scroll 0 5px;width: 17px;}
 /*表格*/
 .tables em{color: #f14b4b;}
-.tables i {position:relative;top:15px;right:10px;background: url("../Image/prokfw.png") no-repeat scroll 0 0;display: inline-block;height: 46px;width: 46px;}
-.tables .ikfw{background-position: 2px -304px;}
+.tables i {position:relative;top:15px;right:10px;background: url("../Image/prokxl.png") no-repeat scroll 0 0;display: inline-block;height: 46px;width: 46px;}
+.tables .ikxl{background-position: 2px -304px;}
 .tables .ijg{background-position: 1px -1735px;}
 .tables .iok{background-position: 1px -1853px;}
 .tables-text{margin: 24px 0 34px 0;text-align: center;}

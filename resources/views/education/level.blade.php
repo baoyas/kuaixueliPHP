@@ -77,10 +77,6 @@
                         <a href="#productDetail" class="payment">选择院校</a>
                         <a href="javascript:void(0)" class="consult">免费咨询</a>
                     </div>
-                    <div class="btn" style="display: none;">
-                        <a href="/provider/pf.html?pr=1&amp;ct=3302&amp;ar=39&amp;cts=3302" class="payment select-provider" target="_blank">选服务者</a>
-                        <a href="/provider/pf.html?pr=1&amp;ct=3302&amp;ar=39&amp;cts=3302" class="consult select-provider" target="_blank" rel="nofollow">免费咨询</a>
-                    </div>
                     <div class="guarantee">
                         <h2><b><img src="../Image/guaranteeIcon.png" height="16" width="16"></b>太平洋保险提供保障</h2>
                         <p class="txt">凡在快学历平台消费的用户，均可享受“平台责任险”项目保障，因过失、差错及疏忽行为导致用户直接经济损失，依法判决、裁定的平台责任或连带责任，将由太平洋保险在限额内进行赔付。</p>
@@ -96,16 +92,6 @@
                 <div class="product-detail" id="productDetail">
                     <div class="product-detail-tab">
                         <div id="protabInner" class="clearfix">
-                            <div class="tab-btn floatRight">
-                                <div id="productOnLine2" style="display:none;">
-                                    <a href="javascript:;" onclick="goSelectProvider()" class="inlineBlock butBlue">选服务者</a>
-                                    <a href="javascript:;" class="inlineBlock butWhite" onclick="goSelectProvider()" rel="nofollow">免费咨询</a>
-                                </div>
-                                <div id="productOffLine2" style="display:none;">
-                                    <a href="javascript:;" class="inlineBlock butBlue butBan">选服务者</a>
-                                    <a href="javascript:;" class="inlineBlock butWhite butBan" rel="nofollow">免费咨询</a>
-                                </div>
-                            </div>
                             <ul class="detail-tab-trigger clearfix floatLeft">
                                 <li class="firstLi active">
                                     <a href="javascript:;" data-href="#productDetail" rel="nofollow">院校选择</a>
@@ -129,7 +115,7 @@
                         <div class="product-details-content bdTopNo">
                             <ul id="serviceInfo">
                                 @foreach($edu as $k=>$v)
-                                <li>
+                                <!--<li>
                                     <span class="floatRight">更多&gt;</span>
                                     <h3>{{ $v->school->name }}</h3>
                                     <p><span>学制：{{ $v->length }}年</span><span class="pdlr4"></span><span>户籍：山东</span></p>
@@ -141,7 +127,21 @@
                                         <p class="require"><span>入学要求：</span>{{ $v->admission }}</p>
                                         <p><a href="{{ url('/education/info?education_id='.$v->id) }}"><span class="addToShoppingCar">我要报名</span></a></p>
                                     </div>
-                                </li>
+                                </li>-->
+                                <li>
+									<span class="floatRight">更多&gt;</span>
+									<h3>{{ $v->school->name }}</h3>
+									<p><span>学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;制：{{ $v->length }}年</span><span class="list-2">报名费用：<em class="price">{{ $v->entry_fee }}</em>元</span></p>						
+									<p><span>官方学费：<em class="price lThrow">{{ $v->market_fee }}</em>元</span><span class="list-2">快学历学费：<em class="ourPrice">{{ $v->kxl_fee }}</em>元</span></p>		
+									<p><span>是否全日制：{{ App\Model\Education::$fullTime[$v->fulltime_id] }}</span></span><span class="list-2">进修类别：{{ App\Model\Education::$studyMode[$v->studymode_id] }}</span></p>												
+									<p><span>可选专业：{{ $v->major }}</span></p>
+									<div class="showMoreBox">
+										<p><span>限制报名户籍：{{ $v->province_desc }}</span></p>
+										<p><span>课程顾问：<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes"><img border="0" src="../Image/chatMe.png" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></span></p>
+										<p class="require"><span>报名须知：</span>{{ $v->admission }}</p>
+										<p><a href="{{ url('/education/info?education_id='.$v->id) }}"><span class="addToShoppingCar">我要报名</span></a></p>	
+									</div>
+								</li>
                                 @endforeach
                             </ul>
 
@@ -154,17 +154,12 @@
                             <div class="product-details-content" style="margin-bottom: 0;border-bottom: none">
                                 <span class="targetPos" id="proEvaluate" style="top: -1px;"></span>
                                 <h2 class="detailTit">用户评价</h2>
-                                <div class="product-evaluate">
-
-
-
-                                </div>
-
+                                <div class="product-evaluate"> </div>
                             </div>
                             <div id="evaluatonList" style="border: 1px solid #eaedec;border-top: none;margin-bottom: 20px;">
                                 <!-- 用户评价内容 -->
 
-                                <ul class="ev-list clearfix aa-display">
+                                <!--<ul class="ev-list clearfix aa-display">
                                     <li class="ev-le">
                                         <div>
                                             <p class="name">
@@ -308,7 +303,7 @@
                                     aDisplay.mouseout(function() {
                                         $(this).find(".nice").removeClass("a-display-a");
                                     })
-                                </script>
+                                </script>-->
                             </div>
                         </div>
 
@@ -322,20 +317,12 @@
                                     <h2><span class="cu-icon icon1"></span>我们承诺</h2>
                                     <p class="cu-text">关于服务质量的反馈，我们会第一时间专人处理。保证及时解决您的问题。</p>
                                 </li>
-                                <li>
-                                    <h2><span class="cu-icon icon2"></span>投诉渠道</h2>
-                                    <p class="cu-text">1、拨打400-618-1106，选择投诉；</p>
-                                    <p class="cu-text">2、点击在线投诉按钮，描述详情；</p>
-                                    <p class="cu-text">3、通过微博、微信公众号等方式，联系我们</p>
-                                </li>
-                                <li>
-                                    <h2><span class="cu-icon icon3"></span>处理流程</h2>
-                                    <p class="cu-img"><img src="../Image/flowImg.png" alt=""></p>
-                                </li>
-                                <li>
-                                    <h2><span class="cu-icon icon4"></span>平台保险</h2>
-                                    <p class="cu-text">凡在快学历平台消费的用户，均可享受“平台责任险”项目保障，因过失、差错及疏忽行为导致用户直接经济损失，依法判决、裁定的平台责任或连带责任，将由太平洋保险在限额内进行赔付。</p>
-                                </li>
+                       			<li>
+									<h2><span class="cu-icon icon2"></span>投诉渠道</h2>
+									<p class="cu-text">1、拨打400-618-1106，选择投诉；</p>
+									<p class="cu-text">2、点击在线投诉按钮，描述详情；</p>
+									<p class="cu-text">3、通过QQ、微信公众号、官方电话等方式，联系我们！</p>
+								</li>
                                 <li class="lastLi">
                                     <h2><span class="cu-icon icon5"></span>开具发票</h2>
                                     <p class="cu-text">快学历所有产品均由服务商开具发票，请在服务完成后90天内，联系服务商开具。</p>
@@ -378,28 +365,12 @@
         <!-- main end -->
     </div>
 
-    <!-- 分享到微信 begin-->
-    <div class="knowPoper" id="knowPoperwx">
-        <span class="colse" id="colse"></span>
-        <h4>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</h4>
-        <img src="../Image/Home_index/indexweixin.jpg" alt="">
-    </div>
-    <!-- 分享到微信 end-->
-    <script type="text/javascript" src="/js/jquery.validate.js"></script>
-    <script type="text/javascript" src="/js/Home/reg.js"></script>
-
-
-
-    <div id="pcaDiv" style="display:none;">
-
-    </div>
-    <input type="hidden" value="3302,3304,283,285,361" id="areaids">
 
 
 
 
     <!-- main end -->
-
+	<script src="../js/jquery.scrollTo.min.js"></script>
     <script type="text/javascript">
         $("#serviceInfo").on("click","li span.floatRight",function(e){
             if(!$(e.target).hasClass("active")){
@@ -413,6 +384,11 @@
             }
 
         });
+        $('.detail-tab-trigger li').on('click',function(){
+	        var toId = $(this).find('a').attr("data-href");
+	        $(this).addClass('active').siblings().removeClass('active');
+	        $.scrollTo(toId,100);
+	    })
     </script>
 </div>
 @endsection

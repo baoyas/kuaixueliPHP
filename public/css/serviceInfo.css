@@ -34,6 +34,9 @@
 	position: relative;
 	overflow: hidden;
 }
+#serviceInfo li p{
+	position: relative;
+}
 #serviceInfo li:hover{
 	background: #e5e5e5;
 }
@@ -71,4 +74,57 @@
 }
 #serviceInfo li .showMoreBox{
 	display: none;
+}
+#serviceInfo li .list-2{
+	position: absolute;
+	left: 300px;
+}
+#servantList{
+	padding:0 10px;
+	font-size: 14px;
+	line-height: 25px;
+}
+#servantList li{
+	padding: 10px;
+	border-top: 1px solid #E5E5E5;
+}
+#servantList li:hover{
+	background: rgba(0,0,0,.1);
+}
+#servantList li:first-child{
+	border-top:none;
+}
+#servantList li .peopleLogo{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+#servantList li .peopleMess{
+	line-height: 30px;
+	margin-left: 20px;
+}
+#servantList li .peopleMess img{
+	vertical-align: middle;
+}
+#servantList li .serviceArea{
+	margin-top: 10px;
+}
+#servantList li .serviceArea dl{
+	position: relative;
+}
+#servantList li .serviceArea dt{
+	position: absolute;
+	width: 80px;
+	text-align: right;
+	padding-right: 10px;
+}
+#servantList li .serviceArea dd{
+	position: relative;
+	left: 80px;
+	width: 120px;
+	max-height: 50px;
+	overflow:hidden;
+	text-overflow: ellipsis;
 }

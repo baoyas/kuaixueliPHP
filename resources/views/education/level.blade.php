@@ -6,7 +6,7 @@
     <div class="minwidth">
         <ul class="breadcrumb">
             <li>
-                <a href="../index.html">首页</a>
+                <a href="/">首页</a>
             </li>
             <li class="interval"></li>
             <li class="active">{{ $eLevel->name }}</li>

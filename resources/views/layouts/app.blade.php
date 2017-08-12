@@ -32,7 +32,7 @@
     <script type="text/javascript" src="/js/base.js"></script>
     <script type="text/javascript"  src="/js/jquery.validate.js"></script>
     <script type="text/javascript" src="/js/global.js"></script>
-    <script type="text/javascript" src="/js/kxlnav.js"></script>
+    <script type="text/javascript" src="/js/kfwnav.js"></script>
     <script type="text/javascript" src="/js/index.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([

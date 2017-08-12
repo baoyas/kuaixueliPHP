@@ -17,29 +17,29 @@ $(function(){
 		var iSubNavDivZ = "iSubNavDivZ";
 		var active = "active";
 		var noIsHome = "noIsHome";
-		var kfwanimate = "kfwanimate";
+		var kxlanimate = "kxlanimate";
 		var classification1 = "classification1";
 		var overflowInherit = "headerOverflowInherit";
 		var iNavlis = $(".iNav li");
 		var iNavLi = $(".iNav li");
-		var kfwNaSuba = $(".kfwNaSub");
+		var kxlNaSuba = $(".kxlNaSub");
 		var iSubNavdiv = $(".iSubNav > div");
-		var kfwNaSubSub = $(".kfwNaSubSub");
-		var aninmatHover = $(".kfwNaSubSub > .iSubNav > div");
-		var kfwNaBorder = $(".kfwNaSubSub > .kfwISubNav");
-		var noIsHomeObj = $(".kfwNaSub .kfwNaSubSub");
-		var classification = $(".kfwNaSub > a .classification");
+		var kxlNaSubSub = $(".kxlNaSubSub");
+		var aninmatHover = $(".kxlNaSubSub > .iSubNav > div");
+		var kxlNaBorder = $(".kxlNaSubSub > .kxlISubNav");
+		var noIsHomeObj = $(".kxlNaSub .kxlNaSubSub");
+		var classification = $(".kxlNaSub > a .classification");
 
 		//全服务分类二级导航效果
 		iNavlis.on("mouseenter mouseleave",function(e){
 
 			var index = $(this).index();
-			var iNavBbj = $(this).parents(".kfwISubNav").next(".iSubNav").children("div");
-			var kfwNaSubSubObj = $(this).parents(".kfwNaSubSub");
+			var iNavBbj = $(this).parents(".kxlISubNav").next(".iSubNav").children("div");
+			var kxlNaSubSubObj = $(this).parents(".kxlNaSubSub");
 
 			if (e.type == "mouseenter") {
 				iNavBbj.eq(index).addClass(iSubNavDivZ);
-				kfwNaSubSubObj.addClass(overflowInherit);
+				kxlNaSubSubObj.addClass(overflowInherit);
 			}else if (e.type == "mouseleave") {
 				iNavBbj.removeClass(iSubNavDivZ);
 			};
@@ -59,26 +59,26 @@ $(function(){
 		});
 
 		//鼠标移进导航区和移出导航区时效果
-		kfwNaSubSub.on("mouseenter mouseleave",function(e){
+		kxlNaSubSub.on("mouseenter mouseleave",function(e){
 			if (e.type == "mouseenter") {
-				aninmatHover.removeClass(kfwanimate);
-				kfwNaBorder.addClass(active);
+				aninmatHover.removeClass(kxlanimate);
+				kxlNaBorder.addClass(active);
 				classification.addClass(classification1);
 			}else if (e.type == "mouseleave") {
-				aninmatHover.addClass(kfwanimate);
-				kfwNaBorder.removeClass(active);
+				aninmatHover.addClass(kxlanimate);
+				kxlNaBorder.removeClass(active);
 				iNavLi.removeClass(overflowInherit);
 				classification.removeClass(classification1);
 			};
 		});
 
 		//全服务分类导航收起和展开效果
-		kfwNaSuba.on("mouseenter mouseleave",function(e){
+		kxlNaSuba.on("mouseenter mouseleave",function(e){
 			if (e.type == "mouseenter") {
-				$(this).children(".kfwNaSubSub").addClass(noIsHome);
+				$(this).children(".kxlNaSubSub").addClass(noIsHome);
 			}else if (e.type == "mouseleave") {
-				$(this).children(".kfwNaSubSub").removeClass(noIsHome);
-				iNavLi.parents(".kfwNaSubSub").removeClass(overflowInherit);
+				$(this).children(".kxlNaSubSub").removeClass(noIsHome);
+				iNavLi.parents(".kxlNaSubSub").removeClass(overflowInherit);
 			};
 			e.stopPropagation();
 		});

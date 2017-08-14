@@ -32,7 +32,7 @@
                 <div class="name">
                     <h1>{{ $eLevel->name }}</h1>
                     <!--<p class="tips">股权、注册一步到位的服务</p>-->
-                    <p class="tips" style="color: gray;">{!! $eLevel->desc !!}}</p>
+                    <p class="tips" style="color: gray;">{!! $eLevel->desc !!}</p>
                     <a href="javascript:;" class="share lickWeixin"></a>
                 </div>
 

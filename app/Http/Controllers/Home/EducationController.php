@@ -13,7 +13,7 @@ class EducationController extends Controller
     {
         $level_id = $request->get('level_id');
         $province_id = $request->get('province_id');
-        $edu = Education::with('school')->with('provinces')->where('level_1_id', $level_id)->orWhere('level_2_id', $level_id)->orWhere('level_3_id', $level_id)->get();
+        $edu = Education::with('school')->with('provinces')->with('contacts')->where('level_1_id', $level_id)->orWhere('level_2_id', $level_id)->orWhere('level_3_id', $level_id)->get();
         $eLevel = EducationLevel::find($level_id);
         $provinces = [];
         foreach($edu as $e) {
@@ -24,10 +24,18 @@ class EducationController extends Controller
         if(!empty($province_id)) {
             $edu = Education::with('school')->with(['provinces'=>function($query) use($province_id) {
                 $query->where('province_id', $province_id);
-            }])->where('level_1_id', $level_id)->orWhere('level_2_id', $level_id)->orWhere('level_3_id', $level_id)->get();
+            }])->with('contacts')->where('level_1_id', $level_id)->orWhere('level_2_id', $level_id)->orWhere('level_3_id', $level_id)->get();
 
         }
-        return view('education/level', ['edu'=>$edu, 'eLevel'=>$eLevel, 'provinces'=>$provinces]);
+        $contacts = [];
+        foreach ($edu as $e) {
+            foreach($e->contacts as $c) {
+                if($c->atype==1) {
+                    $contacts = $c->toArray();
+                }
+            }
+        }
+        return view('education/level', ['edu'=>$edu, 'eLevel'=>$eLevel, 'provinces'=>$provinces, 'contacts'=>$contacts]);
     }
 
     public function info (Request $request)

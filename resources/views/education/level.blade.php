@@ -115,19 +115,6 @@
                         <div class="product-details-content bdTopNo">
                             <ul id="serviceInfo">
                                 @foreach($edu as $k=>$v)
-                                <!--<li>
-                                    <span class="floatRight">更多&gt;</span>
-                                    <h3>{{ $v->school->name }}</h3>
-                                    <p><span>学制：{{ $v->length }}年</span><span class="pdlr4"></span><span>户籍：山东</span></p>
-                                    <p><span>报名费：<em class="price">{{ $v->entry_fee }}</em>元</span></p>
-                                    <p><span>官方学费：<em class="price lThrow">{{ $v->market_fee }}</em>元<span class="pdlr4"></span>快学历学费：<em class="ourPrice">{{ $v->kxl_fee }}</em>元</span></p>
-                                    <div class="showMoreBox">
-                                        <p><span>是否全日制：{{ App\Model\Education::$fullTime[$v->fulltime_id] }}</span><span class="pdlr4"></span><span>进修方式：{{ App\Model\Education::$studyMode[$v->studymode_id] }}</span></p>
-                                        <p><span>可选专业：{{ $v->major }}</span></p>
-                                        <p class="require"><span>入学要求：</span>{{ $v->admission }}</p>
-                                        <p><a href="{{ url('/education/info?education_id='.$v->id) }}"><span class="addToShoppingCar">我要报名</span></a></p>
-                                    </div>
-                                </li>-->
                                 <li>
 									<span class="floatRight">更多&gt;</span>
 									<h3>{{ $v->school->name }}</h3>
@@ -143,6 +130,11 @@
 									</div>
 								</li>
                                 @endforeach
+                                @if(count($edu)==0)
+                                <li>
+                                    暂无数据
+                                </li>
+                                @endif;
                             </ul>
 
                         </div>

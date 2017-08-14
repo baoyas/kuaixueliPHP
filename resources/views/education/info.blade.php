@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="area">
                                     <em>地区：</em>
-                                    <span>北京</span>
+                                    <span>{{ $edu->school->province->name }}</span>
                                 </div>
                             </div>
                         </li>

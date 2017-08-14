@@ -13,7 +13,7 @@ class EducationController extends Controller
     {
         $level_id = $request->get('level_id');
         $province_id = $request->get('province_id', 0);
-        $edu = Education::with('school.province')->with('provinces')->with('contacts')->where('level_1_id', $level_id)->orWhere('level_2_id', $level_id)->orWhere('level_3_id', $level_id)->get();
+        $edu = Education::with('school.province')->with('contacts')->where('level_1_id', $level_id)->orWhere('level_2_id', $level_id)->orWhere('level_3_id', $level_id)->get();
         $eLevel = EducationLevel::find($level_id);
         $provinces = [];
         foreach($edu as $e) {
@@ -41,7 +41,7 @@ class EducationController extends Controller
     public function info (Request $request)
     {
         $education_id = $request->get('education_id');
-        $edu = Education::with('school')->where(['id'=>$education_id])->first();
+        $edu = Education::with('school.province')->where(['id'=>$education_id])->first();
         return view('education/info', ['edu'=>$edu]);
     }
 }

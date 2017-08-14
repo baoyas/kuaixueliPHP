@@ -124,7 +124,21 @@
 									<p><span>可选专业：{{ $v->major }}</span></p>
 									<div class="showMoreBox">
 										<p><span>限制报名户籍：{{ $v->province_desc }}</span></p>
-										<p><span>课程顾问：<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes"><img border="0" src="../Image/chatMe.png" alt="点击这里给我发消息" title="点击这里给我发消息"/></a></span></p>
+										<p><span>课程顾问：
+                                                <?php $have_qq = false; ?>
+                                                @if(count($v->contacts))
+                                                    @foreach($v->contacts as $c)
+                                                        @if($c->atype==1)
+                                                            <?php $have_qq = true; ?>
+                                                            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={{ $c->account }}&site=qq&menu=yes"><img border="0" src="../Image/chatMe.png" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                                @if($have_qq===false)
+                                                    暂无
+                                                @endif
+                                            </span>
+                                        </p>
 										<p class="require"><span>报名须知：</span>{{ $v->admission }}</p>
 										<p><a href="{{ url('/education/info?education_id='.$v->id) }}"><span class="addToShoppingCar">我要报名</span></a></p>	
 									</div>

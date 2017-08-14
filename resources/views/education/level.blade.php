@@ -6,7 +6,7 @@
     <div class="minwidth">
         <ul class="breadcrumb">
             <li>
-                <a href="/">首页</a>
+                <a href="../index.html">首页</a>
             </li>
             <li class="interval"></li>
             <li class="active">{{ $eLevel->name }}</li>
@@ -44,7 +44,7 @@
                         <div class="dt">地&nbsp;&nbsp;&nbsp;&nbsp;区：</div>
                         <div class="dd">
                             <div class="region-selector">
-                                <select name="" class="selArea">
+                                <select name="" class="selArea" value="0">
                                     <option value="0">全部地区</option>
                                     <option value="1">北京</option>
                                     <option value="2">上海</option>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="default-btn">
                         <a href="#productDetail" class="payment">选择院校</a>
-                        <a href="javascript:void(0)" class="consult">免费咨询</a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" class="consult">免费咨询</a>
                     </div>
                     <div class="guarantee">
                         <h2><b><img src="../Image/guaranteeIcon.png" height="16" width="16"></b>太平洋保险提供保障</h2>
@@ -184,113 +184,7 @@
                                         </div>
                                     </li>
 
-                                </ul>
-                                <ul class="ev-list clearfix aa-display">
-                                    <li class="ev-le">
-                                        <div>
-                                            <p class="name">
-                                                138****4833
-                                                <em class="time">有限责任公司注册(上海-浦东新区)</em>
-                                                <em class="time">2017.07.20</em>
-                                            </p>
-                                            <p class="info">认真负责，响应及时，态度很好，细心解答各种疑惑。非常感谢！</p>
-                                            <ol>
-                                                <li>做事靠谱</li>
-                                                <li>诚信值得信赖</li>
-                                                <li>业务很熟练</li>
-                                            </ol>
-                                        </div>
-                                    </li>
-                                    <li class="ev-cen">
-                                        <div class="start">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                                <ul class="ev-list clearfix aa-display">
-                                    <li class="ev-le">
-                                        <div>
-                                            <p class="name">
-                                                188****9880
-                                                <em class="time">有限责任公司注册(北京-朝阳区)</em>
-                                                <em class="time">2017.07.20</em>
-                                            </p>
-                                            <p class="info">非常满意，专业耐心，还会继续合作。</p>
-                                            <ol>
-                                                <li>响应一流</li>
-                                                <li>为人厚道</li>
-                                                <li>微笑示人</li>
-                                            </ol>
-                                        </div>
-                                    </li>
-                                    <li class="ev-cen">
-                                        <div class="start">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                                <ul class="ev-list clearfix aa-display">
-                                    <li class="ev-le">
-                                        <div>
-                                            <p class="name">
-                                                137****8123
-                                                <em class="time">有限责任公司注册(广东省-深圳市-前海开发区)</em>
-                                                <em class="time">2017.07.14</em>
-                                            </p>
-                                            <p class="info">非常专业，满足预期，专业。</p>
-                                            <ol>
-                                                <li>非常专业</li>
-                                            </ol>
-                                        </div>
-                                    </li>
-                                    <li class="ev-cen">
-                                        <div class="start">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                        </div>
-                                    </li>
-
-                                </ul>
-                                <ul class="ev-list clearfix aa-display">
-                                    <li class="ev-le">
-                                        <div>
-                                            <p class="name">
-                                                186****2925
-                                                <em class="time">有限责任公司注册(北京-朝阳区)</em>
-                                                <em class="time">2017.07.13</em>
-                                            </p>
-                                            <p class="info">很安心省心放心，赞一个</p>
-                                            <ol>
-                                                <li>耐心细致</li>
-                                                <li>细心脾气好</li>
-                                                <li>咨询的很棒！</li>
-                                            </ol>
-                                        </div>
-                                    </li>
-                                    <li class="ev-cen">
-                                        <div class="start">
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                            <span class="active"></span>
-                                        </div>
-                                    </li>
-
-                                </ul>
+                                </ul>                              
 
                                 <div class="wrapPage">
 
@@ -325,7 +219,7 @@
 								</li>
                                 <li class="lastLi">
                                     <h2><span class="cu-icon icon5"></span>开具发票</h2>
-                                    <p class="cu-text">快学历所有产品均由服务商开具发票，请在服务完成后90天内，联系服务商开具。</p>
+                                    <p class="cu-text">为保障考生权益，快学历所有学历进修的学费由北京维思天下教育科技有限公司统一提供发票，请在汇款或在线付款后联系在线客服确定邮寄地址。</p>
                                 </li>
                             </ul>
                         </div>
@@ -337,14 +231,7 @@
                             <h2 class="detailTit">关于快学历</h2>
                             <div class="about-kxl">
                                 <p>快学历只做最靠谱的学历教育，最快取得本科学历，只需8个月，教育部终身可查，快学历本科学历快速取证，快速拿到本科学历。</p>
-                                <p>学历进修的路上，希望与您携手同行！</p>
-                                <!--<div class="pikachoose">
-                            <ul id="pikame" class="jcarousel-skin-pika">
-                                <li><a href="javascript:;"><img src="../Image/Product_new/aboutImg1.png"/></a><span>快学历第二届创业年会，感谢有你！</span></li>
-                                <li><a href="javascript:;"><img src="../Image/Product_new/aboutImg2.png"/></a><span>快学历CEO夏文奇：共享是本质</span></li>
-                                <li><a href="javascript:;"><img src="../Image/Product_new/aboutImg3.png"/></a><span>快学历公开课：全程干货助您突围创业难关</span></li>
-                            </ul>
-                        </div>-->
+                                <p>学历进修的路上，希望与您携手同行！</p>                     
                             </div>
                         </div>
                         <!-- 关于快学历 -->
@@ -356,8 +243,21 @@
                 <div class="product-details-content provider-list"></div>
                 <!-- 相关产品推荐 -->
                 <div class="recommend-goods bordereaedec">
-                    <h2>相关产品推荐</h2>
-
+                    <h2>课程顾问</h2>
+					<ul id="servantList">
+						<li>
+							<div class="clear">
+								<div class="peopleLogo floatLeft"><a href="#"> <img src="../Image/1019.png" /> </a></div>
+								<div class="peopleMess floatLeft">
+									<p>姓名：<span>张三</span></p>
+									<p>QQ：<span><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=645131056&amp;site=qq&amp;menu=yes"><img border="0" src="../Image/chatMe.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a></span></p>
+								</div>
+							</div>
+							<div  class="serviceArea">
+								<dl><dt>业务范围：</dt><dd title="125435415dfaedfawefasdfae3asdfaefasefasdddddddddddddd">非常广爱神的箭发了科技开发拉科技</span></dl>
+							</div>
+						</li>
+					</ul>
                 </div>
             </div>
             <!-- 详情内容 -->
@@ -370,7 +270,7 @@
 
 
     <!-- main end -->
-	<script src="../js/jquery.scrollTo.min.js"></script>
+	
     <script type="text/javascript">
         $("#serviceInfo").on("click","li span.floatRight",function(e){
             if(!$(e.target).hasClass("active")){

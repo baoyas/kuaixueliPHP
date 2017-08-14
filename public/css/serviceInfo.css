@@ -10,6 +10,7 @@
 #serviceInfo{
 	font-size: 14px;
 	padding: 10px 0 0;
+	color: #757575;
 }
 #serviceInfo .price{
 	color: #ff5f00;
@@ -83,6 +84,7 @@
 	padding:0 10px;
 	font-size: 14px;
 	line-height: 25px;
+	color: #757575;
 }
 #servantList li{
 	padding: 10px;
@@ -100,7 +102,9 @@
 	border-radius: 50%;
 	overflow: hidden;
 }
-
+#servantList li .clear{
+	overflow: hidden;
+}
 #servantList li .peopleMess{
 	line-height: 30px;
 	margin-left: 20px;

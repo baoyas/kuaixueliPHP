@@ -131,8 +131,8 @@
 								</li>
                                 @endforeach
                                 @if(count($edu)==0)
-                                <li>
-                                    暂无数据
+                                <li style="letter-spacing: 2px;">
+                                   		暂无相关院校，如果您有需要可以<a href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow" style="color:#127bc7;">联系客服</a>!
                                 </li>
                                 @endif
                             </ul>
@@ -149,7 +149,11 @@
                                 <div class="product-evaluate"> </div>
                             </div>
                             <div id="evaluatonList" style="border: 1px solid #eaedec;border-top: none;margin-bottom: 20px;">
-                                暂无数据
+                                <ul class="ev-list clearfix aa-display">
+                                    <li class="ev-le" style="font-size: 14px;color:#757575;">
+                                    	暂无评价信息！
+                                	</li>
+                                </ul>    
                                 <!-- 用户评价内容 -->
 
                                 <!--<ul class="ev-list clearfix aa-display">

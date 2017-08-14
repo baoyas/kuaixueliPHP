@@ -156,25 +156,37 @@
             <li><i class="zrfw"></i>保险赔付</li>
             <li><i class="shwy"></i>售后无忧</li>
         </ul>
-        <div class="logo-sub">
-            @if (Request::path()=='auth/login')
-                登录
+         	@if (Request::path()=='auth/login')
+        	<div class="logo-sub">
+            	登录
+        	</div>
             @elseif(Request::path()=='auth/register')
+            <div class="logo-sub">
                 欢迎注册
+            </div>
             @elseif(Request::path()=='order/list')
+            <div class="logo-sub">
                 我的订单
+            </div>
             @elseif(Request::path()=='order/pay')
+            <div class="logo-sub">
                 支付订单
+            </div>
             @elseif(Request::path()=='help/about')
+            <div class="logo-sub">
                 关于我们
+            </div>
             @elseif(Request::path()=='/')
+            <div class="logo-sub">
                 首页
+            </div>
             @elseif(Request::path()=='auth/forget')
+            <div class="logo-sub">
                 忘记密码
+            </div>
             @else
 
             @endif
-        </div>
     </div>
     @endif
     <!-- LOGO -->

@@ -40,7 +40,7 @@
                             </a>
                         </li>
                     </ul>
-                    <input type="hidden" name="__hash__" value="47383934bdf1df76bab4493c66d043a1_a5bcaf5d66c6e521ee42649325378572" /></form>
+                    </form>
             </div>
             <div class="group mlRi mlRibg2">
                 <p>还没有快学历账号？</p>
@@ -72,7 +72,7 @@
 
         $(function($){
 
-//	$(".register-li input").val(''); //用autocomplete="off"代替
+			//	$(".register-li input").val(''); //用autocomplete="off"代替
 
             $(".register-li input").focus(function(){
                 $(this).parents('.register-li').find('label').addClass("register-li-span")

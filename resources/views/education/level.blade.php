@@ -32,8 +32,7 @@
                 <div class="name">
                     <h1>{{ $eLevel->name }}</h1>
                     <!--<p class="tips">股权、注册一步到位的服务</p>-->
-                    <p class="tips" style="color: gray;">在职研究生是国家面向没能在高等院校或科研机构接受系统的全日制研究生教育、但具有一定学术和专门技术水平的在职人员所开展的硕士学位教育，是国家促进高层次专门人才成长的一项重要措施，使在职人员边工作、边学习提高业务水平的同时也能有机会获得硕士学位，有效满足了我国在职人员对高层次学历学位的需求。
-                    </p>
+                    <p class="tips" style="color: gray;">{{ $eLevel->desc }}</p>
                     <a href="javascript:;" class="share lickWeixin"></a>
                 </div>
 

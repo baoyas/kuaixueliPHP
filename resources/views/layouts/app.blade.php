@@ -303,8 +303,11 @@
                     <div class="floatLeft link-th">
                         <h5>服务支持</h5>
                         <h3>400-618-1106</h3>
-                        <span>周一至周日<em>8:00-22:00</em></span>
-                        <div class="mx-button">售后服务</div>
+                        <span>周一至周日<em>8:00-22:00</em></span>                						
+                        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=10139868&site=qq&menu=yes" class="mx-a-1">
+                        	<div class="mx-button">售后服务</div>
+                    	</a>
+
                     </div>
                 </li>
             </ul>

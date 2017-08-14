@@ -44,10 +44,11 @@
                         <div class="dt">地&nbsp;&nbsp;&nbsp;&nbsp;区：</div>
                         <div class="dd">
                             <div class="region-selector">
-                                <select name="" class="selArea" value="0">
+                                <select name="" class="selArea" id="selProvince">
                                     <option value="0">全部地区</option>
-                                    <option value="1">北京</option>
-                                    <option value="2">上海</option>
+                                    @foreach($provinces as $province_id=>$province_name)
+                                    <option value="{{ $province_id }}">{{ $province_name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -288,7 +289,15 @@
 	        var toId = $(this).find('a').attr("data-href");
 	        $(this).addClass('active').siblings().removeClass('active');
 	        $.scrollTo(toId,100);
-	    })
+	    });
+        $(document).ready(function(){
+            $('#selProvince').change(function(){
+                var param = location.search.indexOf('?')!=-1 ? location.search.substr(location.search.indexOf('?')+1) : "";
+                param = param ? $.deserialize(param) : {};
+                param.province_id = $(this).val();
+                location.href = location.pathname+'?'+$.param(param);
+            });
+        });
     </script>
 </div>
 @endsection

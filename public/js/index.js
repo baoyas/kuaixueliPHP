@@ -69,12 +69,14 @@ $(function(){
 	userstory.init();
 
 	//时间轴tab切换
+	/*
 	$(".timeaxis-nav").timeaxisTab({
 		colorChangeClass:'cur',
 		eventType:'hover',
 		fiUl:'.timeaxis-tab li',
 		thDiv:'.timeaxis-details-con .timeaxis-details-tab'
 	});
+	*/
 
 	//知识库tab切换
 	$(".knowledge-base").tab({
@@ -84,7 +86,7 @@ $(function(){
 		thDiv:'.knowledge-details'
 	});
 	//图片预加载
-	$(".lazyload").lazyload();
+	//$(".lazyload").lazyload();
 
 	//视频弹框
 	$(".innerVideo").click(function(){

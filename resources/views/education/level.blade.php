@@ -243,20 +243,22 @@
                     <h2>课程顾问</h2>
 					<ul id="servantList">
 						<li>
-							<div class="clear">
-								<div class="peopleLogo floatLeft"><a href="#"> <img src="../Image/1019.png" /> </a></div>
-								<div class="peopleMess floatLeft">
-									<p>姓名：<span>张三</span></p>
-									<p>QQ：<span><a target="_blank" href="@if($contacts && $contacts['account'])
-                                        http://wpa.qq.com/msgrd?v=3&uin={{ $contacts['account'] }}&site=qq&menu=yes
-                                    @else
-                                        http://wpa.qq.com/msgrd?v=3&uin=645131056&site=qq&menu=yes
-                                    @endif"><img border="0" src="../Image/chatMe.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a></span></p>
-								</div>
-							</div>
-							<div  class="serviceArea">
-								<dl><dt>业务范围：</dt><dd title="125435415dfaedfawefasdfae3asdfaefasefasdddddddddddddd">非常广爱神的箭发了科技开发拉科技</span></dl>
-							</div>
+							@if($contacts && $contacts['account'])
+                                <div class="clear">
+                                    <div class="peopleLogo floatLeft"><a href="#"> <img src="../Image/1019.png" /> </a></div>
+                                    <div class="peopleMess floatLeft">
+                                        <p>姓名：<span>张三</span></p>
+                                        <p>QQ：<span><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={{ $contacts['account'] }}&site=qq&menu=yes"><img border="0" src="../Image/chatMe.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a></span></p>
+                                    </div>
+                                </div>
+                                <div  class="serviceArea">
+                                    <dl><dt>业务范围：</dt><dd title="125435415dfaedfawefasdfae3asdfaefasefasdddddddddddddd">非常广爱神的箭发了科技开发拉科技</span></dl>
+                                </div>
+                            @else
+                                <div class="clear">
+                                    暂无
+                                </div>
+                            @endif
 						</li>
 					</ul>
                 </div>

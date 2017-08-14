@@ -27,10 +27,10 @@
 
                     <ol>
                         <li class="goods">
-                            <img class="floatLeft marL40 imgW50" src="/upload/{{ $edu->school->logo_url }}" alt="服务图片">
+                            <img class="floatLeft marL40 imgW50" src="/upload/{{ $edu->school->logo_url }}" alt="学校logo">
                             <div class="textImgSeparation goods-text">
                                 <div>
-                                    <span>{{ $edu->school->name }}</span>
+                                    <span title="{{ $edu->school->name }}">{{ $edu->school->name }}</span>
                                 </div>
                                 <div class="area">
                                     <em>地区：</em>
@@ -96,11 +96,11 @@
                 <!-- 如何获取发票 -->
                 <div class="invoiceWrap">
                     <div class="invoiceTip">
-                        如何获取发票？
+                		如何获取发票？
                         <div class="invoiceInner">
                             <span></span>
-                            1、发票由为您提供服务的服务商所在公司开具；
-                            2、服务完成后90天内，可联系服务商索取发票。
+                            1、发票由北京维思天下教育科技有限公司统一提供发票；
+                            2、请在汇款或在线付款后联系在线客服确定邮寄地址。
                         </div>
                     </div>
                 </div>
@@ -109,7 +109,18 @@
 
         </div>
         <!-- 购物车信息 -->
-        <input type="hidden" name="__hash__" value="ddc94d7572c88646fbada304ba7c131b_532b506724d22ae4045f3b1f17b0226e"></form>
+        </form>
 </div>
+<script type="text/javascript">
+	$(function(){ 
+		$(".invoiceTip").hover(
+			function(){
+				console.log(1);
+				$(this).find(".invoiceInner").show();
+			},function(){
+				$(this).find(".invoiceInner").hide();
+			});
+	});
+</script>	
 <!--购物车 有东西-->
 @endsection

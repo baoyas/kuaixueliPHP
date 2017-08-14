@@ -45,8 +45,8 @@
                             <div class="region-selector">
                                 <select name="" class="selArea" id="selProvince" value="{{ $province_id }}">
                                     <option value="0">全部地区</option>
-                                    @foreach($provinces as $province_id=>$province_name)
-                                    <option value="{{ $province_id }}">{{ $province_name }}</option>
+                                    @foreach($provinces as $prov_id=>$province_name)
+                                    <option value="{{ $prov_id }}" <?php echo $province_id==$prov_id ? 'selected' : '';?>>{{ $province_name }}</option>
                                     @endforeach
                                 </select>
                             </div>

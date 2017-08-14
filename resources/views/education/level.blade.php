@@ -134,7 +134,7 @@
                                 <li>
                                     暂无数据
                                 </li>
-                                @endif;
+                                @endif
                             </ul>
 
                         </div>
@@ -149,6 +149,7 @@
                                 <div class="product-evaluate"> </div>
                             </div>
                             <div id="evaluatonList" style="border: 1px solid #eaedec;border-top: none;margin-bottom: 20px;">
+                                暂无数据
                                 <!-- 用户评价内容 -->
 
                                 <!--<ul class="ev-list clearfix aa-display">

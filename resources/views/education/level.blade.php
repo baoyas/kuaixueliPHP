@@ -43,7 +43,7 @@
                         <div class="dt">地&nbsp;&nbsp;&nbsp;&nbsp;区：</div>
                         <div class="dd">
                             <div class="region-selector">
-                                <select name="" class="selArea" id="selProvince">
+                                <select name="" class="selArea" id="selProvince" value="{{ $province_id }}">
                                     <option value="0">全部地区</option>
                                     @foreach($provinces as $province_id=>$province_name)
                                     <option value="{{ $province_id }}">{{ $province_name }}</option>
@@ -250,7 +250,11 @@
 								<div class="peopleLogo floatLeft"><a href="#"> <img src="../Image/1019.png" /> </a></div>
 								<div class="peopleMess floatLeft">
 									<p>姓名：<span>张三</span></p>
-									<p>QQ：<span><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=645131056&amp;site=qq&amp;menu=yes"><img border="0" src="../Image/chatMe.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a></span></p>
+									<p>QQ：<span><a target="_blank" href="@if($contacts && $contacts['account'])
+                                        http://wpa.qq.com/msgrd?v=3&uin={{ $contacts['account'] }}&site=qq&menu=yes
+                                    @else
+                                        http://wpa.qq.com/msgrd?v=3&uin=645131056&site=qq&menu=yes
+                                    @endif"><img border="0" src="../Image/chatMe.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a></span></p>
 								</div>
 							</div>
 							<div  class="serviceArea">

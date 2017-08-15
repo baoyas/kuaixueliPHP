@@ -47,7 +47,7 @@
                             <td>{{ $order->order_no }}</td>
                             <td>{{ $order->school->name }}</td>
                             <td>
-                                地区： 北京-朝阳区
+                            	地区：{{ $order->school->province->name }}
                             </td>
                             <td>
                                 <div>发票信息：--</div>
@@ -57,11 +57,11 @@
                             <td>{{ $order->created_at }}</td>
                             <td>
                                 @if($order->status==0)
-                                    【 待付款 】
+                            		【 待付款 】
                                 @elseif($order->status==1)
-                                    【 已支付 】
+                                	【 已支付 】
                                 @elseif($order->status==2)
-                                    【 已关闭 】
+                                	【 已关闭 】
                                 @endif
                             </td>
                             <td class="oM-cz">

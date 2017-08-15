@@ -22,7 +22,7 @@
                     <ul class="floatLeft iSubNavLe overflowhidden">
                         @foreach($v['children'] as $kk=>$vv)
                         <li>
-                            <a href="{{ url('/education/level?level_id='.$vv['id']) }}"><h5>{{ $vv['name'] }}</h5></a>
+                            <a href="#"><h5>{{ $vv['name'] }}</h5></a>
                             <div class="kxlNavOne">
                                 @foreach($vv['children'] as $kkk=>$vvv)
                                 <a class="active" href="{{ url('/education/level?level_id='.$vvv['id']) }}">{{ $vvv['name'] }}</a>
@@ -78,10 +78,10 @@
     <div class="indexFirst-in">
         <div class="lunhuan">
             <div id="lunhuanback">
-                <p style=" background: url(Image/lunbotu1.png) no-repeat scroll center center; opacity: 1;filter:alpha(opacity=100);">
+                <p class="layImg" dataBg="url(Image/lunbotu1.png) no-repeat scroll center center" style=" background: #fff; opacity: 1;filter:alpha(opacity=100);">
                     <a href="javascript:void(0);" target="_blank" rel="nofollow"></a>
                 </p>
-                <p style=" background: url(Image/lunbotu2.png) no-repeat scroll center center; ">
+                <p class="layImg" dataBg="url(Image/lunbotu2.png) no-repeat scroll center center" style=" background: #fff; ">
                     <a href="javascript:void(0);" target="_blank" rel="nofollow"></a>
                 </p>
             </div>
@@ -125,6 +125,12 @@
 </div>
 <!-- 企业客户 -->
 
-<div class="main oneEntrepreneurship marT40"></div>
-
+<div class="main oneEntrepreneurship marT40 layImg" dataBg="url(Image/Home_index/oneentership.png) no-repeat scroll center center" style="background: #fff;"></div>
+<script type="text/javascript">
+	$(function(){	
+		$(".layImg").each(function(){
+			$(this).css("background",$(this).attr("dataBg"));
+		});
+	});
+</script>
 @endsection

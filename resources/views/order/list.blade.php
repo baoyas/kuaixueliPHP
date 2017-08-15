@@ -6,7 +6,7 @@
     <!-- left begin-->
     <div class="uLe">
         <ul class="uList">
-            <li class="tit">全部订单</li>
+            <li class="tit"><a href="{{ url('order/list') }}">全部订单</a></li>
             <li>
                 <a href="{{ url('order/list?status=0') }}">待支付</a>
             </li>
@@ -79,9 +79,9 @@
                                         </div>
                                     </span>
                                 @elseif($order->status===1)
-                                    <a class="toPay">已付款</a><br>
+                                    <a href="#" class="toPay">详情</a><br/><a href="#">删除订单</a>
                                 @elseif($order->status===2)
-                                    <a class="toPay">已关闭</a><br>
+                                    <a href="#" class="toPay">恢复</a><br/><a href="#">删除订单</a>
                                 @endif
                                 <!--已付款-->
                                 <!--交易成功-->

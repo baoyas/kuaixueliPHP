@@ -43,7 +43,7 @@
                         </thead>
                         <tbody>
                         @foreach($eduOrder as $order)
-                        <tr>
+                        <tr data-id="tr{{$order->id}}">
                             <td>{{ $order->order_no }}</td>
                             <td>{{ $order->school->name }}</td>
                             <td>
@@ -71,7 +71,7 @@
                                 <div class="popShadow newWL" style="display: none;">
                                     <div>你确定要关闭订单吗？</div>
                                     <div class="mt10">
-                                        <a href="javascript:void(0)" class="colorBg1 mr10 popBtn" onclick="cancelOrders(553042);">确定</a>
+                                        <a href="javascript:void(0)" class="colorBg1 mr10 popBtn" onclick="cancelOrders('{{ $order->id }}}');">确定</a>
                                         <a href="javascript:void(0)" class="colorBg2 cancelBtn popBtn">取消</a>
                                     </div>
                                     <i class="arrow" style="top:-7px;right:26px;"></i>
@@ -106,5 +106,25 @@
         $('.popShadow').hide();
         event.stopPropagation();
     });
+    function cancelOrders(order_id) {
+        $.ajax({
+            method: 'post',
+            url: '/order/cancel',
+            data: {
+                _token: '{{ csrf_token() }}',
+                order_id: order_id,
+                _method: 'put'
+            },
+            dataType:'json',
+            success: function (data) {
+                if(data.code != 0) {
+                    alert(data.msg);
+                } else {
+                    alert('关闭成功');
+                    $('[data-id=tr'+order_id+']').remove();
+                }
+            }
+        });
+    }
 </script>
 @endsection

@@ -24,6 +24,7 @@ Route::group(['namespace'=>'Home', 'middleware' => ['web']], function() {
 Route::group(['namespace'=>'Home', 'middleware' => ['web','user.auth']], function() {
     Route::get('/order/pay', 'OrderController@pay');
     Route::get('/order/list', 'OrderController@list');
+    Route::put('/order/cancel', 'OrderController@cancel');
 });
 
 

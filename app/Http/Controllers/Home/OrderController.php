@@ -45,4 +45,20 @@ class OrderController extends Controller
         $eduOrder = EducationOrder::with('school')->where($where)->get();
         return Response::view('order/list', ['eduOrder'=>$eduOrder])->header('Cache-Control', 'no-store');
     }
+
+    public function cancel (Request $request)
+    {
+        $user_id = $request->user()->id;
+        $order_id = $request->get('order_id', 0);
+        $where['user_id'] = $user_id;
+        $where['id'] = $order_id;
+        $eduOrder = EducationOrder::where($where)->first();
+        if($eduOrder) {
+            $eduOrder->status = 2;
+            $eduOrder->save();
+            return $this->response(NULL);
+        }
+        return $this->response(NULL, '-1', '订单不存在');
+    }
+
 }

@@ -71,7 +71,7 @@
                                 <div class="popShadow newWL" style="display: none;">
                                     <div>你确定要关闭订单吗？</div>
                                     <div class="mt10">
-                                        <a href="javascript:void(0)" class="colorBg1 mr10 popBtn" onclick="cancelOrders('{{ $order->id }}}');">确定</a>
+                                        <a class="colorBg1 mr10 popBtn" onclick="cancelOrders('{{ $order->id }}');">确定</a>
                                         <a href="javascript:void(0)" class="colorBg2 cancelBtn popBtn">取消</a>
                                     </div>
                                     <i class="arrow" style="top:-7px;right:26px;"></i>
@@ -121,7 +121,7 @@
                     alert(data.msg);
                 } else {
                     alert('关闭成功');
-                    $('[data-id=tr'+order_id+']').remove();
+                    $('[data-id="tr'+order_id+'"]').remove();
                 }
             }
         });

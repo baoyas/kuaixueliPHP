@@ -138,6 +138,8 @@ class EducationController extends Controller
                 ];
                 $form->switch('atype', '类型')->states($atypeStates);
                 $form->text('account', '账号');
+                $form->text('realname', '姓名');
+                $form->text('scope_desc', '业务范围');
             });
             $form->checkbox('coaches', '学位辅导')->options([
                 1 => '论文辅导',

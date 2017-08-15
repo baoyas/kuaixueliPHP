@@ -259,7 +259,15 @@
 						@if($contacts && $contacts['account'])
 							<li>
 	                            <div class="clear">
-	                                <div class="peopleLogo floatLeft"><a href="#"> <img src="../Image/1019.png" /> </a></div>
+	                                <div class="peopleLogo floatLeft">
+                                        <a href="#">
+                                            @if($contacts['headurl'])
+                                                <img src="upload/{{ $contacts['headurl'] }}" />
+                                            @else
+                                                <img src="../Image/1019.png" />
+                                            @endif
+                                        </a>
+                                    </div>
 	                                <div class="peopleMess floatLeft">
 	                                    <p>姓名：<span>{{ $contacts['realname'] }}</span></p>
 	                                    <p>QQ：<span><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={{ $contacts['account'] }}&site=qq&menu=yes"><img border="0" src="../Image/chatMe.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a></span></p>

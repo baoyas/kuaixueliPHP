@@ -262,7 +262,7 @@
 	                                <div class="peopleLogo floatLeft">
                                         <a href="#">
                                             @if($contacts['headurl'])
-                                                <img src="upload/{{ $contacts['headurl'] }}" />
+                                                <img src="/upload/{{ $contacts['headurl'] }}" />
                                             @else
                                                 <img src="../Image/1019.png" />
                                             @endif

@@ -22,10 +22,9 @@ class EducationController extends Controller
             }
         }
         if(!empty($province_id)) {
-            $edu = Education::with(['school.province'=>function($query) use($province_id) {
-                $query->where('id', $province_id);
-            }])->with('contacts')->where('level_1_id', $level_id)->orWhere('level_2_id', $level_id)->orWhere('level_3_id', $level_id)->get();
-
+            $edu = Education::with('school.province')->with('contacts')->whereIn('school_id', function($query) use($province_id) {
+                $query->select('id')->from('education_school')->where('province_id', $province_id);
+            })->where('level_1_id', $level_id)->orWhere('level_2_id', $level_id)->orWhere('level_3_id', $level_id)->get();
         }
         $contacts = [];
         foreach ($edu as $e) {

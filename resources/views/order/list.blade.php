@@ -79,7 +79,7 @@
                                         </div>
                                     </span>
                                 @elseif($order->status===1)
-                                    <a href="#" class="toPay">详情</a><br/><a onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
+                                    <a href="{{ url('/education/level?level_id=').$order->level_1_id }}" class="toPay">详情</a><br/><a onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
                                 @elseif($order->status===2)
                                     <a onclick="uncancelOrders('{{ $order->id }}');" class="toPay">恢复</a><br/><a onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
                                 @endif

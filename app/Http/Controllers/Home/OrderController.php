@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use DB;
 use Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -43,7 +44,14 @@ class OrderController extends Controller
             $where['status'] = $status;
         }
         $eduOrder = EducationOrder::with('school')->where($where)->where('status', '<>', 3)->get();
-        return Response::view('order/list', ['eduOrder'=>$eduOrder, 'status'=>$status])->header('Cache-Control', 'no-store');
+
+        $stat = EducationOrder::where('status', '<>', 3)->groupBy('status')
+                    ->get([
+                        'status',
+                        DB::raw('COUNT(*) as num')
+                    ])->pluck('num', 'status')->toArray();
+        
+        return Response::view('order/list', ['eduOrder'=>$eduOrder, 'status'=>$status, 'stat'=>$stat])->header('Cache-Control', 'no-store');
     }
 
     public function cancel (Request $request)

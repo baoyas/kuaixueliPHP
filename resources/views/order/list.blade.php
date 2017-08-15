@@ -6,15 +6,15 @@
     <!-- left begin-->
     <div class="uLe">
         <ul class="uList">
-            <li class="tit"><a href="{{ url('order/list') }}">全部订单</a></li>
+            <li class="tit"><a href="{{ url('order/list') }}">全部订单({{ array_sum($stat) }})</a></li>
             <li>
-                <a href="{{ url('order/list?status=0') }}">待支付</a>
+                <a href="{{ url('order/list?status=0') }}">待支付({{ $stat[0] }})</a>
             </li>
             <li>
-                <a href="{{ url('order/list?status=1') }}">已支付</a>
+                <a href="{{ url('order/list?status=1') }}">已支付({{ $stat[1] }})</a>
             </li>
             <li>
-                <a href="{{ url('order/list?status=2') }}">已关闭</a>
+                <a href="{{ url('order/list?status=2') }}">已关闭({{ $stat[2] }})</a>
             </li>
         </ul>
     </div>

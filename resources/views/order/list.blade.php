@@ -79,9 +79,9 @@
                                         </div>
                                     </span>
                                 @elseif($order->status===1)
-                                    <a href="#" class="toPay">详情</a><br/><a href="#">删除订单</a>
+                                    <a href="#" class="toPay">详情</a><br/><a onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
                                 @elseif($order->status===2)
-                                    <a href="#" class="toPay">恢复</a><br/><a href="#">删除订单</a>
+                                    <a onclick="uncancelOrders('{{ $order->id }}');" class="toPay">恢复</a><br/><a onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
                                 @endif
                                 <!--已付款-->
                                 <!--交易成功-->
@@ -127,6 +127,48 @@
                     alert(data.msg);
                 } else {
                     alert('关闭成功');
+                    $('[data-id="tr'+order_id+'"]').remove();
+                }
+            }
+        });
+    }
+
+    function uncancelOrders(order_id) {
+        $.ajax({
+            method: 'post',
+            url: '/order/uncancel',
+            data: {
+                _token: '{{ csrf_token() }}',
+                order_id: order_id,
+                _method: 'put'
+            },
+            dataType:'json',
+            success: function (data) {
+                if(data.code != 0) {
+                    alert(data.msg);
+                } else {
+                    alert('恢复成功');
+                    location.reload();
+                }
+            }
+        });
+    }
+
+    function deleteOrders(order_id) {
+        $.ajax({
+            method: 'post',
+            url: '/order/delete',
+            data: {
+                _token: '{{ csrf_token() }}',
+                order_id: order_id,
+                _method: 'put'
+            },
+            dataType:'json',
+            success: function (data) {
+                if(data.code != 0) {
+                    alert(data.msg);
+                } else {
+                    alert('删除成功');
                     $('[data-id="tr'+order_id+'"]').remove();
                 }
             }

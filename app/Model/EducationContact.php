@@ -18,7 +18,7 @@ class EducationContact extends Model
      * @var array
      */
     protected $fillable = [
-        'education_id', 'account', 'atype'
+        'education_id', 'account', 'atype', 'realname', 'scope_desc', 'headurl'
     ];
 
     public $timestamps=true;

@@ -261,12 +261,12 @@
 	                            <div class="clear">
 	                                <div class="peopleLogo floatLeft"><a href="#"> <img src="../Image/1019.png" /> </a></div>
 	                                <div class="peopleMess floatLeft">
-	                                    <p>姓名：<span>张三</span></p>
+	                                    <p>姓名：<span>{{ $contacts['realname'] }}</span></p>
 	                                    <p>QQ：<span><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={{ $contacts['account'] }}&site=qq&menu=yes"><img border="0" src="../Image/chatMe.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a></span></p>
 	                                </div>
 	                            </div>
 	                            <div  class="serviceArea">
-	                                <dl><dt>业务范围：</dt><dd title="125435415dfaedfawefasdfae3asdfaefasefasdddddddddddddd">非常广爱神的箭发了科技开发拉科技</span></dl>
+	                                <dl><dt>业务范围：</dt><dd title="125435415dfaedfawefasdfae3asdfaefasefasdddddddddddddd">{!! $contacts['scope_desc'] !!}}</span></dl>
 	                            </div>                         
 							</li>
 					  	@else

@@ -3,7 +3,6 @@
 namespace App\Adminlte\Controllers;
 
 use DB;
-use App\Model\Ad;
 use App\Model\Education;
 use App\Model\EducationLevel;
 use App\Model\EducationSchool;
@@ -11,17 +10,12 @@ use App\Model\EducationProvince;
 use App\Model\Province;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Validator;
-
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 use Encore\Admin\Controllers\ModelForm;
-use Encore\Admin\Auth\Database\Administrator;
 
 
 class EducationController extends Controller
@@ -86,9 +80,9 @@ class EducationController extends Controller
      *
      * @return Form
      */
-    public function form($id='')
+    public function form()
     {
-        return Admin::form(Education::class, function (Form $form) use($id) {
+        return Admin::form(Education::class, function (Form $form) {
             $form->display('id', '学历ID');
             $form->text('name', '学历名称')->rules('required');
             $form->select('school_id', '学校名称')->options(

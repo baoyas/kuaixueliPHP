@@ -307,11 +307,13 @@ class Form
     {
         $data = Input::all();
 
+        /*
         foreach ($this->builder->fields() as $field) {
             if(!isset($data[$field->column()])) {
                 $data[$field->column()] = $field->getDefault();
             }
         }
+        */
 
         // Handle validation errors.
         if ($validationMessages = $this->validationMessages($data)) {
@@ -479,13 +481,13 @@ class Form
     public function update($id)
     {
         $data = Input::all();
-
+        /*
         foreach ($this->builder->fields() as $field) {
             if(!isset($data[$field->column()])) {
                 $data[$field->column()] = $field->getDefault();
             }
         }
-        
+        */
         $data = $this->handleEditable($data);
 
         $data = $this->handleFileDelete($data);
@@ -503,7 +505,7 @@ class Form
         $this->setFieldOriginalValue();
 
         // Handle validation errors.
-        if ($validationMessages = $this->validationMessages($data)) {
+        if ($validationMessages = $this->validationMessages($data) && !array_key_exists('__del__', $data)) {
             return back()->withInput()->withErrors($validationMessages);
         }
 

@@ -43,7 +43,7 @@ class OrderController extends Controller
             $where['status'] = $status;
         }
         $eduOrder = EducationOrder::with('school')->where($where)->get();
-        return Response::view('order/list', ['eduOrder'=>$eduOrder])->header('Cache-Control', 'no-store');
+        return Response::view('order/list', ['eduOrder'=>$eduOrder, 'status'=>$status])->header('Cache-Control', 'no-store');
     }
 
     public function cancel (Request $request)

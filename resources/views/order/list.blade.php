@@ -65,18 +65,24 @@
                                 @endif
                             </td>
                             <td class="oM-cz">
-                                <!--待付款-->
-                                <a href="{{ url('order/pay?order_id='.$order->id) }}" class="toPay">去付款</a><br>
-                            <span class="fc-curp relative cancelOrder">关闭订单
-                                <div class="popShadow newWL" style="display: none;">
-                                    <div>你确定要关闭订单吗？</div>
-                                    <div class="mt10">
-                                        <a class="colorBg1 mr10 popBtn" onclick="cancelOrders('{{ $order->id }}');">确定</a>
-                                        <a href="javascript:void(0)" class="colorBg2 cancelBtn popBtn">取消</a>
-                                    </div>
-                                    <i class="arrow" style="top:-7px;right:26px;"></i>
-                                </div>
-                            </span>
+                                @if($order->status===0)
+                                    <!--待付款-->
+                                    <a href="{{ url('order/pay?order_id='.$order->id) }}" class="toPay">去付款</a><br>
+                                    <span class="fc-curp relative cancelOrder">关闭订单
+                                        <div class="popShadow newWL" style="display: none;">
+                                            <div>你确定要关闭订单吗？</div>
+                                            <div class="mt10">
+                                                <a class="colorBg1 mr10 popBtn" onclick="cancelOrders('{{ $order->id }}');">确定</a>
+                                                <a href="javascript:void(0)" class="colorBg2 cancelBtn popBtn">取消</a>
+                                            </div>
+                                            <i class="arrow" style="top:-7px;right:26px;"></i>
+                                        </div>
+                                    </span>
+                                @elseif($order->status===1)
+                                    <a class="toPay">已付款</a><br>
+                                @elseif($order->status===2)
+                                    <a class="toPay">已关闭</a><br>
+                                @endif
                                 <!--已付款-->
                                 <!--交易成功-->
                                 <!--取消订单-->

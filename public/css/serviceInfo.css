@@ -117,6 +117,7 @@
 }
 #servantList li .serviceArea dl{
 	position: relative;
+	min-height: 25px;
 }
 #servantList li .serviceArea dt{
 	position: absolute;

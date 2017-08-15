@@ -266,7 +266,7 @@
 	                                </div>
 	                            </div>
 	                            <div  class="serviceArea">
-	                                <dl><dt>业务范围：</dt><dd title="125435415dfaedfawefasdfae3asdfaefasefasdddddddddddddd">{!! $contacts['scope_desc'] !!}}</span></dl>
+	                                <dl><dt>业务范围：</dt><dd title="{!! $contacts['scope_desc'] !!}">{!! $contacts['scope_desc'] !!}</span></dl>
 	                            </div>                         
 							</li>
 					  	@else

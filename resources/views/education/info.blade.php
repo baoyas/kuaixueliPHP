@@ -43,9 +43,9 @@
                         </li>
                         <li class="shopp-num">
                             <div class="numAddSubtract overflowhidden">
-                                <a class="subtract " href="javascript:;" id="productReduce_0" onclick="changeNum('product', -1, 0);">-</a>
-                                <input type="text" value="1" onkeyup="numberFilter(this);" name="productnums[0]" id="productNum_0" style="width:40px;" class="t-productNum" category="product" key="0" pprice="1399" vprice="0" data-productid="165">
-                                <a href="javascript:;" onclick="changeNum('product', 1, 0);">+</a>
+                                <a class="subtract notChoose" href="javascript:;" id="productReduce_0" onclick="changeNum('product', -1, 0);">-</a>
+                                <input type="text" value="1" name="productnums[0]" id="productNum_0" style="width:40px;" class="t-productNum">
+                                <a class="notChoose" href="javascript:;" onclick="changeNum('product', 1, 0);">+</a>
                             </div>
                         </li>
                         <li class="shopp-subtotal">
@@ -57,13 +57,6 @@
                         </li>
                     </ol>
                     <!-- 普通类型 -->
-
-                    <!-- 自定义支付 -->
-                    <!-- 自定义支付 -->
-
-                    <!-- 套餐类型 -->
-                    <!-- 套餐类型 -->
-
                 </li>
             </ul>
             <!-- 优惠套餐 -->
@@ -91,7 +84,7 @@
                 </ul>
                 <div class="marT30 floatRight">
                     <a class="butpadding64 inlineBlock floatRight butRed" href="{{ url('/order/pay?education_id='.$edu->id) }}" id="orderButton" data-urlkey="">去结账</a>
-                    <a class="butpadding21 inlineBlock floatRight butWhiteGreyborder marR20" href="index.html">继续逛逛</a>
+                    <a class="butpadding21 inlineBlock floatRight butWhiteGreyborder marR20" href="{{ url('/') }}">继续逛逛</a>
                 </div>
                 <!-- 如何获取发票 -->
                 <div class="invoiceWrap">
@@ -113,9 +106,29 @@
 </div>
 <script type="text/javascript">
 	$(function(){ 
+		//改变数量
+		function changeNum(type, num, pId){
+			return false;
+			var domId = "#" + type + "Num_" + pId;
+			var pNum = parseInt($(domId).val());
+			pNum += num;
+			if (pNum <= 0)
+			{
+				return false;
+			}
+			$(domId).val(pNum);
+			if (pNum == 1)
+			{
+				$("#" + type + "Reduce_" + pId).addClass('notChoose');
+			}
+			else
+			{
+				$("#" + type + "Reduce_" + pId).removeClass('notChoose');
+			}
+		}
+
 		$(".invoiceTip").hover(
 			function(){
-				console.log(1);
 				$(this).find(".invoiceInner").show();
 			},function(){
 				$(this).find(".invoiceInner").hide();

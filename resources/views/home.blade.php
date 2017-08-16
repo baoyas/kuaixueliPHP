@@ -33,17 +33,17 @@
                     </ul>
                     <ul class="floatLeft iSubNavRi overflowhidden">
                         <li class="iSubNavRi1">
-                            <a href="/product/company.html">
+                            <a href="#">
                                 <img src="Image/Home_index/inav-1.jpg" alt="">
                             </a>
                         </li>
                         <li>
-                            <a href="/trsearch/index.html">
+                            <a href="#">
                                 <img src="Image/Home_index/inav-2.jpg" alt="3">
                             </a>
                         </li>
                         <li>
-                            <a href="/legalvip">
+                            <a href="#">
                                 <img  class="lastMar" src="Image/Home_index/inav-3.jpg" alt="">
                             </a>
                         </li>
@@ -55,17 +55,17 @@
     </div>
     <div class="floatLeft kxlNavs">
         <!--<a href="/">首页</a>-->
-        <a href="/product/company.html">一年专科
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">一年专科
             <img class="hotNew" alt="" src="Image/hot.gif">
         </a>
-        <a href="/product/kssb.html">国外进修
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">国外进修
             <img class="hotNew" alt="" src="Image/hot.gif">
         </a>
-        <a href="/product/htc.html" target="_blank">论文检索
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" target="_blank">论文检索
             <img class="hotNew" alt="" src="Image/hot.gif">
         </a>
-        <a href="/trsearch/index.html">学位英语</a>
-        <a href="/moreservice">更多服务</a>
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">学位英语</a>
+        <a href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">更多服务</a>
     <span class="floatRight telephone">
         400-618-1106    </span>
     </div>

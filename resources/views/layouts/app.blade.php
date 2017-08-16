@@ -81,7 +81,7 @@
             <li><a href="{{ url('order/list') }}">我的订单</a></li>
             <li><a class="welcome1" href="javascript:{void(0);}"><i class="gw floatLeft"></i>购物车<em>0</em>件</a></li>
             <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">院校入驻</a></li>
-            <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" style="color:#00a5d5;">助学机构入驻</a></li>
+            <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">助学机构入驻</a></li>
             <li class="asj app">
                 <a href="/mobile/index.html">
                     <i class="sj floatLeft"></i><i class="jt floatRight"></i>移动应用
@@ -268,27 +268,26 @@
                 <li class="margin0">
                     <h5>关于快学历</h5>
                     <a target="_blank" href="{{ url('help/about') }}" rel="nofollow">了解我们</a>
-                    <a target="_blank" href="/brand/index.html" rel="nofollow">品牌故事</a>
-                    <a target="_blank" href="/help/joinus.html" rel="nofollow">加入我们</a>
-                    <a target="_blank" href="/help/contact.html" rel="nofollow">联系我们</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow">品牌故事</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow">加入我们</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow">联系我们</a>
                 </li>
                 <li>
                     <h5>常见问题</h5>
-                    <a target="_blank" href="/help/faq.html" rel="nofollow">新手帮助</a>
-                    <a target="_blank" href="/help/support.html" rel="nofollow">支付帮助</a>
-                    <a target="_blank" href="/help/kaijufapiao.html" rel="nofollow">开具发票</a>
-                    <a target="_blank" href="/knowledge/index.html">知识库</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow">新手帮助</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow">支付帮助</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow">开具发票</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">知识库</a>
                 </li>
                 <li>
                     <h5>商务合作</h5>
-                    <a target="_blank" href="/help/cooperation.html" rel="nofollow">商务合作</a>
-                    <!--<a target="_blank" href="/event/channel_join.html" rel="nofollow">渠道加盟</a>-->
-                    <a target="_blank" href="/help/links.html">友情链接</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow">商务合作</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">友情链接</a>
                 </li>
                 <li>
                     <h5>服务商入口</h5>
                     <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow">院校入驻</a>
-                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow" style="color:#00a5d5;">助学机构入驻</a>
+                    <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes" rel="nofollow">助学机构入驻</a>
                 </li>
                 <li>
                     <div class="floatLeft bd"></div>

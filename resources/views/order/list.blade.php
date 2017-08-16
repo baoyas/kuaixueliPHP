@@ -50,7 +50,6 @@
                             	地区：{{ $order->school->province->name }}
                             </td>
                             <td>
-                                <div>发票信息：--</div>
                                 <div>优惠信息：-0元</div>
                                 <div>支付金额：{{ $order->kxl_fee + $order->entry_fee }}元</div>
                             </td>

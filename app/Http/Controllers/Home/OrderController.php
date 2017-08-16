@@ -45,7 +45,7 @@ class OrderController extends Controller
         }
         $eduOrder = EducationOrder::with('school')->where($where)->where('status', '<>', 3)->get();
 
-        $stat = EducationOrder::where('status', '<>', 3)->groupBy('status')
+        $stat = EducationOrder::where([['user_id', '=', $user_id], ['status', '<>', 3]])->groupBy('status')
                     ->get([
                         'status',
                         DB::raw('COUNT(*) as num')

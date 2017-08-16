@@ -8,13 +8,13 @@
         <ul class="uList">
             <li class="tit"><a href="{{ url('order/list') }}">全部订单({{ array_sum($stat) }})</a></li>
             <li>
-                <a href="{{ url('order/list?status=0') }}">待支付({{ $stat[0] }})</a>
+                <a href="{{ url('order/list?status=0') }}">待支付({{ empty($stat[0]) ? 0 : $stat[0] }})</a>
             </li>
             <li>
-                <a href="{{ url('order/list?status=1') }}">已支付({{ $stat[1] }})</a>
+                <a href="{{ url('order/list?status=1') }}">已支付({{ empty($stat[1]) ? 0 : $stat[1] }})</a>
             </li>
             <li>
-                <a href="{{ url('order/list?status=2') }}">已关闭({{ $stat[2] }})</a>
+                <a href="{{ url('order/list?status=2') }}">已关闭({{ empty($stat[2]) ? 0 : $stat[2] }})</a>
             </li>
         </ul>
     </div>

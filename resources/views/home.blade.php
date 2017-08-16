@@ -22,7 +22,7 @@
                     <ul class="floatLeft iSubNavLe overflowhidden">
                         @foreach($v['children'] as $kk=>$vv)
                         <li>
-                            <a href="#"><h5>{{ $vv['name'] }}</h5></a>
+                            <a href="{{ url('/education/level?level_id='.$vv['id']) }}"><h5>{{ $vv['name'] }}</h5></a>
                             <div class="kxlNavOne">
                                 @foreach($vv['children'] as $kkk=>$vvv)
                                 <a class="active" href="{{ url('/education/level?level_id='.$vvv['id']) }}">{{ $vvv['name'] }}</a>

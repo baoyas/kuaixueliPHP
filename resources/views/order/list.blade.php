@@ -6,7 +6,9 @@
     <!-- left begin-->
     <div class="uLe">
         <ul class="uList">
-            <li class="tit"><a href="{{ url('order/list') }}">全部订单({{ array_sum($stat) }})</a></li>
+            <li class="tit">
+            	<a href="{{ url('order/list') }}">全部订单({{ array_sum($stat) }})</a>
+        	</li>
             <li>
                 <a href="{{ url('order/list?status=0') }}">待支付({{ $stat[0] }})</a>
             </li>
@@ -127,6 +129,7 @@
                 } else {
                     alert('关闭成功');
                     $('[data-id="tr'+order_id+'"]').remove();
+                    location.reload();
                 }
             }
         });
@@ -169,6 +172,7 @@
                 } else {
                     alert('删除成功');
                     $('[data-id="tr'+order_id+'"]').remove();
+                    location.reload();
                 }
             }
         });

@@ -15,25 +15,9 @@ class EducationOrder extends Model
      */
     protected $fillable = [
         'user_id',
-        'education_id',
         'order_no',
         'status',
-        'name',
-        'level_1_id',
-        'level_2_id',
-        'level_3_id',
-        'school_id',
-        'studymode_id',
-        'major',
-        'fulltime_id',
-        'notfulltime_id',
-        'length',
-        'province_desc',
-        'coaches',
-        'admission',
-        'entry_fee',
-        'market_fee',
-        'kxl_fee',
+        'fee',
     ];
 
     public $timestamps=true;
@@ -46,7 +30,7 @@ class EducationOrder extends Model
     protected $hidden = [
     ];
 
-    public function school() {
-        return $this->hasOne(EducationSchool::class, 'id', 'school_id');
+    public function products() {
+        return $this->hasMany(EducationOrderProduct::class, 'order_id');
     }
 }

@@ -19,7 +19,7 @@ class OrderController extends Controller
         $education_id = $request->get('education_id', 0);
         $user_id = $request->user()->id;
         if($order_id) {
-            $eduOrder = EducationOrder::where(['id'=>$order_id, 'user_id'=>$user_id])->first();
+            $eduOrder = EducationOrder::with('products')->where(['id'=>$order_id, 'user_id'=>$user_id])->first();
         } elseif($education_id) {
             $education = Education::find($education_id)->toArray();
             $education['user_id'] = $request->user()->id;
@@ -43,7 +43,7 @@ class OrderController extends Controller
         if(!is_null($status)) {
             $where['status'] = $status;
         }
-        $eduOrder = EducationOrder::with('school')->where($where)->where('status', '<>', 3)->get();
+        $eduOrder = EducationOrder::with('products.school.province')->where($where)->where('status', '<>', 3)->get();
 
         $stat = EducationOrder::where([['user_id', '=', $user_id], ['status', '<>', 3]])->groupBy('status')
                     ->get([

@@ -7,7 +7,7 @@
     <div class="uLe">
         <ul class="uList">
             <li class="tit">
-            	<a href="{{ url('order/list') }}">全部订单({{ array_sum($stat) }})</a>
+            	<a href="{{ url('order/list') }}">全部订单({{ empty(array_sum($stat)) ? 0 : array_sum($stat) }})</a>
         	</li>
             <li>
                 <a href="{{ url('order/list?status=0') }}">待支付({{ empty($stat[0]) ? 0 : $stat[0] }})</a>
@@ -80,9 +80,9 @@
                                         </div>
                                     </span>
                                 @elseif($order->status===1)
-                                    <a href="{{ url('/education/level?level_id=').$order->level_1_id }}" class="toPay">详情</a><br/><a onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
+                                    <a href="{{ url('/education/level?level_id=').$order->level_1_id }}" class="toPay">详情</a><br/><a href="javascript:void(0);" onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
                                 @elseif($order->status===2)
-                                    <a onclick="uncancelOrders('{{ $order->id }}');" class="toPay">恢复</a><br/><a onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
+                                    <a onclick="uncancelOrders('{{ $order->id }}');" class="toPay">恢复</a><br/><a href="javascript:void(0);" onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
                                 @endif
                                 <!--已付款-->
                                 <!--交易成功-->
@@ -125,11 +125,12 @@
             dataType:'json',
             success: function (data) {
                 if(data.code != 0) {
-                    alert(data.msg);
+                	alert("操作失败!", data.msg, function () {}, {type: 'error', confirmButtonText: '确定'});
                 } else {
-                    alert('关闭成功');
-                    $('[data-id="tr'+order_id+'"]').remove();
-                    location.reload();
+            	 	alert("操作成功!", "您已成功关闭订单", function () {
+	            	 		$('[data-id="tr'+order_id+'"]').remove();
+	                    	location.reload();
+	            	 	}, {type: 'success', confirmButtonText: '确定'});       
                 }
             }
         });
@@ -147,35 +148,44 @@
             dataType:'json',
             success: function (data) {
                 if(data.code != 0) {
-                    alert(data.msg);
+                    alert("操作失败!", data.msg, function () {}, {type: 'error', confirmButtonText: '确定'});
                 } else {
-                    alert('恢复成功');
-                    location.reload();
+                	alert("操作成功!", "订单恢复成功", function () {
+                		location.reload();
+                	}, {type: 'success', confirmButtonText: '确定'});
                 }
             }
         });
     }
 
     function deleteOrders(order_id) {
-        $.ajax({
-            method: 'post',
-            url: '/order/delete',
-            data: {
-                _token: '{{ csrf_token() }}',
-                order_id: order_id,
-                _method: 'put'
-            },
-            dataType:'json',
-            success: function (data) {
-                if(data.code != 0) {
-                    alert(data.msg);
+    	 confirm("Are you sure?", "You will not be able to recover this imaginary file!", function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+			            method: 'post',
+			            url: '/order/delete',
+			            data: {
+			                _token: '{{ csrf_token() }}',
+			                order_id: order_id,
+			                _method: 'put'
+			            },
+			            dataType:'json',
+			            success: function (data) {
+			                if(data.code != 0) {
+			                    alert("操作失败!", data.msg, function () {}, {type: 'error', confirmButtonText: '确定'});
+			                } else {
+			                 	alert("操作成功!", "订单已成功删除", function () {
+			                 		 $('[data-id="tr'+order_id+'"]').remove();
+			                    location.reload();
+			                 	}, {type: 'success', confirmButtonText: '确定'});   
+			                }
+			            }
+			        });
                 } else {
-                    alert('删除成功');
-                    $('[data-id="tr'+order_id+'"]').remove();
-                    location.reload();
+                    //after click the cancel
                 }
-            }
-        });
+            }, {confirmButtonText: '确定', cancelButtonText: '取消', width: 400});
+        
     }
 </script>
 @endsection

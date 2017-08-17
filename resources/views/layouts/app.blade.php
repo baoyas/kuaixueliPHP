@@ -20,6 +20,7 @@
     <link href="/css/home.css" rel="stylesheet">
     <link href="/css/product.css" rel="stylesheet">
     <link href="/css/product_new.css" rel="stylesheet">
+    <link href="/unit/css/beAlert.css" rel="stylesheet">	
     @if (Request::path()=='auth/login' || Request::path()=='auth/register')
     @elseif (Request::path()=='education/info')
         <link href="/css/kxlpop.css" rel="stylesheet">
@@ -34,6 +35,7 @@
     <script type="text/javascript" src="/js/global.js"></script>
     <script type="text/javascript" src="/js/kxlnav.js"></script>
     <script type="text/javascript" src="/js/index.js"></script>
+    <script type="text/javascript" src="/js/unit/beAlert.js"></script>
     <script>
         window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
@@ -235,7 +237,7 @@
                     <i class="zz"></i>
                     <div class="textImgSeparation">
                         <h3>资质认证</h3>
-                        <span>服务商100%实名审核认证</span>
+                        <span>院校信息100%实名审核认证</span>
                     </div>
                 </li>
                 <li>
@@ -256,7 +258,7 @@
                     <i class="sh"></i>
                     <div class="textImgSeparation">
                         <h3>售后无忧</h3>
-                        <span>服务出问题客服经理全程跟进</span>
+                        <span>进修过程全程跟进</span>
                     </div>
                 </li>
             </ul>
@@ -302,7 +304,7 @@
                     <div class="floatLeft link-th">
                         <h5>服务支持</h5>
                         <h3>400-618-1106</h3>
-                        <span>周一至周日<em>8:00-22:00</em></span>                						
+                        <span>周一至周日<em>8:00-21:00</em></span>                						
                         <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=10139868&site=qq&menu=yes" class="mx-a-1">
                         	<div class="mx-button">售后服务</div>
                     	</a>

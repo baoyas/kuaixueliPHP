@@ -103,7 +103,7 @@
 <!-- 首屏 -->
 <!-- 企业客户 -->
 <div class="minwidth">
-    <h3 class="index_title">合作伙伴</h3>
+    <h3 class="index_title">合作院校</h3>
     <ul class="enetrCustomer overflowhidden">
         <li class="eCFirstLi">
             <a class="eCFirst mi" href="javascript:;"></a>

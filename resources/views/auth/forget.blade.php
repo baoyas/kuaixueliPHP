@@ -4,7 +4,7 @@
 <div class="loginLayout">
     <div class="llMain">
         <div class="web-login-pass">
-            <a class="passC pass-1">密码找回</a>
+            <a class="passC pass-1">密码重置</a>
             <a class="pass-2">完成</a>
         </div>
         <div class="back-pass" style="width: 53%;">
@@ -24,6 +24,26 @@
                     <div class="register-li-1 tishi-3" style="display: none">请输入短信验证码</div>
                     <div class="register-li-3 chenggong-3"></div>
 
+                </li>
+                <li class="register-li">
+					<span>
+						<input type="password" id="newPassword" name="reg[userpass]"  onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" onFocus="huodewenan(this)" onBlur="shiquwenan(this,'tishi-div-3')" value="">
+					</span>
+                    <label for="newPassword">设置新密码</label>
+
+                    <div class="register-li-2 tishi-div-2">请设置一个6到18位的密码</div>
+                    <div class="register-li-1 tishi-div-3" style="display: none;">请输入新密码</div>
+                    <div class="register-li-3"></div>
+                </li>
+                <li class="register-li">
+					<span>
+						<input type="password" id="newSpassword" name="regS[userpass]"  onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" onFocus="huodewenan(this)" onBlur="shiquwenan(this,'tishi-div-3')" value="">
+					</span>
+                    <label for="newSpassword">确认新密码</label>
+
+                    <div class="register-li-2 tishi-div-2">请设置一个6到18位的密码</div>
+                    <div class="register-li-1 tishi-div-3" style="display: none;">请确认密码</div>
+                    <div class="register-li-3"></div>
                 </li>
                 <li class="register-li">
                     <a class="form-buttom" href="javascript:;" id="submitbtn1">下一步</a>
@@ -47,6 +67,10 @@
 <script type="text/javascript">
     //手机号 验证码 通过跳转提示
     $("#submitbtn1").on("click", function(){
+    	if($('#newPassword').val() != $('#newSPassword').val()){
+    		alert("操作失败！","两次密码输入不一致",function(){},{type: 'info', confirmButtonText: '我知道了'});
+    		return false;
+    	}
         var submitObj = $("#submitbtn1");
         if($('#forgetmobile').val().length!=11 || $('#validate_code').val().length!=6) {
             return;
@@ -62,13 +86,14 @@
             dataType:'json',
             success: function (data) {
                 if(data.code != 0) {
-                    alert(data.msg);
+                    alert("操作失败!", data.msg, function () {}, {type: 'error', confirmButtonText: '确定'});
                 } else {
-                    alert("验证成功！");
-                    $(submitObj).closest("ul").hide();
-                    $(submitObj).closest(".loginLayout").find("a.pass-1").removeClass("passC");
-                    $(submitObj).closest(".loginLayout").find("a.pass-2").addClass("passC");
-                    $(submitObj).closest(".loginLayout").find("#succPop").show();
+                   alert("操作成功!", "短信验证成功", function () {
+                   		$(submitObj).closest("ul").hide();
+	                    $(submitObj).closest(".loginLayout").find("a.pass-1").removeClass("passC");
+	                    $(submitObj).closest(".loginLayout").find("a.pass-2").addClass("passC");
+	                    $(submitObj).closest(".loginLayout").find("#succPop").show();
+                   }, {type: 'success', confirmButtonText: '确定'});   
                 }
             }
         });
@@ -103,7 +128,8 @@
     $(function(){
         $("#validate_code").val('');
         $("#validate_mobile").val('');
-
+		$("#newPassword").val('');
+		$("#newSPassword").val('');
         //$("#forgetmobile").focus();
         $(".register-li input").focus(function(){
             $(this).parents('.register-li').find('label').addClass("register-li-span")
@@ -124,9 +150,9 @@
                 dataType:'json',
                 success: function (data) {
                     if(data.code != 0) {
-                        alert(data.msg);
+                    	alert("操作失败!", data.msg, function () {}, {type: 'error', confirmButtonText: '我知道了'});
                     } else {
-                        alert('已经发送');
+                    	alert("操作成功!", "验证码已成功发送", function () {}, {type: 'success', confirmButtonText: '我知道了'});
                     }
                 }
             });

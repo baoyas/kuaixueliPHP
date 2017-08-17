@@ -16,7 +16,7 @@
 Route::group(['namespace'=>'Home', 'middleware' => ['web']], function() {
     Route::get('/', 'HomeController@index');
     Route::get('/education/level', 'EducationController@level');
-    Route::get('/education/info', 'EducationController@info');
+    Route::get('/education/cart', 'EducationController@info');
     Route::get('/sms/send', 'SmsController@send');
     Route::get('/help/about', 'HelpController@about');
 });

@@ -22,7 +22,7 @@
     <link href="/css/product_new.css" rel="stylesheet">
     <link href="/unit/css/beAlert.css" rel="stylesheet">	
     @if (Request::path()=='auth/login' || Request::path()=='auth/register')
-    @elseif (Request::path()=='education/info')
+    @elseif (Request::path()=='education/cart')
         <link href="/css/kxlpop.css" rel="stylesheet">
     @endif
     <link href="/css/serviceInfo.css" rel="stylesheet">

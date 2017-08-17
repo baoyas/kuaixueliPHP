@@ -140,7 +140,7 @@
                                             </span>
                                         </p>
 										<p class="require"><span>报名须知：</span>{{ $v->admission }}</p>
-										<p><a href="{{ url('/education/info?education_id='.$v->id) }}"><span class="addToShoppingCar">我要报名</span></a></p>	
+										<p><a href="{{ url('/education/cart?education_id='.$v->id) }}"><span class="addToShoppingCar">我要报名</span></a></p>
 									</div>
 								</li>
                                 @endforeach

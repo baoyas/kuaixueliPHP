@@ -24,7 +24,7 @@
                     <!-- 表头 -->
 
                     <!-- 普通类型 -->
-
+                    @foreach($edus as $edu)
                     <ol>
                         <li class="goods">
                             <img class="floatLeft marL40 imgW50" src="/upload/{{ $edu->school->logo_url }}" alt="学校logo">
@@ -52,10 +52,11 @@
                             <span id="productTotalPrice_0">{{ $edu->kxl_fee + $edu->entry_fee }}元</span>
                         </li>
                         <li class="operation">
-                            <a class="RmCart" href="javascript:void(0)" product="{{}}">删除</a>
+                            <a class="RmCart" href="javascript:void(0)" product="{{ $edu->id }}">删除</a>
                             <!--<span>x</span>-->
                         </li>
                     </ol>
+                    @endforeach
                     <!-- 普通类型 -->
                 </li>
             </ul>

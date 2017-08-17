@@ -203,7 +203,9 @@
     function detailOrders() {
         var url = '{{ url('/education/level?level_id=') }}';
         for(var k in arguments){
-            window.open(url+arguments[k], arguments[k]);
+            setTimeout((function(url, k, arguments){
+                window.open(url+arguments[k], "win"+arguments[k]);
+            }).bind(this, url, k, arguments), 1000);
         }
     }
 </script>

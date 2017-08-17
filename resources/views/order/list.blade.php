@@ -48,18 +48,24 @@
                         <tr data-id="tr{{$order->id}}">
                             <td>{{ $order->order_no }}</td>
                             <td>
-                            	{{ $order->school->name }}
-                    			<hr style="border: 1px solid #fff;"/>
-                            	{{ $order->school->name }}
+                                @foreach($order->products as $key=>$prod)
+                                    {{ $prod->school->name }}
+                                    @if($key<count($order->products)-1)
+                                    <hr style="border: 1px solid #fff;"/>
+                                    @endif
+                                @endforeach
                         	</td>
                             <td>
-                            	地区：{{ $order->school->province->name }}
-                            	<hr style="border: 1px solid #fff;"/>
-                            	地区：{{ $order->school->province->name }}
+                                @foreach($order->products as $key=>$prod)
+                                    地区：{{ $prod->school->province->name }}
+                                    @if($key<count($order->products)-1)
+                                        <hr style="border: 1px solid #fff;"/>
+                                    @endif
+                                @endforeach
                             </td>
                             <td>
                                 <div>优惠信息：-0元</div>
-                                <div>支付金额：{{ $order->kxl_fee + $order->entry_fee }}元</div>
+                                <div>支付金额：{{ $order->fee}}元</div>
                             </td>
                             <td>{{ $order->created_at }}</td>
                             <td>
@@ -86,7 +92,7 @@
                                         </div>
                                     </span>
                                 @elseif($order->status===1)
-                                    <a href="{{ url('/education/level?level_id=').$order->level_1_id }}" class="toPay">详情</a><br/><a href="javascript:void(0);" onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
+                                    <a href="javascript:void(0);" onclick="detailOrders({{ join(',', $order->products->pluck('level_1_id','id')->toArray()) }});" class="toPay">详情</a><br/><a href="javascript:void(0);" onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
                                 @elseif($order->status===2)
                                     <a onclick="uncancelOrders('{{ $order->id }}');" class="toPay">恢复</a><br/><a href="javascript:void(0);" onclick="deleteOrders('{{ $order->id }}');">删除订单</a>
                                 @endif
@@ -192,6 +198,13 @@
                 }
             }, {confirmButtonText: '确定', cancelButtonText: '取消', width: 400});
         
+    }
+
+    function detailOrders() {
+        var url = '{{ url('/education/level?level_id=') }}';
+        for(var k in arguments){
+            window.open(url+arguments[k], arguments[k]);
+        }
     }
 </script>
 @endsection

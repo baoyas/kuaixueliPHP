@@ -52,7 +52,7 @@
                             <span id="productTotalPrice_0">{{ $edu->kxl_fee + $edu->entry_fee }}元</span>
                         </li>
                         <li class="operation">
-                            <a href="javascript:void(0)">删除</a>
+                            <a class="RmCart" href="javascript:void(0)" product="{{}}">删除</a>
                             <!--<span>x</span>-->
                         </li>
                     </ol>
@@ -133,6 +133,35 @@
 			},function(){
 				$(this).find(".invoiceInner").hide();
 			});
+		$(".RmCart").on("click",function(){
+			var edu_id=$(e.target).attr("product");
+			confirm("您确定删除吗?", "", function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+			            method: 'post',
+			            //
+			            url: '/order/delete',
+			            data: {
+			                _token: '{{ csrf_token() }}',
+			                order_id: edu_id,
+			                _method: 'put'
+			            },
+			            dataType:'json',
+			            success: function (data) {
+			                if(data.code != 0) {
+			                    alert("操作失败!", data.msg, function () {}, {type: 'error', confirmButtonText: '确定'});
+			                } else {
+			                 	alert("操作成功!", "订单已成功删除", function () {
+			                    	location.reload();
+			                 	}, {type: 'success', confirmButtonText: '确定'});   
+			                }
+			            }
+			        });
+                } else {
+                    //after click the cancel
+                }
+            }, {confirmButtonText: '确定', cancelButtonText: '取消', width: 400});
+		});
 	});
 </script>	
 <!--购物车 有东西-->

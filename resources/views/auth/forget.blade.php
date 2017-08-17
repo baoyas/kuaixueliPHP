@@ -37,9 +37,9 @@
                 </li>
                 <li class="register-li">
 					<span>
-						<input type="password" id="newSpassword" name="regS[userpass]"  onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" onFocus="huodewenan(this)" onBlur="shiquwenan(this,'tishi-div-3')" value="">
+						<input type="password" id="newSPassword" name="regS[userpass]"  onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" onFocus="huodewenan(this)" onBlur="shiquwenan(this,'tishi-div-3')" value="">
 					</span>
-                    <label for="newSpassword">确认新密码</label>
+                    <label for="newSPassword">确认新密码</label>
 
                     <div class="register-li-2 tishi-div-2">请设置一个6到18位的密码</div>
                     <div class="register-li-1 tishi-div-3" style="display: none;">请确认密码</div>
@@ -53,7 +53,7 @@
             <ul class="inputLayout back-panel form-panel relative" id="succPop" style="display:none;">
                 <li class="isOk">
                     <img src="../Image/passOk.png" alt="">
-                    <h2>密码已成功发送到您的手机！</h2>
+                    <h2>密码已成功修改！</h2>
                     <h4>现在，您可以去登录了！</h4>
                 </li>
                 <li class="login-li">
@@ -81,7 +81,8 @@
             data: {
                 _token: '{{ csrf_token() }}',
                 mobile: $('#forgetmobile').val(),
-                verifycode: $('#validate_code').val()
+                verifycode: $('#validate_code').val(),
+                password: $('#newPassword').val(),
             },
             dataType:'json',
             success: function (data) {

@@ -152,9 +152,11 @@ class AuthController extends Controller
     public function resetpass(Request $request) {
         $mobile = $request->get('mobile');
         $verifycode = $request->get('verifycode');
+        $password = $request->get('password');
         if(strcmp($verifycode, Cache::get("sms_".$mobile))!='0' && strcmp($verifycode, '401402')!='0') {
             return $this->response(NULL, 1, "验证码错误");
         }
+        User::where(['mobile'=>$mobile])->update(['password'=>bcrypt($password)]);
         return $this->response(NULL);
     }
 }

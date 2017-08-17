@@ -21,7 +21,7 @@
                 <div class="product-slider">
                     <ul id="productSlider" class="product-slider-content">
                         <li style="opacity: 1">
-                            <p><img src="../Image/56ea845138329.jpg" alt="在线研究生"></p>
+                            <p><img src="../Image/56ea845138329.jpg" alt="学历等级"></p>
                         </li>
                     </ul>
                 </div>
@@ -33,7 +33,7 @@
                     <h1>{{ $eLevel->name }}</h1>
                     <!--<p class="tips">股权、注册一步到位的服务</p>-->
                     <p class="tips" style="color: gray;">{!! $eLevel->desc !!}</p>
-                    <a href="javascript:;" class="share lickWeixin"></a>
+                    <!--<a href="javascript:;" class="share lickWeixin"></a>-->
                 </div>
 
                 <div id="productOnLine" style="display:block;">

@@ -43,9 +43,9 @@
                         </li>
                         <li class="shopp-num">
                             <div class="numAddSubtract overflowhidden">
-                                <a class="subtract notChoose" href="javascript:;" id="productReduce_0" onclick="changeNum('product', -1, 0);">-</a>
+                                <a class="subtract notChoose" href="javascript:;" id="productReduce_0">-</a>
                                 <input type="text" value="1" name="productnums[0]" id="productNum_0" style="width:40px;" class="t-productNum">
-                                <a class="notChoose" href="javascript:;" onclick="changeNum('product', 1, 0);">+</a>
+                                <a class="notChoose" href="javascript:;">+</a>
                             </div>
                         </li>
                         <li class="shopp-subtotal">

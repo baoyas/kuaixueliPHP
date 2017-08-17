@@ -23,8 +23,8 @@ $app = new Illuminate\Foundation\Application(
 
 //域名配置
 $env_hosts = [
-    'test' => ['127.0.0.1', '192.168.56.103'],
-    'prod' => ['www.kuaixueli.cn', 'kuaixueli.cn', '47.94.42.133']
+    'test' => ['127.0.0.1', '192.168.56.103', '47.94.42.133'],
+    'prod' => ['www.kuaixueli.cn', 'kuaixueli.cn']
 ];
 //环境处理
 if($app->runningInConsole()) {//命令行

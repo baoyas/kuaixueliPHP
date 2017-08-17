@@ -92,7 +92,7 @@
                     <em></em>
                     <img src="/Image/Home_index/kuaixuelierweima.png" alt="微信图片">
                     <h4>关注快学历官方微信</h4>
-                    <a class="butTgreen padding14" href="/mobile/index.html">更多移动应用</a>
+                   <!-- <a class="butTgreen padding14" href="/mobile/index.html">更多移动应用</a>-->
                 </div>
             </li>
         </ul>

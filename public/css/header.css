@@ -95,7 +95,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder{color: #b5
 .welcomekxl .asj:hover .sj{background-position: -59px -837px;}
 .welcomekxl .asj:hover .jt,.welcomekxl .asj:hover .mykxl,.navLocation:hover .mykxl{background-position: -59px -891px;}
 .welcomekxl .asj:hover div{opacity: 1;filter:alpha(opacity=100);}
-.welcomekxl .asj:hover .welcomekxlShow{height: 218px;z-index: 12;}
+.welcomekxl .asj:hover .welcomekxlShow{height:151px;z-index: 12;}
 .welcomekxl .asj:hover .iMyInfo{height: 177px;}
 .welcomekxl .asj:hover .iMyPavatar{height: 234px;}
 .welcome1 em{margin: 0 4px;}

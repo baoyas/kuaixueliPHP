@@ -87,14 +87,14 @@
             dataType:'json',
             success: function (data) {
                 if(data.code != 0) {
-                    alert("操作失败!", data.msg, function () {}, {type: 'error', confirmButtonText: '确定'});
+                    alert("短信验证失败!", data.msg, function () {}, {type: 'error', confirmButtonText: '确定'});
                 } else {
-                   alert("操作成功!", "短信验证成功", function () {
+                   alert("验证通过!", "已成功重置密码", function () {
                    		$(submitObj).closest("ul").hide();
 	                    $(submitObj).closest(".loginLayout").find("a.pass-1").removeClass("passC");
 	                    $(submitObj).closest(".loginLayout").find("a.pass-2").addClass("passC");
 	                    $(submitObj).closest(".loginLayout").find("#succPop").show();
-                   }, {type: 'success', confirmButtonText: '确定'});   
+                   }, {type: 'success', confirmButtonText: '我知道了'});   
                 }
             }
         });

@@ -47,8 +47,14 @@
                         @foreach($eduOrder as $order)
                         <tr data-id="tr{{$order->id}}">
                             <td>{{ $order->order_no }}</td>
-                            <td>{{ $order->school->name }}</td>
                             <td>
+                            	{{ $order->school->name }}
+                    			<hr style="border: 1px solid #fff;"/>
+                            	{{ $order->school->name }}
+                        	</td>
+                            <td>
+                            	地区：{{ $order->school->province->name }}
+                            	<hr style="border: 1px solid #fff;"/>
                             	地区：{{ $order->school->province->name }}
                             </td>
                             <td>

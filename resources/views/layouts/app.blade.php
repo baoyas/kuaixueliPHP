@@ -41,6 +41,12 @@
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+    <?php
+    $user_id = app('request')->user()->id;
+    $cacheKey = "cart_{$user_id}";
+    $ecart = app('cache')->get($cacheKey);
+    $ecart = empty($ecart) ? [] : \json_decode($ecart, true);
+    ?>
 </head>
 <body>
 <!-- 欢迎来到快学历 -->
@@ -81,7 +87,7 @@
                 <li><a class="noBorder" href="{{ url('/auth/logout') }}">退出</a></li>
             @endif
             <li><a href="{{ url('order/list') }}">我的订单</a></li>
-            <li><a class="welcome1" href="javascript:{void(0);}"><i class="gw floatLeft"></i>购物车<em>0</em>件</a></li>
+            <li><a class="welcome1" href="{{ url('education/cart') }}"><i class="gw floatLeft"></i>购物车<em>{{ count($ecart) }}</em>件</a></li>
             <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">院校入驻</a></li>
             <li><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=99618132&site=qq&menu=yes">助学机构入驻</a></li>
             <li class="asj app">
@@ -206,7 +212,7 @@
         </a>
     </li>
     <li>
-        <a href="/cart/info.html" id="myCartInfo">
+        <a href="{{ url('education/cart') }}" id="myCartInfo">
             <i class="wyts"></i>
             <div>购物车</div>
         </a>

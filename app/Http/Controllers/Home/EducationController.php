@@ -40,14 +40,16 @@ class EducationController extends Controller
 
     public function info (Request $request)
     {
-        $education_id = $request->get('education_id');
+        $education_id = $request->get('education_id', 0);
         $user_id = $request->user()->id;
         if($user_id) {
             $cacheKey = "cart_{$user_id}";
             $cart = Cache::get($cacheKey);
             $cart = empty($cart) ? [] : \json_decode($cart, true);
-            $cart[$education_id] = 1;
-            Cache::put($cacheKey, \json_encode($cart), 365*60*24);
+            if($education_id) {
+                $cart[$education_id] = 1;
+                Cache::put($cacheKey, \json_encode($cart), 365*60*24);
+            }
         } else {
             $cart[$education_id] = 1;
         }

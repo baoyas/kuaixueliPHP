@@ -38,7 +38,7 @@ class EducationController extends Controller
         return view('education/level', ['edu'=>$edu, 'eLevel'=>$eLevel, 'provinces'=>$provinces, 'contacts'=>$contacts, 'province_id'=>$province_id]);
     }
 
-    public function info (Request $request)
+    public function cart (Request $request)
     {
         $education_id = $request->get('education_id', 0);
         $user_id = $request->user()->id;

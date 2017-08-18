@@ -190,6 +190,10 @@
             <div class="logo-sub">
                 关于我们
             </div>
+            @elseif(Request::path()=='education/cart')
+            <div class="logo-sub">
+                购物车
+            </div>
             @elseif(Request::path()=='/')
             <div class="logo-sub">
                 首页

@@ -23,13 +23,13 @@
                         <li id="infoDetails">
                             <span>详情：</span>
                             <div>
-                                <p>合伙企业注册 X 1（上海-金山区）</p>
-                                <p>合伙企业注册 X 1（上海-金山区）</p>
-                                <p>合伙企业注册 X 1（上海-金山区）</p>
+                                @foreach($eduOrder->products as $prod)
+                                    <p>{{ $prod->school->name }} X 1（{{ $prod->school->province->name }}）</p>
+                                @endforeach
                             </div>
                         </li>
                     </ul>
-                    <div class="orderPrice">应付总额：<em>{{ $eduOrder->kxl_fee + $eduOrder->entry_fee }}元</em></div>
+                    <div class="orderPrice">应付总额：<em>{{ $eduOrder->fee }}元</em></div>
                 </div>
             </li>
         </ul>

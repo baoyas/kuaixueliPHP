@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Model\EducationOrderProduct;
 use DB;
 use Response;
 use Illuminate\Http\Request;
@@ -18,15 +19,30 @@ class OrderController extends Controller
         $order_id = $request->get('order_id', 0);
         $education_id = $request->get('education_id', 0);
         $user_id = $request->user()->id;
+
         if($order_id) {
-            $eduOrder = EducationOrder::with('products')->where(['id'=>$order_id, 'user_id'=>$user_id])->first();
+            $eduOrder = EducationOrder::with('products.school.province')->where(['id'=>$order_id, 'user_id'=>$user_id])->first();
         } elseif($education_id) {
-            $education = Education::find($education_id)->toArray();
-            $education['user_id'] = $request->user()->id;
-            $education['education_id'] = $education['id'];
-            $education['order_no']     = date('YmdHis').mt_rand(100000, 999999);
-            $education['status']       = 0;
-            $eduOrder = EducationOrder::create($education);
+            $cacheKey = "cart_{$user_id}";
+            $cart = app('cache')->get($cacheKey);
+            $cart = empty($cart) ? [] : \json_decode($cart, true);
+            if($cart) {
+                $edus = Education::whereIn('id', array_keys($cart))->get()->toArray();
+                $fee = 0;
+                foreach($edus as $edu) {
+                    $fee += $edu['entry_fee'] + $edu['kxl_fee'];
+                }
+                $data['user_id']  = $request->user()->id;
+                $data['fee']      = $fee;
+                $data['order_no'] = date('YmdHis').mt_rand(100000, 999999);
+                $data['status']   = 0;
+                $eduOrder = EducationOrder::create($data);
+                foreach($edus as $edu) {
+                    $edu['order_id'] = $eduOrder->id;
+                    EducationOrderProduct::create($edu);
+                }
+                $eduOrder = EducationOrder::with('products.school.province')->where(['id'=>$eduOrder->id, 'user_id'=>$user_id])->first();
+            }
         }
         return Response::view('order/pay', ['eduOrder'=>$eduOrder])->header('Cache-Control', 'no-store');
     }
@@ -50,7 +66,7 @@ class OrderController extends Controller
                         'status',
                         DB::raw('COUNT(*) as num')
                     ])->pluck('num', 'status')->toArray();
-        
+
         return Response::view('order/list', ['eduOrder'=>$eduOrder, 'status'=>$status, 'stat'=>$stat])->header('Cache-Control', 'no-store');
     }
 

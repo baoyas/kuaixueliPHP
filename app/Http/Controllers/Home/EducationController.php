@@ -51,7 +51,12 @@ class EducationController extends Controller
                 Cache::put($cacheKey, \json_encode($cart), 365*60*24);
             }
         } else {
-            $cart[$education_id] = 1;
+            $cart = $request->session()->get('cart');
+            $cart = empty($cart) ? [] : \json_decode($cart, true);
+            if($education_id) {
+                $cart[$education_id] = 1;
+                $request->session()->put('cart', \json_encode($cart));
+            }
         }
         $edus = Education::with('school.province')->whereIn('id', array_keys($cart))->get();
         return view('education/cart', ['edus'=>$edus]);

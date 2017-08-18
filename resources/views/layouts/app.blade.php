@@ -42,10 +42,16 @@
         ]); ?>
     </script>
     <?php
-    $user_id = app('request')->user()->id;
-    $cacheKey = "cart_{$user_id}";
-    $ecart = app('cache')->get($cacheKey);
-    $ecart = empty($ecart) ? [] : \json_decode($ecart, true);
+        $user_id = app('request')->user()->id;
+        if($user_id) {
+            $cacheKey = "cart_{$user_id}";
+            $ecart = app('cache')->get($cacheKey);
+            $ecart = empty($ecart) ? [] : \json_decode($ecart, true);
+        } else {
+            $cacheKey = 'cart';
+            $ecart = app('session')->get($cacheKey);
+            $ecart = empty($ecart) ? [] : \json_decode($ecart, true);
+        }
     ?>
 </head>
 <body>

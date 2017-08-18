@@ -42,6 +42,7 @@ class AuthController extends Controller
         $user = $request->get('user');
         $mobile = empty($user['mobile']) ? '' : $user['mobile'];
         $password = empty($user['userpass']) ? '' : $user['userpass'];
+        $redirectUrl = $request->get('redirectUrl');
         if(empty($mobile) || empty($password)) {
             return response()->json([
                 'code'  => '7',
@@ -69,10 +70,25 @@ class AuthController extends Controller
             ]);
         }
 
+        $cacheKey = "cart";
+        $scart = $request->session()->get($cacheKey);
+        $scart = empty($scart) ? [] : \json_decode($scart, true);
+        $request->session()->forget($cacheKey);
+
+        $cacheKey = "cart_{$user->id}";
+        $lcart = app('cache')->get($cacheKey);
+        $lcart = empty($lcart) ? [] : \json_decode($lcart, true);
+
+        $cart = array_merge($scart, $lcart);
+        app('cache')->put($cacheKey, \json_encode($cart), 365*60*24);
+
+        if($redirectUrl) {
+            //return redirect()->back();
+        }
         return response()->json([
             'code'  => '0',
             'ret' => 'true',
-            'url' => "/"
+            'url' => empty($redirectUrl) ? '/' : $redirectUrl,
         ]);
     }
 

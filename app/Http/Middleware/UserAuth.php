@@ -26,7 +26,7 @@ class UserAuth
         try {
             $user = Auth::authenticate();
         } catch(\Exception $e) {
-            return redirect('auth/login');
+            return redirect('auth/login?redirectUrl='.url()->full());
         }
         $request->item['user'] = $user;
         return $next($request);
